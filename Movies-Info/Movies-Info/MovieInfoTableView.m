@@ -101,7 +101,7 @@
     
     // Configure the cell...
     
-    //cell.text = @"new Cell";
+    cell.text = @"new Cell";
     
     return cell;
 }

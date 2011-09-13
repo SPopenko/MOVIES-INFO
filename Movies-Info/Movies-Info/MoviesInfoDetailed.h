@@ -9,5 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface MoviesInfoDetailed : UIViewController
+{
+    IBOutlet UIWebView *webView;
+}
+
+@property (strong, nonatomic) UIWebView	*webView;
 
 @end
