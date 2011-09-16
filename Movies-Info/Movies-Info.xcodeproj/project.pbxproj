@@ -17,6 +17,9 @@
 		63626F6F1419419000F3A4E2 /* MovieInfoTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63626F6D1419419000F3A4E2 /* MovieInfoTableView.xib */; };
 		63626F73141946EF00F3A4E2 /* MoviesInfoDetailed.m in Sources */ = {isa = PBXBuildFile; fileRef = 63626F71141946ED00F3A4E2 /* MoviesInfoDetailed.m */; };
 		63626F74141946EF00F3A4E2 /* MoviesInfoDetailed.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63626F72141946ED00F3A4E2 /* MoviesInfoDetailed.xib */; };
+		CE7E27041422D5D8008BF00A /* MovieShortInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7E27031422D5D8008BF00A /* MovieShortInfoCell.m */; };
+		CE7E27061422DDA7008BF00A /* MovieShortInfoCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE7E27051422DDA7008BF00A /* MovieShortInfoCellView.xib */; };
+		CE7E27091422F6E7008BF00A /* movie.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7E27081422F6E7008BF00A /* movie.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +39,10 @@
 		63626F70141946EC00F3A4E2 /* MoviesInfoDetailed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoviesInfoDetailed.h; sourceTree = "<group>"; };
 		63626F71141946ED00F3A4E2 /* MoviesInfoDetailed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoviesInfoDetailed.m; sourceTree = "<group>"; };
 		63626F72141946ED00F3A4E2 /* MoviesInfoDetailed.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoviesInfoDetailed.xib; sourceTree = "<group>"; };
+		CE7E27021422D5D8008BF00A /* MovieShortInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieShortInfoCell.h; sourceTree = "<group>"; };
+		CE7E27031422D5D8008BF00A /* MovieShortInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieShortInfoCell.m; sourceTree = "<group>"; };
+		CE7E27051422DDA7008BF00A /* MovieShortInfoCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MovieShortInfoCellView.xib; sourceTree = "<group>"; };
+		CE7E27081422F6E7008BF00A /* movie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = movie.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +89,8 @@
 		63626F5A1419414900F3A4E2 /* Movies-Info */ = {
 			isa = PBXGroup;
 			children = (
+				CE7E27071422F5E5008BF00A /* Images */,
+				CE7E27001422D49B008BF00A /* MovieShortInfo */,
 				63626F631419414A00F3A4E2 /* Movies_InfoAppDelegate.h */,
 				63626F641419414A00F3A4E2 /* Movies_InfoAppDelegate.m */,
 				63626F6B1419419000F3A4E2 /* MovieInfoTableView.h */,
@@ -104,6 +113,24 @@
 				63626F621419414A00F3A4E2 /* Movies-Info-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CE7E27001422D49B008BF00A /* MovieShortInfo */ = {
+			isa = PBXGroup;
+			children = (
+				CE7E27021422D5D8008BF00A /* MovieShortInfoCell.h */,
+				CE7E27031422D5D8008BF00A /* MovieShortInfoCell.m */,
+				CE7E27051422DDA7008BF00A /* MovieShortInfoCellView.xib */,
+			);
+			name = MovieShortInfo;
+			sourceTree = "<group>";
+		};
+		CE7E27071422F5E5008BF00A /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				CE7E27081422F6E7008BF00A /* movie.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,6 +183,8 @@
 				63626F5F1419414A00F3A4E2 /* InfoPlist.strings in Resources */,
 				63626F6F1419419000F3A4E2 /* MovieInfoTableView.xib in Resources */,
 				63626F74141946EF00F3A4E2 /* MoviesInfoDetailed.xib in Resources */,
+				CE7E27061422DDA7008BF00A /* MovieShortInfoCellView.xib in Resources */,
+				CE7E27091422F6E7008BF00A /* movie.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -170,6 +199,7 @@
 				63626F651419414A00F3A4E2 /* Movies_InfoAppDelegate.m in Sources */,
 				63626F6E1419419000F3A4E2 /* MovieInfoTableView.m in Sources */,
 				63626F73141946EF00F3A4E2 /* MoviesInfoDetailed.m in Sources */,
+				CE7E27041422D5D8008BF00A /* MovieShortInfoCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,6 +305,7 @@
 				63626F6A1419414A00F3A4E2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

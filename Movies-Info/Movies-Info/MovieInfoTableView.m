@@ -8,8 +8,11 @@
 
 #import "MovieInfoTableView.h"
 #import "MoviesInfoDetailed.h"
+#import "MovieShortInfoCell.h"
 
 @implementation MovieInfoTableView
+
+#define TableCellHeight 100
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -33,7 +36,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    self.tableView.rowHeight = TableCellHeight;
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -93,16 +96,19 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    MovieShortInfoCell *cell = (MovieShortInfoCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        //cell = [[MovieShortInfoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[[NSBundle mainBundle] loadNibNamed:@"MovieShortInfoCellView" owner:self options:nil] objectAtIndex:0];
+        
+        cell.frame = CGRectMake(0, 0, 320, 100);
     }
     
     // Configure the cell...
-    
-    cell.text = @"new Cell";
-    
+    cell.name.text = @"Movie name";
+    cell.fanRating.text = @"5";
+    //cell.text = @"new Cell";
+
     return cell;
 }
 

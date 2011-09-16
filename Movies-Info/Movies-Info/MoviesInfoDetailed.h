@@ -13,6 +13,6 @@
     IBOutlet UIWebView *webView;
 }
 
-@property (strong, nonatomic) UIWebView	*webView;
+@property (retain, nonatomic) UIWebView	*webView;
 
 @end
