@@ -9,6 +9,7 @@
 #import "MovieInfoTableView.h"
 #import "MoviesInfoDetailed.h"
 #import "MovieShortInfoCell.h"
+#import "ShortMovieInfo.h"
 
 @implementation MovieInfoTableView
 
@@ -37,6 +38,38 @@
 {
     [super viewDidLoad];
     self.tableView.rowHeight = TableCellHeight;
+    
+    //Generating MovieList
+    ShortMovieInfo *smi  = [[ShortMovieInfo alloc] init];
+    NSDateComponents *dc = [[NSDateComponents alloc] init];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    
+    movieList = [NSMutableArray array];
+    
+    [dc setDay:01];
+    [dc setMonth:05];
+    [dc setYear:2008];
+    
+    smi.movieName = @"Iron man";
+    smi.releaseDate = [calendar dateFromComponents:dc];
+    
+    [dc setDay:0];
+    [dc setMonth:0];
+    [dc setYear:0];
+    [dc setMinute:6];
+    [dc setHour:2];
+    [dc setSecond:01];
+    
+    smi.runTime     = [calendar dateFromComponents:dc];
+    smi.imagePath = @"ironman.jpg";
+    smi.fanRating = [NSNumber numberWithInt:5];
+    smi.movieLink = @"http://www.themoviedb.org/movie/75299";
+    [movieList addObject:smi];
+
+    [smi release];
+    smi = nil;
+    
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -88,14 +121,15 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
+//#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 2;
+    return [movieList count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
+        
     MovieShortInfoCell *cell = (MovieShortInfoCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         //cell = [[MovieShortInfoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
@@ -104,11 +138,11 @@
         cell.frame = CGRectMake(0, 0, 320, 100);
     }
     
+    
+    cell.shortMovieInfo =  (ShortMovieInfo*)[movieList objectAtIndex:indexPath.row];;
+    
     // Configure the cell...
-    cell.name.text = @"Movie name";
-    cell.fanRating.text = @"5";
     //cell.text = @"new Cell";
-
     return cell;
 }
 
@@ -157,11 +191,16 @@
 {
     // Navigation logic may go here. Create and push another view controller.
     
-     MoviesInfoDetailed *detailViewController = [[MoviesInfoDetailed alloc] initWithNibName:@"MoviesInfoDetailed" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     //[detailViewController release];
+    MoviesInfoDetailed *detailViewController = [[MoviesInfoDetailed alloc] initWithNibName:@"MoviesInfoDetailed" bundle:nil];
+    
+    // ...
+    // Pass the selected object to the new view controller.
+    [self.navigationController pushViewController:detailViewController animated:YES];
+    
+    [detailViewController.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString: @"http://ya.ru"]]];
+    
+    
+    [detailViewController release];
      
 }
 

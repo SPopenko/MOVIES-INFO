@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MovieInfoTableView : UITableViewController
+@interface MovieInfoTableView : UITableViewController{
+    NSMutableArray *movieList;
+
+}
 
 @end
