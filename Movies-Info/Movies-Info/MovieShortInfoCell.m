@@ -32,6 +32,7 @@
 
 - (void)dealloc
 {
+    [shortMovieInfo release];
     [super dealloc];
 }
 
@@ -41,6 +42,8 @@
     static NSDateFormatter *time = nil;
     
     NSString *pic;
+    
+    shortMovieInfo = input;
     
     pic = @"movie.png";
     
@@ -59,7 +62,7 @@
     _name.text = input.movieName;
     _runtime.text = [time stringFromDate:input.runTime];
     _release.text = [date stringFromDate:input.releaseDate];
-    _fanRating.text = [input.fanRating description];
+    _fanRating.rating = [input.fanRating unsignedIntegerValue];
     
     if (input.imagePath != nil)
     {
@@ -68,5 +71,11 @@
     
     _poster.image = [UIImage imageNamed:pic];
 
+}
+
+- (ShortMovieInfo*) getShortMovieInfo
+{
+    shortMovieInfo.fanRating = [NSNumber numberWithUnsignedInteger:_fanRating.rating];
+    return shortMovieInfo;    
 }
 @end

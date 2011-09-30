@@ -19,7 +19,12 @@
 		63626F74141946EF00F3A4E2 /* MoviesInfoDetailed.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63626F72141946ED00F3A4E2 /* MoviesInfoDetailed.xib */; };
 		CE26E1FA142F559700AE8FE0 /* ShortMovieInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CE26E1F9142F559700AE8FE0 /* ShortMovieInfo.m */; };
 		CE7418101432A6010018258C /* ironman.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CE74180F1432A6010018258C /* ironman.jpg */; };
+		CE7557881435A34500961B0D /* star_empty.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7557861435A34500961B0D /* star_empty.png */; };
+		CE7557891435A34500961B0D /* star_full.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7557871435A34500961B0D /* star_full.png */; };
 		CE76A71D143286F2007FB253 /* MoviesStor.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE76A71C143286F2007FB253 /* MoviesStor.plist */; };
+		CE7B5BC614359C6E0068A338 /* DLStarRatingControl.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7B5BBC14359C6E0068A338 /* DLStarRatingControl.m */; };
+		CE7B5BC714359C6E0068A338 /* DLStarView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7B5BBE14359C6E0068A338 /* DLStarView.m */; };
+		CE7B5BCC14359C6E0068A338 /* UIView+Subviews.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7B5BC514359C6E0068A338 /* UIView+Subviews.m */; };
 		CE7E27041422D5D8008BF00A /* MovieShortInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7E27031422D5D8008BF00A /* MovieShortInfoCell.m */; };
 		CE7E27061422DDA7008BF00A /* MovieShortInfoCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE7E27051422DDA7008BF00A /* MovieShortInfoCellView.xib */; };
 		CE82A8D614327B3900F4A931 /* movie.png in Resources */ = {isa = PBXBuildFile; fileRef = CE82A8D514327B3900F4A931 /* movie.png */; };
@@ -45,7 +50,15 @@
 		CE26E1F8142F559700AE8FE0 /* ShortMovieInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShortMovieInfo.h; sourceTree = "<group>"; };
 		CE26E1F9142F559700AE8FE0 /* ShortMovieInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShortMovieInfo.m; sourceTree = "<group>"; };
 		CE74180F1432A6010018258C /* ironman.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ironman.jpg; sourceTree = "<group>"; };
+		CE7557861435A34500961B0D /* star_empty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star_empty.png; sourceTree = "<group>"; };
+		CE7557871435A34500961B0D /* star_full.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star_full.png; sourceTree = "<group>"; };
 		CE76A71C143286F2007FB253 /* MoviesStor.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MoviesStor.plist; sourceTree = "<group>"; };
+		CE7B5BBB14359C6E0068A338 /* DLStarRatingControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLStarRatingControl.h; sourceTree = "<group>"; };
+		CE7B5BBC14359C6E0068A338 /* DLStarRatingControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLStarRatingControl.m; sourceTree = "<group>"; };
+		CE7B5BBD14359C6E0068A338 /* DLStarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLStarView.h; sourceTree = "<group>"; };
+		CE7B5BBE14359C6E0068A338 /* DLStarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLStarView.m; sourceTree = "<group>"; };
+		CE7B5BC414359C6E0068A338 /* UIView+Subviews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Subviews.h"; sourceTree = "<group>"; };
+		CE7B5BC514359C6E0068A338 /* UIView+Subviews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Subviews.m"; sourceTree = "<group>"; };
 		CE7E27021422D5D8008BF00A /* MovieShortInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieShortInfoCell.h; sourceTree = "<group>"; };
 		CE7E27031422D5D8008BF00A /* MovieShortInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieShortInfoCell.m; sourceTree = "<group>"; };
 		CE7E27051422DDA7008BF00A /* MovieShortInfoCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MovieShortInfoCellView.xib; sourceTree = "<group>"; };
@@ -96,6 +109,7 @@
 		63626F5A1419414900F3A4E2 /* Movies-Info */ = {
 			isa = PBXGroup;
 			children = (
+				CE7B5BBA14359C6E0068A338 /* DLStarRating */,
 				CE82A8D414327B3900F4A931 /* Images */,
 				CE26E1F6142F555D00AE8FE0 /* Classes */,
 				CE7E27001422D49B008BF00A /* MovieShortInfo */,
@@ -131,6 +145,29 @@
 				CE26E1F9142F559700AE8FE0 /* ShortMovieInfo.m */,
 			);
 			name = Classes;
+			sourceTree = "<group>";
+		};
+		CE7B5BBA14359C6E0068A338 /* DLStarRating */ = {
+			isa = PBXGroup;
+			children = (
+				CE7B5BBF14359C6E0068A338 /* images */,
+				CE7B5BBB14359C6E0068A338 /* DLStarRatingControl.h */,
+				CE7B5BBC14359C6E0068A338 /* DLStarRatingControl.m */,
+				CE7B5BBD14359C6E0068A338 /* DLStarView.h */,
+				CE7B5BBE14359C6E0068A338 /* DLStarView.m */,
+				CE7B5BC414359C6E0068A338 /* UIView+Subviews.h */,
+				CE7B5BC514359C6E0068A338 /* UIView+Subviews.m */,
+			);
+			path = DLStarRating;
+			sourceTree = "<group>";
+		};
+		CE7B5BBF14359C6E0068A338 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				CE7557861435A34500961B0D /* star_empty.png */,
+				CE7557871435A34500961B0D /* star_full.png */,
+			);
+			path = images;
 			sourceTree = "<group>";
 		};
 		CE7E27001422D49B008BF00A /* MovieShortInfo */ = {
@@ -207,6 +244,8 @@
 				CE82A8D614327B3900F4A931 /* movie.png in Resources */,
 				CE76A71D143286F2007FB253 /* MoviesStor.plist in Resources */,
 				CE7418101432A6010018258C /* ironman.jpg in Resources */,
+				CE7557881435A34500961B0D /* star_empty.png in Resources */,
+				CE7557891435A34500961B0D /* star_full.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,6 +262,9 @@
 				63626F73141946EF00F3A4E2 /* MoviesInfoDetailed.m in Sources */,
 				CE7E27041422D5D8008BF00A /* MovieShortInfoCell.m in Sources */,
 				CE26E1FA142F559700AE8FE0 /* ShortMovieInfo.m in Sources */,
+				CE7B5BC614359C6E0068A338 /* DLStarRatingControl.m in Sources */,
+				CE7B5BC714359C6E0068A338 /* DLStarView.m in Sources */,
+				CE7B5BCC14359C6E0068A338 /* UIView+Subviews.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

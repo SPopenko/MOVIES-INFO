@@ -62,13 +62,14 @@
     
     smi.runTime     = [calendar dateFromComponents:dc];
     smi.imagePath = @"ironman.jpg";
-    smi.fanRating = [NSNumber numberWithInt:5];
+    smi.fanRating = [NSNumber numberWithUnsignedInteger:3];
     smi.movieLink = @"http://www.themoviedb.org/movie/75299";
     [movieList addObject:smi];
-
+    
     [smi release];
     smi = nil;
-    
+    [dc release];
+    dc = nil;
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -192,13 +193,24 @@
     // Navigation logic may go here. Create and push another view controller.
     
     MoviesInfoDetailed *detailViewController = [[MoviesInfoDetailed alloc] initWithNibName:@"MoviesInfoDetailed" bundle:nil];
+    MovieShortInfoCell* smic = (MovieShortInfoCell*)[tableView cellForRowAtIndexPath:indexPath];
     
+    ShortMovieInfo*     smi  = smic.shortMovieInfo;
+    /*if (smi == nil)
+    {
+        NSLog(@"smi==nil");
+    }
+    else
+    {    
+        NSLog(@"\"@\"", smi.movieLink);
+    }/**/
     // ...
     // Pass the selected object to the new view controller.
     [self.navigationController pushViewController:detailViewController animated:YES];
+    //NSLog(smi.movieLink);
+    //[detailViewController.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:smi.movieLink]]];
     
-    [detailViewController.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString: @"http://ya.ru"]]];
-    
+    [smi release];
     
     [detailViewController release];
      
