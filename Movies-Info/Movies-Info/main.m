@@ -17,5 +17,4 @@ int main(int argc, char *argv[])
     int retVal = UIApplicationMain(argc, argv, nil, NSStringFromClass([Movies_InfoAppDelegate class]));
     [pool release];
     return retVal;
-    //return UIApplicationMain(argc, argv, nil, NSStringFromClass([Movies_InfoAppDelegate class]));
 }

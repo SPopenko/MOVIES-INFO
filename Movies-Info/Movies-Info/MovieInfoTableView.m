@@ -196,23 +196,11 @@
     MovieShortInfoCell* smic = (MovieShortInfoCell*)[tableView cellForRowAtIndexPath:indexPath];
     
     ShortMovieInfo*     smi  = smic.shortMovieInfo;
-    if (smi == nil)
-    {
-        NSLog(@"smi==nil");
-    }
-    else
-    {    
-        //NSLog(smi.movieLink);
-        [detailViewController.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:smi.movieLink]]];
-        
-    }
     // ...
     // Pass the selected object to the new view controller.
     [self.navigationController pushViewController:detailViewController animated:YES];
-    //NSLog(smi.movieLink);
-    
-    [smi release];
-    
+    [detailViewController.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:smi.movieLink]]];
+        
     [detailViewController release];
      
 }

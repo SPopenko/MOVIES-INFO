@@ -19,6 +19,16 @@
 
 @synthesize movieLink;
 
-
+- (void) dealloc
+{
+    	
+    [imagePath release];
+    [movieName release];
+    [runTime release];
+    [releaseDate release];
+    [fanRating release];
+    
+    [movieLink release];
+}
 
 @end
