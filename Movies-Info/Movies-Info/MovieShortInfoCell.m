@@ -43,7 +43,7 @@
     
     NSString *pic;
     
-    shortMovieInfo = input;
+    _shortMovieInfo = input;
     
     pic = @"movie.png";
     
@@ -75,7 +75,7 @@
 
 - (ShortMovieInfo*) getShortMovieInfo
 {
-    shortMovieInfo.fanRating = [NSNumber numberWithUnsignedInteger:_fanRating.rating];
-    return shortMovieInfo;    
+    _shortMovieInfo.fanRating = [NSNumber numberWithUnsignedInteger:_fanRating.rating];
+    return _shortMovieInfo;    
 }
 @end

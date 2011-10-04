@@ -12,7 +12,10 @@
 
 int main(int argc, char *argv[])
 {
-    //@autoreleasepool {
-        return UIApplicationMain(argc, argv, nil, NSStringFromClass([Movies_InfoAppDelegate class]));
-    //}
+    
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    int retVal = UIApplicationMain(argc, argv, nil, NSStringFromClass([Movies_InfoAppDelegate class]));
+    [pool release];
+    return retVal;
+    //return UIApplicationMain(argc, argv, nil, NSStringFromClass([Movies_InfoAppDelegate class]));
 }

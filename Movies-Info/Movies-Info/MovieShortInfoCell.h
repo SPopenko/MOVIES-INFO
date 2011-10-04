@@ -18,11 +18,11 @@
     IBOutlet DLStarRatingControl *_fanRating;
     IBOutlet UIImageView *_poster;
     
-    IBOutlet ShortMovieInfo *shortMovieInfo;
+    IBOutlet ShortMovieInfo *_shortMovieInfo;
 }
 
 @property(nonatomic, retain) IBOutlet MovieShortInfoCell *movieShortInfoCell; 
 
-@property(nonatomic, retain, setter = setShortMovieInfo:) IBOutlet ShortMovieInfo *shortMovieInfo;
+@property(nonatomic, retain, setter = setShortMovieInfo:, getter = getShortMovieInfo) IBOutlet ShortMovieInfo *shortMovieInfo;
 
 @end
