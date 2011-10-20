@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F550775145032DA001C38E3 /* TMDbConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F550774145032DA001C38E3 /* TMDbConnection.m */; };
 		1FCC1605145006EB00D091E4 /* libRestKitJSONParserJSONKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FCC15FA145005E400D091E4 /* libRestKitJSONParserJSONKit.a */; };
 		1FCC1606145006EB00D091E4 /* libRestKitNetwork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FCC15EE145005E400D091E4 /* libRestKitNetwork.a */; };
 		1FCC1607145006EB00D091E4 /* libRestKitObjectMapping.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FCC15F0145005E400D091E4 /* libRestKitObjectMapping.a */; };
@@ -125,6 +126,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F550773145032DA001C38E3 /* TMDbConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMDbConnection.h; sourceTree = "<group>"; };
+		1F550774145032DA001C38E3 /* TMDbConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMDbConnection.m; sourceTree = "<group>"; };
 		1FCC15D9145005E400D091E4 /* RestKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RestKit.xcodeproj; path = RestKit/RestKit.xcodeproj; sourceTree = "<group>"; };
 		1FCC160A1450076D00D091E4 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		1FCC160B1450076D00D091E4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -270,6 +273,8 @@
 			children = (
 				CE26E1F8142F559700AE8FE0 /* ShortMovieInfo.h */,
 				CE26E1F9142F559700AE8FE0 /* ShortMovieInfo.m */,
+				1F550773145032DA001C38E3 /* TMDbConnection.h */,
+				1F550774145032DA001C38E3 /* TMDbConnection.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -482,6 +487,7 @@
 				CE7B5BC614359C6E0068A338 /* DLStarRatingControl.m in Sources */,
 				CE7B5BC714359C6E0068A338 /* DLStarView.m in Sources */,
 				CE7B5BCC14359C6E0068A338 /* UIView+Subviews.m in Sources */,
+				1F550775145032DA001C38E3 /* TMDbConnection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

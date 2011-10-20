@@ -10,6 +10,7 @@
 #import "MoviesInfoDetailed.h"
 #import "MovieShortInfoCell.h"
 #import "ShortMovieInfo.h"
+#import "TMDbConnection.h"
 
 @implementation MovieInfoTableView
 
@@ -38,39 +39,8 @@
 {
     [super viewDidLoad];
     self.tableView.rowHeight = TableCellHeight;
-    
-    //Generating MovieList
-    ShortMovieInfo *smi  = [[ShortMovieInfo alloc] init];
-    NSDateComponents *dc = [[NSDateComponents alloc] init];
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    
-    movieList = [NSMutableArray array];
-    
-    [dc setDay:01];
-    [dc setMonth:05];
-    [dc setYear:2008];
-    
-    smi.movieName = @"Iron man";
-    smi.releaseDate = [calendar dateFromComponents:dc];
-    
-    [dc setDay:0];
-    [dc setMonth:0];
-    [dc setYear:0];
-    [dc setMinute:6];
-    [dc setHour:2];
-    [dc setSecond:01];
-    
-    smi.runTime     = [calendar dateFromComponents:dc];
-    smi.imagePath = @"ironman.jpg";
-    smi.fanRating = [NSNumber numberWithUnsignedInteger:3];
-    smi.movieLink = @"http://www.themoviedb.org/movie/75299";
-    [movieList addObject:smi];
-    
-    [smi release];
-    smi = nil;
-    [dc release];
-    dc = nil;
-    
+    movieList = [TMDbConnection getTopTenMovies];
+        
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
