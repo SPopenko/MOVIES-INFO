@@ -10,7 +10,6 @@
 
 @interface MovieInfoTableView : UITableViewController{
     NSMutableArray *movieList;
-
 }
 
 @end

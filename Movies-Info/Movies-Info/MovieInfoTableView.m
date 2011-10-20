@@ -10,7 +10,6 @@
 #import "MoviesInfoDetailed.h"
 #import "MovieShortInfoCell.h"
 #import "ShortMovieInfo.h"
-#import "RestKit/RestKit.h"
 
 @implementation MovieInfoTableView
 
