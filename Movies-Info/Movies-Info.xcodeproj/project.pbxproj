@@ -14,6 +14,7 @@
 		1F55085014515BF5001C38E3 /* libRestKitSupport.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F55083C14515BAE001C38E3 /* libRestKitSupport.a */; };
 		1F55085114515BF5001C38E3 /* libRestKitXMLParserLibxml.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F55084614515BAE001C38E3 /* libRestKitXMLParserLibxml.a */; };
 		1F55086214517A95001C38E3 /* libRestKitJSONParserJSONKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F55084414515BAE001C38E3 /* libRestKitJSONParserJSONKit.a */; };
+		1F5508681451A31E001C38E3 /* libRestKitJSONParserYAJL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F55084014515BAE001C38E3 /* libRestKitJSONParserYAJL.a */; };
 		1FCC160C1450076D00D091E4 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FCC160A1450076D00D091E4 /* MobileCoreServices.framework */; };
 		1FCC160D1450076D00D091E4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FCC160B1450076D00D091E4 /* SystemConfiguration.framework */; };
 		1FCC160F1450086100D091E4 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FCC160E1450086100D091E4 /* CFNetwork.framework */; };
@@ -167,6 +168,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F5508681451A31E001C38E3 /* libRestKitJSONParserYAJL.a in Frameworks */,
 				1F55086214517A95001C38E3 /* libRestKitJSONParserJSONKit.a in Frameworks */,
 				1F55084E14515BF5001C38E3 /* libRestKitNetwork.a in Frameworks */,
 				1F55084F14515BF5001C38E3 /* libRestKitObjectMapping.a in Frameworks */,

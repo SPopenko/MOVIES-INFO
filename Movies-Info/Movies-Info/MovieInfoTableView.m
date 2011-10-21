@@ -14,16 +14,18 @@
 
 //themoviedb.rog work constants
 #define TMDbApiKey      @"ed2f89aa774281fcada8f17b73c8fa05"
-#define TopTenMoviePath @"?order_by=rating&order=desc&min_votes=5&page=1&per_page=10"
-#define TopTenMovieBaseUrl @"http://api.themoviedb.org/2.1/Movie.browse/en-US/json/"
-
+#define TopTenMoviesPath @"?order_by=rating&order=desc&min_votes=5&page=1&per_page=10"
+#define TopTenMovieBaseUrl @"http://api.themoviedb.org/2.1/Movie.browse/en-US/json"
+#define TopTenMovie @"http://api.themoviedb.org/2.1/Movie.browse/en-US/json/ed2f89aa774281fcada8f17b73c8fa05?order_by=rating&order=desc&min_votes=5&page=1&per_page=10"
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
     if (self) {
-        [[RKParserRegistry sharedRegistry]setParserClass:[RKJSONParserJSONKit class] forMIMEType:@"text/json"];
-        [RKObjectManager objectManagerWithBaseURL:[NSString stringWithFormat:@"%@%@", TopTenMovieBaseUrl, TMDbApiKey]];
+        //[[RKParserRegistry sharedRegistry]setParserClass:[RKJSONParserJSONKit class] forMIMEType:@"text/json"];
+        [[RKParserRegistry sharedRegistry] setParserClass:[RKJSONParserYAJL class] forMIMEType:@"text/json"];
+        //[RKObjectManager objectManagerWithBaseURL:TopTenMoviePath];
+        [RKObjectManager objectManagerWithBaseURL:[NSString stringWithFormat:@"%@", TopTenMovieBaseUrl]];
     }
     return self;
 }
@@ -41,18 +43,17 @@
 {
     [super viewDidLoad];
     self.tableView.rowHeight = TableCellHeight;
+    //movieList = [NSMutableArray array];
+    
     RKObjectMapping* shortMovieInfoMapping = [RKObjectMapping mappingForClass:[ShortMovieInfo class]];
+    
+    
     [shortMovieInfoMapping mapKeyPathsToAttributes:
      @"id", @"movieId",
      @"name", @"movieName"
      , nil];
-                                              
-    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:TopTenMoviePath objectMapping:shortMovieInfoMapping delegate:self];
     
-     //movieList = [TMDbConnection getTopTenMovies];
-    
-    
-    
+    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:[NSString stringWithFormat:@"%@%@", TMDbApiKey, TopTenMoviesPath] objectMapping:shortMovieInfoMapping delegate:self];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -62,18 +63,28 @@
 }
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
-    ShortMovieInfo* shortMovieInfo = [objects objectAtIndex:0];
+    int i = 0;
+    //[movieList addObjectsFromArray:objects];
+    movieList = [NSMutableArray array];
+    ShortMovieInfo* shortMovieInfo;
     
-    NSString* info = [NSString stringWithFormat:
-                      @"Movie ID is %@\n"
-                      @"Movie name is %@\n", 
-                      shortMovieInfo.movieId,/* shortMovieInfo.movieName*/
-                      [shortMovieInfo.movieName componentsJoinedByString:@", "]];
-    NSLog(info);
-}
+    for(i=0; i<10 || i < [objects count]; i++)
+    {
+        shortMovieInfo = [objects objectAtIndex:i];
+        NSString* info = [NSString stringWithFormat:
+                          @"Movie ID is %@\n"
+                          @"Movie name is %@\n", 
+                          shortMovieInfo.movieId,
+                          shortMovieInfo.movieName];
+        [movieList addObject:shortMovieInfo];
+        [shortMovieInfo retain];
+        NSLog(info);
+    }
 
+}    
 - (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error {
-    NSLog([NSString stringWithFormat: @"we failed with error: %@", [error localizedDescription]] );
+
+    NSLog([NSString stringWithFormat: @"%@", [error localizedDescription]] );
 }
 
 
@@ -122,6 +133,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
+    NSLog(@"%d", [movieList count]);
     return [movieList count];
 }
 
