@@ -16,19 +16,21 @@
 @synthesize runTime;
 @synthesize releaseDate;
 @synthesize fanRating;
+@synthesize movieId;
 
 @synthesize movieLink;
 
 - (void) dealloc
 {
     	
-    [imagePath release];
-    [movieName release];
-    [runTime release];
+    [imagePath   release];
+    [movieName   release];
+    [runTime     release];
     [releaseDate release];
-    [fanRating release];
+    [fanRating   release];
+    [movieId     release];
     
-    [movieLink release];
+    [movieLink   release];
 }
 
 @end

@@ -7,9 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "RestKit/RestKit.h"
 
-@interface TMDbConnection : NSObject
+@interface TMDbConnection : NSObject<RKRequestDelegate>
 
 +(NSMutableArray*) getTopTenMovies;
+
+
+-(void) loadData;
+-(void) objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects;
 
 @end

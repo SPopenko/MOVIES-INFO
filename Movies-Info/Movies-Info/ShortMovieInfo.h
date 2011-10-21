@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import <RestKit/RestKit.h>
 
 @interface ShortMovieInfo : NSObject {
     NSDate* releaseDate;
@@ -15,16 +15,20 @@
     NSString* imagePath;
     NSString* movieName;
     NSNumber* fanRating;
+    NSNumber* movieId;
     
     NSString* movieLink;
 }
 
-@property (nonatomic, retain) NSDate *releaseDate;
-@property (nonatomic, retain) NSDate *runTime;
+@property (nonatomic, retain) NSDate   *releaseDate;
+@property (nonatomic, retain) NSDate   *runTime;
 @property (nonatomic, retain) NSString *imagePath;
 @property (nonatomic, retain) NSString *movieName;
 @property (nonatomic, retain) NSNumber *fanRating;
+@property (nonatomic, retain) NSNumber *movieId;
 
 @property (nonatomic, retain) NSString *movieLink;
+
+
 
 @end

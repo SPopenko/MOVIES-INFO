@@ -7,20 +7,23 @@
 //
 
 #import "MovieInfoTableView.h"
-#import "MoviesInfoDetailed.h"
-#import "MovieShortInfoCell.h"
-#import "ShortMovieInfo.h"
-#import "TMDbConnection.h"
 
 @implementation MovieInfoTableView
 
 #define TableCellHeight 100
 
+//themoviedb.rog work constants
+#define TMDbApiKey      @"ed2f89aa774281fcada8f17b73c8fa05"
+#define TopTenMoviePath @"?order_by=rating&order=desc&min_votes=5&page=1&per_page=10"
+#define TopTenMovieBaseUrl @"http://api.themoviedb.org/2.1/Movie.browse/en-US/json/"
+
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
     if (self) {
-        // Custom initialization
+        [[RKParserRegistry sharedRegistry]setParserClass:[RKJSONParserJSONKit class] forMIMEType:@"text/json"];
+        [RKObjectManager objectManagerWithBaseURL:[NSString stringWithFormat:@"%@%@", TopTenMovieBaseUrl, TMDbApiKey]];
     }
     return self;
 }
@@ -29,7 +32,6 @@
 {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
-    
     // Release any cached data, images, etc that aren't in use.
 }
 
@@ -39,14 +41,41 @@
 {
     [super viewDidLoad];
     self.tableView.rowHeight = TableCellHeight;
-    movieList = [TMDbConnection getTopTenMovies];
-        
+    RKObjectMapping* shortMovieInfoMapping = [RKObjectMapping mappingForClass:[ShortMovieInfo class]];
+    [shortMovieInfoMapping mapKeyPathsToAttributes:
+     @"id", @"movieId",
+     @"name", @"movieName"
+     , nil];
+                                              
+    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:TopTenMoviePath objectMapping:shortMovieInfoMapping delegate:self];
+    
+     //movieList = [TMDbConnection getTopTenMovies];
+    
+    
+    
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
+
+- (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
+    ShortMovieInfo* shortMovieInfo = [objects objectAtIndex:0];
+    
+    NSString* info = [NSString stringWithFormat:
+                      @"Movie ID is %@\n"
+                      @"Movie name is %@\n", 
+                      shortMovieInfo.movieId,/* shortMovieInfo.movieName*/
+                      [shortMovieInfo.movieName componentsJoinedByString:@", "]];
+    NSLog(info);
+}
+
+- (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error {
+    NSLog([NSString stringWithFormat: @"we failed with error: %@", [error localizedDescription]] );
+}
+
 
 - (void)viewDidUnload
 {
