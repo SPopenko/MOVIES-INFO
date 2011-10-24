@@ -9,23 +9,28 @@
 #import <Foundation/Foundation.h>
 #import <RestKit/RestKit.h>
 
+//Delete after creating normal mapping
+@interface Image :NSObject
+@property (nonatomic, retain) NSString* url;
+@end
+
+//Delete after creating normal mapping
+@interface Poster : NSObject {
+}
+@property (nonatomic, retain) Image* image;
+@end
+
 @interface ShortMovieInfo : NSObject {
-    NSDate* releaseDate;
-    NSDate* runTime;
-    NSString* imagePath;
-    NSString* movieName;
-    NSNumber* fanRating;
-    NSNumber* movieId;
-    
-    NSString* movieLink;
 }
 
 @property (nonatomic, retain) NSDate   *releaseDate;
-@property (nonatomic, retain) NSDate   *runTime;
+@property (nonatomic, retain) NSNumber *runTime;
 @property (nonatomic, retain) NSString *imagePath;
 @property (nonatomic, retain) NSString *movieName;
 @property (nonatomic, retain) NSNumber *fanRating;
 @property (nonatomic, retain) NSNumber *movieId;
+
+@property (nonatomic, retain) NSArray *posters;
 
 @property (nonatomic, retain) NSString *movieLink;
 

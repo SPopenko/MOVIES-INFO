@@ -50,7 +50,7 @@
     if (date == nil)
     {
         date = [[NSDateFormatter alloc] init];
-        [date setDateStyle:NSDateFormatterShortStyle];
+        [date setDateStyle:NSDateFormatterLongStyle];
     }
     
     if (time == nil)
@@ -60,16 +60,28 @@
     }
     
     _name.text = input.movieName;
-    _runtime.text = [time stringFromDate:input.runTime];
+    _runtime.text = [NSString stringWithFormat:@"%@", input.runTime];
     _release.text = [date stringFromDate:input.releaseDate];
-    _fanRating.rating = [input.fanRating unsignedIntegerValue];
+    _fanRating.rating = [input.fanRating unsignedIntegerValue]/2;
+    pic = @"movie.png";
     
-    if (input.imagePath != nil)
+    NSLog(@"\"%@\"", input.imagePath);
+    if (input.imagePath != nil )
     {
         pic = input.imagePath;
+        NSLog(@"%@", pic);
     }
     
-    _poster.image = [UIImage imageNamed:pic];
+    Poster* poster = (Poster*)[input.posters objectAtIndex:5];
+    
+
+    NSLog(@"%@", poster.image.url);
+    
+    //Loading image from internet :)
+    NSData* imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: poster.image.url]];
+    _poster.image = [UIImage imageWithData: imageData];
+    
+    [imageData release];
 
 }
 

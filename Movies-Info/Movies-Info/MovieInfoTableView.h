@@ -18,7 +18,7 @@
 #import "TMDbConnection.h"
 
 @interface MovieInfoTableView : UITableViewController<RKObjectLoaderDelegate>{
-    NSMutableArray *movieList;
+    NSArray *movieList;
 }
 
 @end

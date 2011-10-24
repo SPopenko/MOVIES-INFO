@@ -8,29 +8,38 @@
 
 #import "ShortMovieInfo.h"
 
+@implementation Image
+@synthesize url = _url;
+@end
+
+@implementation Poster
+@synthesize image = _image;
+@end
+
+
 
 @implementation ShortMovieInfo
 
-@synthesize imagePath;
-@synthesize movieName;
-@synthesize runTime;
-@synthesize releaseDate;
-@synthesize fanRating;
-@synthesize movieId;
-
-@synthesize movieLink;
+@synthesize imagePath = _imagePath;
+@synthesize movieName = _movieName;
+@synthesize runTime = _runTime;
+@synthesize releaseDate = _releaseDate;
+@synthesize fanRating = _fanRating;
+@synthesize movieId = _movieId;
+@synthesize posters = _posters;
+@synthesize movieLink = _movieLink;
 
 - (void) dealloc
 {
     	
-    [imagePath   release];
-    [movieName   release];
-    [runTime     release];
-    [releaseDate release];
-    [fanRating   release];
-    [movieId     release];
+    [_imagePath   release];
+    [_movieName   release];
+    [_runTime     release];
+    [_releaseDate release];
+    [_fanRating   release];
+    [_movieId     release];
     
-    [movieLink   release];
+    [_movieLink   release];
 }
 
 @end

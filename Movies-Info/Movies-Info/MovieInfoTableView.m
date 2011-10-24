@@ -8,8 +8,18 @@
 
 #import "MovieInfoTableView.h"
 
+
+//Defiyng HUD
+@interface UIProgressHUD : NSObject 
+- (UIProgressHUD *) initWithWindow: (UIView*)aWindow; 
+- (void) show: (BOOL)aShow; 
+- (void) setText: (NSString*)aText; 
+@end
+
+
 @implementation MovieInfoTableView
 
+//ShortMovieInfo cell height
 #define TableCellHeight 100
 
 //themoviedb.rog work constants
@@ -22,15 +32,11 @@
 {
     self = [super initWithStyle:style];
     if (self) {
-        //[[RKParserRegistry sharedRegistry]setParserClass:[RKJSONParserJSONKit class] forMIMEType:@"text/json"];
-        [[RKParserRegistry sharedRegistry] setParserClass:[RKJSONParserYAJL class] forMIMEType:@"text/json"];
-        //[RKObjectManager objectManagerWithBaseURL:TopTenMoviePath];
-        [RKObjectManager objectManagerWithBaseURL:[NSString stringWithFormat:@"%@", TopTenMovieBaseUrl]];
     }
     return self;
 }
 
-- (void)didReceiveMemoryWarning
+    - (void)didReceiveMemoryWarning
 {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
@@ -42,45 +48,49 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.tableView.rowHeight = TableCellHeight;
-    //movieList = [NSMutableArray array];
+
+    [RKObjectManager objectManagerWithBaseURL:[NSString stringWithFormat:@"%@", TopTenMovieBaseUrl]];
+    [[RKParserRegistry sharedRegistry] setParserClass:[RKJSONParserJSONKit class] forMIMEType:@"text/json"];
     
+    self.tableView.rowHeight = TableCellHeight;
+    self.title = @"Movies";
     RKObjectMapping* shortMovieInfoMapping = [RKObjectMapping mappingForClass:[ShortMovieInfo class]];
     
+    //Base property mappings
+    //Prepring Date formatter for releseDate and Time
+    NSDateFormatter* tmdbDateFormatter = [NSDateFormatter new];
+    [tmdbDateFormatter setDateFormat:@"yyyy-MM-dd"];
     
     [shortMovieInfoMapping mapKeyPathsToAttributes:
-     @"id", @"movieId",
-     @"name", @"movieName"
-     , nil];
+     @"id",       @"movieId",
+     @"name",     @"movieName",
+     @"url",      @"movieLink",
+     @"runtime",  @"runTime",
+     @"released", @"releaseDate",
+     @"rating",   @"fanRating",
+     nil];
     
+    //Delete after creating norma dynamic mapping
+    //Long long very long and strange mapping
+    RKObjectMapping* imageMapping = [RKObjectMapping mappingForClass:[Image class] ];
+    [imageMapping mapAttributes:@"url", nil];
+    
+    RKObjectMapping* posterMaping = [RKObjectMapping mappingForClass:[Poster class] ];
+    [posterMaping mapRelationship:@"image" withMapping: imageMapping];
+
+    [shortMovieInfoMapping mapKeyPath:@"posters" toRelationship:@"posters" withMapping:posterMaping];
+    //end of delete
+    
+    //[shortMovieInfoMapping mapKeyPath:@"posters[1].@image.@type" toAttribute:@"imagePath"];
+    
+    [RKObjectMapping addDefaultDateFormatter:tmdbDateFormatter];
     [[RKObjectManager sharedManager] loadObjectsAtResourcePath:[NSString stringWithFormat:@"%@%@", TMDbApiKey, TopTenMoviesPath] objectMapping:shortMovieInfoMapping delegate:self];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
-    int i = 0;
-    //[movieList addObjectsFromArray:objects];
-    movieList = [NSMutableArray array];
-    ShortMovieInfo* shortMovieInfo;
-    
-    for(i=0; i<10 || i < [objects count]; i++)
-    {
-        shortMovieInfo = [objects objectAtIndex:i];
-        NSString* info = [NSString stringWithFormat:
-                          @"Movie ID is %@\n"
-                          @"Movie name is %@\n", 
-                          shortMovieInfo.movieId,
-                          shortMovieInfo.movieName];
-        [movieList addObject:shortMovieInfo];
-        [shortMovieInfo retain];
-        NSLog(info);
-    }
-
+    movieList = [objects retain];
+    [self.tableView reloadData];
 }    
 - (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error {
 
@@ -91,8 +101,6 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -125,7 +133,6 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    //#warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 1;
 }
@@ -133,68 +140,21 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    NSLog(@"%d", [movieList count]);
     return [movieList count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-        
     MovieShortInfoCell *cell = (MovieShortInfoCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        //cell = [[MovieShortInfoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    
+    if (cell == nil) 
+    {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"MovieShortInfoCellView" owner:self options:nil] objectAtIndex:0];
-        
-        cell.frame = CGRectMake(0, 0, 320, 100);
     }
-    
-    
-    cell.shortMovieInfo =  (ShortMovieInfo*)[movieList objectAtIndex:indexPath.row];;
-    
-    // Configure the cell...
-    //cell.text = @"new Cell";
+    cell.shortMovieInfo =  (ShortMovieInfo*)[movieList objectAtIndex:indexPath.row];
     return cell;
 }
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - Table view delegate
 
