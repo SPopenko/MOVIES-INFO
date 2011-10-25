@@ -22,7 +22,7 @@
 
 @synthesize imagePath = _imagePath;
 @synthesize movieName = _movieName;
-@synthesize runTime = _runTime;
+@synthesize duration = _duration;
 @synthesize releaseDate = _releaseDate;
 @synthesize fanRating = _fanRating;
 @synthesize movieId = _movieId;
@@ -34,7 +34,7 @@
     	
     [_imagePath   release];
     [_movieName   release];
-    [_runTime     release];
+    [_duration    release];
     [_releaseDate release];
     [_fanRating   release];
     [_movieId     release];

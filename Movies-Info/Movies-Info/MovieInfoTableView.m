@@ -65,7 +65,7 @@
      @"id",       @"movieId",
      @"name",     @"movieName",
      @"url",      @"movieLink",
-     @"runtime",  @"runTime",
+     @"runtime",  @"duration",
      @"released", @"releaseDate",
      @"rating",   @"fanRating",
      nil];

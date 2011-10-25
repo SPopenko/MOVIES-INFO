@@ -24,7 +24,7 @@
 }
 
 @property (nonatomic, retain) NSDate   *releaseDate;
-@property (nonatomic, retain) NSNumber *runTime;
+@property (nonatomic, retain) NSNumber *duration;
 @property (nonatomic, retain) NSString *imagePath;
 @property (nonatomic, retain) NSString *movieName;
 @property (nonatomic, retain) NSNumber *fanRating;

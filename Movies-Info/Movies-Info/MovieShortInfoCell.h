@@ -14,7 +14,7 @@
     IBOutlet MovieShortInfoCell *movieShortInfoCell;
     IBOutlet UILabel *_name;
     IBOutlet UILabel *_release;
-    IBOutlet UILabel *_runtime;
+    IBOutlet UILabel *_duration;
     IBOutlet DLStarRatingControl *_fanRating;
     IBOutlet UIImageView *_poster;
     

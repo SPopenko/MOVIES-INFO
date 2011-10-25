@@ -59,24 +59,21 @@
         [time setDateFormat:@"HH:mm:ss"];
     }
     
-    _name.text = input.movieName;
-    _runtime.text = [NSString stringWithFormat:@"%@", input.runTime];
-    _release.text = [date stringFromDate:input.releaseDate];
+    _name.text     = input.movieName;
+    _duration.text = [NSString stringWithFormat:@"%@", input.duration];
+    _release.text  = [date stringFromDate:input.releaseDate];
     _fanRating.rating = [input.fanRating unsignedIntegerValue]/2;
     pic = @"movie.png";
     
-    NSLog(@"\"%@\"", input.imagePath);
-    if (input.imagePath != nil )
+    Poster* poster = (Poster*)[input.posters objectAtIndex:5];
+
+    if (poster.image.url != nil )
     {
         pic = input.imagePath;
-        NSLog(@"%@", pic);
     }
     
-    Poster* poster = (Poster*)[input.posters objectAtIndex:5];
-    
+   
 
-    NSLog(@"%@", poster.image.url);
-    
     //Loading image from internet :)
     NSData* imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: poster.image.url]];
     _poster.image = [UIImage imageWithData: imageData];
