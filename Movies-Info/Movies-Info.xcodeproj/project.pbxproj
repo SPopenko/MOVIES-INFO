@@ -29,7 +29,6 @@
 		63626F73141946EF00F3A4E2 /* MoviesInfoDetailed.m in Sources */ = {isa = PBXBuildFile; fileRef = 63626F71141946ED00F3A4E2 /* MoviesInfoDetailed.m */; };
 		63626F74141946EF00F3A4E2 /* MoviesInfoDetailed.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63626F72141946ED00F3A4E2 /* MoviesInfoDetailed.xib */; };
 		CE26E1FA142F559700AE8FE0 /* ShortMovieInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CE26E1F9142F559700AE8FE0 /* ShortMovieInfo.m */; };
-		CE7418101432A6010018258C /* ironman.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CE74180F1432A6010018258C /* ironman.jpg */; };
 		CE7557881435A34500961B0D /* star_empty.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7557861435A34500961B0D /* star_empty.png */; };
 		CE7557891435A34500961B0D /* star_full.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7557871435A34500961B0D /* star_full.png */; };
 		CE76A71D143286F2007FB253 /* MoviesStor.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE76A71C143286F2007FB253 /* MoviesStor.plist */; };
@@ -155,7 +154,6 @@
 		63626F72141946ED00F3A4E2 /* MoviesInfoDetailed.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoviesInfoDetailed.xib; sourceTree = "<group>"; };
 		CE26E1F8142F559700AE8FE0 /* ShortMovieInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShortMovieInfo.h; sourceTree = "<group>"; };
 		CE26E1F9142F559700AE8FE0 /* ShortMovieInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShortMovieInfo.m; sourceTree = "<group>"; };
-		CE74180F1432A6010018258C /* ironman.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ironman.jpg; sourceTree = "<group>"; };
 		CE7557861435A34500961B0D /* star_empty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star_empty.png; sourceTree = "<group>"; };
 		CE7557871435A34500961B0D /* star_full.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star_full.png; sourceTree = "<group>"; };
 		CE76A71C143286F2007FB253 /* MoviesStor.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MoviesStor.plist; sourceTree = "<group>"; };
@@ -332,7 +330,6 @@
 			isa = PBXGroup;
 			children = (
 				1F5D0A021456F187005B77D5 /* checkmark.png */,
-				CE74180F1432A6010018258C /* ironman.jpg */,
 				CE82A8D514327B3900F4A931 /* movie.png */,
 			);
 			name = Images;
@@ -482,7 +479,6 @@
 				CE7E27061422DDA7008BF00A /* MovieShortInfoCellView.xib in Resources */,
 				CE82A8D614327B3900F4A931 /* movie.png in Resources */,
 				CE76A71D143286F2007FB253 /* MoviesStor.plist in Resources */,
-				CE7418101432A6010018258C /* ironman.jpg in Resources */,
 				CE7557881435A34500961B0D /* star_empty.png in Resources */,
 				CE7557891435A34500961B0D /* star_full.png in Resources */,
 				1F5D0A031456F187005B77D5 /* checkmark.png in Resources */,

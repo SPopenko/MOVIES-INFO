@@ -56,6 +56,7 @@
     
     self.tableView.rowHeight = TableCellHeight;
     self.title = @"Movies";
+    
     RKObjectMapping* shortMovieInfoMapping = [RKObjectMapping mappingForClass:[ShortMovieInfo class]];
         
     //Base property mappings
@@ -180,6 +181,7 @@
 #pragma mark - MBProgressHUDDelegate methods
 - (void) hudWasHidden
 {
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     [actionIndicator removeFromSuperview];
     [actionIndicator release];
     actionIndicator = nil;
@@ -188,18 +190,21 @@
 #pragma mark - actionIndicator Activities
 - (void) showLoadIndicator
 {
-    [self showLoadIndicator:@"Loading"];
+    [self showLoadIndicatorWithText:@"Loading"];
 }
 
-
-- (void) showLoadIndicatorWithText:(NSString*)indicatorText 
+- (void) prepareActionIndicator
 {
     if (actionIndicator == nil)
     {
         actionIndicator = [[MBProgressHUD alloc] initWithView:self.view];
     }
-    
     [self.view addSubview:actionIndicator];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+}
+- (void) showLoadIndicatorWithText:(NSString*)indicatorText 
+{
+    [self prepareActionIndicator];
     actionIndicator.delegate = self;
     actionIndicator.mode = MBProgressHUDModeIndeterminate;
     actionIndicator.labelText = indicatorText;
@@ -210,13 +215,10 @@
 
 - (void) showLoadFinishIndicator
 {
-    if (actionIndicator == nil)
-    {
-        actionIndicator = [[MBProgressHUD alloc] initWithView:self.view];
-    }
+    [self prepareActionIndicator];
     
-    [self.view addSubview:actionIndicator];
     actionIndicator.delegate = self;
+    actionIndicator.dimBackground = NO;
     actionIndicator.customView = [[[UIImageView alloc] initWithImage:
                        [UIImage imageNamed:@"checkmark.png"]] autorelease];
     actionIndicator.mode = MBProgressHUDModeCustomView;

@@ -21,6 +21,7 @@
     MBProgressHUD* actionIndicator;
 }
 
+- (void) prepareActionIndicator;
 - (void) showLoadFinishIndicator;
 - (void) showLoadIndicator;
 - (void) showLoadIndicatorWithText:(NSString*)indicatorTest;
