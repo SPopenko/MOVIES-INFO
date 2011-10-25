@@ -48,14 +48,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
+    [self showLoadIndicatorWithText:@"Loading movie list"];
+    
     [RKObjectManager objectManagerWithBaseURL:[NSString stringWithFormat:@"%@", TopTenMovieBaseUrl]];
     [[RKParserRegistry sharedRegistry] setParserClass:[RKJSONParserJSONKit class] forMIMEType:@"text/json"];
     
     self.tableView.rowHeight = TableCellHeight;
     self.title = @"Movies";
     RKObjectMapping* shortMovieInfoMapping = [RKObjectMapping mappingForClass:[ShortMovieInfo class]];
-    
+        
     //Base property mappings
     //Prepring Date formatter for releseDate and Time
     NSDateFormatter* tmdbDateFormatter = [NSDateFormatter new];
@@ -70,7 +72,7 @@
      @"rating",   @"fanRating",
      nil];
     
-    //Delete after creating norma dynamic mapping
+    //Delete after creating normal dynamic mapping
     //Long long very long and strange mapping
     RKObjectMapping* imageMapping = [RKObjectMapping mappingForClass:[Image class] ];
     [imageMapping mapAttributes:@"url", nil];
@@ -80,8 +82,7 @@
 
     [shortMovieInfoMapping mapKeyPath:@"posters" toRelationship:@"posters" withMapping:posterMaping];
     //end of delete
-    
-    //[shortMovieInfoMapping mapKeyPath:@"posters[1].@image.@type" toAttribute:@"imagePath"];
+  
     
     [RKObjectMapping addDefaultDateFormatter:tmdbDateFormatter];
     [[RKObjectManager sharedManager] loadObjectsAtResourcePath:[NSString stringWithFormat:@"%@%@", TMDbApiKey, TopTenMoviesPath] objectMapping:shortMovieInfoMapping delegate:self];
@@ -91,6 +92,7 @@
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
     movieList = [objects retain];
     [self.tableView reloadData];
+    [self showLoadFinishIndicator];
 }    
 - (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error {
 
@@ -173,6 +175,66 @@
         
     [detailViewController release];
      
+}
+
+#pragma mark - MBProgressHUDDelegate methods
+- (void) hudWasHidden
+{
+    [actionIndicator removeFromSuperview];
+    [actionIndicator release];
+    actionIndicator = nil;
+}
+
+#pragma mark - actionIndicator Activities
+- (void) showLoadIndicator
+{
+    [self showLoadIndicator:@"Loading"];
+}
+
+
+- (void) showLoadIndicatorWithText:(NSString*)indicatorText 
+{
+    if (actionIndicator == nil)
+    {
+        actionIndicator = [[MBProgressHUD alloc] initWithView:self.view];
+    }
+    
+    [self.view addSubview:actionIndicator];
+    actionIndicator.delegate = self;
+    actionIndicator.mode = MBProgressHUDModeIndeterminate;
+    actionIndicator.labelText = indicatorText;
+    actionIndicator.dimBackground = YES;
+    [actionIndicator show:YES];
+    
+}
+
+- (void) showLoadFinishIndicator
+{
+    if (actionIndicator == nil)
+    {
+        actionIndicator = [[MBProgressHUD alloc] initWithView:self.view];
+    }
+    
+    [self.view addSubview:actionIndicator];
+    actionIndicator.delegate = self;
+    actionIndicator.customView = [[[UIImageView alloc] initWithImage:
+                       [UIImage imageNamed:@"checkmark.png"]] autorelease];
+    actionIndicator.mode = MBProgressHUDModeCustomView;
+    actionIndicator.labelText = @"Load finished";
+    [actionIndicator showWhileExecuting:@selector(waitForTwoSeconds) 
+                   onTarget:self withObject:nil animated:YES];
+}
+
+-(void) hideIndicator
+{
+    if (actionIndicator != nil)
+    {
+        [actionIndicator show:NO];
+    }
+}
+
+- (void)waitForTwoSeconds {
+    sleep(2);
 }
 
 @end
