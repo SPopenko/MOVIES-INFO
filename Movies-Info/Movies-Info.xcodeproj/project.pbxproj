@@ -14,7 +14,6 @@
 		1F55085014515BF5001C38E3 /* libRestKitSupport.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F55083C14515BAE001C38E3 /* libRestKitSupport.a */; };
 		1F55085114515BF5001C38E3 /* libRestKitXMLParserLibxml.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F55084614515BAE001C38E3 /* libRestKitXMLParserLibxml.a */; };
 		1F55086214517A95001C38E3 /* libRestKitJSONParserJSONKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F55084414515BAE001C38E3 /* libRestKitJSONParserJSONKit.a */; };
-		1F5508681451A31E001C38E3 /* libRestKitJSONParserYAJL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F55084014515BAE001C38E3 /* libRestKitJSONParserYAJL.a */; };
 		1FCC160C1450076D00D091E4 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FCC160A1450076D00D091E4 /* MobileCoreServices.framework */; };
 		1FCC160D1450076D00D091E4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FCC160B1450076D00D091E4 /* SystemConfiguration.framework */; };
 		1FCC160F1450086100D091E4 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FCC160E1450086100D091E4 /* CFNetwork.framework */; };
@@ -42,6 +41,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		168E5BA7145687AF0080A70D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1F55082314515BAD001C38E3 /* RestKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 255B7588133BABBF00ED76AD;
+			remoteInfo = RestKit;
+		};
 		1F55083714515BAE001C38E3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1F55082314515BAD001C38E3 /* RestKit.xcodeproj */;
@@ -168,7 +174,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F5508681451A31E001C38E3 /* libRestKitJSONParserYAJL.a in Frameworks */,
 				1F55086214517A95001C38E3 /* libRestKitJSONParserJSONKit.a in Frameworks */,
 				1F55084E14515BF5001C38E3 /* libRestKitNetwork.a in Frameworks */,
 				1F55084F14515BF5001C38E3 /* libRestKitObjectMapping.a in Frameworks */,
@@ -337,6 +342,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				168E5BA8145687AF0080A70D /* PBXTargetDependency */,
 			);
 			name = "Movies-Info";
 			productName = "Movies-Info";
@@ -493,6 +499,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		168E5BA8145687AF0080A70D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = RestKit;
+			targetProxy = 168E5BA7145687AF0080A70D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		63626F5D1419414A00F3A4E2 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
@@ -555,13 +569,9 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Movies-Info/Movies-Info-Prefix.pch";
-				HEADER_SEARCH_PATHS = (
-					"$(SOURCE_ROOT)/RestKit/Build/",
-					../RestKit/Build,
-				);
+				HEADER_SEARCH_PATHS = "$(SOURCE_ROOT)/RestKit/Build/";
 				INFOPLIST_FILE = "Movies-Info/Movies-Info-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
-				LIBRARY_SEARCH_PATHS = ../RestKit/Build;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -574,13 +584,9 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Movies-Info/Movies-Info-Prefix.pch";
-				HEADER_SEARCH_PATHS = (
-					"$(SOURCE_ROOT)/RestKit/Build/",
-					../RestKit/Build,
-				);
+				HEADER_SEARCH_PATHS = "$(SOURCE_ROOT)/RestKit/Build/";
 				INFOPLIST_FILE = "Movies-Info/Movies-Info-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
-				LIBRARY_SEARCH_PATHS = ../RestKit/Build;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
