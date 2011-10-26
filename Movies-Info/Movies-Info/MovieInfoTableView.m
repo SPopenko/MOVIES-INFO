@@ -169,11 +169,12 @@
     MovieShortInfoCell* smic = (MovieShortInfoCell*)[tableView cellForRowAtIndexPath:indexPath];
     
     ShortMovieInfo*     smi  = smic.shortMovieInfo;
+    
+    detailViewController.movieInfo = smi;
     // ...
     // Pass the selected object to the new view controller.
     [self.navigationController pushViewController:detailViewController animated:YES];
-    [detailViewController.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:smi.movieLink]]];
-        
+
     [detailViewController release];
      
 }

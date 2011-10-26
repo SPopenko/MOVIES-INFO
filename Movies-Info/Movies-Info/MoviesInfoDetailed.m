@@ -11,6 +11,7 @@
 @implementation MoviesInfoDetailed
 
 @synthesize webView;
+@synthesize movieInfo;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,9 +34,11 @@
 
 - (void)viewDidLoad
 {
-    
     [super viewDidLoad];
-     
+    
+    NSString *htmlFile = [[NSBundle mainBundle] pathForResource:@"infoFilm" ofType:@"html"];
+    NSMutableString *htmlData = [NSMutableString stringWithContentsOfFile:htmlFile encoding:nil error:nil];
+    [webView loadHTMLString:htmlData baseURL:nil]; 
 }
 
 - (void)viewDidUnload
