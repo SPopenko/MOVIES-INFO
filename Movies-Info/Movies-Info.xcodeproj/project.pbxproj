@@ -31,7 +31,6 @@
 		CE26E1FA142F559700AE8FE0 /* ShortMovieInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CE26E1F9142F559700AE8FE0 /* ShortMovieInfo.m */; };
 		CE7557881435A34500961B0D /* star_empty.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7557861435A34500961B0D /* star_empty.png */; };
 		CE7557891435A34500961B0D /* star_full.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7557871435A34500961B0D /* star_full.png */; };
-		CE76A71D143286F2007FB253 /* MoviesStor.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE76A71C143286F2007FB253 /* MoviesStor.plist */; };
 		CE7B5BC614359C6E0068A338 /* DLStarRatingControl.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7B5BBC14359C6E0068A338 /* DLStarRatingControl.m */; };
 		CE7B5BC714359C6E0068A338 /* DLStarView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7B5BBE14359C6E0068A338 /* DLStarView.m */; };
 		CE7B5BCC14359C6E0068A338 /* UIView+Subviews.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7B5BC514359C6E0068A338 /* UIView+Subviews.m */; };
@@ -154,9 +153,8 @@
 		63626F72141946ED00F3A4E2 /* MoviesInfoDetailed.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoviesInfoDetailed.xib; sourceTree = "<group>"; };
 		CE26E1F8142F559700AE8FE0 /* ShortMovieInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShortMovieInfo.h; sourceTree = "<group>"; };
 		CE26E1F9142F559700AE8FE0 /* ShortMovieInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShortMovieInfo.m; sourceTree = "<group>"; };
-		CE7557861435A34500961B0D /* star_empty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star_empty.png; sourceTree = "<group>"; };
-		CE7557871435A34500961B0D /* star_full.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star_full.png; sourceTree = "<group>"; };
-		CE76A71C143286F2007FB253 /* MoviesStor.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MoviesStor.plist; sourceTree = "<group>"; };
+		CE7557861435A34500961B0D /* star_empty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = star_empty.png; path = "../Movies-Info/DLStarRating/images/star_empty.png"; sourceTree = "<group>"; };
+		CE7557871435A34500961B0D /* star_full.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = star_full.png; path = "../Movies-Info/DLStarRating/images/star_full.png"; sourceTree = "<group>"; };
 		CE7B5BBB14359C6E0068A338 /* DLStarRatingControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLStarRatingControl.h; sourceTree = "<group>"; };
 		CE7B5BBC14359C6E0068A338 /* DLStarRatingControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLStarRatingControl.m; sourceTree = "<group>"; };
 		CE7B5BBD14359C6E0068A338 /* DLStarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLStarView.h; sourceTree = "<group>"; };
@@ -219,6 +217,58 @@
 			name = MBProgressHUD;
 			sourceTree = "<group>";
 		};
+		1F5D0A361457E463005B77D5 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				63626F6D1419419000F3A4E2 /* MovieInfoTableView.xib */,
+				63626F72141946ED00F3A4E2 /* MoviesInfoDetailed.xib */,
+				63626F631419414A00F3A4E2 /* Movies_InfoAppDelegate.h */,
+				63626F641419414A00F3A4E2 /* Movies_InfoAppDelegate.m */,
+				63626F6B1419419000F3A4E2 /* MovieInfoTableView.h */,
+				63626F6C1419419000F3A4E2 /* MovieInfoTableView.m */,
+				63626F70141946EC00F3A4E2 /* MoviesInfoDetailed.h */,
+				63626F71141946ED00F3A4E2 /* MoviesInfoDetailed.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		1F5D0A371457E467005B77D5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1F5D0A3A1457E603005B77D5 /* MovieShortInfo */,
+				CE7B5BBA14359C6E0068A338 /* DLStarRating */,
+				1F5D09FD1456D597005B77D5 /* MBProgressHUD */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		1F5D0A381457E469005B77D5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CE26E1F8142F559700AE8FE0 /* ShortMovieInfo.h */,
+				CE26E1F9142F559700AE8FE0 /* ShortMovieInfo.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		1F5D0A391457E58F005B77D5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CE82A8D414327B3900F4A931 /* Images */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		1F5D0A3A1457E603005B77D5 /* MovieShortInfo */ = {
+			isa = PBXGroup;
+			children = (
+				CE7E27051422DDA7008BF00A /* MovieShortInfoCellView.xib */,
+				CE7E27021422D5D8008BF00A /* MovieShortInfoCell.h */,
+				CE7E27031422D5D8008BF00A /* MovieShortInfoCell.m */,
+			);
+			name = MovieShortInfo;
+			sourceTree = "<group>";
+		};
 		63626F451419414800F3A4E2 = {
 			isa = PBXGroup;
 			children = (
@@ -254,21 +304,11 @@
 		63626F5A1419414900F3A4E2 /* Movies-Info */ = {
 			isa = PBXGroup;
 			children = (
-				1F5D09FD1456D597005B77D5 /* MBProgressHUD */,
-				CE7B5BBA14359C6E0068A338 /* DLStarRating */,
-				CE82A8D414327B3900F4A931 /* Images */,
-				CE26E1F6142F555D00AE8FE0 /* Classes */,
-				CE7E27001422D49B008BF00A /* MovieShortInfo */,
-				63626F631419414A00F3A4E2 /* Movies_InfoAppDelegate.h */,
-				63626F641419414A00F3A4E2 /* Movies_InfoAppDelegate.m */,
-				63626F6B1419419000F3A4E2 /* MovieInfoTableView.h */,
-				63626F6C1419419000F3A4E2 /* MovieInfoTableView.m */,
-				63626F6D1419419000F3A4E2 /* MovieInfoTableView.xib */,
-				63626F70141946EC00F3A4E2 /* MoviesInfoDetailed.h */,
-				63626F71141946ED00F3A4E2 /* MoviesInfoDetailed.m */,
-				63626F72141946ED00F3A4E2 /* MoviesInfoDetailed.xib */,
 				63626F5B1419414A00F3A4E2 /* Supporting Files */,
-				CE76A71C143286F2007FB253 /* MoviesStor.plist */,
+				1F5D0A381457E469005B77D5 /* Model */,
+				1F5D0A371457E467005B77D5 /* View */,
+				1F5D0A361457E463005B77D5 /* Controller */,
+				1F5D0A391457E58F005B77D5 /* Resources */,
 			);
 			path = "Movies-Info";
 			sourceTree = "<group>";
@@ -284,19 +324,9 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		CE26E1F6142F555D00AE8FE0 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				CE26E1F8142F559700AE8FE0 /* ShortMovieInfo.h */,
-				CE26E1F9142F559700AE8FE0 /* ShortMovieInfo.m */,
-			);
-			name = Classes;
-			sourceTree = "<group>";
-		};
 		CE7B5BBA14359C6E0068A338 /* DLStarRating */ = {
 			isa = PBXGroup;
 			children = (
-				CE7B5BBF14359C6E0068A338 /* images */,
 				CE7B5BBB14359C6E0068A338 /* DLStarRatingControl.h */,
 				CE7B5BBC14359C6E0068A338 /* DLStarRatingControl.m */,
 				CE7B5BBD14359C6E0068A338 /* DLStarView.h */,
@@ -307,28 +337,11 @@
 			path = DLStarRating;
 			sourceTree = "<group>";
 		};
-		CE7B5BBF14359C6E0068A338 /* images */ = {
+		CE82A8D414327B3900F4A931 /* Images */ = {
 			isa = PBXGroup;
 			children = (
 				CE7557861435A34500961B0D /* star_empty.png */,
 				CE7557871435A34500961B0D /* star_full.png */,
-			);
-			path = images;
-			sourceTree = "<group>";
-		};
-		CE7E27001422D49B008BF00A /* MovieShortInfo */ = {
-			isa = PBXGroup;
-			children = (
-				CE7E27021422D5D8008BF00A /* MovieShortInfoCell.h */,
-				CE7E27031422D5D8008BF00A /* MovieShortInfoCell.m */,
-				CE7E27051422DDA7008BF00A /* MovieShortInfoCellView.xib */,
-			);
-			name = MovieShortInfo;
-			sourceTree = "<group>";
-		};
-		CE82A8D414327B3900F4A931 /* Images */ = {
-			isa = PBXGroup;
-			children = (
 				1F5D0A021456F187005B77D5 /* checkmark.png */,
 				CE82A8D514327B3900F4A931 /* movie.png */,
 			);
@@ -478,7 +491,6 @@
 				63626F74141946EF00F3A4E2 /* MoviesInfoDetailed.xib in Resources */,
 				CE7E27061422DDA7008BF00A /* MovieShortInfoCellView.xib in Resources */,
 				CE82A8D614327B3900F4A931 /* movie.png in Resources */,
-				CE76A71D143286F2007FB253 /* MoviesStor.plist in Resources */,
 				CE7557881435A34500961B0D /* star_empty.png in Resources */,
 				CE7557891435A34500961B0D /* star_full.png in Resources */,
 				1F5D0A031456F187005B77D5 /* checkmark.png in Resources */,
