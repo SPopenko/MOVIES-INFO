@@ -67,10 +67,11 @@
     [shortMovieInfoMapping mapKeyPathsToAttributes:
      @"id",       @"movieId",
      @"name",     @"movieName",
-     @"url",      @"movieLink",
+     //@"url",      @"movieLink",
      @"runtime",  @"duration",
      @"released", @"releaseDate",
      @"rating",   @"fanRating",
+     @"overview", @"description",
      nil];
     
     //Delete after creating normal dynamic mapping

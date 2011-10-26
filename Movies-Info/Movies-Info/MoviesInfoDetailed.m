@@ -37,7 +37,10 @@
     [super viewDidLoad];
     
     NSString *htmlFile = [[NSBundle mainBundle] pathForResource:@"infoFilm" ofType:@"html"];
-    NSMutableString *htmlData = [NSMutableString stringWithContentsOfFile:htmlFile encoding:nil error:nil];
+    
+    NSMutableString *htmlData = [NSMutableString stringWithContentsOfFile:htmlFile encoding:NSUTF8StringEncoding error:nil];
+
+    htmlData = [movieInfo fillHtmlPage:htmlData];
     [webView loadHTMLString:htmlData baseURL:nil]; 
 }
 

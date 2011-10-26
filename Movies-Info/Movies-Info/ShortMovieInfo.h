@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <RestKit/RestKit.h>
+#import <Foundation/NSObjCRuntime.h>
 
 //Delete after creating normal mapping
 @interface Image :NSObject
@@ -29,11 +30,17 @@
 @property (nonatomic, retain) NSString *movieName;
 @property (nonatomic, retain) NSNumber *fanRating;
 @property (nonatomic, retain) NSNumber *movieId;
-
+@property (nonatomic, retain) NSString *description;
 @property (nonatomic, retain) NSArray *posters;
+@property (nonatomic, retain) NSArray *backdrops;
 
-@property (nonatomic, retain) NSString *movieLink;
-
+- (NSMutableString*) fillHtmlPage:(NSMutableString*)htmlPage;
+- (NSMutableString*) fillCastOnHtmlPage:(NSMutableString*)htmlPage;
+- (NSMutableString*) fillPosterOnHtmlPage:(NSMutableString*)htmlPage;
+- (NSMutableString*) fillDescrioptionOnHtmlPage:(NSMutableString*)htmlPage;
+- (NSMutableString*) fillDurarionOnHtmlPage:(NSMutableString*)htmlPage;
+- (NSMutableString*) fillReleaseDateOnHtmlPage:(NSMutableString*)htmlPage;
+- (NSMutableString*) fillBackDropsOnHtmlPage:(NSMutableString*)htmlPage;
 
 
 @end
