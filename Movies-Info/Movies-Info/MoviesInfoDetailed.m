@@ -66,7 +66,7 @@
     //Delete after creating normal dynamic mapping
     //Long long very long and strange mapping
     RKObjectMapping* imageMapping = [RKObjectMapping mappingForClass:[Image class] ];
-    [imageMapping mapAttributes:@"url", @"type", nil];
+    [imageMapping mapAttributes:@"url", @"type", @"size", nil];
     
     RKObjectMapping* posterMaping = [RKObjectMapping mappingForClass:[Poster class] ];
     [posterMaping mapRelationship:@"image" withMapping: imageMapping];

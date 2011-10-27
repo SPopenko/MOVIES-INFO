@@ -11,6 +11,7 @@
 @implementation Image
 @synthesize url  = _url;
 @synthesize type = _type;
+@synthesize size = _size;
 @end
 
 @implementation Poster

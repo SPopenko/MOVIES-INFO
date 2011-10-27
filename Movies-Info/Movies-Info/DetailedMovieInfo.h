@@ -17,6 +17,6 @@
 
 - (NSMutableString*) fillHtmlPage:(NSMutableString*)htmlPage;
 
-- (NSString*) htmlFromBackdrops;
+- (NSString*) backdropsToHtmlString;
 
 @end

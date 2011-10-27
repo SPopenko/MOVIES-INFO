@@ -14,6 +14,7 @@
 @interface Image :NSObject
 @property (nonatomic, retain) NSString* url;
 @property (nonatomic, retain) NSString* type;
+@property (nonatomic, retain) NSString* size;
 @end
 
 //Delete after creating normal mapping
