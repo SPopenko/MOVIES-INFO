@@ -8,6 +8,9 @@
 
 #import "DetailedMovieInfo.h"
 
+@implementation Person
+@synthesize name = _name;
+@end
 
 @implementation DetailedMovieInfo
 
@@ -42,26 +45,51 @@
                               withString:[self backdropsToHtmlString]
                                  options:NSCaseInsensitiveSearch 
                                    range:NSMakeRange(0, htmlPage.length)];
+    [htmlPage replaceOccurrencesOfString:[NSString stringWithString:@"[cast]"]
+                              withString:[self castToHtmlString]
+                                 options:NSCaseInsensitiveSearch 
+                                   range:NSMakeRange(0, htmlPage.length)];
+    [htmlPage replaceOccurrencesOfString:[NSString stringWithString:@"[rating]"]
+                              withString:[NSString stringWithFormat:@"%2.1f", [self.fanRating doubleValue]]
+                                 options:NSCaseInsensitiveSearch 
+                                   range:NSMakeRange(0, htmlPage.length)];
+    
+    
 
     return htmlPage;
 }
 
 - (NSString*) backdropsToHtmlString
 {
-    NSMutableString* imglist = [[[NSMutableString alloc] initWithString:@""] autorelease];
+    NSMutableString* imgList = [[[NSMutableString alloc] initWithString:@""] autorelease];
         
     for (int i =0; i < _backdrops.count; i++)
     {
         Poster* backdrop = [_backdrops objectAtIndex:i];
         if ([[backdrop.image.size lowercaseString] isEqualToString:@"thumb"])
         {
-            NSLog(@"{%@}",[backdrop.image.size lowercaseString]);
-            [imglist appendFormat:@"<img class=\"slide\" src=\"%@\">", backdrop.image.url];
+            [imgList appendFormat:@"<img class=\"slide\" src=\"%@\">", backdrop.image.url];
         }
-        NSLog([imglist substringFromIndex:0]);
     }
-    return [imglist substringFromIndex:0];
+    return [imgList substringFromIndex:0];
 }
+
+- (NSString*) castToHtmlString
+{
+    NSMutableString* castList = [[[NSMutableString alloc] initWithString:@""] autorelease];
+    
+    for (int i = 0; i < _cast.count; i++) 
+    {
+        if (i > 0)
+        {
+            [castList appendString:@", "];
+        }
+        [castList appendString:((Person*)[_cast objectAtIndex:i]).name];
+    }
+    
+    return [castList substringFromIndex:0];
+}
+
 - (void) dealloc
 {
     [_cast release];

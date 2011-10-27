@@ -9,6 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "ShortMovieInfo.h"
 
+@interface Person : NSObject
+@property (nonatomic, retain) NSString* name;
+@end
+
 @interface DetailedMovieInfo : ShortMovieInfo
 
 @property (nonatomic, retain) NSArray* cast;
@@ -18,5 +22,6 @@
 - (NSMutableString*) fillHtmlPage:(NSMutableString*)htmlPage;
 
 - (NSString*) backdropsToHtmlString;
+- (NSString*) castToHtmlString;
 
 @end

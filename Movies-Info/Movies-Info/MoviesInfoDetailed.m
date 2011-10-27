@@ -65,6 +65,10 @@
     
     //Delete after creating normal dynamic mapping
     //Long long very long and strange mapping
+    RKObjectMapping* personMapping = [RKObjectMapping mappingForClass:[Person class]];
+    [personMapping mapAttributes:@"name", nil];
+    [detailedMovieInfoMapping mapKeyPath:@"cast" toRelationship:@"cast" withMapping:personMapping];
+    
     RKObjectMapping* imageMapping = [RKObjectMapping mappingForClass:[Image class] ];
     [imageMapping mapAttributes:@"url", @"type", @"size", nil];
     
