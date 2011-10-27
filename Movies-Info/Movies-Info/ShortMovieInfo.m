@@ -9,7 +9,8 @@
 #import "ShortMovieInfo.h"
 
 @implementation Image
-@synthesize url = _url;
+@synthesize url  = _url;
+@synthesize type = _type;
 @end
 
 @implementation Poster
@@ -27,8 +28,6 @@
 @synthesize fanRating = _fanRating;
 @synthesize movieId = _movieId;
 @synthesize posters = _posters;
-@synthesize backdrops = _backdrops;
-@synthesize description = _description;
 
 - (void) dealloc
 {
@@ -39,38 +38,6 @@
     [_releaseDate release];
     [_fanRating   release];
     [_movieId     release];
-    [_backdrops   release];
-    [_description release];
-}
-
-- (NSMutableString*) fillHtmlPage:(NSMutableString *)htmlPage
-{
-    NSDateFormatter* df = [[NSDateFormatter alloc] init];
-    [df setDateStyle:NSDateFormatterLongStyle];
-    
-    [htmlPage replaceOccurrencesOfString:[NSString stringWithString:@"[description]"]
-                              withString:_description 
-                                 options:NSCaseInsensitiveSearch 
-                                   range:NSMakeRange(0, htmlPage.length)];
-    [htmlPage replaceOccurrencesOfString:[NSString stringWithString:@"[posterUrl]"]
-                              withString:((Poster*)[_posters objectAtIndex:5]).image.url 
-                                 options:NSCaseInsensitiveSearch 
-                                   range:NSMakeRange(0, htmlPage.length)];
-    [htmlPage replaceOccurrencesOfString:[NSString stringWithString:@"[release]"]
-                              withString:[df stringFromDate:_releaseDate]
-                                 options:NSCaseInsensitiveSearch 
-                                   range:NSMakeRange(0, htmlPage.length)];
-    [htmlPage replaceOccurrencesOfString:[NSString stringWithString:@"[name]"]
-                              withString:_movieName 
-                                 options:NSCaseInsensitiveSearch 
-                                   range:NSMakeRange(0, htmlPage.length)];
-    [htmlPage replaceOccurrencesOfString:[NSString stringWithString:@"[description]"]
-                              withString:_description 
-                                 options:NSCaseInsensitiveSearch 
-                                   range:NSMakeRange(0, htmlPage.length)];
-    
-    
-    return htmlPage;
 }
 
 @end

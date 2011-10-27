@@ -7,13 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DetailedMovieInfo.h"
 #import "ShortMovieInfo.h"
-@interface MoviesInfoDetailed : UIViewController
+//#import "MovieInfoTableView.h"
+#import <RestKit/RestKit.h>
+#import <RestKit/Support/JSON/JSONKit/JSONKit.h>
+#import <RestKit/Support/JSON/JSONKit/RKJSONParserJSONKit.h>
+
+@interface MoviesInfoDetailed : UIViewController<RKObjectLoaderDelegate>
 {
     IBOutlet UIWebView *webView;
-    ShortMovieInfo* movieInfo;
+    ShortMovieInfo* shortMovieInfo;
+    DetailedMovieInfo* movieInfo;
 }
 
 @property (retain, nonatomic) UIWebView*      webView;
-@property (retain, nonatomic) ShortMovieInfo* movieInfo;
+@property (retain, nonatomic) ShortMovieInfo* shortMovieInfo;
+@property (retain, nonatomic) DetailedMovieInfo* movieInfo;
+
 @end

@@ -25,7 +25,8 @@
 //themoviedb.rog work constants
 #define TMDbApiKey      @"ed2f89aa774281fcada8f17b73c8fa05"
 #define TopTenMoviesPath @"?order_by=rating&order=desc&min_votes=5&page=1&per_page=10"
-#define TopTenMovieBaseUrl @"http://api.themoviedb.org/2.1/Movie.browse/en-US/json"
+#define TopTenMovieBaseUrl @"http://api.themoviedb.org/2.1/"
+#define TopTenMoviesRequest @"Movie.browse/en-US/json/"
 #define TopTenMovie @"http://api.themoviedb.org/2.1/Movie.browse/en-US/json/ed2f89aa774281fcada8f17b73c8fa05?order_by=rating&order=desc&min_votes=5&page=1&per_page=10"
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -67,11 +68,9 @@
     [shortMovieInfoMapping mapKeyPathsToAttributes:
      @"id",       @"movieId",
      @"name",     @"movieName",
-     //@"url",      @"movieLink",
      @"runtime",  @"duration",
      @"released", @"releaseDate",
      @"rating",   @"fanRating",
-     @"overview", @"description",
      nil];
     
     //Delete after creating normal dynamic mapping
@@ -81,13 +80,14 @@
     
     RKObjectMapping* posterMaping = [RKObjectMapping mappingForClass:[Poster class] ];
     [posterMaping mapRelationship:@"image" withMapping: imageMapping];
-
+    
     [shortMovieInfoMapping mapKeyPath:@"posters" toRelationship:@"posters" withMapping:posterMaping];
+  
     //end of delete
   
     
     [RKObjectMapping addDefaultDateFormatter:tmdbDateFormatter];
-    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:[NSString stringWithFormat:@"%@%@", TMDbApiKey, TopTenMoviesPath] objectMapping:shortMovieInfoMapping delegate:self];
+    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:[NSString stringWithFormat:@"%@%@%@", TopTenMoviesRequest,TMDbApiKey, TopTenMoviesPath] objectMapping:shortMovieInfoMapping delegate:self];
     
 }
 
@@ -171,7 +171,7 @@
     
     ShortMovieInfo*     smi  = smic.shortMovieInfo;
     
-    detailViewController.movieInfo = smi;
+    detailViewController.shortMovieInfo = smi;
     // ...
     // Pass the selected object to the new view controller.
     [self.navigationController pushViewController:detailViewController animated:YES];
