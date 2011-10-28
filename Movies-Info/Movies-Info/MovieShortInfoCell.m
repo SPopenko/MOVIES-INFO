@@ -18,7 +18,6 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        
     }
     return self;
 }
@@ -62,7 +61,14 @@
     _name.text     = input.movieName;
     _duration.text = [NSString stringWithFormat:@"%@", input.duration];
     _release.text  = [date stringFromDate:input.releaseDate];
-    _fanRating.rating = [input.fanRating unsignedIntegerValue]/2;
+    
+    NSLog(@"%f", [input.fanRating doubleValue]);
+    input.fanRating = [NSNumber numberWithDouble:[input.fanRating doubleValue]/2 ];
+    NSLog(@"%f", [input.fanRating doubleValue]);
+    
+    [_fanRating setRating:input.fanRating];
+
+    
     pic = @"movie.png";
     
     Poster* poster = (Poster*)[input.posters objectAtIndex:5];
@@ -71,9 +77,6 @@
     {
         pic = input.imagePath;
     }
-    
-   
-
     //Loading image from internet :)
     NSData* imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: poster.image.url]];
     _poster.image = [UIImage imageWithData: imageData];
@@ -84,7 +87,6 @@
 
 - (ShortMovieInfo*) getShortMovieInfo
 {
-    _shortMovieInfo.fanRating = [NSNumber numberWithUnsignedInteger:_fanRating.rating];
     return _shortMovieInfo;    
 }
 @end

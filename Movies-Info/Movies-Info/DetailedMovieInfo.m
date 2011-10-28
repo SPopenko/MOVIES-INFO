@@ -30,7 +30,7 @@
                                  options:NSCaseInsensitiveSearch 
                                    range:NSMakeRange(0, htmlPage.length)];
     [htmlPage replaceOccurrencesOfString:[NSString stringWithString:@"[posterUrl]"]
-                              withString:((Poster*)[self.posters  objectAtIndex:5]).image.url 
+                              withString:((Poster*)[self.posters  objectAtIndex:4]).image.url 
                                  options:NSCaseInsensitiveSearch 
                                    range:NSMakeRange(0, htmlPage.length)];
     [htmlPage replaceOccurrencesOfString:[NSString stringWithString:@"[release]"]
