@@ -47,6 +47,7 @@
 - (void) setRating:(NSNumber *)newRating
 {
     _rating = newRating;
+    [_rating retain];
     [self drawStars ];
     
 }

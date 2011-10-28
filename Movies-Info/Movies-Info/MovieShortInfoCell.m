@@ -61,12 +61,7 @@
     _name.text     = input.movieName;
     _duration.text = [NSString stringWithFormat:@"%@", input.duration];
     _release.text  = [date stringFromDate:input.releaseDate];
-    
-    NSLog(@"%f", [input.fanRating doubleValue]);
-    input.fanRating = [NSNumber numberWithDouble:[input.fanRating doubleValue]/2 ];
-    NSLog(@"%f", [input.fanRating doubleValue]);
-    
-    [_fanRating setRating:input.fanRating];
+    [_fanRating setRating:[NSNumber numberWithDouble:[input.fanRating doubleValue]/2 ]];
 
     
     pic = @"movie.png";
