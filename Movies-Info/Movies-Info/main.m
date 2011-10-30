@@ -1,4 +1,4 @@
-//
+    //
 //  main.m
 //  Movies-Info
 //
@@ -14,6 +14,5 @@ int main(int argc, char *argv[])
 {
     @autoreleasepool {
         return UIApplicationMain(argc, argv, nil, NSStringFromClass([Movies_InfoAppDelegate class]));
-        
     }
 }

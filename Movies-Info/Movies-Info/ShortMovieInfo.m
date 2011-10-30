@@ -9,7 +9,9 @@
 #import "ShortMovieInfo.h"
 
 @implementation Image
-@synthesize url = _url;
+@synthesize url  = _url;
+@synthesize type = _type;
+@synthesize size = _size;
 @end
 
 @implementation Poster
@@ -22,24 +24,21 @@
 
 @synthesize imagePath = _imagePath;
 @synthesize movieName = _movieName;
-@synthesize runTime = _runTime;
+@synthesize duration = _duration;
 @synthesize releaseDate = _releaseDate;
 @synthesize fanRating = _fanRating;
 @synthesize movieId = _movieId;
 @synthesize posters = _posters;
-@synthesize movieLink = _movieLink;
 
 - (void) dealloc
 {
     	
     [_imagePath   release];
     [_movieName   release];
-    [_runTime     release];
+    [_duration    release];
     [_releaseDate release];
     [_fanRating   release];
     [_movieId     release];
-    
-    [_movieLink   release];
 }
 
 @end

@@ -131,7 +131,7 @@
 										<int key="IBUIContentMode">7</int>
 										<bool key="IBUIUserInteractionEnabled">NO</bool>
 										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-										<string key="IBUIText">Runtime:</string>
+										<string key="IBUIText">Duration:</string>
 										<object class="NSColor" key="IBUITextColor" id="322483866">
 											<int key="NSColorSpace">3</int>
 											<bytes key="NSWhite">MC4zMzMzMzMzMzMzAA</bytes>
@@ -179,7 +179,7 @@
 										<string key="NSFrame">{{85, 65}, {98, 21}}</string>
 										<reference key="NSSuperview" ref="587618099"/>
 										<reference key="NSWindow"/>
-										<reference key="NSNextKeyView" ref="904084152"/>
+										<reference key="NSNextKeyView" ref="253988202"/>
 										<bool key="IBUIOpaque">NO</bool>
 										<bool key="IBUIClipsSubviews">YES</bool>
 										<int key="IBUIContentMode">7</int>
@@ -206,7 +206,7 @@
 										<int key="IBUIContentMode">7</int>
 										<bool key="IBUIUserInteractionEnabled">NO</bool>
 										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-										<string key="IBUIText">Runtime Value</string>
+										<string key="IBUIText">Duration value</string>
 										<reference key="IBUITextColor" ref="322483866"/>
 										<nil key="IBUIHighlightedColor"/>
 										<int key="IBUIBaselineAdjustment">1</int>
@@ -221,7 +221,6 @@
 										<string key="NSFrame">{{179, 48}, {121, 21}}</string>
 										<reference key="NSSuperview" ref="587618099"/>
 										<reference key="NSWindow"/>
-										<reference key="NSNextKeyView" ref="253988202"/>
 										<bool key="IBUIOpaque">NO</bool>
 										<bool key="IBUIClipsSubviews">YES</bool>
 										<int key="IBUIContentMode">7</int>
@@ -239,9 +238,10 @@
 									<object class="IBUIView" id="253988202">
 										<reference key="NSNextResponder" ref="587618099"/>
 										<int key="NSvFlags">292</int>
-										<string key="NSFrame">{{163, 68}, {90, 16}}</string>
+										<string key="NSFrame">{{163, 68}, {90, 18}}</string>
 										<reference key="NSSuperview" ref="587618099"/>
 										<reference key="NSWindow"/>
+										<reference key="NSNextKeyView" ref="904084152"/>
 										<object class="NSColor" key="IBUIBackgroundColor">
 											<int key="NSColorSpace">3</int>
 											<bytes key="NSWhite">MQA</bytes>
@@ -312,14 +312,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">_runtime</string>
-						<reference key="source" ref="1003838669"/>
-						<reference key="destination" ref="489138962"/>
-					</object>
-					<int key="connectionID">24</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">_release</string>
 						<reference key="source" ref="1003838669"/>
 						<reference key="destination" ref="904084152"/>
@@ -333,6 +325,14 @@
 						<reference key="destination" ref="253988202"/>
 					</object>
 					<int key="connectionID">28</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">_duration</string>
+						<reference key="source" ref="1003838669"/>
+						<reference key="destination" ref="489138962"/>
+					</object>
+					<int key="connectionID">29</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -459,7 +459,7 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<string>DLStarRatingControl</string>
+					<string>FanRating</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>MovieShortInfoCell</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -483,28 +483,17 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">28</int>
+			<int key="maxID">29</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<object class="IBPartialClassDescription">
-					<string key="className">DLStarRatingControl</string>
-					<string key="superclassName">UIControl</string>
-					<object class="NSMutableDictionary" key="outlets">
-						<string key="NS.key.0">delegate</string>
-						<string key="NS.object.0">id</string>
-					</object>
-					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<string key="NS.key.0">delegate</string>
-						<object class="IBToOneOutletInfo" key="NS.object.0">
-							<string key="name">delegate</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</object>
+					<string key="className">FanRating</string>
+					<string key="superclassName">UIView</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/DLStarRatingControl.h</string>
+						<string key="minorKey">./Classes/FanRating.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
@@ -514,21 +503,21 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>_duration</string>
 							<string>_fanRating</string>
 							<string>_name</string>
 							<string>_poster</string>
 							<string>_release</string>
-							<string>_runtime</string>
 							<string>_shortMovieInfo</string>
 							<string>movieShortInfoCell</string>
 							<string>shortMovieInfo</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>DLStarRatingControl</string>
+							<string>UILabel</string>
+							<string>FanRating</string>
 							<string>UILabel</string>
 							<string>UIImageView</string>
-							<string>UILabel</string>
 							<string>UILabel</string>
 							<string>ShortMovieInfo</string>
 							<string>MovieShortInfoCell</string>
@@ -539,11 +528,11 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>_duration</string>
 							<string>_fanRating</string>
 							<string>_name</string>
 							<string>_poster</string>
 							<string>_release</string>
-							<string>_runtime</string>
 							<string>_shortMovieInfo</string>
 							<string>movieShortInfoCell</string>
 							<string>shortMovieInfo</string>
@@ -551,8 +540,12 @@
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBToOneOutletInfo">
+								<string key="name">_duration</string>
+								<string key="candidateClassName">UILabel</string>
+							</object>
+							<object class="IBToOneOutletInfo">
 								<string key="name">_fanRating</string>
-								<string key="candidateClassName">DLStarRatingControl</string>
+								<string key="candidateClassName">FanRating</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">_name</string>
@@ -564,10 +557,6 @@
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">_release</string>
-								<string key="candidateClassName">UILabel</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">_runtime</string>
 								<string key="candidateClassName">UILabel</string>
 							</object>
 							<object class="IBToOneOutletInfo">

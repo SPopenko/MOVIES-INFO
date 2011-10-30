@@ -1,0 +1,72 @@
+<html>
+<head>
+    <!--
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" /> 
+<title>Sidebar</title> -->
+    <style type="text/css">
+        body, table {
+            font-family: Tahoma, Arial, sans-serif;
+            font-size: 80%;
+            margin: 0px;
+            padding: 5px;
+            background-color: white;
+            text-align: center;
+        }
+        #wrapper {
+            text-align: left;
+        }
+        h2 {
+            color: #3300FF;
+            text-transform: uppercase;
+        }
+        p {
+            font-size: 1.2em;
+            width: 100%;
+            margin: 0px;
+            padding: 0px;
+        }
+        .cast {
+            color: #3300FF;
+            font-size: 1.2em;
+        }
+        .division {
+            font-weight: bold;
+        }
+        .cover{
+            width: 140px;
+            margin-right: 5px;
+            float: left;
+        }
+        .slide{
+            width: 33%;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+    <table border=0px><tr><td>
+    
+        <div id="wrapper"> 
+            <div><img class="cover" src="[posterUrl]"/></div>
+                <h2>[name]</h2>
+                <p><span class="division">Rating:</span> [rating]/10</p>
+                <p class="division">Release Date:</p>
+                <p>[release]</p>
+                <p class="division">Cast:</p>
+                <p class="cast">[cast]</p>
+        </div>
+    </td><tr><td>
+        <div id="wrapper">
+        <p class="division">Description:</p>
+        <p>[description]</p>
+        <br>
+        <div>
+            <p class="division">Backdrops:</p>
+            [backdrops]
+        </div>
+        </div>
+    </td></tr>
+    </table>
+    </div>
+</body>
+</html>

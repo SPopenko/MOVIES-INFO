@@ -7,15 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DLStarRatingControl.h"
 #import "ShortMovieInfo.h"
+#import "FanRating.h"
 
 @interface MovieShortInfoCell : UITableViewCell {
     IBOutlet MovieShortInfoCell *movieShortInfoCell;
     IBOutlet UILabel *_name;
     IBOutlet UILabel *_release;
-    IBOutlet UILabel *_runtime;
-    IBOutlet DLStarRatingControl *_fanRating;
+    IBOutlet UILabel *_duration;
+    IBOutlet FanRating* _fanRating;
     IBOutlet UIImageView *_poster;
     
     IBOutlet ShortMovieInfo *_shortMovieInfo;

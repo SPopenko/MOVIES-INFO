@@ -24,8 +24,9 @@
 
 //themoviedb.rog work constants
 #define TMDbApiKey      @"ed2f89aa774281fcada8f17b73c8fa05"
-#define TopTenMoviesPath @"?order_by=rating&order=desc&min_votes=5&page=1&per_page=10"
-#define TopTenMovieBaseUrl @"http://api.themoviedb.org/2.1/Movie.browse/en-US/json"
+#define TopTenMoviesPath @"?order_by=rating&order=desc&min_votes=5&page=16&per_page=10"
+#define TopTenMovieBaseUrl @"http://api.themoviedb.org/2.1/"
+#define TopTenMoviesRequest @"Movie.browse/en-US/json/"
 #define TopTenMovie @"http://api.themoviedb.org/2.1/Movie.browse/en-US/json/ed2f89aa774281fcada8f17b73c8fa05?order_by=rating&order=desc&min_votes=5&page=1&per_page=10"
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -48,14 +49,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
+    [self showLoadIndicatorWithText:@"Loading movie list"];
+    
     [RKObjectManager objectManagerWithBaseURL:[NSString stringWithFormat:@"%@", TopTenMovieBaseUrl]];
     [[RKParserRegistry sharedRegistry] setParserClass:[RKJSONParserJSONKit class] forMIMEType:@"text/json"];
     
     self.tableView.rowHeight = TableCellHeight;
     self.title = @"Movies";
-    RKObjectMapping* shortMovieInfoMapping = [RKObjectMapping mappingForClass:[ShortMovieInfo class]];
     
+    RKObjectMapping* shortMovieInfoMapping = [RKObjectMapping mappingForClass:[ShortMovieInfo class]];
+        
     //Base property mappings
     //Prepring Date formatter for releseDate and Time
     NSDateFormatter* tmdbDateFormatter = [NSDateFormatter new];
@@ -64,37 +68,38 @@
     [shortMovieInfoMapping mapKeyPathsToAttributes:
      @"id",       @"movieId",
      @"name",     @"movieName",
-     @"url",      @"movieLink",
-     @"runtime",  @"runTime",
+     @"runtime",  @"duration",
      @"released", @"releaseDate",
      @"rating",   @"fanRating",
      nil];
     
-    //Delete after creating norma dynamic mapping
+    //Delete after creating normal dynamic mapping
     //Long long very long and strange mapping
     RKObjectMapping* imageMapping = [RKObjectMapping mappingForClass:[Image class] ];
     [imageMapping mapAttributes:@"url", nil];
     
     RKObjectMapping* posterMaping = [RKObjectMapping mappingForClass:[Poster class] ];
     [posterMaping mapRelationship:@"image" withMapping: imageMapping];
-
-    [shortMovieInfoMapping mapKeyPath:@"posters" toRelationship:@"posters" withMapping:posterMaping];
-    //end of delete
     
-    //[shortMovieInfoMapping mapKeyPath:@"posters[1].@image.@type" toAttribute:@"imagePath"];
+    [shortMovieInfoMapping mapKeyPath:@"posters" toRelationship:@"posters" withMapping:posterMaping];
+  
+    //end of delete
+  
     
     [RKObjectMapping addDefaultDateFormatter:tmdbDateFormatter];
-    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:[NSString stringWithFormat:@"%@%@", TMDbApiKey, TopTenMoviesPath] objectMapping:shortMovieInfoMapping delegate:self];
+    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:[NSString stringWithFormat:@"%@%@%@", TopTenMoviesRequest,TMDbApiKey, TopTenMoviesPath] objectMapping:shortMovieInfoMapping delegate:self];
     
+    [tmdbDateFormatter autorelease];
 }
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
     movieList = [objects retain];
     [self.tableView reloadData];
+    [self showLoadFinishIndicator];
 }    
 - (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error {
 
-    NSLog([NSString stringWithFormat: @"%@", [error localizedDescription]] );
+    NSLog(@"%@", [error localizedDescription] );
 }
 
 
@@ -166,13 +171,75 @@
     MovieShortInfoCell* smic = (MovieShortInfoCell*)[tableView cellForRowAtIndexPath:indexPath];
     
     ShortMovieInfo*     smi  = smic.shortMovieInfo;
+    
+    detailViewController.shortMovieInfo = smi;
     // ...
     // Pass the selected object to the new view controller.
     [self.navigationController pushViewController:detailViewController animated:YES];
-    [detailViewController.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:smi.movieLink]]];
-        
+
     [detailViewController release];
      
+}
+
+#pragma mark - MBProgressHUDDelegate methods
+- (void) hudWasHidden
+{
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    [actionIndicator removeFromSuperview];
+    [actionIndicator release];
+    actionIndicator = nil;
+}
+
+#pragma mark - actionIndicator Activities
+- (void) showLoadIndicator
+{
+    [self showLoadIndicatorWithText:@"Loading"];
+}
+
+- (void) prepareActionIndicator
+{
+    if (actionIndicator == nil)
+    {
+        actionIndicator = [[MBProgressHUD alloc] initWithView:self.view];
+    }
+    [self.view addSubview:actionIndicator];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+}
+- (void) showLoadIndicatorWithText:(NSString*)indicatorText 
+{
+    [self prepareActionIndicator];
+    actionIndicator.delegate = self;
+    actionIndicator.mode = MBProgressHUDModeIndeterminate;
+    actionIndicator.labelText = indicatorText;
+    actionIndicator.dimBackground = YES;
+    [actionIndicator show:YES];
+    
+}
+
+- (void) showLoadFinishIndicator
+{
+    [self prepareActionIndicator];
+    
+    actionIndicator.delegate = self;
+    actionIndicator.dimBackground = NO;
+    actionIndicator.customView = [[[UIImageView alloc] initWithImage:
+                       [UIImage imageNamed:@"checkmark.png"]] autorelease];
+    actionIndicator.mode = MBProgressHUDModeCustomView;
+    actionIndicator.labelText = @"Load finished";
+    [actionIndicator showWhileExecuting:@selector(waitForTwoSeconds) 
+                   onTarget:self withObject:nil animated:YES];
+}
+
+-(void) hideIndicator
+{
+    if (actionIndicator != nil)
+    {
+        [actionIndicator show:NO];
+    }
+}
+
+- (void)waitForTwoSeconds {
+    sleep(2);
 }
 
 @end

@@ -8,10 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import <RestKit/RestKit.h>
+#import <Foundation/NSObjCRuntime.h>
 
 //Delete after creating normal mapping
 @interface Image :NSObject
 @property (nonatomic, retain) NSString* url;
+@property (nonatomic, retain) NSString* type;
+@property (nonatomic, retain) NSString* size;
 @end
 
 //Delete after creating normal mapping
@@ -24,16 +27,12 @@
 }
 
 @property (nonatomic, retain) NSDate   *releaseDate;
-@property (nonatomic, retain) NSNumber *runTime;
+@property (nonatomic, retain) NSNumber *duration;
 @property (nonatomic, retain) NSString *imagePath;
 @property (nonatomic, retain) NSString *movieName;
 @property (nonatomic, retain) NSNumber *fanRating;
 @property (nonatomic, retain) NSNumber *movieId;
-
 @property (nonatomic, retain) NSArray *posters;
-
-@property (nonatomic, retain) NSString *movieLink;
-
 
 
 @end

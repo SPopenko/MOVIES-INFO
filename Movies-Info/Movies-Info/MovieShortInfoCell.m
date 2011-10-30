@@ -18,7 +18,6 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        
     }
     return self;
 }
@@ -41,11 +40,7 @@
     static NSDateFormatter *date = nil;
     static NSDateFormatter *time = nil;
     
-    NSString *pic;
-    
     _shortMovieInfo = input;
-    
-    pic = @"movie.png";
     
     if (date == nil)
     {
@@ -59,24 +54,13 @@
         [time setDateFormat:@"HH:mm:ss"];
     }
     
-    _name.text = input.movieName;
-    _runtime.text = [NSString stringWithFormat:@"%@", input.runTime];
-    _release.text = [date stringFromDate:input.releaseDate];
-    _fanRating.rating = [input.fanRating unsignedIntegerValue]/2;
-    pic = @"movie.png";
-    
-    NSLog(@"\"%@\"", input.imagePath);
-    if (input.imagePath != nil )
-    {
-        pic = input.imagePath;
-        NSLog(@"%@", pic);
-    }
+    _name.text     = input.movieName;
+    _duration.text = [NSString stringWithFormat:@"%@", input.duration];
+    _release.text  = [date stringFromDate:input.releaseDate];
+    [_fanRating setRating:[NSNumber numberWithDouble:[input.fanRating doubleValue]/2 ]];
     
     Poster* poster = (Poster*)[input.posters objectAtIndex:5];
-    
 
-    NSLog(@"%@", poster.image.url);
-    
     //Loading image from internet :)
     NSData* imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: poster.image.url]];
     _poster.image = [UIImage imageWithData: imageData];
@@ -87,7 +71,6 @@
 
 - (ShortMovieInfo*) getShortMovieInfo
 {
-    _shortMovieInfo.fanRating = [NSNumber numberWithUnsignedInteger:_fanRating.rating];
     return _shortMovieInfo;    
 }
 @end
