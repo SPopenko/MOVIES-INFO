@@ -55,7 +55,7 @@
                                    range:NSMakeRange(0, htmlPage.length)];
     
     
-
+    [df release];
     return htmlPage;
 }
 

@@ -89,6 +89,7 @@
     [RKObjectMapping addDefaultDateFormatter:tmdbDateFormatter];
     [[RKObjectManager sharedManager] loadObjectsAtResourcePath:[NSString stringWithFormat:@"%@%@%@", TopTenMoviesRequest,TMDbApiKey, TopTenMoviesPath] objectMapping:shortMovieInfoMapping delegate:self];
     
+    [tmdbDateFormatter autorelease];
 }
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
@@ -98,7 +99,7 @@
 }    
 - (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error {
 
-    NSLog([NSString stringWithFormat: @"%@", [error localizedDescription]] );
+    NSLog(@"%@", [error localizedDescription] );
 }
 
 

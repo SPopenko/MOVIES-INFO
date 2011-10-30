@@ -40,11 +40,7 @@
     static NSDateFormatter *date = nil;
     static NSDateFormatter *time = nil;
     
-    NSString *pic;
-    
     _shortMovieInfo = input;
-    
-    pic = @"movie.png";
     
     if (date == nil)
     {
@@ -62,16 +58,9 @@
     _duration.text = [NSString stringWithFormat:@"%@", input.duration];
     _release.text  = [date stringFromDate:input.releaseDate];
     [_fanRating setRating:[NSNumber numberWithDouble:[input.fanRating doubleValue]/2 ]];
-
-    
-    pic = @"movie.png";
     
     Poster* poster = (Poster*)[input.posters objectAtIndex:5];
 
-    if (poster.image.url != nil )
-    {
-        pic = input.imagePath;
-    }
     //Loading image from internet :)
     NSData* imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: poster.image.url]];
     _poster.image = [UIImage imageWithData: imageData];
