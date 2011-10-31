@@ -104,20 +104,10 @@
     NSMutableString *htmlData = [NSMutableString stringWithContentsOfFile:htmlFile encoding:NSUTF8StringEncoding error:nil];
     
     htmlData = [movie fillHtmlPage:htmlData];
-        
-    [webView loadHTMLString:htmlData baseURL:nil];
-    
-    float progress = 0.0f;
-    while (progress < 1.0f)
-    {
-        progress += 0.01f;
-        [self showDeterminateLoadIndicator:progress];
-        usleep(50000);
-    }
 
-    
+    [webView loadHTMLString:htmlData baseURL:nil];
+
     [self showLoadFinishIndicator];
-    
 }    
 - (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error {
     
@@ -126,7 +116,6 @@
 
 #pragma mark - actionIndicator Activities
 
-
 - (void) prepareActionIndicator
 {
     if (actionIndicator == nil)
@@ -134,6 +123,8 @@
         actionIndicator = [[MBProgressHUD alloc] initWithView:self.view];
     }
     [self.view addSubview:actionIndicator];
+    actionIndicator.delegate = self;
+    
 }
 
 - (void) showLoadIndicator
@@ -144,7 +135,6 @@
 - (void) showLoadIndicatorWithText:(NSString*)indicatorText 
 {
     [self prepareActionIndicator];
-    actionIndicator.delegate = self;
     actionIndicator.mode = MBProgressHUDModeIndeterminate;
     actionIndicator.labelText = indicatorText;
     actionIndicator.dimBackground = YES;
@@ -152,16 +142,11 @@
     
 }
 
--(void) showDeterminateLoadIndicator:(float)rate
-{
-    actionIndicator.progress = rate;
-}
-
 - (void) showLoadFinishIndicator
 {
     [self prepareActionIndicator];
     
-    actionIndicator.delegate = self;
+    //actionIndicator.delegate = self;
     actionIndicator.dimBackground = NO;
     actionIndicator.customView = [[[UIImageView alloc] initWithImage:
                                    [UIImage imageNamed:@"checkmark.png"]] autorelease];

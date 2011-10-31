@@ -29,7 +29,6 @@
 - (void) prepareActionIndicator;
 - (void) showLoadFinishIndicator;
 - (void) showLoadIndicator;
-- (void) showDeterminateLoadIndicator:(float) rate;
 - (void) showLoadIndicatorWithText:(NSString*)indicatorTest;
 - (void) hideIndicator;
 - (void) waitForTwoSeconds;
