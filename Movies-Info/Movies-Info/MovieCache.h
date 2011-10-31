@@ -8,6 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+static NSMutableDictionary* _imageList;
+
 @interface MovieCache : NSObject
+
++ (void) clearCache;
++ (void) initImageList;
++ (void) preloadImagesFromShortMovieInfoList:(NSArray*) movieList;
+
++ (UIImage*) getImageFromCache:(NSString*) imageUrl;
 
 @end

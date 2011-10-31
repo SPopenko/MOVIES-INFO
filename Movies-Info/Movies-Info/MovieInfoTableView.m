@@ -24,7 +24,7 @@
 
 //themoviedb.rog work constants
 #define TMDbApiKey      @"ed2f89aa774281fcada8f17b73c8fa05"
-#define TopTenMoviesPath @"?order_by=rating&order=desc&min_votes=5&page=16&per_page=10"
+#define TopTenMoviesPath @"?order_by=rating&order=desc&min_votes=5&page=16&per_page=100"
 #define TopTenMovieBaseUrl @"http://api.themoviedb.org/2.1/"
 #define TopTenMoviesRequest @"Movie.browse/en-US/json/"
 #define TopTenMovie @"http://api.themoviedb.org/2.1/Movie.browse/en-US/json/ed2f89aa774281fcada8f17b73c8fa05?order_by=rating&order=desc&min_votes=5&page=1&per_page=10"
@@ -41,6 +41,7 @@
 {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
+    [MovieCache clearCache];
     // Release any cached data, images, etc that aren't in use.
 }
 

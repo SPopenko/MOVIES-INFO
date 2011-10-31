@@ -16,6 +16,7 @@
 		1F5D09FC1456D58F005B77D5 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F5D09FB1456D58E005B77D5 /* MBProgressHUD.m */; };
 		1F5D0A031456F187005B77D5 /* checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F5D0A021456F187005B77D5 /* checkmark.png */; };
 		1F5D0A891458006F005B77D5 /* infoFilm.html in Resources */ = {isa = PBXBuildFile; fileRef = 1F5D0A881458006F005B77D5 /* infoFilm.html */; };
+		1F8A9757145EA0D10034F7F8 /* MovieCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8A9756145EA0D10034F7F8 /* MovieCache.m */; };
 		1FCBCC48145833D300EB3FD1 /* libobjc.A.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FCBCC47145833D300EB3FD1 /* libobjc.A.dylib */; };
 		1FCBCC4B1458769000EB3FD1 /* DetailedMovieInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FCBCC4A1458769000EB3FD1 /* DetailedMovieInfo.m */; };
 		1FCBCD0F145AFA8300EB3FD1 /* FanRating.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FCBCD0E145AFA8300EB3FD1 /* FanRating.m */; };
@@ -134,6 +135,8 @@
 		1F5D09FB1456D58E005B77D5 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = ../../MBProgressHUD/MBProgressHUD.m; sourceTree = "<group>"; };
 		1F5D0A021456F187005B77D5 /* checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkmark.png; sourceTree = "<group>"; };
 		1F5D0A881458006F005B77D5 /* infoFilm.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = infoFilm.html; sourceTree = "<group>"; };
+		1F8A9755145EA0D10034F7F8 /* MovieCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieCache.h; sourceTree = "<group>"; };
+		1F8A9756145EA0D10034F7F8 /* MovieCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieCache.m; sourceTree = "<group>"; };
 		1FCBCC47145833D300EB3FD1 /* libobjc.A.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libobjc.A.dylib; path = usr/lib/libobjc.A.dylib; sourceTree = SDKROOT; };
 		1FCBCC491458769000EB3FD1 /* DetailedMovieInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailedMovieInfo.h; sourceTree = "<group>"; };
 		1FCBCC4A1458769000EB3FD1 /* DetailedMovieInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailedMovieInfo.m; sourceTree = "<group>"; };
@@ -251,6 +254,8 @@
 				CE26E1F9142F559700AE8FE0 /* ShortMovieInfo.m */,
 				1FCBCC491458769000EB3FD1 /* DetailedMovieInfo.h */,
 				1FCBCC4A1458769000EB3FD1 /* DetailedMovieInfo.m */,
+				1F8A9755145EA0D10034F7F8 /* MovieCache.h */,
+				1F8A9756145EA0D10034F7F8 /* MovieCache.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -524,6 +529,7 @@
 				1F5D09FC1456D58F005B77D5 /* MBProgressHUD.m in Sources */,
 				1FCBCC4B1458769000EB3FD1 /* DetailedMovieInfo.m in Sources */,
 				1FCBCD0F145AFA8300EB3FD1 /* FanRating.m in Sources */,
+				1F8A9757145EA0D10034F7F8 /* MovieCache.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
