@@ -39,14 +39,31 @@
     result = (UIImage*) [_imageList objectForKey:imageUrl];
     if (result == nil)
     {
-        NSData* imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: imageUrl]];
-        result = [UIImage imageWithData: imageData];
-        [_imageList  setObject:result forKey:imageUrl];
-        [imageData release];
+        result = [self addImageToCacheFromUrl:imageUrl];
     }
     return  result;
 }
 
++ (UIImage*) addImageToCacheFromUrl:(NSString *)imageUrl
+{
+    NSData* imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: imageUrl]];
+    UIImage* result = [UIImage imageWithData: imageData];
+    [_imageList  setObject:result forKey:imageUrl];
+    [imageData release];
+    return result;
+}
++ (void) preloadImagesFromShortMovieInfoList:(NSArray *)movieList
+{
+    for (NSUInteger i = 0; i < movieList.count; i++) 
+    {
+        ShortMovieInfo* movieInfo = [movieList objectAtIndex:i];
+        if ([movieInfo.posters count] > 5)
+        {
+            //load poster to cache
+            [self addImageToCacheFromUrl:((Poster*)[movieInfo.posters objectAtIndex:5]).image.url];
+        }
+    }
+}
 
 - (void) dealloc
 {

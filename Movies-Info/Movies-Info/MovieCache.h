@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ShortMovieInfo.h"
 
 static NSMutableDictionary* _imageList;
 
@@ -15,7 +16,7 @@ static NSMutableDictionary* _imageList;
 + (void) clearCache;
 + (void) initImageList;
 + (void) preloadImagesFromShortMovieInfoList:(NSArray*) movieList;
-
++ (UIImage*) addImageToCacheFromUrl:(NSString*) imageUrl;
 + (UIImage*) getImageFromCache:(NSString*) imageUrl;
 
 @end
