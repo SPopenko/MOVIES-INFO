@@ -8,15 +8,6 @@
 
 #import "MovieInfoTableView.h"
 
-
-//Defiyng HUD
-@interface UIProgressHUD : NSObject 
-- (UIProgressHUD *) initWithWindow: (UIView*)aWindow; 
-- (void) show: (BOOL)aShow; 
-- (void) setText: (NSString*)aText; 
-@end
-
-
 @implementation MovieInfoTableView
 
 //ShortMovieInfo cell height

@@ -41,8 +41,7 @@
 {
     [super viewDidLoad];
     
-    //[RKObjectManager objectManagerWithBaseURL:[NSString stringWithFormat:@"%@", MovieBaseUrl]];
-    //[[RKParserRegistry sharedRegistry] setParserClass:[RKJSONParserJSONKit class] forMIMEType:@"text/json"];
+    [self showLoadIndicatorWithText:@"Loading detailed movie info"];
     
     //Object mapping
     RKObjectMapping* detailedMovieInfoMapping = [RKObjectMapping mappingForClass:[DetailedMovieInfo class]];
@@ -105,11 +104,68 @@
     NSMutableString *htmlData = [NSMutableString stringWithContentsOfFile:htmlFile encoding:NSUTF8StringEncoding error:nil];
     
     htmlData = [movie fillHtmlPage:htmlData];
-    [webView loadHTMLString:htmlData baseURL:nil]; 
+
+    [webView loadHTMLString:htmlData baseURL:nil];
+
+    [self showLoadFinishIndicator];
 }    
 - (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error {
     
     NSLog(@"%@", [error localizedDescription] );
+}
+
+#pragma mark - actionIndicator Activities
+
+- (void) prepareActionIndicator
+{
+    if (actionIndicator == nil)
+    {
+        actionIndicator = [[MBProgressHUD alloc] initWithView:self.view];
+    }
+    [self.view addSubview:actionIndicator];
+    actionIndicator.delegate = self;
+    
+}
+
+- (void) showLoadIndicator
+{
+    [self showLoadIndicatorWithText:@"Loading"];
+}
+
+- (void) showLoadIndicatorWithText:(NSString*)indicatorText 
+{
+    [self prepareActionIndicator];
+    actionIndicator.mode = MBProgressHUDModeIndeterminate;
+    actionIndicator.labelText = indicatorText;
+    actionIndicator.dimBackground = YES;
+    [actionIndicator show:YES];
+    
+}
+
+- (void) showLoadFinishIndicator
+{
+    [self prepareActionIndicator];
+    
+    //actionIndicator.delegate = self;
+    actionIndicator.dimBackground = NO;
+    actionIndicator.customView = [[[UIImageView alloc] initWithImage:
+                                   [UIImage imageNamed:@"checkmark.png"]] autorelease];
+    actionIndicator.mode = MBProgressHUDModeCustomView;
+    actionIndicator.labelText = @"Load finished";
+    [actionIndicator showWhileExecuting:@selector(waitForTwoSeconds) 
+                               onTarget:self withObject:nil animated:YES];
+}
+
+-(void) hideIndicator
+{
+    if (actionIndicator != nil)
+    {
+        [actionIndicator show:NO];
+    }
+}
+
+- (void)waitForTwoSeconds {
+    sleep(2);
 }
 
 

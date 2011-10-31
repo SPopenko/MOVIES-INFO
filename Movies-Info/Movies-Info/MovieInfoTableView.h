@@ -26,7 +26,7 @@
 - (void) showLoadIndicator;
 - (void) showLoadIndicatorWithText:(NSString*)indicatorTest;
 - (void) hideIndicator;
-- (void)waitForTwoSeconds;
+- (void) waitForTwoSeconds;
 
 
 @end

@@ -9,20 +9,28 @@
 #import <UIKit/UIKit.h>
 #import "DetailedMovieInfo.h"
 #import "ShortMovieInfo.h"
-//#import "MovieInfoTableView.h"
+#import "MBProgressHUD.h"
 #import <RestKit/RestKit.h>
 #import <RestKit/Support/JSON/JSONKit/JSONKit.h>
 #import <RestKit/Support/JSON/JSONKit/RKJSONParserJSONKit.h>
 
-@interface MoviesInfoDetailed : UIViewController<RKObjectLoaderDelegate>
+@interface MoviesInfoDetailed : UIViewController<RKObjectLoaderDelegate, MBProgressHUDDelegate>
 {
     IBOutlet UIWebView *webView;
     ShortMovieInfo* shortMovieInfo;
     DetailedMovieInfo* movieInfo;
+    MBProgressHUD* actionIndicator;
 }
 
 @property (retain, nonatomic) UIWebView*      webView;
 @property (retain, nonatomic) ShortMovieInfo* shortMovieInfo;
 @property (retain, nonatomic) DetailedMovieInfo* movieInfo;
+
+- (void) prepareActionIndicator;
+- (void) showLoadFinishIndicator;
+- (void) showLoadIndicator;
+- (void) showLoadIndicatorWithText:(NSString*)indicatorTest;
+- (void) hideIndicator;
+- (void) waitForTwoSeconds;
 
 @end
