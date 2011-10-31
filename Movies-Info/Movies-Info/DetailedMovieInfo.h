@@ -7,7 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NSDataAdditions.h"
 #import "ShortMovieInfo.h"
+#import "MovieCache.h"
 
 @interface Person : NSObject
 @property (nonatomic, retain) NSString* name;
@@ -23,5 +25,6 @@
 
 - (NSString*) backdropsToHtmlString;
 - (NSString*) castToHtmlString;
+- (NSString*) htmlStringFromImageAtKey:(NSString*) imagekey;
 
 @end

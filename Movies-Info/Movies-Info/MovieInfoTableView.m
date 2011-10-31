@@ -32,6 +32,7 @@
 {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
+    [MovieCache clearCache];
     // Release any cached data, images, etc that aren't in use.
 }
 
@@ -85,6 +86,7 @@
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
     movieList = [objects retain];
+    [MovieCache preloadImagesFromShortMovieInfoList:movieList];
     [self.tableView reloadData];
     [self showLoadFinishIndicator];
 }    

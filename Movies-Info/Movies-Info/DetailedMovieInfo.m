@@ -21,16 +21,21 @@
 
 - (NSMutableString*) fillHtmlPage:(NSMutableString *)htmlPage
 {
+    NSString* imagekey = nil;
     NSDateFormatter* df = [[NSDateFormatter alloc] init];
     [df setDateStyle:NSDateFormatterLongStyle];
     
+    if([self.posters count]>5)
+    {
+        imagekey = ((Poster*) [self.posters objectAtIndex:4]).image.url;
+    }
     
     [htmlPage replaceOccurrencesOfString:[NSString stringWithString:@"[description]"]
                               withString:_description 
                                  options:NSCaseInsensitiveSearch 
                                    range:NSMakeRange(0, htmlPage.length)];
     [htmlPage replaceOccurrencesOfString:[NSString stringWithString:@"[posterUrl]"]
-                              withString:((Poster*)[self.posters  objectAtIndex:4]).image.url 
+                              withString:[self htmlStringFromImageAtKey:imagekey]
                                  options:NSCaseInsensitiveSearch 
                                    range:NSMakeRange(0, htmlPage.length)];
     [htmlPage replaceOccurrencesOfString:[NSString stringWithString:@"[release]"]
@@ -62,13 +67,14 @@
 - (NSString*) backdropsToHtmlString
 {
     NSMutableString* imgList = [[[NSMutableString alloc] initWithString:@""] autorelease];
-        
+    
+    if (_backdrops.count == 0) [imgList appendString:@"no backdrops found"];
     for (int i =0; i < _backdrops.count; i++)
     {
         Poster* backdrop = [_backdrops objectAtIndex:i];
         if ([[backdrop.image.size lowercaseString] isEqualToString:@"thumb"])
         {
-            [imgList appendFormat:@"<img class=\"slide\" src=\"%@\">", backdrop.image.url];
+            [imgList appendFormat:@"<img class=\"slide\" src=\"%@\">", [self htmlStringFromImageAtKey:backdrop.image.url]];
         }
     }
     return [imgList substringFromIndex:0];
@@ -88,6 +94,13 @@
     }
     
     return [castList substringFromIndex:0];
+}
+
+- (NSString*) htmlStringFromImageAtKey:(NSString *)imagekey
+{
+    UIImage* image = [MovieCache getImageFromCache:imagekey];
+    NSData*  imageData = UIImagePNGRepresentation(image);
+    return [NSString stringWithFormat:@"data:image/png;base64,%@",[imageData base64Encoding]];
 }
 
 - (void) dealloc

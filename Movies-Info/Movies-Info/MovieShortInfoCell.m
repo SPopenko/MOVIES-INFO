@@ -59,14 +59,18 @@
     _release.text  = [date stringFromDate:input.releaseDate];
     [_fanRating setRating:[NSNumber numberWithDouble:[input.fanRating doubleValue]/2 ]];
     
-    Poster* poster = (Poster*)[input.posters objectAtIndex:5];
+    NSLog(@"%@,%d", input.movieId, [input.posters count]);
+
 
     //Loading image from internet :)
-    NSData* imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: poster.image.url]];
-    _poster.image = [UIImage imageWithData: imageData];
+    NSString* posterKey = nil;
     
-    [imageData release];
-
+    if ([input.posters count] > 5)
+    {
+        Poster* poster = (Poster*)[input.posters objectAtIndex:5];
+        posterKey = poster.image.url;
+    }
+    _poster.image = [MovieCache getImageFromCache:posterKey];
 }
 
 - (ShortMovieInfo*) getShortMovieInfo

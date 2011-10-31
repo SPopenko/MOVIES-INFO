@@ -4,4 +4,5 @@ output
 build
 *.swp
 *.xcuserdatad
+*.xcuserstate
 tags
