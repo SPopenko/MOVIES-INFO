@@ -6,26 +6,77 @@
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "UIViewActioIndicator.h"
+#import "ViewActionIndicator.h"
 
-@implementation UIViewActioIndicator
+@implementation UIViewController (UIViewActionIndicator)
 
-- (id)initWithFrame:(CGRect)frame
+MBProgressHUD* actionIndicator;
+
+#pragma mark - MBProgressHUDDelegate methods
+- (void) hudWasHidden
 {
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
+    if ([self isKindOfClass:[UITableViewController class]])
+    {
+        ((UITableViewController*) self).tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     }
-    return self;
+    [actionIndicator removeFromSuperview];
+    [actionIndicator release];
+    actionIndicator = nil;
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
+#pragma mark - actionIndicator Activities
+- (void) showLoadIndicator
 {
-    // Drawing code
+    [self showLoadIndicatorWithText:@"Loading"];
 }
-*/
+
+- (void) prepareActionIndicator
+{
+    if (actionIndicator == nil)
+    {
+        actionIndicator = [[MBProgressHUD alloc] initWithView:self.view];
+    }
+    [self.view addSubview:actionIndicator];
+    if ([self isKindOfClass:[UITableViewController class]])
+    {
+        ((UITableViewController*) self).tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    }
+    actionIndicator.delegate = self;
+}
+- (void) showLoadIndicatorWithText:(NSString*)indicatorText// forView:(UIViewController*) view
+{
+    [self prepareActionIndicator];
+
+    actionIndicator.mode = MBProgressHUDModeIndeterminate;
+    actionIndicator.labelText = indicatorText;
+    actionIndicator.dimBackground = YES;
+    [actionIndicator show:YES];
+    
+}
+
+- (void) showLoadFinishIndicator//ForView:(UIViewController*) view
+{
+    [self prepareActionIndicator];
+
+    actionIndicator.dimBackground = NO;
+    actionIndicator.customView = [[[UIImageView alloc] initWithImage:
+                                   [UIImage imageNamed:@"checkmark.png"]] autorelease];
+    actionIndicator.mode = MBProgressHUDModeCustomView;
+    actionIndicator.labelText = @"Load finished";
+    [actionIndicator showWhileExecuting:@selector(waitForTwoSeconds) 
+                               onTarget:self withObject:nil animated:YES];
+}
+
+-(void) hideIndicatorForView:(UIViewController*) view
+{
+    if (actionIndicator != nil)
+    {
+        [actionIndicator show:NO];
+    }
+}
+
+- (void)waitForTwoSeconds {
+    sleep(2);
+}
 
 @end

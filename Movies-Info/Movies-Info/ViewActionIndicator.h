@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MBProgressHUD.h"
 
-@interface UIViewActioIndicator : UIView
+@interface UIViewController (ViewActionIndicator)<MBProgressHUDDelegate>
 
+- (void) prepareActionIndicator;//ForView:(UIViewController*) view;
+- (void) showLoadFinishIndicator;//ForView:(UIViewController*) view;
+- (void) showLoadIndicator;//ForView:(UIViewController*) view;
+- (void) showLoadIndicatorWithText:(NSString*)indicatorTest;// forView:(UIViewController*) view;
+- (void) hideIndicator;//ForView:(UIViewController*) view;
+- (void) waitForTwoSeconds;
 @end
