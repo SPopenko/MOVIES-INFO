@@ -10,6 +10,7 @@
 #import "DetailedMovieInfo.h"
 #import "ShortMovieInfo.h"
 #import "MBProgressHUD.h"
+#import "MovieInfo.h"
 #import <RestKit/RestKit.h>
 #import <RestKit/Support/JSON/JSONKit/JSONKit.h>
 #import <RestKit/Support/JSON/JSONKit/RKJSONParserJSONKit.h>
@@ -20,6 +21,7 @@
     ShortMovieInfo* shortMovieInfo;
     DetailedMovieInfo* movieInfo;
     MBProgressHUD* actionIndicator;
+    MovieInfo* _movieInfo;
 }
 
 @property (retain, nonatomic) UIWebView*      webView;

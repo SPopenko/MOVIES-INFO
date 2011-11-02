@@ -16,10 +16,12 @@
 #import "MovieShortInfoCell.h"
 #import "ShortMovieInfo.h"
 #import "MovieCache.h"
+#import "MovieInfo.h"
 
-@interface MovieInfoTableView : UITableViewController<RKObjectLoaderDelegate, MBProgressHUDDelegate>{
+@interface MovieInfoTableView : UITableViewController <MBProgressHUDDelegate>{
     NSArray* movieList;
     MBProgressHUD* actionIndicator;
+    MovieInfo* _movieInfo;
 }
 
 - (void) prepareActionIndicator;

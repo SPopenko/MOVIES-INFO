@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F4F816B145FFB7E0055618A /* MovieInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4F816A145FFB7E0055618A /* MovieInfo.m */; };
+		1F4F817014604CE20055618A /* searchFields.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F4F816F14604CE20055618A /* searchFields.plist */; };
 		1F5507E814515536001C38E3 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F5507E714515536001C38E3 /* libxml2.dylib */; };
 		1F55084E14515BF5001C38E3 /* libRestKitNetwork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F55083814515BAE001C38E3 /* libRestKitNetwork.a */; };
 		1F55084F14515BF5001C38E3 /* libRestKitObjectMapping.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F55083A14515BAE001C38E3 /* libRestKitObjectMapping.a */; };
@@ -130,6 +132,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F4F8169145FFB7E0055618A /* MovieInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieInfo.h; sourceTree = "<group>"; };
+		1F4F816A145FFB7E0055618A /* MovieInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieInfo.m; sourceTree = "<group>"; };
+		1F4F816F14604CE20055618A /* searchFields.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = searchFields.plist; sourceTree = "<group>"; };
 		1F5507E714515536001C38E3 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		1F55082314515BAD001C38E3 /* RestKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RestKit.xcodeproj; path = RestKit/RestKit.xcodeproj; sourceTree = "<group>"; };
 		1F5D09FA1456D58E005B77D5 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = ../../MBProgressHUD/MBProgressHUD.h; sourceTree = "<group>"; };
@@ -198,6 +203,45 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F4F8166145FFB120055618A /* Additions */ = {
+			isa = PBXGroup;
+			children = (
+				1FC4A03C145F198900F63225 /* NSDataAdditions.h */,
+				1FC4A03D145F198900F63225 /* NSDataAdditions.m */,
+			);
+			name = Additions;
+			sourceTree = "<group>";
+		};
+		1F4F8167145FFB2F0055618A /* MovieInfo */ = {
+			isa = PBXGroup;
+			children = (
+				CE26E1F8142F559700AE8FE0 /* ShortMovieInfo.h */,
+				CE26E1F9142F559700AE8FE0 /* ShortMovieInfo.m */,
+				1FCBCC491458769000EB3FD1 /* DetailedMovieInfo.h */,
+				1FCBCC4A1458769000EB3FD1 /* DetailedMovieInfo.m */,
+				1F4F8169145FFB7E0055618A /* MovieInfo.h */,
+				1F4F816A145FFB7E0055618A /* MovieInfo.m */,
+			);
+			name = MovieInfo;
+			sourceTree = "<group>";
+		};
+		1F4F8168145FFB440055618A /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				1F8A9755145EA0D10034F7F8 /* MovieCache.h */,
+				1F8A9756145EA0D10034F7F8 /* MovieCache.m */,
+			);
+			name = Cache;
+			sourceTree = "<group>";
+		};
+		1F4F816D14604C910055618A /* Plists */ = {
+			isa = PBXGroup;
+			children = (
+				1F4F816F14604CE20055618A /* searchFields.plist */,
+			);
+			name = Plists;
+			sourceTree = "<group>";
+		};
 		1F55082414515BAD001C38E3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -253,14 +297,9 @@
 		1F5D0A381457E469005B77D5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				1FC4A03C145F198900F63225 /* NSDataAdditions.h */,
-				1FC4A03D145F198900F63225 /* NSDataAdditions.m */,
-				CE26E1F8142F559700AE8FE0 /* ShortMovieInfo.h */,
-				CE26E1F9142F559700AE8FE0 /* ShortMovieInfo.m */,
-				1FCBCC491458769000EB3FD1 /* DetailedMovieInfo.h */,
-				1FCBCC4A1458769000EB3FD1 /* DetailedMovieInfo.m */,
-				1F8A9755145EA0D10034F7F8 /* MovieCache.h */,
-				1F8A9756145EA0D10034F7F8 /* MovieCache.m */,
+				1F4F8166145FFB120055618A /* Additions */,
+				1F4F8167145FFB2F0055618A /* MovieInfo */,
+				1F4F8168145FFB440055618A /* Cache */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -268,6 +307,7 @@
 		1F5D0A391457E58F005B77D5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1F4F816D14604C910055618A /* Plists */,
 				1F5D0A8714580006005B77D5 /* Html */,
 				CE82A8D414327B3900F4A931 /* Images */,
 			);
@@ -337,11 +377,11 @@
 		63626F5A1419414900F3A4E2 /* Movies-Info */ = {
 			isa = PBXGroup;
 			children = (
+				1F5D0A391457E58F005B77D5 /* Resources */,
 				63626F5B1419414A00F3A4E2 /* Supporting Files */,
 				1F5D0A381457E469005B77D5 /* Model */,
 				1F5D0A371457E467005B77D5 /* View */,
 				1F5D0A361457E463005B77D5 /* Controller */,
-				1F5D0A391457E58F005B77D5 /* Resources */,
 			);
 			path = "Movies-Info";
 			sourceTree = "<group>";
@@ -515,6 +555,7 @@
 				1F5D0A891458006F005B77D5 /* infoFilm.html in Resources */,
 				1FCBCD11145B03BA00EB3FD1 /* star_empty.png in Resources */,
 				1FCBCD13145B03C800EB3FD1 /* star_full.png in Resources */,
+				1F4F817014604CE20055618A /* searchFields.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -536,6 +577,7 @@
 				1FCBCD0F145AFA8300EB3FD1 /* FanRating.m in Sources */,
 				1F8A9757145EA0D10034F7F8 /* MovieCache.m in Sources */,
 				1FC4A03E145F198900F63225 /* NSDataAdditions.m in Sources */,
+				1F4F816B145FFB7E0055618A /* MovieInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

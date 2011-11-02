@@ -21,39 +21,40 @@
 
 - (NSMutableString*) fillHtmlPage:(NSMutableString *)htmlPage
 {
-    NSString* imagekey = nil;
     NSDateFormatter* df = [[NSDateFormatter alloc] init];
     [df setDateStyle:NSDateFormatterLongStyle];
     
-    if([self.posters count]>5)
-    {
-        imagekey = ((Poster*) [self.posters objectAtIndex:4]).image.url;
-    }
-    
+    //Adding description
     [htmlPage replaceOccurrencesOfString:[NSString stringWithString:@"[description]"]
                               withString:_description 
                                  options:NSCaseInsensitiveSearch 
                                    range:NSMakeRange(0, htmlPage.length)];
+    //Adding poster
     [htmlPage replaceOccurrencesOfString:[NSString stringWithString:@"[posterUrl]"]
-                              withString:[self htmlStringFromImageAtKey:imagekey]
+                              withString:[self htmlStringFromImageAtKey:self.poster]
                                  options:NSCaseInsensitiveSearch 
                                    range:NSMakeRange(0, htmlPage.length)];
+    //Adding releaseDate
     [htmlPage replaceOccurrencesOfString:[NSString stringWithString:@"[release]"]
                               withString:[df stringFromDate:self.releaseDate]
                                  options:NSCaseInsensitiveSearch 
                                    range:NSMakeRange(0, htmlPage.length)];
+    //Adding movie name
     [htmlPage replaceOccurrencesOfString:[NSString stringWithString:@"[name]"]
                               withString:self.movieName 
                                  options:NSCaseInsensitiveSearch 
                                    range:NSMakeRange(0, htmlPage.length)];
+    //Adding backdrops
     [htmlPage replaceOccurrencesOfString:[NSString stringWithString:@"[backdrops]"]
                               withString:[self backdropsToHtmlString]
                                  options:NSCaseInsensitiveSearch 
                                    range:NSMakeRange(0, htmlPage.length)];
+    //Adding cast
     [htmlPage replaceOccurrencesOfString:[NSString stringWithString:@"[cast]"]
                               withString:[self castToHtmlString]
                                  options:NSCaseInsensitiveSearch 
                                    range:NSMakeRange(0, htmlPage.length)];
+    //Adding fan rating
     [htmlPage replaceOccurrencesOfString:[NSString stringWithString:@"[rating]"]
                               withString:[NSString stringWithFormat:@"%2.1f", [self.fanRating doubleValue]]
                                  options:NSCaseInsensitiveSearch 
@@ -68,7 +69,6 @@
 {
     NSMutableString* imgList = [[[NSMutableString alloc] initWithString:@""] autorelease];
     
-    if (_backdrops.count == 0) [imgList appendString:@"no backdrops found"];
     for (int i =0; i < _backdrops.count; i++)
     {
         Poster* backdrop = [_backdrops objectAtIndex:i];
@@ -77,6 +77,7 @@
             [imgList appendFormat:@"<img class=\"slide\" src=\"%@\">", [self htmlStringFromImageAtKey:backdrop.image.url]];
         }
     }
+    if ([imgList isEqualToString:@""]) [imgList appendString:@"no backdrops found"];
     return [imgList substringFromIndex:0];
 }
 
