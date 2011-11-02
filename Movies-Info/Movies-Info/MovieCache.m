@@ -10,6 +10,8 @@
 
 @implementation MovieCache
 
+static NSMutableDictionary* _imageList;
+
 #define movieWithoutPoster @""
 
 + (void) initImageList

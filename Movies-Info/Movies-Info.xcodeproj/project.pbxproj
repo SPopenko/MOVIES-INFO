@@ -17,6 +17,7 @@
 		1F5D0A031456F187005B77D5 /* checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F5D0A021456F187005B77D5 /* checkmark.png */; };
 		1F5D0A891458006F005B77D5 /* infoFilm.html in Resources */ = {isa = PBXBuildFile; fileRef = 1F5D0A881458006F005B77D5 /* infoFilm.html */; };
 		1F8A9757145EA0D10034F7F8 /* MovieCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8A9756145EA0D10034F7F8 /* MovieCache.m */; };
+		1FBF207D1461584A009350FE /* ViewActionIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FBF207C1461584A009350FE /* ViewActionIndicator.m */; };
 		1FC4A03E145F198900F63225 /* NSDataAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC4A03D145F198900F63225 /* NSDataAdditions.m */; };
 		1FCBCC48145833D300EB3FD1 /* libobjc.A.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FCBCC47145833D300EB3FD1 /* libobjc.A.dylib */; };
 		1FCBCC4B1458769000EB3FD1 /* DetailedMovieInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FCBCC4A1458769000EB3FD1 /* DetailedMovieInfo.m */; };
@@ -138,6 +139,8 @@
 		1F5D0A881458006F005B77D5 /* infoFilm.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = infoFilm.html; sourceTree = "<group>"; };
 		1F8A9755145EA0D10034F7F8 /* MovieCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieCache.h; sourceTree = "<group>"; };
 		1F8A9756145EA0D10034F7F8 /* MovieCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieCache.m; sourceTree = "<group>"; };
+		1FBF207B1461584A009350FE /* ViewActionIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; path = ViewActionIndicator.h; sourceTree = "<group>"; };
+		1FBF207C1461584A009350FE /* ViewActionIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewActionIndicator.m; sourceTree = "<group>"; };
 		1FC4A03C145F198900F63225 /* NSDataAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDataAdditions.h; sourceTree = "<group>"; };
 		1FC4A03D145F198900F63225 /* NSDataAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDataAdditions.m; sourceTree = "<group>"; };
 		1FCBCC47145833D300EB3FD1 /* libobjc.A.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libobjc.A.dylib; path = usr/lib/libobjc.A.dylib; sourceTree = SDKROOT; };
@@ -243,6 +246,7 @@
 		1F5D0A371457E467005B77D5 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1FBF207A1461581C009350FE /* ViewAdditions */,
 				1FCBCD0C145AFA6300EB3FD1 /* FanRating */,
 				1F5D0A3A1457E603005B77D5 /* MovieShortInfo */,
 				1F5D09FD1456D597005B77D5 /* MBProgressHUD */,
@@ -290,6 +294,15 @@
 				1F5D0A881458006F005B77D5 /* infoFilm.html */,
 			);
 			name = Html;
+			sourceTree = "<group>";
+		};
+		1FBF207A1461581C009350FE /* ViewAdditions */ = {
+			isa = PBXGroup;
+			children = (
+				1FBF207B1461584A009350FE /* ViewActionIndicator.h */,
+				1FBF207C1461584A009350FE /* ViewActionIndicator.m */,
+			);
+			name = ViewAdditions;
 			sourceTree = "<group>";
 		};
 		1FCBCD0C145AFA6300EB3FD1 /* FanRating */ = {
@@ -536,6 +549,7 @@
 				1FCBCD0F145AFA8300EB3FD1 /* FanRating.m in Sources */,
 				1F8A9757145EA0D10034F7F8 /* MovieCache.m in Sources */,
 				1FC4A03E145F198900F63225 /* NSDataAdditions.m in Sources */,
+				1FBF207D1461584A009350FE /* ViewActionIndicator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

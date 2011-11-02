@@ -9,8 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "ShortMovieInfo.h"
 
-static NSMutableDictionary* _imageList;
-
 @interface MovieCache : NSObject
 
 + (void) clearCache;
