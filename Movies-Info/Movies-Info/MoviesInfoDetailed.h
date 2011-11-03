@@ -26,4 +26,6 @@
 @property (retain, nonatomic) ShortMovieInfo* shortMovieInfo;
 @property (retain, nonatomic) DetailedMovieInfo* movieInfo;
 
+- (IBAction) playTrailer:(UIBarButtonItem*)sender;
+
 @end
