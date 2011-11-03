@@ -18,9 +18,11 @@
 #import "MovieShortInfoCell.h"
 #import "ShortMovieInfo.h"
 #import "MovieCache.h"
+#import "MovieInfo.h"
 
-@interface MovieInfoTableView : UITableViewController<RKObjectLoaderDelegate>{
+@interface MovieInfoTableView : UITableViewController{
     NSArray* movieList;
+    MovieInfo* _movieInfo;
 }
 
 @end

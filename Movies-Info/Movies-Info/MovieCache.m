@@ -14,12 +14,14 @@ static NSMutableDictionary* _imageList;
 
 #define movieWithoutPoster @""
 
+static NSMutableDictionary* _imageList;
+
 + (void) initImageList
 {
     if (_imageList == nil)
     {
         _imageList = [[NSMutableDictionary alloc] init];
-        [_imageList setObject:[UIImage imageNamed:@"movie"] forKey:movieWithoutPoster];
+        [_imageList setObject:[UIImage imageNamed:@"movie.png"] forKey:movieWithoutPoster];
     }
 }
 
@@ -59,11 +61,8 @@ static NSMutableDictionary* _imageList;
     for (NSUInteger i = 0; i < movieList.count; i++) 
     {
         ShortMovieInfo* movieInfo = [movieList objectAtIndex:i];
-        if ([movieInfo.posters count] > 5)
-        {
-            //load poster to cache
-            [self addImageToCacheFromUrl:((Poster*)[movieInfo.posters objectAtIndex:5]).image.url];
-        }
+        //load poster to cache
+        [self addImageToCacheFromUrl:movieInfo.poster];
     }
 }
 
