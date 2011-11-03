@@ -79,4 +79,10 @@ MBProgressHUD* actionIndicator;
     sleep(2);
 }
 
+- (void) dealloc
+{
+    [actionIndicator dealloc];
+    [super dealloc];
+}
+
 @end

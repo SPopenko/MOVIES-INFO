@@ -67,4 +67,13 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+
+- (void) dealloc
+{
+    [webView    release];
+    [_movieInfo release];
+    [movieInfo  release];
+    [shortMovieInfo release];
+    [super dealloc];
+}
 @end

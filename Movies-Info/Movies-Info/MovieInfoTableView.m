@@ -138,5 +138,11 @@
      
 }
 
+- (void) dealloc
+{
+    [movieList  release];
+    [_movieInfo release];
+    [super dealloc];
+}
 
 @end
