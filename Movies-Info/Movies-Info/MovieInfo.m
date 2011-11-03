@@ -159,6 +159,7 @@
      @"released", @"releaseDate",
      @"rating",   @"fanRating",
      @"overview", @"description",
+     @"trailer",  @"trailer",
      nil];
     
     //Delete after creating normal dynamic mapping
@@ -184,11 +185,17 @@
 
 - (void) initRestKit
 {
-    //Registering base mapping Url
-    [RKObjectManager objectManagerWithBaseURL:[NSString stringWithFormat:@"%@", TopTenMovieBaseUrl]];
+    static BOOL isInitialized = NO;
+    if (!isInitialized)
+    {
+        //Registering base mapping Url
+        [RKObjectManager objectManagerWithBaseURL:[NSString stringWithFormat:@"%@", TopTenMovieBaseUrl]];
     
-    //Registering parser for respons MIMEType
-    [[RKParserRegistry sharedRegistry] setParserClass:[RKJSONParserJSONKit class] forMIMEType:@"text/json"];    
+        //Registering parser for respons MIMEType
+        [[RKParserRegistry sharedRegistry] setParserClass:[RKJSONParserJSONKit class] forMIMEType:@"text/json"];    
+        
+        isInitialized = YES;
+    }
 }
 
 -(void)dealloc
