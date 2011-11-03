@@ -15,7 +15,7 @@
 #import <RestKit/Support/JSON/JSONKit/JSONKit.h>
 #import <RestKit/Support/JSON/JSONKit/RKJSONParserJSONKit.h>
 
-@interface MoviesInfoDetailed : UIViewController<RKObjectLoaderDelegate, MBProgressHUDDelegate>
+@interface MoviesInfoDetailed : UIViewController<MBProgressHUDDelegate>
 {
     IBOutlet UIWebView *webView;
     ShortMovieInfo* shortMovieInfo;

@@ -59,7 +59,7 @@
     _release.text  = [date stringFromDate:input.releaseDate];
     [_fanRating setRating:[NSNumber numberWithDouble:[input.fanRating doubleValue]/2 ]];
     
-    //_poster.image = [MovieCache getImageFromCache:input.poster];
+    _poster.image = [MovieCache getImageFromCache:input.poster];
 }
 
 - (ShortMovieInfo*) getShortMovieInfo

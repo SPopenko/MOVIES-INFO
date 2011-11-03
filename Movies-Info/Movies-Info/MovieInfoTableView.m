@@ -47,7 +47,8 @@
                                       [NSString stringWithString:@"rating"], @"orderBy",
                                       [NSString stringWithString:@"desc"],   @"order",
                                       [NSString stringWithString:@"16"],     @"perPage",
-                                      [NSString stringWithString:@"1"],      @"page",
+                                      [NSString stringWithString:@"10"],     @"page",
+                                      [NSString stringWithString:@"10"],     @"minVotes",
                                       nil];
     
     

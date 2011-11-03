@@ -10,62 +10,52 @@
 
 @implementation MovieInfo
 
-#define TMDbApiKey           @"ed2f89aa774281fcada8f17b73c8fa05"
-#define TopTenMovieBaseUrl   @"http://api.themoviedb.org/2.1/"
-#define MovieInfoUrl         @"Movie.getInfo/en-US/json/"
-#define TopTenMoviesRequest  @"Movie.browse/en-US/json/"
+#define TMDbApiKey          @"ed2f89aa774281fcada8f17b73c8fa05"
+#define TopTenMovieBaseUrl  @"http://api.themoviedb.org/2.1/"
+#define MovieInfoRequest    @"Movie.getInfo/en-US/json/"
+#define SearchMoviesRequest @"Movie.browse/en-US/json/"
 
 
 
 - (void) getShortMovieInfoWithParameters:(NSDictionary *)parameters doAfterLoadFinished:(finishAction)doBlock
 {
-    _movieList = [[NSArray alloc] init];
-    
     NSMutableDictionary* requestParameters = [self prepareParametersFromDictionary:parameters];
     
     [self initRestKit];
     _type = @"movieList";
-    _finishAction = doBlock;
+    _finishAction = [doBlock copy];
    
     //Creating request string
     NSString* requestString = [[NSString alloc] initWithFormat:@"%@", [self requestStringFromMutableDictionary:requestParameters]];
-    
     [[RKObjectManager sharedManager] loadObjectsAtResourcePath:requestString objectMapping:[self shortMovieInfoMapping] delegate:self];
-    //return _movieList;
 }
 
 - (void) getDetailedMovieInfoByMovieID:(NSString *)movieID doAfterLoadFinished:(finishAction)doBlock
 {
     [self initRestKit];
     _type = @"movieInfo";
-    _finishAction = doBlock;
-    NSString* requestString = [[NSString alloc] initWithFormat:@"%@/%@/%@", MovieInfoUrl,TMDbApiKey,movieID];
+    _finishAction = [doBlock copy];
+    NSString* requestString = [[NSString alloc] initWithFormat:@"%@/%@/%@", MovieInfoRequest,TMDbApiKey,movieID];
     
     [[RKObjectManager sharedManager] loadObjectsAtResourcePath:requestString objectMapping:[self detailedMovieInfoMapping] delegate:self];
 }
 
 #pragma mark - RKObjectLoaderDelegate implementation
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
-    NSLog(@"everything looks good");
     id obj = nil;
     if ([_type isEqualToString:@"movieList"])
     {
         _movieList = [objects retain];
         obj = _movieList;
-        for (NSUInteger i = 0; i < [_movieList count]; i++)
-        {
-            NSLog(@"everything looks good");
-            NSLog(@"%@", ((ShortMovieInfo*)[_movieList objectAtIndex:i]).movieName );
-        }
-        NSLog(@"everything looks good");
     }
     else if([_type isEqualToString:@"movieInfo"])
     {
-        
+        obj = [objects objectAtIndex:0];
     }
     else return;
     
     _finishAction(obj);
+    
 }    
 - (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error {
     
@@ -76,31 +66,49 @@
 -(NSMutableDictionary*) prepareParametersFromDictionary:(NSDictionary *)parameters
 {
     NSMutableDictionary* result = [[NSMutableDictionary alloc]initWithDictionary:parameters copyItems:YES];
-    NSMutableDictionary* searchFields = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
-                                         [NSString stringWithString:@"order_by"], @"orderBy",
-                                         [NSString stringWithString:@"order"],    @"order",
-                                         [NSString stringWithString:@"per_page"], @"perPage",
-                                         [NSString stringWithString:@"page"],     @"page",
-                                         nil];
-    for (id key in searchFields) {
-        NSLog(@"key: %@, value: %@", key, [searchFields objectForKey:key]);
+
+    NSMutableDictionary* defaultValues = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
+                                          [NSString stringWithString:@"rating"], @"orderBy",
+                                          [NSString stringWithString:@"desc"],   @"order",
+                                          [NSString stringWithString:@"16"],     @"perPage",
+                                          [NSString stringWithString:@"1"],      @"page",
+                                          [NSString stringWithString:@"10"],     @"minVotes",
+                                          nil];
+    for (id key in [result allKeys])
+    {
+        id obj = [result objectForKey: key];
+        id defaultValue = [defaultValues objectForKey: key];
+        if ( obj == nil && defaultValue != nil)
+        {
+            [result setValue:defaultValue forKey:key];
+        }
     }
-            
     return result;
 }
 
 - (NSString*) requestStringFromMutableDictionary:(NSMutableDictionary *)parameters
 {
+    searchFields  = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
+                                            [NSString stringWithString:@"order_by"],  @"orderBy",
+                                            [NSString stringWithString:@"order"],     @"order",
+                                            [NSString stringWithString:@"per_page"],  @"perPage",
+                                            [NSString stringWithString:@"page"],      @"page",
+                                            [NSString stringWithString:@"min_votes"], @"minVotes",
+                                             nil];
+    NSMutableString* resultString = [[NSMutableString alloc] initWithString:@""];
+    for (id key in [parameters allKeys])
+    {
+        if (![resultString isEqualToString:@""]) [resultString appendString:@"&"];
+        [resultString appendFormat:@"%@=%@", [searchFields objectForKey:key], [parameters objectForKey:key]];
+    }
     
-    return [NSString stringWithFormat:@"%@%@%@", @"Movie.browse/en-US/json/",TMDbApiKey, @"?order_by=rating&order=desc&min_votes=5&page=16&per_page=10"];
+    return [NSString stringWithFormat:@"%@%@?%@", SearchMoviesRequest,TMDbApiKey, resultString];
 }
 
 #pragma mark - Mapping Functions
 - (RKObjectMapping*) shortMovieInfoMapping
 {
     RKObjectMapping* shortMovieInfoMapping = [RKObjectMapping mappingForClass:[ShortMovieInfo class]];
-    
-    [shortMovieInfoMapping mapKeyOfNestedDictionaryToAttribute:@"image"];
     
     //Base property mappings
     //Prepring Date formatter for releseDate and Time
@@ -118,9 +126,6 @@
     
     //Delete after creating normal dynamic mapping
     //Long long very long and strange mapping
-//    RKObjectMapping* imageMapping = [RKObjectMapping mappingForClass:[Image class] ];
-//    [imageMapping mapAttributes:@"url", nil];
-//    
     RKObjectMapping* imageMapping = [RKObjectMapping mappingForClass:[Image class] ];
     [imageMapping mapAttributes:@"url", @"type", @"size", nil];
     
@@ -134,7 +139,7 @@
     
     [tmdbDateFormatter autorelease]; 
     
-    [shortMovieInfoMapping autorelease];
+    //[shortMovieInfoMapping autorelease];
     return shortMovieInfoMapping;
 }
 
@@ -184,5 +189,14 @@
     
     //Registering parser for respons MIMEType
     [[RKParserRegistry sharedRegistry] setParserClass:[RKJSONParserJSONKit class] forMIMEType:@"text/json"];    
+}
+
+-(void)dealloc
+{
+    [_finishAction release];
+    [searchFields release];
+    [_type release];
+    [_movieList release];
+    [super dealloc];
 }
 @end

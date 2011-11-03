@@ -23,6 +23,7 @@ typedef void(^finishAction)(id obj);
     NSArray*  _movieList;
     BOOL      _goNext;
     NSString* _type;
+    NSDictionary* searchFields;
     finishAction _finishAction;
 }
 
