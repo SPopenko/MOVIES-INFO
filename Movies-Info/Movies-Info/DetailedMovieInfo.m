@@ -14,10 +14,10 @@
 
 @implementation DetailedMovieInfo
 
-@synthesize cast = _cast;
-@synthesize backdrops = _backdrops;
+@synthesize cast        = _cast;
+@synthesize backdrops   = _backdrops;
 @synthesize description = _description;
-
+@synthesize trailer     = _trailer;
 
 - (NSMutableString*) fillHtmlPage:(NSMutableString *)htmlPage
 {

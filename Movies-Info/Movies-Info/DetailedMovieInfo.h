@@ -17,9 +17,10 @@
 
 @interface DetailedMovieInfo : ShortMovieInfo
 
-@property (nonatomic, retain) NSArray* cast;
-@property (nonatomic, retain) NSArray* backdrops;
+@property (nonatomic, retain) NSArray*  cast;
+@property (nonatomic, retain) NSArray*  backdrops;
 @property (nonatomic, retain) NSString* description;
+@property (nonatomic, retain) NSString* trailer;
 
 - (NSMutableString*) fillHtmlPage:(NSMutableString*)htmlPage;
 
