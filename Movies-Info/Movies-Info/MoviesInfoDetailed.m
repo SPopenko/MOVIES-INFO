@@ -67,6 +67,10 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (IBAction)playTrailer:(UIBarButtonItem*)sender
+{
+    NSLog(@"%@", movieInfo.trailer);
+}
 
 - (void) dealloc
 {
