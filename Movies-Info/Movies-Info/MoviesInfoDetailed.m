@@ -69,7 +69,7 @@
 
 - (IBAction)playTrailer:(UIBarButtonItem*)sender
 {
-    NSLog(@"%@", movieInfo.trailer);
+    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:movieInfo.trailer]]];
 }
 
 - (void) dealloc
