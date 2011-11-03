@@ -59,14 +59,7 @@
     _release.text  = [date stringFromDate:input.releaseDate];
     [_fanRating setRating:[NSNumber numberWithDouble:[input.fanRating doubleValue]/2 ]];
     
-    Poster* poster = (Poster*)[input.posters objectAtIndex:5];
-
-    //Loading image from internet :)
-    NSData* imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: poster.image.url]];
-    _poster.image = [UIImage imageWithData: imageData];
-    
-    [imageData release];
-
+    _poster.image = [MovieCache getImageFromCache:input.poster];
 }
 
 - (ShortMovieInfo*) getShortMovieInfo

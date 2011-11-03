@@ -9,20 +9,23 @@
 #import <UIKit/UIKit.h>
 #import "DetailedMovieInfo.h"
 #import "ShortMovieInfo.h"
-//#import "MovieInfoTableView.h"
-#import <RestKit/RestKit.h>
-#import <RestKit/Support/JSON/JSONKit/JSONKit.h>
-#import <RestKit/Support/JSON/JSONKit/RKJSONParserJSONKit.h>
+#import "MBProgressHUD.h"
 
-@interface MoviesInfoDetailed : UIViewController<RKObjectLoaderDelegate>
+#import "ViewActionIndicator.h"
+
+#import "MovieInfo.h"
+@interface MoviesInfoDetailed : UIViewController
 {
     IBOutlet UIWebView *webView;
     ShortMovieInfo* shortMovieInfo;
     DetailedMovieInfo* movieInfo;
+    MovieInfo* _movieInfo;
 }
 
 @property (retain, nonatomic) UIWebView*      webView;
 @property (retain, nonatomic) ShortMovieInfo* shortMovieInfo;
 @property (retain, nonatomic) DetailedMovieInfo* movieInfo;
+
+- (IBAction) playTrailer:(UIBarButtonItem*)sender;
 
 @end
