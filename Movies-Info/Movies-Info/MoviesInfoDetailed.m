@@ -13,6 +13,7 @@
 @synthesize webView;
 @synthesize shortMovieInfo;
 @synthesize movieInfo;
+@synthesize toolbar = _toolbar;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -37,6 +38,7 @@
     [super viewDidLoad];
     
     [self showLoadIndicatorWithText:@"Loading detailed movie info"];
+    _toolbar.hidden = YES;
     
     _movieInfo = [[MovieInfo alloc] init];
     
@@ -49,7 +51,9 @@
         htmlData = [movieInfo fillHtmlPage:htmlData];
         
         [webView loadHTMLString:htmlData baseURL:nil];
-        
+        if (movieInfo.trailer) {
+            _toolbar.hidden = NO;
+        }
         [self showLoadFinishIndicator];
     }];
 }
@@ -64,12 +68,23 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
+    
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 - (IBAction)playTrailer:(UIBarButtonItem*)sender
 {
-    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:movieInfo.trailer]]];
+    NSString* youTube = [YouTubeVideo getMoviePathFromLink:movieInfo.trailer];
+    NSLog(@"%@", youTube);
+    
+    
+    NSURL* movieURL = [NSURL URLWithString:youTube];
+    //Creating MoviePlayer to play youTube Variable
+    MPMoviePlayerViewController* playerController = [[MPMoviePlayerViewController alloc] initWithContentURL:movieURL]; 
+    if (playerController) 
+    {
+        [self presentMoviePlayerViewControllerAnimated:playerController];
+    }    
 }
 
 - (void) dealloc
