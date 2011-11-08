@@ -27,7 +27,7 @@
 @property (retain, nonatomic) UIWebView*      webView;
 @property (retain, nonatomic) ShortMovieInfo* shortMovieInfo;
 @property (retain, nonatomic) DetailedMovieInfo* movieInfo;
-@property (retain, nonatomic) IBOutlet UIToolbar* toolbar;
+@property (retain, nonatomic) IBOutlet UIBarButtonItem* playTrailerButton;
 
 - (IBAction) playTrailer:(UIBarButtonItem*)sender;
 

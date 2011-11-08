@@ -13,7 +13,7 @@
 @synthesize webView;
 @synthesize shortMovieInfo;
 @synthesize movieInfo;
-@synthesize toolbar = _toolbar;
+@synthesize playTrailerButton  = _playTrailerButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -40,6 +40,8 @@
     [self showLoadIndicatorWithText:@"Loading detailed movie info"];
     _movieInfo = [[MovieInfo alloc] init];
     
+    _playTrailerButton.enabled = NO;
+
     [_movieInfo getDetailedMovieInfoByMovieID:shortMovieInfo.movieId doAfterLoadFinished:^(id obj)
     {
         movieInfo = [obj retain];
@@ -49,7 +51,10 @@
         htmlData = [movieInfo fillHtmlPage:htmlData];
         
         [webView loadHTMLString:htmlData baseURL:nil];
-
+        
+        if (movieInfo.trailer) {
+            _playTrailerButton.enabled = YES;
+        }
         [self showLoadFinishIndicator];
     }];
 }
@@ -70,18 +75,18 @@
 
 - (IBAction)playTrailer:(UIBarButtonItem*)sender
 {
-    NSString* youTube = [YouTubeVideo getMoviePathFromLink:movieInfo.trailer];
-    NSLog(@"%@", youTube);
     
-    
-    NSURL* movieURL = [NSURL URLWithString:youTube];
-    //Creating MoviePlayer to play youTube Variable
-    MPMoviePlayerViewController* playerController = [[MPMoviePlayerViewController alloc] initWithContentURL:movieURL]; 
-    if (playerController) 
+    if (movieInfo.trailer)
     {
-        [self presentMoviePlayerViewControllerAnimated:playerController];
-
-    }    
+        NSURL* movieURL = [NSURL URLWithString:movieInfo.trailer];
+        MPMoviePlayerViewController* playerController = [[MPMoviePlayerViewController alloc] initWithContentURL:movieURL]; 
+        if (playerController) 
+        {
+            [self presentMoviePlayerViewControllerAnimated:playerController];
+        
+        }
+        [movieURL release];
+    }
 }
 
 - (void) dealloc
