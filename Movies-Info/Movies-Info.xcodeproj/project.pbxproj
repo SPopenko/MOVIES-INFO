@@ -18,6 +18,8 @@
 		1F5D0A891458006F005B77D5 /* infoFilm.html in Resources */ = {isa = PBXBuildFile; fileRef = 1F5D0A881458006F005B77D5 /* infoFilm.html */; };
 		1F8791D914628EC200C7E17C /* MovieInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8791D814628EC200C7E17C /* MovieInfo.m */; };
 		1F8A9757145EA0D10034F7F8 /* MovieCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8A9756145EA0D10034F7F8 /* MovieCache.m */; };
+		1FB6037D1467CE3500B3AB59 /* YouTubeVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB6037C1467CE3500B3AB59 /* YouTubeVideo.m */; };
+		1FB603831467DA1C00B3AB59 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FB603821467DA1C00B3AB59 /* MediaPlayer.framework */; };
 		1FBF207D1461584A009350FE /* ViewActionIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FBF207C1461584A009350FE /* ViewActionIndicator.m */; };
 		1FC4A03E145F198900F63225 /* NSDataAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC4A03D145F198900F63225 /* NSDataAdditions.m */; };
 		1FCBCC48145833D300EB3FD1 /* libobjc.A.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FCBCC47145833D300EB3FD1 /* libobjc.A.dylib */; };
@@ -142,6 +144,9 @@
 		1F8791D814628EC200C7E17C /* MovieInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieInfo.m; sourceTree = "<group>"; };
 		1F8A9755145EA0D10034F7F8 /* MovieCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieCache.h; sourceTree = "<group>"; };
 		1F8A9756145EA0D10034F7F8 /* MovieCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieCache.m; sourceTree = "<group>"; };
+		1FB6037B1467CE3500B3AB59 /* YouTubeVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YouTubeVideo.h; sourceTree = "<group>"; };
+		1FB6037C1467CE3500B3AB59 /* YouTubeVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YouTubeVideo.m; sourceTree = "<group>"; };
+		1FB603821467DA1C00B3AB59 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		1FBF207B1461584A009350FE /* ViewActionIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewActionIndicator.h; sourceTree = "<group>"; };
 		1FBF207C1461584A009350FE /* ViewActionIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewActionIndicator.m; sourceTree = "<group>"; };
 		1FC4A03C145F198900F63225 /* NSDataAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDataAdditions.h; sourceTree = "<group>"; };
@@ -192,6 +197,7 @@
 				1F55085014515BF5001C38E3 /* libRestKitSupport.a in Frameworks */,
 				1F55085114515BF5001C38E3 /* libRestKitXMLParserLibxml.a in Frameworks */,
 				1F5507E814515536001C38E3 /* libxml2.dylib in Frameworks */,
+				1FB603831467DA1C00B3AB59 /* MediaPlayer.framework in Frameworks */,
 				1FCC160F1450086100D091E4 /* CFNetwork.framework in Frameworks */,
 				1FCC160C1450076D00D091E4 /* MobileCoreServices.framework in Frameworks */,
 				1FCC160D1450076D00D091E4 /* SystemConfiguration.framework in Frameworks */,
@@ -260,6 +266,7 @@
 		1F5D0A381457E469005B77D5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1FB6037A1467CE0800B3AB59 /* YouTube */,
 				1F8791F0146291B300C7E17C /* MovieInfo */,
 				1F8791F1146291C400C7E17C /* NSDataAdditions */,
 				1F8791F2146291DD00C7E17C /* MovieCache */,
@@ -325,6 +332,15 @@
 			name = MovieCache;
 			sourceTree = "<group>";
 		};
+		1FB6037A1467CE0800B3AB59 /* YouTube */ = {
+			isa = PBXGroup;
+			children = (
+				1FB6037B1467CE3500B3AB59 /* YouTubeVideo.h */,
+				1FB6037C1467CE3500B3AB59 /* YouTubeVideo.m */,
+			);
+			name = YouTube;
+			sourceTree = "<group>";
+		};
 		1FBF207A1461581C009350FE /* ViewAdditions */ = {
 			isa = PBXGroup;
 			children = (
@@ -366,6 +382,7 @@
 			children = (
 				1FCBCC47145833D300EB3FD1 /* libobjc.A.dylib */,
 				1F5507E714515536001C38E3 /* libxml2.dylib */,
+				1FB603821467DA1C00B3AB59 /* MediaPlayer.framework */,
 				1FCC160E1450086100D091E4 /* CFNetwork.framework */,
 				1FCC160A1450076D00D091E4 /* MobileCoreServices.framework */,
 				1FCC160B1450076D00D091E4 /* SystemConfiguration.framework */,
@@ -580,6 +597,7 @@
 				1FC4A03E145F198900F63225 /* NSDataAdditions.m in Sources */,
 				1FBF207D1461584A009350FE /* ViewActionIndicator.m in Sources */,
 				1F8791D914628EC200C7E17C /* MovieInfo.m in Sources */,
+				1FB6037D1467CE3500B3AB59 /* YouTubeVideo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -655,7 +673,10 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Movies-Info/Movies-Info-Prefix.pch";
-				HEADER_SEARCH_PATHS = "$(SOURCE_ROOT)/RestKit/Build/";
+				HEADER_SEARCH_PATHS = (
+					"$(SOURCE_ROOT)/GData/build",
+					"$(SOURCE_ROOT)/RestKit/Build/",
+				);
 				INFOPLIST_FILE = "Movies-Info/Movies-Info-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_LDFLAGS = "-ObjC";
@@ -670,7 +691,10 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Movies-Info/Movies-Info-Prefix.pch";
-				HEADER_SEARCH_PATHS = "$(SOURCE_ROOT)/RestKit/Build/";
+				HEADER_SEARCH_PATHS = (
+					"$(SOURCE_ROOT)/GData/build",
+					"$(SOURCE_ROOT)/RestKit/Build/",
+				);
 				INFOPLIST_FILE = "Movies-Info/Movies-Info-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_LDFLAGS = "-ObjC";

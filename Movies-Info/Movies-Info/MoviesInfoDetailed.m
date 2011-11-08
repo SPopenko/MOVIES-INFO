@@ -13,6 +13,7 @@
 @synthesize webView;
 @synthesize shortMovieInfo;
 @synthesize movieInfo;
+@synthesize playTrailerButton  = _playTrailerButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -37,9 +38,10 @@
     [super viewDidLoad];
     
     [self showLoadIndicatorWithText:@"Loading detailed movie info"];
-    
     _movieInfo = [[MovieInfo alloc] init];
     
+    _playTrailerButton.enabled = NO;
+
     [_movieInfo getDetailedMovieInfoByMovieID:shortMovieInfo.movieId doAfterLoadFinished:^(id obj)
     {
         movieInfo = [obj retain];
@@ -50,6 +52,9 @@
         
         [webView loadHTMLString:htmlData baseURL:nil];
         
+        if (movieInfo.trailer) {
+            _playTrailerButton.enabled = YES;
+        }
         [self showLoadFinishIndicator];
     }];
 }
@@ -64,12 +69,24 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
+    
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 - (IBAction)playTrailer:(UIBarButtonItem*)sender
 {
-    NSLog(@"%@", movieInfo.trailer);
+    
+    if (movieInfo.trailer)
+    {
+        NSURL* movieURL = [NSURL URLWithString:movieInfo.trailer];
+        MPMoviePlayerViewController* playerController = [[MPMoviePlayerViewController alloc] initWithContentURL:movieURL]; 
+        if (playerController) 
+        {
+            [self presentMoviePlayerViewControllerAnimated:playerController];
+        
+        }
+        [movieURL release];
+    }
 }
 
 - (void) dealloc
