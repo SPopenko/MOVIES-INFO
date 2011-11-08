@@ -673,7 +673,10 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Movies-Info/Movies-Info-Prefix.pch";
-				HEADER_SEARCH_PATHS = "$(SOURCE_ROOT)/RestKit/Build/";
+				HEADER_SEARCH_PATHS = (
+					"$(SOURCE_ROOT)/GData/build",
+					"$(SOURCE_ROOT)/RestKit/Build/",
+				);
 				INFOPLIST_FILE = "Movies-Info/Movies-Info-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_LDFLAGS = "-ObjC";
@@ -688,7 +691,10 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Movies-Info/Movies-Info-Prefix.pch";
-				HEADER_SEARCH_PATHS = "$(SOURCE_ROOT)/RestKit/Build/";
+				HEADER_SEARCH_PATHS = (
+					"$(SOURCE_ROOT)/GData/build",
+					"$(SOURCE_ROOT)/RestKit/Build/",
+				);
 				INFOPLIST_FILE = "Movies-Info/Movies-Info-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_LDFLAGS = "-ObjC";

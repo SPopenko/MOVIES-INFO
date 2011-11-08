@@ -38,8 +38,6 @@
     [super viewDidLoad];
     
     [self showLoadIndicatorWithText:@"Loading detailed movie info"];
-    _toolbar.hidden = YES;
-    
     _movieInfo = [[MovieInfo alloc] init];
     
     [_movieInfo getDetailedMovieInfoByMovieID:shortMovieInfo.movieId doAfterLoadFinished:^(id obj)
@@ -51,9 +49,7 @@
         htmlData = [movieInfo fillHtmlPage:htmlData];
         
         [webView loadHTMLString:htmlData baseURL:nil];
-        if (movieInfo.trailer) {
-            _toolbar.hidden = NO;
-        }
+
         [self showLoadFinishIndicator];
     }];
 }
@@ -84,6 +80,7 @@
     if (playerController) 
     {
         [self presentMoviePlayerViewControllerAnimated:playerController];
+
     }    
 }
 
