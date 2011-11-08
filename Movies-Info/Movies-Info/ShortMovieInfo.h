@@ -31,8 +31,9 @@
 @property (nonatomic, retain) NSString *imagePath;
 @property (nonatomic, retain) NSString *movieName;
 @property (nonatomic, retain) NSNumber *fanRating;
-@property (nonatomic, retain) NSNumber *movieId;
-@property (nonatomic, retain) NSArray *posters;
+@property (nonatomic, retain) NSString *movieId;
+@property (nonatomic, retain) NSArray  *posters;
+@property (nonatomic, retain, getter = getPoster) NSString *poster;
 
 
 @end

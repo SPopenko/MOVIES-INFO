@@ -6,23 +6,29 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
+#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <MediaPlayer/MediaPlayer.h>
 #import "DetailedMovieInfo.h"
 #import "ShortMovieInfo.h"
-//#import "MovieInfoTableView.h"
-#import <RestKit/RestKit.h>
-#import <RestKit/Support/JSON/JSONKit/JSONKit.h>
-#import <RestKit/Support/JSON/JSONKit/RKJSONParserJSONKit.h>
+#import "MBProgressHUD.h"
+#import "ViewActionIndicator.h"
+#import "MovieInfo.h"
+#import "YouTubeVideo.h"
 
-@interface MoviesInfoDetailed : UIViewController<RKObjectLoaderDelegate>
+@interface MoviesInfoDetailed : UIViewController
 {
     IBOutlet UIWebView *webView;
     ShortMovieInfo* shortMovieInfo;
     DetailedMovieInfo* movieInfo;
+    MovieInfo* _movieInfo;
 }
 
 @property (retain, nonatomic) UIWebView*      webView;
 @property (retain, nonatomic) ShortMovieInfo* shortMovieInfo;
 @property (retain, nonatomic) DetailedMovieInfo* movieInfo;
+@property (retain, nonatomic) IBOutlet UIBarButtonItem* playTrailerButton;
+
+- (IBAction) playTrailer:(UIBarButtonItem*)sender;
 
 @end
