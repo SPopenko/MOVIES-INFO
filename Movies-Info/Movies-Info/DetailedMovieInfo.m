@@ -19,6 +19,16 @@
 @synthesize description = _description;
 @synthesize trailer     = _trailer;
 
+- (NSString*) getTrailer
+{
+    return _trailer;
+}
+
+- (void) setTrailer:(NSString *)trailerLink
+{
+    _trailer = [[YouTubeVideo getMoviePathFromLink:trailerLink] retain];
+}
+
 - (NSMutableString*) fillHtmlPage:(NSMutableString *)htmlPage
 {
     NSDateFormatter* df = [[NSDateFormatter alloc] init];
@@ -109,6 +119,7 @@
     [_cast release];
     [_backdrops release];
     [_description release];
+    [_trailer release];
     
     [super dealloc];
 }
