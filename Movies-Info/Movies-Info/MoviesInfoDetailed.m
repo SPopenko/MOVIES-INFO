@@ -69,7 +69,6 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
-    
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
@@ -83,9 +82,11 @@
         if (playerController) 
         {
             [self presentMoviePlayerViewControllerAnimated:playerController];
-        
+            [playerController release];
+            playerController = nil;
         }
         [movieURL release];
+        movieURL = nil;
     }
 }
 
@@ -95,6 +96,8 @@
     [_movieInfo release];
     [movieInfo  release];
     [shortMovieInfo release];
+    [_playTrailerButton release];
+    
     [super dealloc];
 }
 @end

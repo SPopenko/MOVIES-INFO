@@ -7,8 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-//#import "GData/GData.h"
-//#import "GData/GDataYouTube.h"
 
 @interface YouTubeVideo : NSObject
 
