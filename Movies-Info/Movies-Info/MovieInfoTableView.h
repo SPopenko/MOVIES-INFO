@@ -11,22 +11,18 @@
 #import <RestKit/RestKit.h>
 #import <RestKit/Support/JSON/JSONKit/JSONKit.h>
 #import <RestKit/Support/JSON/JSONKit/RKJSONParserJSONKit.h>
-#import "MBProgressHUD.h"
+
+#import "ViewActionIndicator.h"
+
 #import "MoviesInfoDetailed.h"
 #import "MovieShortInfoCell.h"
 #import "ShortMovieInfo.h"
+#import "MovieCache.h"
+#import "MovieInfo.h"
 
-@interface MovieInfoTableView : UITableViewController<RKObjectLoaderDelegate, MBProgressHUDDelegate>{
+@interface MovieInfoTableView : UITableViewController{
     NSArray* movieList;
-    MBProgressHUD* actionIndicator;
+    MovieInfo* _movieInfo;
 }
-
-- (void) prepareActionIndicator;
-- (void) showLoadFinishIndicator;
-- (void) showLoadIndicator;
-- (void) showLoadIndicatorWithText:(NSString*)indicatorTest;
-- (void) hideIndicator;
-- (void)waitForTwoSeconds;
-
 
 @end

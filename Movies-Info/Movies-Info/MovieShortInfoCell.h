@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ShortMovieInfo.h"
 #import "FanRating.h"
+#import "MovieCache.h"
 
 @interface MovieShortInfoCell : UITableViewCell {
     IBOutlet MovieShortInfoCell *movieShortInfoCell;
