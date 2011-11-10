@@ -23,6 +23,7 @@
 		1F7351BC146BCC0000D52947 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7351BB146BCC0000D52947 /* main.m */; };
 		1F735288146BD3EE00D52947 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F735287146BD3EE00D52947 /* GHUnitIOS.framework */; };
 		1F80CE8E146C03B800C193F2 /* OCMock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F80CE8D146C03B800C193F2 /* OCMock.framework */; };
+		1F80CE90146C043300C193F2 /* OCMock.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1F80CE8D146C03B800C193F2 /* OCMock.framework */; };
 		1F8791D914628EC200C7E17C /* MovieInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8791D814628EC200C7E17C /* MovieInfo.m */; };
 		1F8A9757145EA0D10034F7F8 /* MovieCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8A9756145EA0D10034F7F8 /* MovieCache.m */; };
 		1FB6037D1467CE3500B3AB59 /* YouTubeVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB6037C1467CE3500B3AB59 /* YouTubeVideo.m */; };
@@ -139,6 +140,19 @@
 			remoteInfo = "RestKit Specs";
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		1F80CE8F146C03EE00C193F2 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(BUILT_PRODUCTS_DIR)";
+			dstSubfolderSpec = 0;
+			files = (
+				1F80CE90146C043300C193F2 /* OCMock.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1F5507E714515536001C38E3 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
@@ -487,6 +501,7 @@
 				1F7351AC146BCC0000D52947 /* Sources */,
 				1F7351AD146BCC0000D52947 /* Frameworks */,
 				1F7351AE146BCC0000D52947 /* Resources */,
+				1F80CE8F146C03EE00C193F2 /* CopyFiles */,
 			);
 			buildRules = (
 			);
