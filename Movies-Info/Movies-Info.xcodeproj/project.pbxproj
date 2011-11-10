@@ -21,7 +21,6 @@
 		1F7351B4146BCC0000D52947 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63626F581419414900F3A4E2 /* CoreGraphics.framework */; };
 		1F7351BA146BCC0000D52947 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F7351B8146BCC0000D52947 /* InfoPlist.strings */; };
 		1F7351BC146BCC0000D52947 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7351BB146BCC0000D52947 /* main.m */; };
-		1F7351C0146BCC0000D52947 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7351BF146BCC0000D52947 /* AppDelegate.m */; };
 		1F735288146BD3EE00D52947 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F735287146BD3EE00D52947 /* GHUnitIOS.framework */; };
 		1F8791D914628EC200C7E17C /* MovieInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8791D814628EC200C7E17C /* MovieInfo.m */; };
 		1F8A9757145EA0D10034F7F8 /* MovieCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8A9756145EA0D10034F7F8 /* MovieCache.m */; };
@@ -152,8 +151,6 @@
 		1F7351B9146BCC0000D52947 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1F7351BB146BCC0000D52947 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1F7351BD146BCC0000D52947 /* Movies-InfoTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Movies-InfoTests-Prefix.pch"; sourceTree = "<group>"; };
-		1F7351BE146BCC0000D52947 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		1F7351BF146BCC0000D52947 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		1F735287146BD3EE00D52947 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GHUnitIOS.framework; sourceTree = "<group>"; };
 		1F8791D714628EC200C7E17C /* MovieInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieInfo.h; sourceTree = "<group>"; };
 		1F8791D814628EC200C7E17C /* MovieInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieInfo.m; sourceTree = "<group>"; };
@@ -330,8 +327,6 @@
 		1F7351B5146BCC0000D52947 /* Movies-InfoTests */ = {
 			isa = PBXGroup;
 			children = (
-				1F7351BE146BCC0000D52947 /* AppDelegate.h */,
-				1F7351BF146BCC0000D52947 /* AppDelegate.m */,
 				1F7351B6146BCC0000D52947 /* Supporting Files */,
 			);
 			path = "Movies-InfoTests";
@@ -661,7 +656,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F7351BC146BCC0000D52947 /* main.m in Sources */,
-				1F7351C0146BCC0000D52947 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -732,6 +726,10 @@
 					"\"$(SRCROOT)/../../../Downloads/GHUnitIOS.framework/Versions/A\"",
 					"\"$(SRCROOT)/../GHUnitIOS.framework/Versions/A\"",
 				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -752,6 +750,10 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../Downloads/GHUnitIOS.framework/Versions/A\"",
 					"\"$(SRCROOT)/../GHUnitIOS.framework/Versions/A\"",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -849,6 +851,7 @@
 				1F7351C3146BCC0000D52947 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		63626F4A1419414800F3A4E2 /* Build configuration list for PBXProject "Movies-Info" */ = {
 			isa = XCConfigurationList;
