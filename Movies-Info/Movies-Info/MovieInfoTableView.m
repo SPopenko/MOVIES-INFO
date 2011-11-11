@@ -13,8 +13,6 @@
 //ShortMovieInfo cell height
 #define TableCellHeight 100
 
-//themoviedb.rog work constants
-
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -39,6 +37,15 @@
     [self showLoadIndicatorWithText:@"Loading movie list"];
     self.tableView.rowHeight = TableCellHeight;
     self.title = @"Movies";    
+    
+    UIBarButtonItem* preferencesButton = [[UIBarButtonItem alloc]initWithTitle:@"" 
+                                                                         style:UIBarButtonItemStylePlain
+                                                                        target:self
+                                                                        action:@selector(showSettings:)];
+    preferencesButton.image = [UIImage imageNamed:@"preferences.png"];
+    
+    self.navigationItem.rightBarButtonItem = preferencesButton;    
+    
     
     movieList = [[NSArray alloc]init];
     _movieInfo = [[MovieInfo alloc] init];
@@ -136,6 +143,15 @@
 
     [detailViewController release];
      
+}
+
+#pragma mark display settings view
+- (IBAction)showSettings:(UIBarButtonItem *)sender
+{
+    ApplicationPreferences* applicationPrefernces = [[ApplicationPreferences alloc] initWithNibName:@"ApplicationPreferences" bundle:nil];
+    //[self presentModalViewController:applicationPrefernces animated:YES];
+    [self.navigationController pushViewController:applicationPrefernces animated:YES];
+    [applicationPrefernces  release];
 }
 
 - (void) dealloc

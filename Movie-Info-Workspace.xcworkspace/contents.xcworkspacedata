@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:Movies-Info/Movies-Info/Settings.bundle">
+   </FileRef>
+   <FileRef
       location = "container:Movies-Info/Movies-Info.xcodeproj">
    </FileRef>
 </Workspace>

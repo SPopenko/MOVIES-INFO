@@ -15,6 +15,7 @@
 #import "ViewActionIndicator.h"
 
 #import "MoviesInfoDetailed.h"
+#import "ApplicationPreferences.h"
 #import "MovieShortInfoCell.h"
 #import "ShortMovieInfo.h"
 #import "MovieCache.h"
@@ -24,5 +25,7 @@
     NSArray* movieList;
     MovieInfo* _movieInfo;
 }
+
+- (IBAction)showSettings:(UIBarButtonItem*)sender;
 
 @end
