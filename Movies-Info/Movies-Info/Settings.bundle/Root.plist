@@ -43,7 +43,7 @@
 				<string>11 movies</string>
 				<string>12 movies</string>
 				<string>13 movies</string>
-				<string>14movies</string>
+				<string>14 movies</string>
 				<string>15 movies</string>
 				<string>16 movies</string>
 				<string>17 movies</string>
@@ -52,11 +52,11 @@
 				<string>20 movies</string>
 			</array>
 			<key>Title</key>
-			<string>Control Style</string>
+			<string>Number of movies in list</string>
 			<key>Key</key>
 			<string>moviesPerPage</string>
 			<key>DefaultValue</key>
-			<integer>12</integer>
+			<integer>13</integer>
 		</dict>
 	</array>
 	<key>StringsTable</key>

@@ -13,6 +13,9 @@
 //ShortMovieInfo cell height
 #define TableCellHeight 100
 
+//key in settings bundle for movies per page
+#define kMoviesPerPage @"moviesPerPage"
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -49,12 +52,22 @@
     
     movieList = [[NSArray alloc]init];
     _movieInfo = [[MovieInfo alloc] init];
+    NSNumber* perPage = nil;
+    if([[NSUserDefaults  standardUserDefaults] boolForKey:kMoviesPerPage])
+    {
+        perPage = [[NSUserDefaults standardUserDefaults] valueForKey:kMoviesPerPage];
+        NSLog(@"%@", perPage);
+    }
+    
+    if (!perPage) {
+        perPage = [NSNumber numberWithInt:5];
+    }
     
     NSDictionary* searchParameters = [[NSDictionary alloc] initWithObjectsAndKeys:
                                       [NSString stringWithString:@"rating"], @"orderBy",
                                       [NSString stringWithString:@"desc"],   @"order",
-                                      [NSString stringWithString:@"16"],     @"perPage",
-                                      [NSString stringWithString:@"10"],     @"page",
+                                      [NSString stringWithFormat:@"%@", perPage],     @"perPage",
+                                      [NSString stringWithString:@"1"],      @"page",
                                       [NSString stringWithString:@"10"],     @"minVotes",
                                       nil];
     

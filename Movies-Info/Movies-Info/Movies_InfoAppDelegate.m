@@ -23,6 +23,14 @@
 	self.navigationController = aNavigationController;
     [self.window addSubview: [aNavigationController view]];
     
+    //Loading settings
+    // Register the preference defaults early.
+    NSDictionary *appDefaults = [NSDictionary
+                                 dictionaryWithObject:[NSNumber numberWithBool:YES] forKey:@"Preference Items"];
+    [[NSUserDefaults standardUserDefaults] registerDefaults:appDefaults];
+    
+    // Other initialization...
+    
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
