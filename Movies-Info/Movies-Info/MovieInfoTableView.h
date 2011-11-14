@@ -21,9 +21,16 @@
 #import "MovieCache.h"
 #import "MovieInfo.h"
 
-@interface MovieInfoTableView : UITableViewController{
+#import "IASKAppSettingsViewController.h"
+
+#import "IASKSpecifier.h"
+#import "IASKSettingsReader.h"
+
+
+@interface MovieInfoTableView : UITableViewController<IASKSettingsDelegate>{
     NSArray* movieList;
     MovieInfo* _movieInfo;
+    IASKAppSettingsViewController* _appSettingsViewController;
 }
 
 - (IBAction)showSettings:(UIBarButtonItem*)sender;

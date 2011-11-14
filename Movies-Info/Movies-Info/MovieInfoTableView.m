@@ -66,16 +66,19 @@ NSNumber* moviesPerPage;
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [self loadMovieList];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+    
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -139,9 +142,20 @@ NSNumber* moviesPerPage;
 #pragma mark display settings view
 - (IBAction)showSettings:(UIBarButtonItem *)sender
 {
-    ApplicationPreferences* applicationPrefernces = [[ApplicationPreferences alloc] initWithNibName:@"ApplicationPreferences" bundle:nil];
-    [self loadMovieList];
-    [applicationPrefernces  release];
+    if (!_appSettingsViewController) {
+		_appSettingsViewController = [[IASKAppSettingsViewController alloc] initWithNibName:@"IASKAppSettingsView" bundle:nil];
+		_appSettingsViewController.delegate = self;
+	}
+    
+    [_appSettingsViewController setShowCreditsFooter:NO];
+    _appSettingsViewController.showDoneButton = NO;
+    [self.navigationController pushViewController:_appSettingsViewController animated:YES];
+}
+
+#pragma mark inAppSettingsKit delegate functions
+- (void) settingsViewControllerDidEnd:(IASKAppSettingsViewController *)sender
+{
+    
 }
 
 #pragma mark - movie list loading
@@ -152,8 +166,6 @@ NSNumber* moviesPerPage;
     if([[NSUserDefaults  standardUserDefaults] boolForKey:kMoviesPerPage])
     {
         perPage = [[NSUserDefaults standardUserDefaults] valueForKey:kMoviesPerPage];
-        NSLog(@"%@", perPage);
-        
     }
     
     if (!perPage) {
@@ -181,6 +193,7 @@ NSNumber* moviesPerPage;
 {
     [movieList  release];
     [_movieInfo release];
+    [_appSettingsViewController release];
     [super dealloc];
 }
 

@@ -89,4 +89,13 @@
 {
     [star drawInRect:drawRectangle];
 }
+
+- (void)dealloc
+{
+    [_starFull release];
+    [_starEmpty release];
+    [_rating release];
+    
+    [super dealloc];
+}
 @end
