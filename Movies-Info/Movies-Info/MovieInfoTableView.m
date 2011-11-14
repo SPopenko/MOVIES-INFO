@@ -10,9 +10,6 @@
 
 @implementation MovieInfoTableView
 
-//var for storing movies per page
-NSNumber* moviesPerPage;
-
 //ShortMovieInfo cell height
 #define TableCellHeight 100
 
@@ -155,44 +152,51 @@ NSNumber* moviesPerPage;
 #pragma mark inAppSettingsKit delegate functions
 - (void) settingsViewControllerDidEnd:(IASKAppSettingsViewController *)sender
 {
-    
+    //in this section we can do some settings appliyng code
 }
 
 #pragma mark - movie list loading
 - (void) loadMovieList
 {
-    [self showLoadIndicatorWithText:@"Loading movie list"];
     NSNumber* perPage = nil;
     if([[NSUserDefaults  standardUserDefaults] boolForKey:kMoviesPerPage])
     {
         perPage = [[NSUserDefaults standardUserDefaults] valueForKey:kMoviesPerPage];
     }
     
-    if (!perPage) {
-        perPage = [NSNumber numberWithInt:5];
+    if (![_moviesPerPage isEqualToNumber:perPage])
+    {    
+        _moviesPerPage = perPage;
+        //starting loading data from server;
+        [self showLoadIndicatorWithText:@"Loading movie list"];
+        if (!perPage)
+        {
+            perPage = [NSNumber numberWithInt:5];
+        }
+    
+        NSDictionary* searchParameters = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                          [NSString stringWithString:@"rating"],      @"orderBy",
+                                          [NSString stringWithString:@"desc"],        @"order",
+                                          [NSString stringWithFormat:@"%@", perPage], @"perPage",
+                                          [NSString stringWithString:@"1"],           @"page",
+                                          [NSString stringWithString:@"10"],          @"minVotes",
+                                          nil];
+    
+    
+        [_movieInfo getShortMovieInfoWithParameters:searchParameters doAfterLoadFinished:^(id obj)
+        {
+            movieList = obj;
+            [self.tableView reloadData];
+            [self showLoadFinishIndicator];
+        }];
     }
-    
-    NSDictionary* searchParameters = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                      [NSString stringWithString:@"rating"],      @"orderBy",
-                                      [NSString stringWithString:@"desc"],        @"order",
-                                      [NSString stringWithFormat:@"%@", perPage], @"perPage",
-                                      [NSString stringWithString:@"1"],           @"page",
-                                      [NSString stringWithString:@"10"],          @"minVotes",
-                                      nil];
-    
-    
-    [_movieInfo getShortMovieInfoWithParameters:searchParameters doAfterLoadFinished:^(id obj)
-     {
-         movieList = obj;
-         [self.tableView reloadData];
-         [self showLoadFinishIndicator];
-     }];
 }
 
 - (void) dealloc
 {
     [movieList  release];
     [_movieInfo release];
+    [_moviesPerPage release];
     [_appSettingsViewController release];
     [super dealloc];
 }

@@ -15,7 +15,6 @@
 #import "ViewActionIndicator.h"
 
 #import "MoviesInfoDetailed.h"
-#import "ApplicationPreferences.h"
 #import "MovieShortInfoCell.h"
 #import "ShortMovieInfo.h"
 #import "MovieCache.h"
@@ -31,6 +30,8 @@
     NSArray* movieList;
     MovieInfo* _movieInfo;
     IASKAppSettingsViewController* _appSettingsViewController;
+    //var for storing movies per page
+    NSNumber* _moviesPerPage;
 }
 
 - (IBAction)showSettings:(UIBarButtonItem*)sender;

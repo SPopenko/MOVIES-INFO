@@ -25,8 +25,6 @@
 		1F80CE8E146C03B800C193F2 /* OCMock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F80CE8D146C03B800C193F2 /* OCMock.framework */; };
 		1F80CE90146C043300C193F2 /* OCMock.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1F80CE8D146C03B800C193F2 /* OCMock.framework */; };
 		1F80CEAD146C1D4300C193F2 /* preferences.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F80CEAC146C1D4300C193F2 /* preferences.png */; };
-		1F80CEB6146D199A00C193F2 /* ApplicationPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F80CEB4146D199A00C193F2 /* ApplicationPreferences.m */; };
-		1F80CEB7146D199A00C193F2 /* ApplicationPreferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F80CEB5146D199A00C193F2 /* ApplicationPreferences.xib */; };
 		1F8791D914628EC200C7E17C /* MovieInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8791D814628EC200C7E17C /* MovieInfo.m */; };
 		1F8A9757145EA0D10034F7F8 /* MovieCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8A9756145EA0D10034F7F8 /* MovieCache.m */; };
 		1F91620F146D3C5A003EE551 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1F91620E146D3C5A003EE551 /* Settings.bundle */; };
@@ -195,9 +193,6 @@
 		1F735287146BD3EE00D52947 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GHUnitIOS.framework; sourceTree = "<group>"; };
 		1F80CE8D146C03B800C193F2 /* OCMock.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OCMock.framework; sourceTree = "<group>"; };
 		1F80CEAC146C1D4300C193F2 /* preferences.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = preferences.png; sourceTree = "<group>"; };
-		1F80CEB3146D199A00C193F2 /* ApplicationPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplicationPreferences.h; sourceTree = "<group>"; };
-		1F80CEB4146D199A00C193F2 /* ApplicationPreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplicationPreferences.m; sourceTree = "<group>"; };
-		1F80CEB5146D199A00C193F2 /* ApplicationPreferences.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ApplicationPreferences.xib; sourceTree = "<group>"; };
 		1F8791D714628EC200C7E17C /* MovieInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieInfo.h; sourceTree = "<group>"; };
 		1F8791D814628EC200C7E17C /* MovieInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieInfo.m; sourceTree = "<group>"; };
 		1F8A9755145EA0D10034F7F8 /* MovieCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieCache.h; sourceTree = "<group>"; };
@@ -357,9 +352,6 @@
 				63626F6C1419419000F3A4E2 /* MovieInfoTableView.m */,
 				63626F70141946EC00F3A4E2 /* MoviesInfoDetailed.h */,
 				63626F71141946ED00F3A4E2 /* MoviesInfoDetailed.m */,
-				1F80CEB3146D199A00C193F2 /* ApplicationPreferences.h */,
-				1F80CEB4146D199A00C193F2 /* ApplicationPreferences.m */,
-				1F80CEB5146D199A00C193F2 /* ApplicationPreferences.xib */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -817,7 +809,6 @@
 				1FCBCD11145B03BA00EB3FD1 /* star_empty.png in Resources */,
 				1FCBCD13145B03C800EB3FD1 /* star_full.png in Resources */,
 				1F80CEAD146C1D4300C193F2 /* preferences.png in Resources */,
-				1F80CEB7146D199A00C193F2 /* ApplicationPreferences.xib in Resources */,
 				1F91620F146D3C5A003EE551 /* Settings.bundle in Resources */,
 				1FF0B7C014717B2D007A83D5 /* IASKAppSettingsView.xib in Resources */,
 				1FF0B7C114717B2D007A83D5 /* IASKAppSettingsWebView.xib in Resources */,
@@ -857,7 +848,6 @@
 				1FBF207D1461584A009350FE /* ViewActionIndicator.m in Sources */,
 				1F8791D914628EC200C7E17C /* MovieInfo.m in Sources */,
 				1FB6037D1467CE3500B3AB59 /* YouTubeVideo.m in Sources */,
-				1F80CEB6146D199A00C193F2 /* ApplicationPreferences.m in Sources */,
 				1FF0B7B114717B2D007A83D5 /* IASKAppSettingsViewController.m in Sources */,
 				1FF0B7B214717B2D007A83D5 /* IASKAppSettingsWebViewController.m in Sources */,
 				1FF0B7B314717B2D007A83D5 /* IASKSpecifierValuesViewController.m in Sources */,
