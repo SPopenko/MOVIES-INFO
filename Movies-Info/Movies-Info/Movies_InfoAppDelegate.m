@@ -11,6 +11,8 @@
 
 @implementation Movies_InfoAppDelegate
 
+#define kMoviesPerPage @"moviesPerPage"
+
 @synthesize window = _window;
 @synthesize navigationController;
 
@@ -22,6 +24,14 @@
     UINavigationController *aNavigationController = [[UINavigationController alloc] initWithRootViewController: mitv];
 	self.navigationController = aNavigationController;
     [self.window addSubview: [aNavigationController view]];
+    
+    //Loading settings
+    // Register the preference defaults early.
+    NSDictionary *appDefaults = [NSDictionary
+                                 dictionaryWithObject:[NSNumber numberWithBool:YES] forKey:@"Preference Items"];
+    [[NSUserDefaults standardUserDefaults] registerDefaults:appDefaults];
+    
+    // Other initialization...
     
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
@@ -55,6 +65,10 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
+    if ([self.navigationController.visibleViewController respondsToSelector:@selector(loadMovieList)])
+    {
+        [self.navigationController.visibleViewController viewWillAppear:YES];//performSelector:@selector(loadMovieList)];
+    }
     /*
      Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
      */
