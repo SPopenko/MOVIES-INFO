@@ -27,5 +27,6 @@
 }
 
 - (IBAction)showSettings:(UIBarButtonItem*)sender;
+- (void) loadMovieList;
 
 @end

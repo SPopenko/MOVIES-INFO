@@ -10,6 +10,9 @@
 
 @implementation MovieInfoTableView
 
+//var for storing movies per page
+NSNumber* moviesPerPage;
+
 //ShortMovieInfo cell height
 #define TableCellHeight 100
 
@@ -37,47 +40,22 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self showLoadIndicatorWithText:@"Loading movie list"];
+    movieList = nil;
+    
     self.tableView.rowHeight = TableCellHeight;
     self.title = @"Movies";    
     
+    //Preparing button for settings
     UIBarButtonItem* preferencesButton = [[UIBarButtonItem alloc]initWithTitle:@"" 
                                                                          style:UIBarButtonItemStylePlain
                                                                         target:self
                                                                         action:@selector(showSettings:)];
     preferencesButton.image = [UIImage imageNamed:@"preferences.png"];
-    
     self.navigationItem.rightBarButtonItem = preferencesButton;    
     
-    
-    movieList = [[NSArray alloc]init];
+    //Preparing cache
     _movieInfo = [[MovieInfo alloc] init];
-    NSNumber* perPage = nil;
-    if([[NSUserDefaults  standardUserDefaults] boolForKey:kMoviesPerPage])
-    {
-        perPage = [[NSUserDefaults standardUserDefaults] valueForKey:kMoviesPerPage];
-        NSLog(@"%@", perPage);
-    }
-    
-    if (!perPage) {
-        perPage = [NSNumber numberWithInt:5];
-    }
-    
-    NSDictionary* searchParameters = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                      [NSString stringWithString:@"rating"], @"orderBy",
-                                      [NSString stringWithString:@"desc"],   @"order",
-                                      [NSString stringWithFormat:@"%@", perPage],     @"perPage",
-                                      [NSString stringWithString:@"1"],      @"page",
-                                      [NSString stringWithString:@"10"],     @"minVotes",
-                                      nil];
-    
-    
-    [_movieInfo getShortMovieInfoWithParameters:searchParameters doAfterLoadFinished:^(id obj)
-    {
-        movieList = obj;
-        [self.tableView reloadData];
-        [self showLoadFinishIndicator];
-    }];
+
 }
 
 - (void)viewDidUnload
@@ -162,9 +140,41 @@
 - (IBAction)showSettings:(UIBarButtonItem *)sender
 {
     ApplicationPreferences* applicationPrefernces = [[ApplicationPreferences alloc] initWithNibName:@"ApplicationPreferences" bundle:nil];
-    //[self presentModalViewController:applicationPrefernces animated:YES];
-    [self.navigationController pushViewController:applicationPrefernces animated:YES];
+    [self loadMovieList];
     [applicationPrefernces  release];
+}
+
+#pragma mark - movie list loading
+- (void) loadMovieList
+{
+    [self showLoadIndicatorWithText:@"Loading movie list"];
+    NSNumber* perPage = nil;
+    if([[NSUserDefaults  standardUserDefaults] boolForKey:kMoviesPerPage])
+    {
+        perPage = [[NSUserDefaults standardUserDefaults] valueForKey:kMoviesPerPage];
+        NSLog(@"%@", perPage);
+        
+    }
+    
+    if (!perPage) {
+        perPage = [NSNumber numberWithInt:5];
+    }
+    
+    NSDictionary* searchParameters = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                      [NSString stringWithString:@"rating"],      @"orderBy",
+                                      [NSString stringWithString:@"desc"],        @"order",
+                                      [NSString stringWithFormat:@"%@", perPage], @"perPage",
+                                      [NSString stringWithString:@"1"],           @"page",
+                                      [NSString stringWithString:@"10"],          @"minVotes",
+                                      nil];
+    
+    
+    [_movieInfo getShortMovieInfoWithParameters:searchParameters doAfterLoadFinished:^(id obj)
+     {
+         movieList = obj;
+         [self.tableView reloadData];
+         [self showLoadFinishIndicator];
+     }];
 }
 
 - (void) dealloc

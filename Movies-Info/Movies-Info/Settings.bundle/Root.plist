@@ -52,7 +52,7 @@
 				<string>20 movies</string>
 			</array>
 			<key>Title</key>
-			<string>Number of movies in list</string>
+			<string>Movies in list</string>
 			<key>Key</key>
 			<string>moviesPerPage</string>
 			<key>DefaultValue</key>
