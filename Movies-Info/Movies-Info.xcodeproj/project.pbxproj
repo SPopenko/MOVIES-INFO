@@ -22,6 +22,8 @@
 		1F7351BA146BCC0000D52947 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F7351B8146BCC0000D52947 /* InfoPlist.strings */; };
 		1F7351BC146BCC0000D52947 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7351BB146BCC0000D52947 /* main.m */; };
 		1F735288146BD3EE00D52947 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F735287146BD3EE00D52947 /* GHUnitIOS.framework */; };
+		1F7E316E1472DB6B00E4D7C8 /* YouTubeTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7E316D1472DB6B00E4D7C8 /* YouTubeTest.m */; };
+		1F7E316F1472DB8200E4D7C8 /* YouTubeVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB6037C1467CE3500B3AB59 /* YouTubeVideo.m */; };
 		1F80CE8E146C03B800C193F2 /* OCMock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F80CE8D146C03B800C193F2 /* OCMock.framework */; };
 		1F80CE90146C043300C193F2 /* OCMock.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1F80CE8D146C03B800C193F2 /* OCMock.framework */; };
 		1F80CEAD146C1D4300C193F2 /* preferences.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F80CEAC146C1D4300C193F2 /* preferences.png */; };
@@ -191,6 +193,8 @@
 		1F7351BB146BCC0000D52947 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1F7351BD146BCC0000D52947 /* Movies-InfoTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Movies-InfoTests-Prefix.pch"; sourceTree = "<group>"; };
 		1F735287146BD3EE00D52947 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GHUnitIOS.framework; sourceTree = "<group>"; };
+		1F7E316C1472DB6B00E4D7C8 /* YouTubeTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YouTubeTest.h; sourceTree = "<group>"; };
+		1F7E316D1472DB6B00E4D7C8 /* YouTubeTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YouTubeTest.m; sourceTree = "<group>"; };
 		1F80CE8D146C03B800C193F2 /* OCMock.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OCMock.framework; sourceTree = "<group>"; };
 		1F80CEAC146C1D4300C193F2 /* preferences.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = preferences.png; sourceTree = "<group>"; };
 		1F8791D714628EC200C7E17C /* MovieInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieInfo.h; sourceTree = "<group>"; };
@@ -410,6 +414,8 @@
 		1F7351B5146BCC0000D52947 /* Movies-InfoTests */ = {
 			isa = PBXGroup;
 			children = (
+				1F7E316C1472DB6B00E4D7C8 /* YouTubeTest.h */,
+				1F7E316D1472DB6B00E4D7C8 /* YouTubeTest.m */,
 				1F7351B6146BCC0000D52947 /* Supporting Files */,
 			);
 			path = "Movies-InfoTests";
@@ -826,7 +832,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F7E316F1472DB8200E4D7C8 /* YouTubeVideo.m in Sources */,
 				1F7351BC146BCC0000D52947 /* main.m in Sources */,
+				1F7E316E1472DB6B00E4D7C8 /* YouTubeTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
