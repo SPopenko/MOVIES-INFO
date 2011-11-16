@@ -8,10 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-#import <RestKit/RestKit.h>
-#import <RestKit/Support/JSON/JSONKit/JSONKit.h>
-#import <RestKit/Support/JSON/JSONKit/RKJSONParserJSONKit.h>
-
 #import "ViewActionIndicator.h"
 
 #import "MoviesInfoDetailed.h"

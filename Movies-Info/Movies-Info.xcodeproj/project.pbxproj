@@ -7,12 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1F5507E814515536001C38E3 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F5507E714515536001C38E3 /* libxml2.dylib */; };
-		1F55084E14515BF5001C38E3 /* libRestKitNetwork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F55083814515BAE001C38E3 /* libRestKitNetwork.a */; };
-		1F55084F14515BF5001C38E3 /* libRestKitObjectMapping.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F55083A14515BAE001C38E3 /* libRestKitObjectMapping.a */; };
-		1F55085014515BF5001C38E3 /* libRestKitSupport.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F55083C14515BAE001C38E3 /* libRestKitSupport.a */; };
-		1F55085114515BF5001C38E3 /* libRestKitXMLParserLibxml.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F55084614515BAE001C38E3 /* libRestKitXMLParserLibxml.a */; };
-		1F55086214517A95001C38E3 /* libRestKitJSONParserJSONKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F55084414515BAE001C38E3 /* libRestKitJSONParserJSONKit.a */; };
 		1F5D09FC1456D58F005B77D5 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F5D09FB1456D58E005B77D5 /* MBProgressHUD.m */; };
 		1F5D0A031456F187005B77D5 /* checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F5D0A021456F187005B77D5 /* checkmark.png */; };
 		1F5D0A891458006F005B77D5 /* infoFilm.html in Resources */ = {isa = PBXBuildFile; fileRef = 1F5D0A881458006F005B77D5 /* infoFilm.html */; };
@@ -26,18 +20,38 @@
 		1F7E31881473BA2700E4D7C8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63626F561419414900F3A4E2 /* Foundation.framework */; };
 		1F7E31941473BA7100E4D7C8 /* libMovies-InfoModel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F7E31871473BA2700E4D7C8 /* libMovies-InfoModel.a */; };
 		1F7E31951473BA7B00E4D7C8 /* YouTubeVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB6037C1467CE3500B3AB59 /* YouTubeVideo.m */; };
-		1F7E31981473BD3900E4D7C8 /* libMovies-InfoModel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F7E31871473BA2700E4D7C8 /* libMovies-InfoModel.a */; };
 		1F80CE8E146C03B800C193F2 /* OCMock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F80CE8D146C03B800C193F2 /* OCMock.framework */; };
-		1F80CE90146C043300C193F2 /* OCMock.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1F80CE8D146C03B800C193F2 /* OCMock.framework */; };
+		1F80CE90146C043300C193F2 /* OCMock.framework in Copy OCMock Files */ = {isa = PBXBuildFile; fileRef = 1F80CE8D146C03B800C193F2 /* OCMock.framework */; };
 		1F80CEAD146C1D4300C193F2 /* preferences.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F80CEAC146C1D4300C193F2 /* preferences.png */; };
-		1F8791D914628EC200C7E17C /* MovieInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8791D814628EC200C7E17C /* MovieInfo.m */; };
-		1F8A9757145EA0D10034F7F8 /* MovieCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8A9756145EA0D10034F7F8 /* MovieCache.m */; };
 		1F91620F146D3C5A003EE551 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1F91620E146D3C5A003EE551 /* Settings.bundle */; };
+		1F9A403F1473DE9D008B53E7 /* MovieInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8791D814628EC200C7E17C /* MovieInfo.m */; };
+		1F9A40401473DE9D008B53E7 /* ShortMovieInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CE26E1F9142F559700AE8FE0 /* ShortMovieInfo.m */; };
+		1F9A40411473DE9D008B53E7 /* DetailedMovieInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FCBCC4A1458769000EB3FD1 /* DetailedMovieInfo.m */; };
+		1F9A40421473DE9D008B53E7 /* NSDataAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC4A03D145F198900F63225 /* NSDataAdditions.m */; };
+		1F9A40431473DE9D008B53E7 /* MovieCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8A9756145EA0D10034F7F8 /* MovieCache.m */; };
+		1F9A40441473DEE3008B53E7 /* libRestKitJSONParserJSONKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F55084414515BAE001C38E3 /* libRestKitJSONParserJSONKit.a */; };
+		1F9A40451473DEE3008B53E7 /* libRestKitNetwork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F55083814515BAE001C38E3 /* libRestKitNetwork.a */; };
+		1F9A40461473DEE3008B53E7 /* libRestKitObjectMapping.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F55083A14515BAE001C38E3 /* libRestKitObjectMapping.a */; };
+		1F9A40471473DEE3008B53E7 /* libRestKitSupport.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F55083C14515BAE001C38E3 /* libRestKitSupport.a */; };
+		1F9A40481473DEE3008B53E7 /* libRestKitXMLParserLibxml.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F55084614515BAE001C38E3 /* libRestKitXMLParserLibxml.a */; };
+		1F9A40491473DFEB008B53E7 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FF0B7CA14717E74007A83D5 /* MessageUI.framework */; };
+		1F9A404A1473DFEF008B53E7 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FCC160E1450086100D091E4 /* CFNetwork.framework */; };
+		1F9A404B1473DFFF008B53E7 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FCC160A1450076D00D091E4 /* MobileCoreServices.framework */; };
+		1F9A404C1473DFFF008B53E7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FCC160B1450076D00D091E4 /* SystemConfiguration.framework */; };
+		1F9A404D1473E014008B53E7 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FF0B7CA14717E74007A83D5 /* MessageUI.framework */; };
+		1F9A404E1473E021008B53E7 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FCC160E1450086100D091E4 /* CFNetwork.framework */; };
+		1F9A404F1473E04E008B53E7 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F5507E714515536001C38E3 /* libxml2.dylib */; };
+		1F9A40501473E084008B53E7 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F5507E714515536001C38E3 /* libxml2.dylib */; };
+		1F9A405F1473E7D3008B53E7 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F5507E714515536001C38E3 /* libxml2.dylib */; };
+		1F9A40601473E7D7008B53E7 /* libobjc.A.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FCBCC47145833D300EB3FD1 /* libobjc.A.dylib */; };
+		1F9A40611473E885008B53E7 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FCC160A1450076D00D091E4 /* MobileCoreServices.framework */; };
+		1F9A40621473E898008B53E7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FCC160B1450076D00D091E4 /* SystemConfiguration.framework */; };
+		1F9A40631473EF79008B53E7 /* libobjc.A.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FCBCC47145833D300EB3FD1 /* libobjc.A.dylib */; };
+		1F9A40641473F16A008B53E7 /* libMovies-InfoModel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F7E31871473BA2700E4D7C8 /* libMovies-InfoModel.a */; };
+		1F9A40671473FBC6008B53E7 /* ShortMovieInfoTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A40661473FBC6008B53E7 /* ShortMovieInfoTest.m */; };
 		1FB603831467DA1C00B3AB59 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FB603821467DA1C00B3AB59 /* MediaPlayer.framework */; };
 		1FBF207D1461584A009350FE /* ViewActionIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FBF207C1461584A009350FE /* ViewActionIndicator.m */; };
-		1FC4A03E145F198900F63225 /* NSDataAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC4A03D145F198900F63225 /* NSDataAdditions.m */; };
 		1FCBCC48145833D300EB3FD1 /* libobjc.A.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FCBCC47145833D300EB3FD1 /* libobjc.A.dylib */; };
-		1FCBCC4B1458769000EB3FD1 /* DetailedMovieInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FCBCC4A1458769000EB3FD1 /* DetailedMovieInfo.m */; };
 		1FCBCD0F145AFA8300EB3FD1 /* FanRating.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FCBCD0E145AFA8300EB3FD1 /* FanRating.m */; };
 		1FCBCD11145B03BA00EB3FD1 /* star_empty.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FCBCD10145B03BA00EB3FD1 /* star_empty.png */; };
 		1FCBCD13145B03C800EB3FD1 /* star_full.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FCBCD12145B03C800EB3FD1 /* star_full.png */; };
@@ -76,20 +90,12 @@
 		63626F6F1419419000F3A4E2 /* MovieInfoTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63626F6D1419419000F3A4E2 /* MovieInfoTableView.xib */; };
 		63626F73141946EF00F3A4E2 /* MoviesInfoDetailed.m in Sources */ = {isa = PBXBuildFile; fileRef = 63626F71141946ED00F3A4E2 /* MoviesInfoDetailed.m */; };
 		63626F74141946EF00F3A4E2 /* MoviesInfoDetailed.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63626F72141946ED00F3A4E2 /* MoviesInfoDetailed.xib */; };
-		CE26E1FA142F559700AE8FE0 /* ShortMovieInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CE26E1F9142F559700AE8FE0 /* ShortMovieInfo.m */; };
 		CE7E27041422D5D8008BF00A /* MovieShortInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7E27031422D5D8008BF00A /* MovieShortInfoCell.m */; };
 		CE7E27061422DDA7008BF00A /* MovieShortInfoCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE7E27051422DDA7008BF00A /* MovieShortInfoCellView.xib */; };
 		CE82A8D614327B3900F4A931 /* movie.png in Resources */ = {isa = PBXBuildFile; fileRef = CE82A8D514327B3900F4A931 /* movie.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		168E5BA7145687AF0080A70D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1F55082314515BAD001C38E3 /* RestKit.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 255B7588133BABBF00ED76AD;
-			remoteInfo = RestKit;
-		};
 		1F55083714515BAE001C38E3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1F55082314515BAD001C38E3 /* RestKit.xcodeproj */;
@@ -181,17 +187,25 @@
 			remoteGlobalIDString = 1F7E31861473BA2700E4D7C8;
 			remoteInfo = "Movies-InfoModel";
 		};
+		1F9A403D1473DCED008B53E7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1F55082314515BAD001C38E3 /* RestKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 255B7588133BABBF00ED76AD;
+			remoteInfo = RestKit;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		1F80CE8F146C03EE00C193F2 /* CopyFiles */ = {
+		1F80CE8F146C03EE00C193F2 /* Copy OCMock Files */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "$(BUILT_PRODUCTS_DIR)";
 			dstSubfolderSpec = 0;
 			files = (
-				1F80CE90146C043300C193F2 /* OCMock.framework in CopyFiles */,
+				1F80CE90146C043300C193F2 /* OCMock.framework in Copy OCMock Files */,
 			);
+			name = "Copy OCMock Files";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -220,6 +234,8 @@
 		1F8A9755145EA0D10034F7F8 /* MovieCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieCache.h; sourceTree = "<group>"; };
 		1F8A9756145EA0D10034F7F8 /* MovieCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieCache.m; sourceTree = "<group>"; };
 		1F91620E146D3C5A003EE551 /* Settings.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.application; path = Settings.bundle; sourceTree = "<group>"; };
+		1F9A40651473FBC6008B53E7 /* ShortMovieInfoTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShortMovieInfoTest.h; sourceTree = "<group>"; };
+		1F9A40661473FBC6008B53E7 /* ShortMovieInfoTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShortMovieInfoTest.m; sourceTree = "<group>"; };
 		1FB6037B1467CE3500B3AB59 /* YouTubeVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YouTubeVideo.h; sourceTree = "<group>"; };
 		1FB6037C1467CE3500B3AB59 /* YouTubeVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YouTubeVideo.m; sourceTree = "<group>"; };
 		1FB603821467DA1C00B3AB59 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
@@ -303,10 +319,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F7E31981473BD3900E4D7C8 /* libMovies-InfoModel.a in Frameworks */,
+				1F9A40641473F16A008B53E7 /* libMovies-InfoModel.a in Frameworks */,
+				1F9A40631473EF79008B53E7 /* libobjc.A.dylib in Frameworks */,
+				1F9A404F1473E04E008B53E7 /* libxml2.dylib in Frameworks */,
+				1F9A404E1473E021008B53E7 /* CFNetwork.framework in Frameworks */,
+				1F9A40611473E885008B53E7 /* MobileCoreServices.framework in Frameworks */,
 				1F7351B2146BCC0000D52947 /* UIKit.framework in Frameworks */,
 				1F7351B3146BCC0000D52947 /* Foundation.framework in Frameworks */,
+				1F9A404D1473E014008B53E7 /* MessageUI.framework in Frameworks */,
 				1F7351B4146BCC0000D52947 /* CoreGraphics.framework in Frameworks */,
+				1F9A40621473E898008B53E7 /* SystemConfiguration.framework in Frameworks */,
 				1F735288146BD3EE00D52947 /* GHUnitIOS.framework in Frameworks */,
 				1F80CE8E146C03B800C193F2 /* OCMock.framework in Frameworks */,
 			);
@@ -316,6 +338,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F9A40601473E7D7008B53E7 /* libobjc.A.dylib in Frameworks */,
+				1F9A40441473DEE3008B53E7 /* libRestKitJSONParserJSONKit.a in Frameworks */,
+				1F9A40451473DEE3008B53E7 /* libRestKitNetwork.a in Frameworks */,
+				1F9A40461473DEE3008B53E7 /* libRestKitObjectMapping.a in Frameworks */,
+				1F9A40471473DEE3008B53E7 /* libRestKitSupport.a in Frameworks */,
+				1F9A40481473DEE3008B53E7 /* libRestKitXMLParserLibxml.a in Frameworks */,
+				1F9A405F1473E7D3008B53E7 /* libxml2.dylib in Frameworks */,
+				1F9A40491473DFEB008B53E7 /* MessageUI.framework in Frameworks */,
+				1F9A404A1473DFEF008B53E7 /* CFNetwork.framework in Frameworks */,
+				1F9A404B1473DFFF008B53E7 /* MobileCoreServices.framework in Frameworks */,
+				1F9A404C1473DFFF008B53E7 /* SystemConfiguration.framework in Frameworks */,
 				1F7E31881473BA2700E4D7C8 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -326,13 +359,8 @@
 			files = (
 				1F7E31941473BA7100E4D7C8 /* libMovies-InfoModel.a in Frameworks */,
 				1FF0B7CB14717E74007A83D5 /* MessageUI.framework in Frameworks */,
+				1F9A40501473E084008B53E7 /* libxml2.dylib in Frameworks */,
 				1FCBCC48145833D300EB3FD1 /* libobjc.A.dylib in Frameworks */,
-				1F55086214517A95001C38E3 /* libRestKitJSONParserJSONKit.a in Frameworks */,
-				1F55084E14515BF5001C38E3 /* libRestKitNetwork.a in Frameworks */,
-				1F55084F14515BF5001C38E3 /* libRestKitObjectMapping.a in Frameworks */,
-				1F55085014515BF5001C38E3 /* libRestKitSupport.a in Frameworks */,
-				1F55085114515BF5001C38E3 /* libRestKitXMLParserLibxml.a in Frameworks */,
-				1F5507E814515536001C38E3 /* libxml2.dylib in Frameworks */,
 				1FB603831467DA1C00B3AB59 /* MediaPlayer.framework in Frameworks */,
 				1FCC160F1450086100D091E4 /* CFNetwork.framework in Frameworks */,
 				1FCC160C1450076D00D091E4 /* MobileCoreServices.framework in Frameworks */,
@@ -442,9 +470,11 @@
 		1F7351B5146BCC0000D52947 /* Movies-InfoTests */ = {
 			isa = PBXGroup;
 			children = (
+				1F7351B6146BCC0000D52947 /* Supporting Files */,
 				1F7E316C1472DB6B00E4D7C8 /* YouTubeTest.h */,
 				1F7E316D1472DB6B00E4D7C8 /* YouTubeTest.m */,
-				1F7351B6146BCC0000D52947 /* Supporting Files */,
+				1F9A40651473FBC6008B53E7 /* ShortMovieInfoTest.h */,
+				1F9A40661473FBC6008B53E7 /* ShortMovieInfoTest.m */,
 			);
 			path = "Movies-InfoTests";
 			sourceTree = "<group>";
@@ -705,7 +735,7 @@
 			buildConfigurationList = 1F7351C1146BCC0000D52947 /* Build configuration list for PBXNativeTarget "Movies-InfoTests" */;
 			buildPhases = (
 				1F7351AC146BCC0000D52947 /* Sources */,
-				1F80CE8F146C03EE00C193F2 /* CopyFiles */,
+				1F80CE8F146C03EE00C193F2 /* Copy OCMock Files */,
 				1F7351AD146BCC0000D52947 /* Frameworks */,
 				1F7351AE146BCC0000D52947 /* Resources */,
 			);
@@ -730,6 +760,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				1F9A403E1473DCED008B53E7 /* PBXTargetDependency */,
 			);
 			name = "Movies-InfoModel";
 			productName = "Movies-InfoModel";
@@ -748,7 +779,6 @@
 			);
 			dependencies = (
 				1F7E31931473BA6A00E4D7C8 /* PBXTargetDependency */,
-				168E5BA8145687AF0080A70D /* PBXTargetDependency */,
 			);
 			name = "Movies-Info";
 			productName = "Movies-Info";
@@ -910,6 +940,7 @@
 			files = (
 				1F7351BC146BCC0000D52947 /* main.m in Sources */,
 				1F7E316E1472DB6B00E4D7C8 /* YouTubeTest.m in Sources */,
+				1F9A40671473FBC6008B53E7 /* ShortMovieInfoTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -917,6 +948,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F9A403F1473DE9D008B53E7 /* MovieInfo.m in Sources */,
+				1F9A40401473DE9D008B53E7 /* ShortMovieInfo.m in Sources */,
+				1F9A40411473DE9D008B53E7 /* DetailedMovieInfo.m in Sources */,
+				1F9A40421473DE9D008B53E7 /* NSDataAdditions.m in Sources */,
+				1F9A40431473DE9D008B53E7 /* MovieCache.m in Sources */,
 				1F7E31951473BA7B00E4D7C8 /* YouTubeVideo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -930,14 +966,9 @@
 				63626F6E1419419000F3A4E2 /* MovieInfoTableView.m in Sources */,
 				63626F73141946EF00F3A4E2 /* MoviesInfoDetailed.m in Sources */,
 				CE7E27041422D5D8008BF00A /* MovieShortInfoCell.m in Sources */,
-				CE26E1FA142F559700AE8FE0 /* ShortMovieInfo.m in Sources */,
 				1F5D09FC1456D58F005B77D5 /* MBProgressHUD.m in Sources */,
-				1FCBCC4B1458769000EB3FD1 /* DetailedMovieInfo.m in Sources */,
 				1FCBCD0F145AFA8300EB3FD1 /* FanRating.m in Sources */,
-				1F8A9757145EA0D10034F7F8 /* MovieCache.m in Sources */,
-				1FC4A03E145F198900F63225 /* NSDataAdditions.m in Sources */,
 				1FBF207D1461584A009350FE /* ViewActionIndicator.m in Sources */,
-				1F8791D914628EC200C7E17C /* MovieInfo.m in Sources */,
 				1FF0B7B114717B2D007A83D5 /* IASKAppSettingsViewController.m in Sources */,
 				1FF0B7B214717B2D007A83D5 /* IASKAppSettingsWebViewController.m in Sources */,
 				1FF0B7B314717B2D007A83D5 /* IASKSpecifierValuesViewController.m in Sources */,
@@ -959,11 +990,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		168E5BA8145687AF0080A70D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = RestKit;
-			targetProxy = 168E5BA7145687AF0080A70D /* PBXContainerItemProxy */;
-		};
 		1F7E31931473BA6A00E4D7C8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 1F7E31861473BA2700E4D7C8 /* Movies-InfoModel */;
@@ -973,6 +999,11 @@
 			isa = PBXTargetDependency;
 			target = 1F7E31861473BA2700E4D7C8 /* Movies-InfoModel */;
 			targetProxy = 1F7E31961473BD3100E4D7C8 /* PBXContainerItemProxy */;
+		};
+		1F9A403E1473DCED008B53E7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = RestKit;
+			targetProxy = 1F9A403D1473DCED008B53E7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1006,11 +1037,11 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Movies-InfoTests/Movies-InfoTests-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(SOURCE_ROOT)/RestKit/Build/";
 				INFOPLIST_FILE = "Movies-InfoTests/Movies-InfoTests-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../../../Downloads/GHUnitIOS.framework/Versions/A\"",
-					"\"$(SRCROOT)/../GHUnitIOS.framework/Versions/A\"",
+					"\"$(SRCROOT)/GHUnitIOS.framework/Versions/A\"",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1031,11 +1062,11 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Movies-InfoTests/Movies-InfoTests-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(SOURCE_ROOT)/RestKit/Build/";
 				INFOPLIST_FILE = "Movies-InfoTests/Movies-InfoTests-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../../../Downloads/GHUnitIOS.framework/Versions/A\"",
-					"\"$(SRCROOT)/../GHUnitIOS.framework/Versions/A\"",
+					"\"$(SRCROOT)/GHUnitIOS.framework/Versions/A\"",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1052,6 +1083,7 @@
 				DSTROOT = /tmp/Movies_InfoModel.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Movies-InfoModel/Movies-InfoModel-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(SOURCE_ROOT)/RestKit/Build/";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1064,6 +1096,7 @@
 				DSTROOT = /tmp/Movies_InfoModel.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Movies-InfoModel/Movies-InfoModel-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(SOURCE_ROOT)/RestKit/Build/";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1120,10 +1153,7 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Movies-Info/Movies-Info-Prefix.pch";
-				HEADER_SEARCH_PATHS = (
-					"$(SOURCE_ROOT)/GData/build",
-					"$(SOURCE_ROOT)/RestKit/Build/",
-				);
+				HEADER_SEARCH_PATHS = "$(SOURCE_ROOT)/RestKit/Build/";
 				INFOPLIST_FILE = "Movies-Info/Movies-Info-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_LDFLAGS = "-ObjC";
@@ -1138,10 +1168,7 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Movies-Info/Movies-Info-Prefix.pch";
-				HEADER_SEARCH_PATHS = (
-					"$(SOURCE_ROOT)/GData/build",
-					"$(SOURCE_ROOT)/RestKit/Build/",
-				);
+				HEADER_SEARCH_PATHS = "$(SOURCE_ROOT)/RestKit/Build/";
 				INFOPLIST_FILE = "Movies-Info/Movies-Info-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_LDFLAGS = "-ObjC";
@@ -1170,6 +1197,7 @@
 				1F7E31911473BA2700E4D7C8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		63626F4A1419414800F3A4E2 /* Build configuration list for PBXProject "Movies-Info" */ = {
 			isa = XCConfigurationList;

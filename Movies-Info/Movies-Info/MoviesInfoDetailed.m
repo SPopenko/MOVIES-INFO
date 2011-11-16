@@ -86,8 +86,6 @@
         }
         [movieURL release];
         [playerController release];
-//        playerController = nil;
-//        movieURL = nil;
     }
 }
 

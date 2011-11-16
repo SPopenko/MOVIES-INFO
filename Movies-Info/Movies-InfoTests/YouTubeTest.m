@@ -9,7 +9,6 @@
 
 #import "YouTubeTest.h"
 
-
 @implementation YouTubeTest
 #define wrongURL @"www.ya.ru"
 #define rightURL @"http://www.youtube.com/watch?v=Hhgfz0zPmH4"

@@ -32,4 +32,7 @@
 - (NSString*) castToHtmlString;
 - (NSString*) htmlStringFromImageAtKey:(NSString*) imagekey;
 
+- (ShortMovieInfo*) getShortMovieInfo;
+
+
 @end

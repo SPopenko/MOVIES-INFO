@@ -114,6 +114,11 @@
     return [NSString stringWithFormat:@"data:image/png;base64,%@",[imageData base64Encoding]];
 }
 
+- (ShortMovieInfo*) getShortMovieInfo
+{
+    return [super self];
+}
+
 - (void) dealloc
 {
     [_cast release];
