@@ -78,15 +78,16 @@
     if (movieInfo.trailer)
     {
         NSURL* movieURL = [NSURL URLWithString:movieInfo.trailer];
-        MPMoviePlayerViewController* playerController = [[MPMoviePlayerViewController alloc] initWithContentURL:movieURL]; 
+        MPMoviePlayerViewController* playerController = [[[MPMoviePlayerViewController alloc] initWithContentURL:movieURL] retain]
+        ; 
         if (playerController) 
         {
             [self presentMoviePlayerViewControllerAnimated:playerController];
-            [playerController release];
-            playerController = nil;
         }
         [movieURL release];
-        movieURL = nil;
+        [playerController release];
+//        playerController = nil;
+//        movieURL = nil;
     }
 }
 

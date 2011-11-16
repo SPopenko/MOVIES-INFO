@@ -16,18 +16,18 @@
 
 - (void) testGetMovieLinkPathFromNilURL
 {
-    GHAssertNil([YouTubeVideo getMoviePathFromLink:nil] , @"Movie path is not null" );
+    GHAssertNil([YouTubeVideo getMoviePathFromLink:nil] , @"Movie path is not nil" );
 }
 
 - (void) testGetMovieLinkPathFromRightURL
 {
     NSString* result = [YouTubeVideo getMoviePathFromLink:rightURL];
-    
+    GHAssertNotNil(result, @"Movie path is nil");
 }
 
 - (void) testGetMovieLinkPathFromWrongURL
 {
-    GHAssertNil([YouTubeVideo getMoviePathFromLink:wrongURL] , @"Movie path is not null" );
+    GHAssertNil([YouTubeVideo getMoviePathFromLink:wrongURL] , @"Movie path is not nil" );
 }
 
 
