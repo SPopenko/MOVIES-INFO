@@ -11,14 +11,10 @@
 @implementation MovieCache
 
 static NSMutableDictionary* _imageList;
-//static NSString* movieWithoutPoster;
 #define movieWithoutPoster @""
+
 + (void) initImageList
 {
-    /*if (movieWithoutPoster == nil) {
-        movieWithoutPoster = [NSString stringWithString:@""];
-    }*/
-    
     if (_imageList == nil)
     {
         _imageList = [[NSMutableDictionary alloc] init];
