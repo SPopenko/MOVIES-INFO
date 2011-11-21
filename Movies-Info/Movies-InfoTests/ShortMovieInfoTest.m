@@ -56,4 +56,11 @@
     [testObject release];
 }
 
+- (void) dealloc
+{
+    [testObject release];
+    [_movieInfo release];
+    [super dealloc];
+}
+
 @end

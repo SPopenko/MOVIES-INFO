@@ -19,6 +19,11 @@
 @synthesize description = _description;
 @synthesize trailer     = _trailer;
 
+- (DetailedMovieInfo*) init
+{  
+    return self;
+}
+
 - (NSString*) getTrailer
 {
     return _trailer;
@@ -31,80 +36,96 @@
 
 - (NSMutableString*) fillHtmlPage:(NSMutableString *)htmlPage
 {
+    [htmlPage retain];
     NSDateFormatter* df = [[NSDateFormatter alloc] init];
     [df setDateStyle:NSDateFormatterLongStyle];
     
     //Adding description
-    [htmlPage replaceOccurrencesOfString:[NSString stringWithString:@"[description]"]
-                              withString:_description 
-                                 options:NSCaseInsensitiveSearch 
-                                   range:NSMakeRange(0, htmlPage.length)];
+    [self replaceString:@"[description]"
+             withString:_description
+               inString:htmlPage];
     //Adding poster
-    [htmlPage replaceOccurrencesOfString:[NSString stringWithString:@"[posterUrl]"]
-                              withString:[self htmlStringFromImageAtKey:self.poster]
-                                 options:NSCaseInsensitiveSearch 
-                                   range:NSMakeRange(0, htmlPage.length)];
+    [self replaceString:@"[posterUrl]"
+             withString:[self htmlStringFromImageAtKey:self.poster]
+               inString:htmlPage];
     //Adding releaseDate
-    [htmlPage replaceOccurrencesOfString:[NSString stringWithString:@"[release]"]
-                              withString:[df stringFromDate:self.releaseDate]
-                                 options:NSCaseInsensitiveSearch 
-                                   range:NSMakeRange(0, htmlPage.length)];
+    [self replaceString:@"[release]"
+             withString:[df stringFromDate:self.releaseDate]
+               inString:htmlPage];
     //Adding movie name
-    [htmlPage replaceOccurrencesOfString:[NSString stringWithString:@"[name]"]
-                              withString:self.movieName 
-                                 options:NSCaseInsensitiveSearch 
-                                   range:NSMakeRange(0, htmlPage.length)];
+    [self replaceString:@"[name]"
+             withString:self.movieName
+               inString:htmlPage];
     //Adding backdrops
-    [htmlPage replaceOccurrencesOfString:[NSString stringWithString:@"[backdrops]"]
-                              withString:[self backdropsToHtmlString]
-                                 options:NSCaseInsensitiveSearch 
-                                   range:NSMakeRange(0, htmlPage.length)];
+    [self replaceString:@"[backdrops]"
+             withString:[self backdropsToHtmlString]
+               inString:htmlPage];
     //Adding cast
-    [htmlPage replaceOccurrencesOfString:[NSString stringWithString:@"[cast]"]
-                              withString:[self castToHtmlString]
-                                 options:NSCaseInsensitiveSearch 
-                                   range:NSMakeRange(0, htmlPage.length)];
+    [self replaceString:@"[cast]"
+             withString:[self castToHtmlString]
+               inString:htmlPage];
     //Adding fan rating
-    [htmlPage replaceOccurrencesOfString:[NSString stringWithString:@"[rating]"]
-                              withString:[NSString stringWithFormat:@"%2.1f", [self.fanRating doubleValue]]
-                                 options:NSCaseInsensitiveSearch 
-                                   range:NSMakeRange(0, htmlPage.length)];
-    
-    
+    [self replaceString:[NSMutableString stringWithString:@"[rating]"]
+             withString:[NSMutableString stringWithFormat:@"%2.1f", [self.fanRating doubleValue]]
+               inString:htmlPage];
+
     [df release];
     return htmlPage;
 }
 
-- (NSString*) backdropsToHtmlString
+- (void) replaceString:(NSMutableString*) replaceString withString:(NSMutableString*) withString inString:(NSMutableString*) inString
+{
+    //Checking internal Value
+    if (replaceString == nil || inString == nil) return;
+    
+    NSMutableString* insertString = [NSMutableString stringWithString:@""];
+
+    if (withString != nil)
+    {
+        [insertString appendFormat:@"%@", withString];
+    }
+    
+    [inString replaceOccurrencesOfString:replaceString
+                              withString:insertString
+                                 options:NSCaseInsensitiveSearch
+                                   range:NSMakeRange(0, inString.length)];
+}
+
+- (NSMutableString*) backdropsToHtmlString
 {
     NSMutableString* imgList = [[[NSMutableString alloc] initWithString:@""] autorelease];
     
-    for (int i =0; i < _backdrops.count; i++)
+    if (_backdrops != nil)
     {
-        Poster* backdrop = [_backdrops objectAtIndex:i];
-        if ([[backdrop.image.size lowercaseString] isEqualToString:@"thumb"])
+        for (int i =0; i < _backdrops.count; i++)
         {
-            [imgList appendFormat:@"<img class=\"slide\" src=\"%@\">", [self htmlStringFromImageAtKey:backdrop.image.url]];
+            Poster* backdrop = [_backdrops objectAtIndex:i];
+            if ([[backdrop.image.size lowercaseString] isEqualToString:@"thumb"])
+            {
+                [imgList appendFormat:@"<img class=\"slide\" src=\"%@\">", [self htmlStringFromImageAtKey:backdrop.image.url]];
+            }
         }
     }
     if ([imgList isEqualToString:@""]) [imgList appendString:@"no backdrops found"];
-    return [imgList substringFromIndex:0];
+    return imgList;
 }
 
-- (NSString*) castToHtmlString
+- (NSMutableString*) castToHtmlString
 {
     NSMutableString* castList = [[[NSMutableString alloc] initWithString:@""] autorelease];
-    
-    for (int i = 0; i < _cast.count; i++) 
+    if (_cast!=nil)
     {
-        if (i > 0)
+        for (int i = 0; i < _cast.count; i++) 
         {
-            [castList appendString:@", "];
+            if (i > 0)
+            {
+                [castList appendString:@", "];
+            }
+            [castList appendString:((Person*)[_cast objectAtIndex:i]).name];
         }
-        [castList appendString:((Person*)[_cast objectAtIndex:i]).name];
     }
     
-    return [castList substringFromIndex:0];
+    return castList;
 }
 
 - (NSString*) htmlStringFromImageAtKey:(NSString *)imagekey

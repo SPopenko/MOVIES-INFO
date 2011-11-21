@@ -17,10 +17,12 @@
 + (NSString*) getMoviePathFromLink:(NSString *)youTubeLink
 {
     NSString* result = nil;
-    if (youTubeLink)
+    NSURL* youTubeUrl = [NSURL URLWithString:youTubeLink];
+    
+    if (youTubeUrl != nil)
     {
         //preparing yout ube page ro parse
-        NSString* youTubePage = [[NSString alloc] initWithContentsOfURL:[NSURL URLWithString:youTubeLink] encoding:NSUTF8StringEncoding error:NULL];
+        NSString* youTubePage = [[NSString alloc] initWithContentsOfURL:youTubeUrl encoding:NSUTF8StringEncoding error:NULL];
         
         //Checking loaded youTube page and fininishing if it is not loaded
         if (youTubePage == nil) return result;

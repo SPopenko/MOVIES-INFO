@@ -11,17 +11,23 @@
 @implementation MovieCache
 
 static NSMutableDictionary* _imageList;
-
+//static NSString* movieWithoutPoster;
 #define movieWithoutPoster @""
-
-static NSMutableDictionary* _imageList;
-
 + (void) initImageList
 {
+    /*if (movieWithoutPoster == nil) {
+        movieWithoutPoster = [NSString stringWithString:@""];
+    }*/
+    
     if (_imageList == nil)
     {
         _imageList = [[NSMutableDictionary alloc] init];
-        [_imageList setObject:[UIImage imageNamed:@"movie.png"] forKey:movieWithoutPoster];
+    }
+    
+    UIImage* moviePoster = (UIImage*)[_imageList objectForKey:movieWithoutPoster];
+    if (moviePoster == nil) {
+        moviePoster = [ UIImage imageNamed:@"movie.png"];
+        [_imageList setObject:moviePoster forKey:movieWithoutPoster];
     }
 }
 
@@ -69,6 +75,7 @@ static NSMutableDictionary* _imageList;
 - (void) dealloc
 {
     [_imageList release];
+    [movieWithoutPoster release];
     [super dealloc];
 }
 @end

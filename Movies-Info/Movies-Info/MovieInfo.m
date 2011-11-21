@@ -108,7 +108,7 @@
 #pragma mark - Mapping Functions
 - (RKObjectMapping*) shortMovieInfoMapping
 {
-    RKObjectMapping* shortMovieInfoMapping = [RKObjectMapping mappingForClass:[ShortMovieInfo class]];
+    RKObjectMapping* shortMovieInfoMapping = [[RKObjectMapping mappingForClass:[ShortMovieInfo class]]retain];
     
     //Base property mappings
     //Prepring Date formatter for releseDate and Time
@@ -139,13 +139,12 @@
     
     [tmdbDateFormatter autorelease]; 
     
-    //[shortMovieInfoMapping autorelease];
     return shortMovieInfoMapping;
 }
 
 - (RKObjectMapping*) detailedMovieInfoMapping
 {
-    RKObjectMapping* detailedMovieInfoMapping = [RKObjectMapping mappingForClass:[DetailedMovieInfo class]];
+    RKObjectMapping* detailedMovieInfoMapping = [[RKObjectMapping mappingForClass:[DetailedMovieInfo class]] retain];
     
     //Base property mappings
     //Prepring Date formatter for releseDate and Time
