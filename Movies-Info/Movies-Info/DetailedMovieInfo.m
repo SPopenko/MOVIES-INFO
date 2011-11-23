@@ -186,14 +186,24 @@
 #pragma mark NSCoder 
 - (id) initWithCoder:(NSCoder *)aDecoder
 {
-    NSLog(@"It not works");
+    self = [super initWithCoder:aDecoder];
+    self.backdrops   = [aDecoder decodeObjectForKey:@"backdrops"];
+    self.cast        = [aDecoder decodeObjectForKey:@"cast"];
+    self.description = [aDecoder decodeObjectForKey:@"description"];
+    self.trailer     = [aDecoder decodeObjectForKey:@"trailer"];
     
-    return nil;
+    return self;
 }
 
 -(void) encodeWithCoder:(NSCoder *)aCoder
 {
-    NSLog(@"It not works");
+    [super initWithCoder:aCoder];
+    
+    [aCoder encodeObject:self.backdrops forKey:@"backdrops"];
+    [aCoder encodeObject:self.cast forKey:@"cast"];
+    [aCoder encodeObject:self.description forKey:@"description"];
+    [aCoder encodeObject:self.trailer forKey:@"trailer"];
+    
 }
 
 - (void) dealloc

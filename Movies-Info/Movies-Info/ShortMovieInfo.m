@@ -24,17 +24,17 @@
     
     test = [(Image*) object retain];
     
-    if (![_url isEqual:test.url] && result) 
+    if (![self.url isEqual:test.url] && result) 
     {
         result = NO;
     }
     
-    if (![_type isEqual:test.type] && result)
+    if (![self.type isEqual:test.type] && result)
     {
         result = NO;
     }
     
-    if (![_size isEqual:test.size] && result)
+    if (![self.size isEqual:test.size] && result)
     {
         result = NO;
     }
@@ -47,20 +47,25 @@
 #pragma mark NSCoder 
 - (id) initWithCoder:(NSCoder *)aDecoder
 {
-    NSLog(@"It not works");
-    
-    return nil;
+    self.url  = [aDecoder decodeObjectForKey:@"url"];
+    self.type = [aDecoder decodeObjectForKey:@"type"];
+    self.size = [aDecoder decodeObjectForKey:@"size"];
+    return self;
 }
 
 -(void) encodeWithCoder:(NSCoder *)aCoder
 {
-    NSLog(@"It not works");
+    [aCoder encodeObject:self.url  forKey:@"url"];
+    [aCoder encodeObject:self.type forKey:@"type"];
+    [aCoder encodeObject:self.size forKey:@"size"];
 }
 
 @end
 
 @implementation Poster
+
 @synthesize image = _image;
+
 - (BOOL) isEqual:(id)object
 {
     BOOL result = YES;
@@ -72,7 +77,7 @@
     
     test = [(Poster*) object retain];
     
-    if (![_image isEqual:test.image] && result)
+    if (![self.image isEqual:test.image] && result)
     {
         result = NO;
     }
@@ -85,14 +90,13 @@
 #pragma mark NSCoder 
 - (id) initWithCoder:(NSCoder *)aDecoder
 {
-    NSLog(@"It not works");
-    
-    return nil;
+    self.image = [aDecoder decodeObjectForKey:@"image"];
+    return self;
 }
 
 -(void) encodeWithCoder:(NSCoder *)aCoder
 {
-    NSLog(@"It not works");
+    [aCoder encodeObject:self.image forKey:@"image"];
 }
 
 @end
@@ -138,32 +142,32 @@
     
     test = [(ShortMovieInfo*) object retain];
     
-    if (![_posters isEqualToArray:test.posters] && result)
+    if (![self.posters isEqualToArray:test.posters])
     {
         result = NO;
     }
     
-    if (![_movieId isEqual:test.movieId] && result)
-    {
-        result = NO;
-    }
-    
-    if (![_fanRating isEqual:test.fanRating] && result)
+    if (![self.movieId isEqual:test.movieId] && result)
     {
         result = NO;
     }
 
-    if (![_movieName isEqual:test.movieName] && result)
+    if (![self.fanRating isEqual:test.fanRating] && result)
+    {
+        result = NO;
+    }
+
+    if (![self.movieName isEqual:test.movieName] && result)
     {
         result = NO;
     }
     
-    if (![_duration isEqual:test.duration] && result)
+    if (![self.duration isEqual:test.duration] && result)
     {
         result = NO;
     }
     
-    if (![_releaseDate isEqual:test.releaseDate] && result)
+    if (![self.releaseDate isEqual:test.releaseDate] && result)
     {
         result = NO;
     }
@@ -176,14 +180,25 @@
 #pragma mark NSCoder 
 - (id) initWithCoder:(NSCoder *)aDecoder
 {
-    NSLog(@"It not works");
+    self.posters     = [aDecoder decodeObjectForKey:@"posters"];
+    self.movieId     = [aDecoder decodeObjectForKey:@"movieID"];
+    self.fanRating   = [aDecoder decodeObjectForKey:@"fanRating"];
+    self.movieName   = [aDecoder decodeObjectForKey:@"movieName"];
+    self.duration    = [aDecoder decodeObjectForKey:@"duration"]; 
+    self.releaseDate = [aDecoder decodeObjectForKey:@"releaseDate"];
     
-    return nil;
+    return self;
 }
 
 -(void) encodeWithCoder:(NSCoder *)aCoder
 {
-    NSLog(@"It not works");
+    [aCoder encodeObject:self.posters     forKey:@"posters"];
+    [aCoder encodeObject:self.movieId     forKey:@"movieID"];
+    [aCoder encodeObject:self.fanRating   forKey:@"fanRating"];
+    [aCoder encodeObject:self.movieName   forKey:@"movieName"];
+    [aCoder encodeObject:self.duration    forKey:@"duration"]; 
+    [aCoder encodeObject:self.releaseDate forKey:@"releaseDate"];
+    
 }
 
 - (void) dealloc

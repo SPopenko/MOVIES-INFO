@@ -11,7 +11,7 @@
 #import <Foundation/NSObjCRuntime.h>
 
 //Delete after creating normal mapping
-@interface Image :NSObject <NSCoding>
+@interface Image :NSObject <NSCoding>   
 @property (nonatomic, retain) NSString* url;
 @property (nonatomic, retain) NSString* type;
 @property (nonatomic, retain) NSString* size;
