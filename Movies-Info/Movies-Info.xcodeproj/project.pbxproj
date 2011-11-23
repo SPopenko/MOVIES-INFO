@@ -57,6 +57,8 @@
 		1FB603831467DA1C00B3AB59 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FB603821467DA1C00B3AB59 /* MediaPlayer.framework */; };
 		1FBF207D1461584A009350FE /* ViewActionIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FBF207C1461584A009350FE /* ViewActionIndicator.m */; };
 		1FC86BBE147A466A00183511 /* MovieCacheTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC86BBD147A466A00183511 /* MovieCacheTest.m */; };
+		1FC86BC1147AB4EA00183511 /* MovieInfoTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC86BC0147AB4EA00183511 /* MovieInfoTest.m */; };
+		1FC86BC3147BC96400183511 /* testGetMovieInfoListWithRealParamsResult.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1FC86BC2147BC96400183511 /* testGetMovieInfoListWithRealParamsResult.plist */; };
 		1FCBCC48145833D300EB3FD1 /* libobjc.A.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FCBCC47145833D300EB3FD1 /* libobjc.A.dylib */; };
 		1FCBCD0F145AFA8300EB3FD1 /* FanRating.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FCBCD0E145AFA8300EB3FD1 /* FanRating.m */; };
 		1FCBCD11145B03BA00EB3FD1 /* star_empty.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FCBCD10145B03BA00EB3FD1 /* star_empty.png */; };
@@ -254,6 +256,9 @@
 		1FC4A03D145F198900F63225 /* NSDataAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDataAdditions.m; sourceTree = "<group>"; };
 		1FC86BBC147A466A00183511 /* MovieCacheTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieCacheTest.h; sourceTree = "<group>"; };
 		1FC86BBD147A466A00183511 /* MovieCacheTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieCacheTest.m; sourceTree = "<group>"; };
+		1FC86BBF147AB4EA00183511 /* MovieInfoTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieInfoTest.h; sourceTree = "<group>"; };
+		1FC86BC0147AB4EA00183511 /* MovieInfoTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieInfoTest.m; sourceTree = "<group>"; };
+		1FC86BC2147BC96400183511 /* testGetMovieInfoListWithRealParamsResult.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = testGetMovieInfoListWithRealParamsResult.plist; sourceTree = "<group>"; };
 		1FCBCC47145833D300EB3FD1 /* libobjc.A.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libobjc.A.dylib; path = usr/lib/libobjc.A.dylib; sourceTree = SDKROOT; };
 		1FCBCC491458769000EB3FD1 /* DetailedMovieInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailedMovieInfo.h; sourceTree = "<group>"; };
 		1FCBCC4A1458769000EB3FD1 /* DetailedMovieInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailedMovieInfo.m; sourceTree = "<group>"; };
@@ -491,6 +496,8 @@
 				1F9A406914743AE5008B53E7 /* DetailedMovieInfoTest.m */,
 				1FC86BBC147A466A00183511 /* MovieCacheTest.h */,
 				1FC86BBD147A466A00183511 /* MovieCacheTest.m */,
+				1FC86BBF147AB4EA00183511 /* MovieInfoTest.h */,
+				1FC86BC0147AB4EA00183511 /* MovieInfoTest.m */,
 			);
 			path = "Movies-InfoTests";
 			sourceTree = "<group>";
@@ -503,6 +510,7 @@
 				1F7351BB146BCC0000D52947 /* main.m */,
 				1F7351BD146BCC0000D52947 /* Movies-InfoTests-Prefix.pch */,
 				1F361BD814765E5400596615 /* DetailedMovieInfoTestResultStrings.plist */,
+				1FC86BC2147BC96400183511 /* testGetMovieInfoListWithRealParamsResult.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -922,6 +930,7 @@
 				1F7351BA146BCC0000D52947 /* InfoPlist.strings in Resources */,
 				1F361BD71475CAE200596615 /* movie.png in Resources */,
 				1F361BDA14766FF400596615 /* DetailedMovieInfoTestResultStrings.plist in Resources */,
+				1FC86BC3147BC96400183511 /* testGetMovieInfoListWithRealParamsResult.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -961,6 +970,7 @@
 				1F9A40671473FBC6008B53E7 /* ShortMovieInfoTest.m in Sources */,
 				1F9A406A14743AE5008B53E7 /* DetailedMovieInfoTest.m in Sources */,
 				1FC86BBE147A466A00183511 /* MovieCacheTest.m in Sources */,
+				1FC86BC1147AB4EA00183511 /* MovieInfoTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

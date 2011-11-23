@@ -140,6 +140,62 @@
     return [super self];
 }
 
+- (BOOL) isEqual:(id)object
+{
+    BOOL result = YES;
+    DetailedMovieInfo* test = nil;
+    
+    if (![object isMemberOfClass:[DetailedMovieInfo class]] && result)
+    {
+        result = NO;
+    }
+    
+    test = [(DetailedMovieInfo*) object retain];
+    
+    if (![super isEqual:(ShortMovieInfo*)object] && result)
+    {
+        result = NO;
+    }
+    
+    
+    if (![_backdrops isEqualToArray:test.backdrops] && result)
+    {
+        result = NO;
+    }
+    
+    if (![_cast isEqualToArray:test.cast] && result)
+    {
+        result = NO;
+    }
+    
+    if (![_description isEqual:test.description] && result)
+    {
+        result = NO;
+    }
+    
+    if (![_trailer isEqual:test.trailer] && result)
+    {
+        result = NO;
+    }
+    
+    [test release];
+    
+    return result;
+}
+
+#pragma mark NSCoder 
+- (id) initWithCoder:(NSCoder *)aDecoder
+{
+    NSLog(@"It not works");
+    
+    return nil;
+}
+
+-(void) encodeWithCoder:(NSCoder *)aCoder
+{
+    NSLog(@"It not works");
+}
+
 - (void) dealloc
 {
     [_cast release];

@@ -19,6 +19,12 @@
 
 - (void) getShortMovieInfoWithParameters:(NSDictionary *)parameters doAfterLoadFinished:(finishAction)doBlock
 {
+    if (parameters == nil)
+    {
+        doBlock(nil);
+        return;
+    }
+    
     NSMutableDictionary* requestParameters = [self prepareParametersFromDictionary:parameters];
     
     [self initRestKit];
