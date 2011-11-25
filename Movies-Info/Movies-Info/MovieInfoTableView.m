@@ -1,4 +1,4 @@
-//
+ //
 //  MovieInfoTableView.m
 //  tv3
 //
@@ -179,7 +179,7 @@
                                           [NSString stringWithString:@"desc"],        @"order",
                                           [NSString stringWithFormat:@"%@", perPage], @"perPage",
                                           [NSString stringWithString:@"1"],           @"page",
-                                          [NSString stringWithString:@"10"],          @"minVotes",
+                                          [NSString stringWithString:@"5"],          @"minVotes",
                                           nil];
     
     
