@@ -14,35 +14,103 @@
 #define quality    @"quality=medium"
 #define videoType  @"video/mp4"
 
-+ (NSString*) getMoviePathFromLink:(NSString *)youTubeLink
+- (NSString*) getMoviePathFromLink:(NSString *)youTubeLink
 {
     NSString* result = nil;
-    NSURL* youTubeUrl = [NSURL URLWithString:youTubeLink];
     
-    if (youTubeUrl != nil)
+    //getting youtube page
+    NSString* youTubePage = [self getPageContentsOfURL:youTubeLink];
+
+    //Checking loaded youTube page and fininishing if it is not loaded
+    if (youTubePage == nil) return result;
+    //Getting movie pathes
+    NSString* uncleared = [self getBlockWithMoviePathesFromPage:youTubePage];
+    //Unescaping moviePathes in video informarion
+    NSString* videoInformations = [self replaceEscapedSymbols:uncleared];
+    //getting movie path to trailer file
+    result = [self getMoviePathFromPageBlock:videoInformations];
+    return result ;
+}
+
+- (NSString*) getPageContentsOfURL:(NSString*) pageURL
+{
+    NSString* result = nil;
+    
+    //Create link to web page
+    NSURL* urlToPage = [[NSURL URLWithString:pageURL] retain];
+    
+    if (urlToPage)
     {
-        //preparing yout ube page ro parse
-        NSString* youTubePage = [[NSString alloc] initWithContentsOfURL:youTubeUrl encoding:NSUTF8StringEncoding error:NULL];
-        
-        //Checking loaded youTube page and fininishing if it is not loaded
-        if (youTubePage == nil) return result;
-        
-        //Getting flashvars
+        NSError*          loadError = nil;
+        NSStringEncoding* encoding  = nil;
+        result = [[[NSString alloc] initWithContentsOfURL:urlToPage usedEncoding:encoding error:&loadError] retain];
+
+        if (loadError && result == nil)
+        {
+            NSLog(@"Page load failed with error:%d, %@", loadError.code, [loadError description]);
+        }
+    }
+    else
+    {
+        NSLog(@"Not valid URL string");
+    }
+     
+    [urlToPage release];
+    [result autorelease];
+    return  result;
+}
+
+- (NSString*) getBlockWithMoviePathesFromPage:(NSString*) htmlPage
+{
+    NSString* result = nil;
+    if (htmlPage)
+    {
         NSRegularExpression* videoInformationBlock = [[NSRegularExpression alloc] initWithPattern:@"url=.*mp4.*\""
                                                                                           options:NSRegularExpressionSearch
                                                                                             error:NULL];
         
-        NSRange videoInformationBlockRange = [videoInformationBlock rangeOfFirstMatchInString: youTubePage options:0 range:NSMakeRange(0, youTubePage.length)];
-        NSString* videoInformations = [[youTubePage substringWithRange:videoInformationBlockRange] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        NSRange videoInformationBlockRange = [videoInformationBlock rangeOfFirstMatchInString: htmlPage options:0 range:NSMakeRange(0, htmlPage.length)];
+        if (videoInformationBlockRange.location != NSNotFound)
+        {
+            result = [[htmlPage substringWithRange:videoInformationBlockRange] retain];
+        }
+        [videoInformationBlock release];
+    }
+    [result autorelease];
+    return  result;
+}
+
+- (NSString*) replaceEscapedSymbols:(NSString*) replaceString
+{
+    NSString* result = nil;
+    
+    if (replaceString)
+    {
+        //Unescaping percented symbols
+        result = [replaceString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        //Unescaping percented symbols after unescaping
+        result = [result stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        //Replace unicode escaped symbol
+        result = [result stringByReplacingOccurrencesOfString:@"\\u0026" withString:@"&"];
+        [result retain];
+    }
+    
+    [result autorelease];
+    return  result;
+}
+
+- (NSString*) getMoviePathFromPageBlock:(NSString *)pageBlock
+{
+    NSString* result =nil;
+    if (pageBlock) 
+    {
+        NSMutableArray* videoLinks = [NSMutableArray arrayWithArray:[pageBlock componentsSeparatedByString:@"url="]];
         
-        NSMutableArray* videoLinks = [NSMutableArray arrayWithArray:[videoInformations componentsSeparatedByString:@"url="]];
-        
+        //Getting flashvars
         for (int i = 0; i < videoLinks.count; i++)
         {
             NSRange range;
-            NSString* temp = [[((NSString*) [videoLinks objectAtIndex:i])
-                               stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]
-                              stringByReplacingOccurrencesOfString:@"\\u0026" withString:@"&"];
+            NSString* temp = ((NSString*) [videoLinks objectAtIndex:i]);
             
             range = [temp rangeOfString:quality];
             if ([temp rangeOfString:quality].location == NSNotFound)
@@ -64,13 +132,12 @@
                 }
                 break;
             }
-            
         }
-        [videoInformationBlock release];
-        [youTubePage release];
     }
     [result autorelease];
-    return result ;
+    return result;
 }
+
+
 
 @end

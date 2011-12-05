@@ -8,15 +8,16 @@
 
 #import <GHUnitIOS/GHUnit.h>
 
+#import "GHTestCase(ResultsFromFile).h"
+
 #import "MovieInfo.h"
 #import "DetailedMovieInfo.h"
 
 @interface DetailedMovieInfoTest : GHTestCase
 {
-    NSDictionary* _testResults;
-    MovieInfo*    _movieInfo;
-    BOOL          _testFinished;
-    id            testObject;
+    MovieInfo* _movieInfo;
+    BOOL       _testFinished;
+    id         testObject;
 }
 
 //getTrailer Tests
@@ -28,7 +29,5 @@
 - (void) testFillHtmlPageFromEmptyMovieInfo;
 - (void) testFillHtmlPageFromRealMovieInfoWithEmptyBackdrops;
 - (void) testFillHtmlPageFromRealMovieInfoWithBackdrops;
-
-- (NSString*) loadStringForKey:(NSString*) key;
 
 @end

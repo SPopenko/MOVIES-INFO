@@ -7,12 +7,36 @@
 //
 
 #import <GHUnitIOS/GHUnit.h>
+#import <OCMock/OCMock.h>
+#import <OCMock/OCMockObject.h>
+
+#import "GHTestCase(ResultsFromFile).h"
+
 #import "YouTubeVideo.h"
 
 @interface YouTubeTest : GHTestCase
+{
+    id mock;
+    YouTubeVideo* youTubeVideo;
+}
 
-- (void) testGetMovieLinkPathFromNilURL;
-- (void) testGetMovieLinkPathFromRightURL;
-- (void) testGetMovieLinkPathFromWrongURL;
+- (void) testGetMovieLinkPath_NilURL;
+- (void) testGetMovieLinkPath_RightURL;
+- (void) testGetMovieLinkPath_WrongURL;
+
+- (void) testGetPageContentsOfURL_Nil;
+- (void) testGetPageContentsOfURL_pageUrl;
+
+- (void) testGetBlockWithMoviePathes_Nil;
+- (void) testGetBlockWithMoviePathes_WithPathes;
+- (void) testGetBlockWithMoviePathes_WithoutPathes;
+
+- (void) testReplaceEscapedCharacters_Nil;
+- (void) testReplaceEscapedCharacters_WithChars;
+- (void) testReplaceEscapedCharacters_WithoutChars;
+
+- (void) testGetMoviePathFromPageBlock_Nil;
+- (void) testGetMoviePathFromPageBlock_WithPathes;
+- (void) testGetMoviePathFromPageBlock_WithoutPathes;
 
 @end

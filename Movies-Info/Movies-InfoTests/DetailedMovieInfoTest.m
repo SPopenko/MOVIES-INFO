@@ -15,15 +15,6 @@
 #define kresultHtmlPageFromRealMovieInfoWithBackdrops @"resultHtmlPageFromRealMovieInfoWithBackdrops"
 #define kresultHtmlPageFromRealMovieInfoWithEmptyBackdrops @"resultHtmlPageFromRealMovieInfoWithEmptyBackdrops"
 
-- (DetailedMovieInfoTest*) init
-{
-    NSBundle* bundle = [NSBundle mainBundle];
-	NSString* plistPath = [bundle pathForResource:@"DetailedMovieInfoTestResultStrings" ofType:@"plist"];
-    _testResults        = [[NSDictionary dictionaryWithContentsOfFile:plistPath] retain];
-    
-    return self;
-}
-
 - (void) setUp
 {
     _movieInfo = [[MovieInfo  alloc] init];
@@ -142,16 +133,8 @@
     [testObject release];
 }
 
-- (NSString*) loadStringForKey:(NSString *)key
-{
-    NSString* result = nil;
-    result  = [NSString stringWithFormat:@"%@", [_testResults objectForKey:key]];
-    return result;
-}
-
 - (void) dealloc
 {
-    [_testResults release];
     [_movieInfo release];
     [super dealloc];
 }

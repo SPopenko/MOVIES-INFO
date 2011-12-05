@@ -31,7 +31,9 @@
 
 - (void) setTrailer:(NSString *)trailerLink
 {
-    _trailer = [[YouTubeVideo getMoviePathFromLink:trailerLink] retain];
+    YouTubeVideo* ytv = [[[YouTubeVideo alloc] init] retain];
+    _trailer = [[ytv getMoviePathFromLink:trailerLink] retain];
+    [ytv release];
 }
 
 - (NSMutableString*) fillHtmlPage:(NSMutableString *)htmlPage

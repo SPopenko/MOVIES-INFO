@@ -10,7 +10,7 @@
 		1F361BC81475180E00596615 /* movie.png in Resources */ = {isa = PBXBuildFile; fileRef = CE82A8D514327B3900F4A931 /* movie.png */; };
 		1F361BD61475B24500596615 /* preferences.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F80CEAC146C1D4300C193F2 /* preferences.png */; };
 		1F361BD71475CAE200596615 /* movie.png in Resources */ = {isa = PBXBuildFile; fileRef = CE82A8D514327B3900F4A931 /* movie.png */; };
-		1F361BDA14766FF400596615 /* DetailedMovieInfoTestResultStrings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F361BD814765E5400596615 /* DetailedMovieInfoTestResultStrings.plist */; };
+		1F361BDA14766FF400596615 /* DetailedMovieInfoTestResults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F361BD814765E5400596615 /* DetailedMovieInfoTestResults.plist */; };
 		1F5D09FC1456D58F005B77D5 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F5D09FB1456D58E005B77D5 /* MBProgressHUD.m */; };
 		1F5D0A031456F187005B77D5 /* checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F5D0A021456F187005B77D5 /* checkmark.png */; };
 		1F5D0A891458006F005B77D5 /* infoFilm.html in Resources */ = {isa = PBXBuildFile; fileRef = 1F5D0A881458006F005B77D5 /* infoFilm.html */; };
@@ -20,12 +20,15 @@
 		1F7351BA146BCC0000D52947 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F7351B8146BCC0000D52947 /* InfoPlist.strings */; };
 		1F7351BC146BCC0000D52947 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7351BB146BCC0000D52947 /* main.m */; };
 		1F735288146BD3EE00D52947 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F735287146BD3EE00D52947 /* GHUnitIOS.framework */; };
+		1F7DC357148384F900D0E859 /* libMovies-InfoModel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F7E31871473BA2700E4D7C8 /* libMovies-InfoModel.a */; };
+		1F7DC35C14838B5100D0E859 /* OCMock.framework in Copy OCMock Files */ = {isa = PBXBuildFile; fileRef = 1F7DC35B14838B5100D0E859 /* OCMock.framework */; };
+		1F7DC35D14838B7C00D0E859 /* OCMock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F7DC35B14838B5100D0E859 /* OCMock.framework */; };
+		1F7DC35F14838B9800D0E859 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F7DC35E14838B9800D0E859 /* libOCMock.a */; };
+		1F7DC36C14867C5000D0E859 /* GHTestCase+Swizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7DC36214839CCE00D0E859 /* GHTestCase+Swizzle.m */; };
 		1F7E316E1472DB6B00E4D7C8 /* YouTubeTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7E316D1472DB6B00E4D7C8 /* YouTubeTest.m */; };
 		1F7E31881473BA2700E4D7C8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63626F561419414900F3A4E2 /* Foundation.framework */; };
 		1F7E31941473BA7100E4D7C8 /* libMovies-InfoModel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F7E31871473BA2700E4D7C8 /* libMovies-InfoModel.a */; };
 		1F7E31951473BA7B00E4D7C8 /* YouTubeVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB6037C1467CE3500B3AB59 /* YouTubeVideo.m */; };
-		1F80CE8E146C03B800C193F2 /* OCMock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F80CE8D146C03B800C193F2 /* OCMock.framework */; };
-		1F80CE90146C043300C193F2 /* OCMock.framework in Copy OCMock Files */ = {isa = PBXBuildFile; fileRef = 1F80CE8D146C03B800C193F2 /* OCMock.framework */; };
 		1F80CEAD146C1D4300C193F2 /* preferences.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F80CEAC146C1D4300C193F2 /* preferences.png */; };
 		1F91620F146D3C5A003EE551 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1F91620E146D3C5A003EE551 /* Settings.bundle */; };
 		1F9A403F1473DE9D008B53E7 /* MovieInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8791D814628EC200C7E17C /* MovieInfo.m */; };
@@ -51,7 +54,6 @@
 		1F9A40611473E885008B53E7 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FCC160A1450076D00D091E4 /* MobileCoreServices.framework */; };
 		1F9A40621473E898008B53E7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FCC160B1450076D00D091E4 /* SystemConfiguration.framework */; };
 		1F9A40631473EF79008B53E7 /* libobjc.A.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FCBCC47145833D300EB3FD1 /* libobjc.A.dylib */; };
-		1F9A40641473F16A008B53E7 /* libMovies-InfoModel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F7E31871473BA2700E4D7C8 /* libMovies-InfoModel.a */; };
 		1F9A40671473FBC6008B53E7 /* ShortMovieInfoTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A40661473FBC6008B53E7 /* ShortMovieInfoTest.m */; };
 		1F9A406A14743AE5008B53E7 /* DetailedMovieInfoTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A406914743AE5008B53E7 /* DetailedMovieInfoTest.m */; };
 		1FB603831467DA1C00B3AB59 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FB603821467DA1C00B3AB59 /* MediaPlayer.framework */; };
@@ -66,6 +68,8 @@
 		1FCC160C1450076D00D091E4 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FCC160A1450076D00D091E4 /* MobileCoreServices.framework */; };
 		1FCC160D1450076D00D091E4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FCC160B1450076D00D091E4 /* SystemConfiguration.framework */; };
 		1FCC160F1450086100D091E4 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FCC160E1450086100D091E4 /* CFNetwork.framework */; };
+		1FEBFF851488D11400F874F8 /* GHTestCase(ResultsFromFile).m in Sources */ = {isa = PBXBuildFile; fileRef = 1FEBFF841488D11400F874F8 /* GHTestCase(ResultsFromFile).m */; };
+		1FEBFF881488E6F100F874F8 /* YouTubeTestResults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1FEBFF871488E6F100F874F8 /* YouTubeTestResults.plist */; };
 		1FF0B7B114717B2D007A83D5 /* IASKAppSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF0B78B14717B2D007A83D5 /* IASKAppSettingsViewController.m */; };
 		1FF0B7B214717B2D007A83D5 /* IASKAppSettingsWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF0B78D14717B2D007A83D5 /* IASKAppSettingsWebViewController.m */; };
 		1FF0B7B314717B2D007A83D5 /* IASKSpecifierValuesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF0B78F14717B2D007A83D5 /* IASKSpecifierValuesViewController.m */; };
@@ -211,7 +215,7 @@
 			dstPath = "$(BUILT_PRODUCTS_DIR)";
 			dstSubfolderSpec = 0;
 			files = (
-				1F80CE90146C043300C193F2 /* OCMock.framework in Copy OCMock Files */,
+				1F7DC35C14838B5100D0E859 /* OCMock.framework in Copy OCMock Files */,
 			);
 			name = "Copy OCMock Files";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -219,7 +223,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1F361BD814765E5400596615 /* DetailedMovieInfoTestResultStrings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = DetailedMovieInfoTestResultStrings.plist; path = "Movies-InfoTests/DetailedMovieInfoTestResultStrings.plist"; sourceTree = SOURCE_ROOT; };
+		1F361BD814765E5400596615 /* DetailedMovieInfoTestResults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = DetailedMovieInfoTestResults.plist; path = "Movies-InfoTests/DetailedMovieInfoTestResults.plist"; sourceTree = SOURCE_ROOT; };
 		1F5507E714515536001C38E3 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		1F55082314515BAD001C38E3 /* RestKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RestKit.xcodeproj; path = RestKit/RestKit.xcodeproj; sourceTree = "<group>"; };
 		1F5D09FA1456D58E005B77D5 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = ../../MBProgressHUD/MBProgressHUD.h; sourceTree = "<group>"; };
@@ -232,11 +236,15 @@
 		1F7351BB146BCC0000D52947 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1F7351BD146BCC0000D52947 /* Movies-InfoTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Movies-InfoTests-Prefix.pch"; sourceTree = "<group>"; };
 		1F735287146BD3EE00D52947 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GHUnitIOS.framework; sourceTree = "<group>"; };
+		1F7DC3531483844A00D0E859 /* OCMock.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OCMock.framework; sourceTree = "<group>"; };
+		1F7DC35B14838B5100D0E859 /* OCMock.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OCMock.framework; sourceTree = "<group>"; };
+		1F7DC35E14838B9800D0E859 /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOCMock.a; path = OCMock.framework/libOCMock.a; sourceTree = "<group>"; };
+		1F7DC36114839CCE00D0E859 /* GHTestCase+Swizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GHTestCase+Swizzle.h"; sourceTree = "<group>"; };
+		1F7DC36214839CCE00D0E859 /* GHTestCase+Swizzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GHTestCase+Swizzle.m"; sourceTree = "<group>"; };
 		1F7E316C1472DB6B00E4D7C8 /* YouTubeTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YouTubeTest.h; sourceTree = "<group>"; };
 		1F7E316D1472DB6B00E4D7C8 /* YouTubeTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YouTubeTest.m; sourceTree = "<group>"; };
 		1F7E31871473BA2700E4D7C8 /* libMovies-InfoModel.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libMovies-InfoModel.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F7E318B1473BA2700E4D7C8 /* Movies-InfoModel-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Movies-InfoModel-Prefix.pch"; sourceTree = "<group>"; };
-		1F80CE8D146C03B800C193F2 /* OCMock.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OCMock.framework; sourceTree = "<group>"; };
 		1F80CEAC146C1D4300C193F2 /* preferences.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = preferences.png; sourceTree = "<group>"; };
 		1F8791D714628EC200C7E17C /* MovieInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieInfo.h; sourceTree = "<group>"; };
 		1F8791D814628EC200C7E17C /* MovieInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieInfo.m; sourceTree = "<group>"; };
@@ -269,6 +277,9 @@
 		1FCC160A1450076D00D091E4 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		1FCC160B1450076D00D091E4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		1FCC160E1450086100D091E4 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		1FEBFF831488D11400F874F8 /* GHTestCase(ResultsFromFile).h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GHTestCase(ResultsFromFile).h"; sourceTree = "<group>"; };
+		1FEBFF841488D11400F874F8 /* GHTestCase(ResultsFromFile).m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GHTestCase(ResultsFromFile).m"; sourceTree = "<group>"; };
+		1FEBFF871488E6F100F874F8 /* YouTubeTestResults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = YouTubeTestResults.plist; sourceTree = "<group>"; };
 		1FF0B78A14717B2D007A83D5 /* IASKAppSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IASKAppSettingsViewController.h; sourceTree = "<group>"; };
 		1FF0B78B14717B2D007A83D5 /* IASKAppSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IASKAppSettingsViewController.m; sourceTree = "<group>"; };
 		1FF0B78C14717B2D007A83D5 /* IASKAppSettingsWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IASKAppSettingsWebViewController.h; sourceTree = "<group>"; };
@@ -335,7 +346,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F9A40641473F16A008B53E7 /* libMovies-InfoModel.a in Frameworks */,
+				1F7DC35F14838B9800D0E859 /* libOCMock.a in Frameworks */,
+				1F7DC35D14838B7C00D0E859 /* OCMock.framework in Frameworks */,
+				1F7DC357148384F900D0E859 /* libMovies-InfoModel.a in Frameworks */,
 				1F9A40631473EF79008B53E7 /* libobjc.A.dylib in Frameworks */,
 				1F9A404F1473E04E008B53E7 /* libxml2.dylib in Frameworks */,
 				1F9A404E1473E021008B53E7 /* CFNetwork.framework in Frameworks */,
@@ -346,7 +359,6 @@
 				1F7351B4146BCC0000D52947 /* CoreGraphics.framework in Frameworks */,
 				1F9A40621473E898008B53E7 /* SystemConfiguration.framework in Frameworks */,
 				1F735288146BD3EE00D52947 /* GHUnitIOS.framework in Frameworks */,
-				1F80CE8E146C03B800C193F2 /* OCMock.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -487,6 +499,8 @@
 		1F7351B5146BCC0000D52947 /* Movies-InfoTests */ = {
 			isa = PBXGroup;
 			children = (
+				1FEBFF861488D5AA00F874F8 /* TestResults */,
+				1F7DC36014839CCE00D0E859 /* GHTestCase+Swizzle */,
 				1F7351B6146BCC0000D52947 /* Supporting Files */,
 				1F7E316C1472DB6B00E4D7C8 /* YouTubeTest.h */,
 				1F7E316D1472DB6B00E4D7C8 /* YouTubeTest.m */,
@@ -498,6 +512,8 @@
 				1FC86BBD147A466A00183511 /* MovieCacheTest.m */,
 				1FC86BBF147AB4EA00183511 /* MovieInfoTest.h */,
 				1FC86BC0147AB4EA00183511 /* MovieInfoTest.m */,
+				1FEBFF831488D11400F874F8 /* GHTestCase(ResultsFromFile).h */,
+				1FEBFF841488D11400F874F8 /* GHTestCase(ResultsFromFile).m */,
 			);
 			path = "Movies-InfoTests";
 			sourceTree = "<group>";
@@ -509,10 +525,17 @@
 				1F7351B8146BCC0000D52947 /* InfoPlist.strings */,
 				1F7351BB146BCC0000D52947 /* main.m */,
 				1F7351BD146BCC0000D52947 /* Movies-InfoTests-Prefix.pch */,
-				1F361BD814765E5400596615 /* DetailedMovieInfoTestResultStrings.plist */,
-				1FC86BC2147BC96400183511 /* testGetMovieInfoListWithRealParamsResult.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1F7DC36014839CCE00D0E859 /* GHTestCase+Swizzle */ = {
+			isa = PBXGroup;
+			children = (
+				1F7DC36114839CCE00D0E859 /* GHTestCase+Swizzle.h */,
+				1F7DC36214839CCE00D0E859 /* GHTestCase+Swizzle.m */,
+			);
+			path = "GHTestCase+Swizzle";
 			sourceTree = "<group>";
 		};
 		1F7E31891473BA2700E4D7C8 /* Movies-InfoModel */ = {
@@ -587,6 +610,16 @@
 				1FCBCD0E145AFA8300EB3FD1 /* FanRating.m */,
 			);
 			name = FanRating;
+			sourceTree = "<group>";
+		};
+		1FEBFF861488D5AA00F874F8 /* TestResults */ = {
+			isa = PBXGroup;
+			children = (
+				1F361BD814765E5400596615 /* DetailedMovieInfoTestResults.plist */,
+				1FC86BC2147BC96400183511 /* testGetMovieInfoListWithRealParamsResult.plist */,
+				1FEBFF871488E6F100F874F8 /* YouTubeTestResults.plist */,
+			);
+			name = TestResults;
 			sourceTree = "<group>";
 		};
 		1FF0B78814717B2D007A83D5 /* InAppSettingsKit */ = {
@@ -691,8 +724,10 @@
 		63626F531419414900F3A4E2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1F7DC35E14838B9800D0E859 /* libOCMock.a */,
+				1F7DC35B14838B5100D0E859 /* OCMock.framework */,
+				1F7DC3531483844A00D0E859 /* OCMock.framework */,
 				1FF0B7CA14717E74007A83D5 /* MessageUI.framework */,
-				1F80CE8D146C03B800C193F2 /* OCMock.framework */,
 				1F735287146BD3EE00D52947 /* GHUnitIOS.framework */,
 				1FCBCC47145833D300EB3FD1 /* libobjc.A.dylib */,
 				1F5507E714515536001C38E3 /* libxml2.dylib */,
@@ -749,8 +784,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1F7351C1146BCC0000D52947 /* Build configuration list for PBXNativeTarget "Movies-InfoTests" */;
 			buildPhases = (
-				1F7351AC146BCC0000D52947 /* Sources */,
 				1F80CE8F146C03EE00C193F2 /* Copy OCMock Files */,
+				1F7351AC146BCC0000D52947 /* Sources */,
 				1F7351AD146BCC0000D52947 /* Frameworks */,
 				1F7351AE146BCC0000D52947 /* Resources */,
 			);
@@ -929,8 +964,9 @@
 			files = (
 				1F7351BA146BCC0000D52947 /* InfoPlist.strings in Resources */,
 				1F361BD71475CAE200596615 /* movie.png in Resources */,
-				1F361BDA14766FF400596615 /* DetailedMovieInfoTestResultStrings.plist in Resources */,
+				1F361BDA14766FF400596615 /* DetailedMovieInfoTestResults.plist in Resources */,
 				1FC86BC3147BC96400183511 /* testGetMovieInfoListWithRealParamsResult.plist in Resources */,
+				1FEBFF881488E6F100F874F8 /* YouTubeTestResults.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -971,6 +1007,8 @@
 				1F9A406A14743AE5008B53E7 /* DetailedMovieInfoTest.m in Sources */,
 				1FC86BBE147A466A00183511 /* MovieCacheTest.m in Sources */,
 				1FC86BC1147AB4EA00183511 /* MovieInfoTest.m in Sources */,
+				1F7DC36C14867C5000D0E859 /* GHTestCase+Swizzle.m in Sources */,
+				1FEBFF851488D11400F874F8 /* GHTestCase(ResultsFromFile).m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1072,6 +1110,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/GHUnitIOS.framework/Versions/A\"",
+					"\"$(SRCROOT)/OCMock.framework/Versions/A\"",
+					"\"$(SRCROOT)/OCMock.framework\"",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1097,6 +1137,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/GHUnitIOS.framework/Versions/A\"",
+					"\"$(SRCROOT)/OCMock.framework/Versions/A\"",
+					"\"$(SRCROOT)/OCMock.framework\"",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
