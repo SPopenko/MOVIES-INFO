@@ -23,10 +23,10 @@
 - (void) testGetMovieLinkPath_NilURL;
 - (void) testGetMovieLinkPath_RightURL;
 - (void) testGetMovieLinkPath_WrongURL;
-
+/*
 - (void) testGetPageContentsOfURL_Nil;
 - (void) testGetPageContentsOfURL_pageUrl;
-
+*/
 - (void) testGetBlockWithMoviePathes_Nil;
 - (void) testGetBlockWithMoviePathes_WithPathes;
 - (void) testGetBlockWithMoviePathes_WithoutPathes;

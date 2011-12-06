@@ -32,8 +32,9 @@
     _finishAction = [doBlock copy];
    
     //Creating request string
-    NSString* requestString = [[NSString alloc] initWithFormat:@"%@", [self requestStringFromMutableDictionary:requestParameters]];
+    NSString* requestString = [self requestStringFromMutableDictionary:requestParameters];
     [[RKObjectManager sharedManager] loadObjectsAtResourcePath:requestString objectMapping:[self shortMovieInfoMapping] delegate:self];
+    
 }
 
 - (void) getDetailedMovieInfoByMovieID:(NSString *)movieID doAfterLoadFinished:(finishAction)doBlock
@@ -44,6 +45,7 @@
     NSString* requestString = [[NSString alloc] initWithFormat:@"%@/%@/%@", MovieInfoRequest,TMDbApiKey,movieID];
     
     [[RKObjectManager sharedManager] loadObjectsAtResourcePath:requestString objectMapping:[self detailedMovieInfoMapping] delegate:self];
+    [requestString release];
 }
 
 #pragma mark - RKObjectLoaderDelegate implementation
@@ -89,7 +91,8 @@
             [result setValue:defaultValue forKey:key];
         }
     }
-    return result;
+    [defaultValues release];
+    return [result autorelease];
 }
 
 - (NSString*) requestStringFromMutableDictionary:(NSMutableDictionary *)parameters
@@ -108,6 +111,8 @@
         [resultString appendFormat:@"%@=%@", [searchFields objectForKey:key], [parameters objectForKey:key]];
     }
     
+    [searchFields release];
+    [resultString autorelease];
     return [NSString stringWithFormat:@"%@%@?%@", SearchMoviesRequest,TMDbApiKey, resultString];
 }
 
@@ -145,7 +150,7 @@
     
     [tmdbDateFormatter autorelease]; 
     
-    return shortMovieInfoMapping;
+    return [shortMovieInfoMapping autorelease];
 }
 
 - (RKObjectMapping*) detailedMovieInfoMapping
@@ -185,7 +190,7 @@
         
     [tmdbDateFormatter autorelease];
     
-    return detailedMovieInfoMapping;
+    return [detailedMovieInfoMapping autorelease];
 }
 
 - (void) initRestKit

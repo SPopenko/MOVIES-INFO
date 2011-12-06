@@ -71,7 +71,6 @@ static NSMutableDictionary* _imageList;
 - (void) dealloc
 {
     [_imageList release];
-    [movieWithoutPoster release];
     [super dealloc];
 }
 @end

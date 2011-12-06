@@ -24,7 +24,6 @@
 		1F7DC35C14838B5100D0E859 /* OCMock.framework in Copy OCMock Files */ = {isa = PBXBuildFile; fileRef = 1F7DC35B14838B5100D0E859 /* OCMock.framework */; };
 		1F7DC35D14838B7C00D0E859 /* OCMock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F7DC35B14838B5100D0E859 /* OCMock.framework */; };
 		1F7DC35F14838B9800D0E859 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F7DC35E14838B9800D0E859 /* libOCMock.a */; };
-		1F7DC36C14867C5000D0E859 /* GHTestCase+Swizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7DC36214839CCE00D0E859 /* GHTestCase+Swizzle.m */; };
 		1F7E316E1472DB6B00E4D7C8 /* YouTubeTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7E316D1472DB6B00E4D7C8 /* YouTubeTest.m */; };
 		1F7E31881473BA2700E4D7C8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63626F561419414900F3A4E2 /* Foundation.framework */; };
 		1F7E31941473BA7100E4D7C8 /* libMovies-InfoModel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F7E31871473BA2700E4D7C8 /* libMovies-InfoModel.a */; };
@@ -239,8 +238,6 @@
 		1F7DC3531483844A00D0E859 /* OCMock.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OCMock.framework; sourceTree = "<group>"; };
 		1F7DC35B14838B5100D0E859 /* OCMock.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OCMock.framework; sourceTree = "<group>"; };
 		1F7DC35E14838B9800D0E859 /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOCMock.a; path = OCMock.framework/libOCMock.a; sourceTree = "<group>"; };
-		1F7DC36114839CCE00D0E859 /* GHTestCase+Swizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GHTestCase+Swizzle.h"; sourceTree = "<group>"; };
-		1F7DC36214839CCE00D0E859 /* GHTestCase+Swizzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GHTestCase+Swizzle.m"; sourceTree = "<group>"; };
 		1F7E316C1472DB6B00E4D7C8 /* YouTubeTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YouTubeTest.h; sourceTree = "<group>"; };
 		1F7E316D1472DB6B00E4D7C8 /* YouTubeTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YouTubeTest.m; sourceTree = "<group>"; };
 		1F7E31871473BA2700E4D7C8 /* libMovies-InfoModel.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libMovies-InfoModel.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -500,7 +497,6 @@
 			isa = PBXGroup;
 			children = (
 				1FEBFF861488D5AA00F874F8 /* TestResults */,
-				1F7DC36014839CCE00D0E859 /* GHTestCase+Swizzle */,
 				1F7351B6146BCC0000D52947 /* Supporting Files */,
 				1F7E316C1472DB6B00E4D7C8 /* YouTubeTest.h */,
 				1F7E316D1472DB6B00E4D7C8 /* YouTubeTest.m */,
@@ -527,15 +523,6 @@
 				1F7351BD146BCC0000D52947 /* Movies-InfoTests-Prefix.pch */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		1F7DC36014839CCE00D0E859 /* GHTestCase+Swizzle */ = {
-			isa = PBXGroup;
-			children = (
-				1F7DC36114839CCE00D0E859 /* GHTestCase+Swizzle.h */,
-				1F7DC36214839CCE00D0E859 /* GHTestCase+Swizzle.m */,
-			);
-			path = "GHTestCase+Swizzle";
 			sourceTree = "<group>";
 		};
 		1F7E31891473BA2700E4D7C8 /* Movies-InfoModel */ = {
@@ -1007,7 +994,6 @@
 				1F9A406A14743AE5008B53E7 /* DetailedMovieInfoTest.m in Sources */,
 				1FC86BBE147A466A00183511 /* MovieCacheTest.m in Sources */,
 				1FC86BC1147AB4EA00183511 /* MovieInfoTest.m in Sources */,
-				1F7DC36C14867C5000D0E859 /* GHTestCase+Swizzle.m in Sources */,
 				1FEBFF851488D11400F874F8 /* GHTestCase(ResultsFromFile).m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

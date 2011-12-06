@@ -43,7 +43,7 @@
     {
         NSError*          loadError = nil;
         NSStringEncoding* encoding  = nil;
-        result = [[[NSString alloc] initWithContentsOfURL:urlToPage usedEncoding:encoding error:&loadError] retain];
+        result = [[NSString alloc] initWithContentsOfURL:urlToPage usedEncoding:encoding error:&loadError];
 
         if (loadError && result == nil)
         {

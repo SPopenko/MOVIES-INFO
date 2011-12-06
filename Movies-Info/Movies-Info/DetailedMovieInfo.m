@@ -31,7 +31,7 @@
 
 - (void) setTrailer:(NSString *)trailerLink
 {
-    YouTubeVideo* ytv = [[[YouTubeVideo alloc] init] retain];
+    YouTubeVideo* ytv = [[YouTubeVideo alloc] init];
     _trailer = [[ytv getMoviePathFromLink:trailerLink] retain];
     [ytv release];
 }
