@@ -12,8 +12,8 @@
 
 @interface ShortMovieInfoTest : GHTestCase
 {
-    MovieInfo* _movieInfo;
-    id         testObject;
+    MovieInfo*      _movieInfo;
+    ShortMovieInfo* testObject;
 }
 
 //getPoster Tests
@@ -22,6 +22,6 @@
 //ShortMovieInfo loaded from api.themoviedb.org
 - (void) testGetPosterWithEmptyPosters;
 //ShortMovieInfo loaded from api.themoviedb.org
-- (void) testGetRealPosterMovieInfo;
+- (void) testGetPosterMovieInfoWithPosters;
 
 @end
