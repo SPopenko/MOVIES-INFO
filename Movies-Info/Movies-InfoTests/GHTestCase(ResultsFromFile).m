@@ -12,30 +12,34 @@
 
 - (NSString*) loadStringForKey:(NSString *)key
 {
-    NSDictionary* testResults = nil;
-    NSString*     resultsPath = nil;
-    
-    //Creating path to file with results based on test class name
-    NSString* className = [[NSString alloc] initWithUTF8String:object_getClassName(self)];
-    NSString* fileName  = [[NSString alloc] initWithFormat:@"%@Results", className];
-    resultsPath = [[NSBundle mainBundle] pathForResource:fileName ofType:@"plist"];
-
-    testResults = [[NSDictionary dictionaryWithContentsOfFile:resultsPath] retain];
+    NSDictionary* testResults = [self dictionaryWithValues];
     NSString* result = nil;
+    
     result  = [[NSString stringWithFormat:@"%@", [testResults objectForKey:key]] retain];
+
+    return [result autorelease];
+}
+
+- (NSArray*) loadArrayForKey:(NSString *)key
+{
+    NSDictionary* testResults = [self dictionaryWithValues];
+    NSArray*      result = nil;
     
-    [fileName    release];
-    [className   release];
-    //[resultsPath release];
-    [testResults release];
+    result = [testResults objectForKey:key];
+        
+    return [result autorelease];
+}
+
+- (NSDictionary*) dictionaryWithValues
+{
+    NSDictionary* result = nil;
+    //Creating path to file with results based on test class name
+    NSString* className   = [[NSString alloc] initWithUTF8String:object_getClassName(self)];
+    NSString* resultsPath = [[NSBundle mainBundle] pathForResource:className ofType:@"plist"];
     
-    fileName    = nil;
-    className   = nil;
-    resultsPath = nil;
-    testResults = nil;
-    
-    [result autorelease];
-    return result;
+    result = [[NSDictionary dictionaryWithContentsOfFile:resultsPath] retain];
+
+    return [result autorelease];
 }
 
 @end
