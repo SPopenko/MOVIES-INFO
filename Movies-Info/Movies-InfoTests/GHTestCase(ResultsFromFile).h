@@ -8,8 +8,10 @@
 
 #import <GHUnitIOS/GHUnit.h>
 
-@interface GHTestCase(ResultsFromFile)
+@interface GHTestCase(ResultsAndConditionsFromFile)
 
-- (NSString*) loadStringForKey:(NSString *)key;
+- (NSString*) loadStringForKey:(NSString*)key;
+- (NSArray*)  loadArrayForKey:(NSString*)key;
 
+- (NSDictionary*) dictionaryWithValues;
 @end

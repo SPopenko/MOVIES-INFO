@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F32E6ED1492449A00852AE8 /* MovieInfoTemplateFillingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F32E6EC1492449A00852AE8 /* MovieInfoTemplateFillingTest.m */; };
 		1F361BC81475180E00596615 /* movie.png in Resources */ = {isa = PBXBuildFile; fileRef = CE82A8D514327B3900F4A931 /* movie.png */; };
 		1F361BD61475B24500596615 /* preferences.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F80CEAC146C1D4300C193F2 /* preferences.png */; };
 		1F361BD71475CAE200596615 /* movie.png in Resources */ = {isa = PBXBuildFile; fileRef = CE82A8D514327B3900F4A931 /* movie.png */; };
@@ -57,6 +58,7 @@
 		1F9A406A14743AE5008B53E7 /* DetailedMovieInfoTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A406914743AE5008B53E7 /* DetailedMovieInfoTest.m */; };
 		1FB603831467DA1C00B3AB59 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FB603821467DA1C00B3AB59 /* MediaPlayer.framework */; };
 		1FBF207D1461584A009350FE /* ViewActionIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FBF207C1461584A009350FE /* ViewActionIndicator.m */; };
+		1FC5B6DD14911FC300CD0B83 /* NSStirng(MovieInfoTemplateFiling).m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC5B6DC14911FC300CD0B83 /* NSStirng(MovieInfoTemplateFiling).m */; };
 		1FC86BBE147A466A00183511 /* MovieCacheTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC86BBD147A466A00183511 /* MovieCacheTest.m */; };
 		1FC86BC1147AB4EA00183511 /* MovieInfoTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC86BC0147AB4EA00183511 /* MovieInfoTest.m */; };
 		1FC86BC3147BC96400183511 /* testGetMovieInfoListWithRealParamsResult.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1FC86BC2147BC96400183511 /* testGetMovieInfoListWithRealParamsResult.plist */; };
@@ -222,6 +224,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1F32E6EB1492449A00852AE8 /* MovieInfoTemplateFillingTest.h */ = {isa = PBXFileReference; fileEncoding = 4; path = MovieInfoTemplateFillingTest.h; sourceTree = "<group>"; };
+		1F32E6EC1492449A00852AE8 /* MovieInfoTemplateFillingTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieInfoTemplateFillingTest.m; sourceTree = "<group>"; };
 		1F361BD814765E5400596615 /* DetailedMovieInfoTest.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = DetailedMovieInfoTest.plist; path = "Movies-InfoTests/DetailedMovieInfoTest.plist"; sourceTree = SOURCE_ROOT; };
 		1F5507E714515536001C38E3 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		1F55082314515BAD001C38E3 /* RestKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RestKit.xcodeproj; path = RestKit/RestKit.xcodeproj; sourceTree = "<group>"; };
@@ -259,6 +263,8 @@
 		1FBF207C1461584A009350FE /* ViewActionIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewActionIndicator.m; sourceTree = "<group>"; };
 		1FC4A03C145F198900F63225 /* NSDataAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDataAdditions.h; sourceTree = "<group>"; };
 		1FC4A03D145F198900F63225 /* NSDataAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDataAdditions.m; sourceTree = "<group>"; };
+		1FC5B6DB14911FC300CD0B83 /* NSStirng(MovieInfoTemplateFiling).h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSStirng(MovieInfoTemplateFiling).h"; sourceTree = "<group>"; };
+		1FC5B6DC14911FC300CD0B83 /* NSStirng(MovieInfoTemplateFiling).m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSStirng(MovieInfoTemplateFiling).m"; sourceTree = "<group>"; };
 		1FC86BBC147A466A00183511 /* MovieCacheTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieCacheTest.h; sourceTree = "<group>"; };
 		1FC86BBD147A466A00183511 /* MovieCacheTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieCacheTest.m; sourceTree = "<group>"; };
 		1FC86BBF147AB4EA00183511 /* MovieInfoTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieInfoTest.h; sourceTree = "<group>"; };
@@ -508,6 +514,8 @@
 				1FC86BBD147A466A00183511 /* MovieCacheTest.m */,
 				1FC86BBF147AB4EA00183511 /* MovieInfoTest.h */,
 				1FC86BC0147AB4EA00183511 /* MovieInfoTest.m */,
+				1F32E6EB1492449A00852AE8 /* MovieInfoTemplateFillingTest.h */,
+				1F32E6EC1492449A00852AE8 /* MovieInfoTemplateFillingTest.m */,
 				1FEBFF831488D11400F874F8 /* GHTestCase(ResultsFromFile).h */,
 				1FEBFF841488D11400F874F8 /* GHTestCase(ResultsFromFile).m */,
 			);
@@ -550,6 +558,8 @@
 				CE26E1F9142F559700AE8FE0 /* ShortMovieInfo.m */,
 				1FCBCC491458769000EB3FD1 /* DetailedMovieInfo.h */,
 				1FCBCC4A1458769000EB3FD1 /* DetailedMovieInfo.m */,
+				1FC5B6DB14911FC300CD0B83 /* NSStirng(MovieInfoTemplateFiling).h */,
+				1FC5B6DC14911FC300CD0B83 /* NSStirng(MovieInfoTemplateFiling).m */,
 			);
 			name = MovieInfo;
 			sourceTree = "<group>";
@@ -995,6 +1005,7 @@
 				1FC86BBE147A466A00183511 /* MovieCacheTest.m in Sources */,
 				1FC86BC1147AB4EA00183511 /* MovieInfoTest.m in Sources */,
 				1FEBFF851488D11400F874F8 /* GHTestCase(ResultsFromFile).m in Sources */,
+				1F32E6ED1492449A00852AE8 /* MovieInfoTemplateFillingTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1008,6 +1019,7 @@
 				1F9A40421473DE9D008B53E7 /* NSDataAdditions.m in Sources */,
 				1F9A40431473DE9D008B53E7 /* MovieCache.m in Sources */,
 				1F7E31951473BA7B00E4D7C8 /* YouTubeVideo.m in Sources */,
+				1FC5B6DD14911FC300CD0B83 /* NSStirng(MovieInfoTemplateFiling).m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
