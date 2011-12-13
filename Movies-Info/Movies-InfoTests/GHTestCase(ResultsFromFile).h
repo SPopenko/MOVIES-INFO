@@ -10,8 +10,9 @@
 
 @interface GHTestCase(ResultsAndConditionsFromFile)
 
-- (NSString*) loadStringForKey:(NSString*)key;
-- (NSArray*)  loadArrayForKey:(NSString*)key;
+- (NSString*)     loadStringForKey:(NSString*)key;
+- (NSArray*)      loadArrayForKey:(NSString*)key;
+- (NSDictionary*) loadDictionaryForKey:(NSString*)key;
 
 - (NSDictionary*) dictionaryWithValues;
 @end

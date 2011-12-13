@@ -30,6 +30,16 @@
     return [result autorelease];
 }
 
+- (NSDictionary*) loadDictionaryForKey:(NSString *)key
+{
+    NSDictionary* testResults = [self dictionaryWithValues];
+    NSDictionary*      result = nil;
+    
+    result = [testResults objectForKey:key];
+    
+    return [result autorelease];
+}
+
 - (NSDictionary*) dictionaryWithValues
 {
     NSDictionary* result = nil;
@@ -41,5 +51,7 @@
 
     return [result autorelease];
 }
+
+
 
 @end

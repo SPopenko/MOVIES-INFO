@@ -57,6 +57,7 @@
 		1F9A40671473FBC6008B53E7 /* ShortMovieInfoTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A40661473FBC6008B53E7 /* ShortMovieInfoTest.m */; };
 		1F9A406A14743AE5008B53E7 /* DetailedMovieInfoTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A406914743AE5008B53E7 /* DetailedMovieInfoTest.m */; };
 		1FB603831467DA1C00B3AB59 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FB603821467DA1C00B3AB59 /* MediaPlayer.framework */; };
+		1FBB0C1914977B4700FB29ED /* MovieInfoTemplateFillingTest.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1FBB0C1814977B4700FB29ED /* MovieInfoTemplateFillingTest.plist */; };
 		1FBF207D1461584A009350FE /* ViewActionIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FBF207C1461584A009350FE /* ViewActionIndicator.m */; };
 		1FC5B6DD14911FC300CD0B83 /* NSStirng(MovieInfoTemplateFiling).m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC5B6DC14911FC300CD0B83 /* NSStirng(MovieInfoTemplateFiling).m */; };
 		1FC86BBE147A466A00183511 /* MovieCacheTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC86BBD147A466A00183511 /* MovieCacheTest.m */; };
@@ -224,7 +225,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1F32E6EB1492449A00852AE8 /* MovieInfoTemplateFillingTest.h */ = {isa = PBXFileReference; fileEncoding = 4; path = MovieInfoTemplateFillingTest.h; sourceTree = "<group>"; };
+		1F32E6EB1492449A00852AE8 /* MovieInfoTemplateFillingTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieInfoTemplateFillingTest.h; sourceTree = "<group>"; };
 		1F32E6EC1492449A00852AE8 /* MovieInfoTemplateFillingTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieInfoTemplateFillingTest.m; sourceTree = "<group>"; };
 		1F361BD814765E5400596615 /* DetailedMovieInfoTest.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = DetailedMovieInfoTest.plist; path = "Movies-InfoTests/DetailedMovieInfoTest.plist"; sourceTree = SOURCE_ROOT; };
 		1F5507E714515536001C38E3 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
@@ -259,6 +260,7 @@
 		1FB6037B1467CE3500B3AB59 /* YouTubeVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YouTubeVideo.h; sourceTree = "<group>"; };
 		1FB6037C1467CE3500B3AB59 /* YouTubeVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YouTubeVideo.m; sourceTree = "<group>"; };
 		1FB603821467DA1C00B3AB59 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		1FBB0C1814977B4700FB29ED /* MovieInfoTemplateFillingTest.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MovieInfoTemplateFillingTest.plist; sourceTree = "<group>"; };
 		1FBF207B1461584A009350FE /* ViewActionIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewActionIndicator.h; sourceTree = "<group>"; };
 		1FBF207C1461584A009350FE /* ViewActionIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewActionIndicator.m; sourceTree = "<group>"; };
 		1FC4A03C145F198900F63225 /* NSDataAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDataAdditions.h; sourceTree = "<group>"; };
@@ -615,6 +617,7 @@
 				1F361BD814765E5400596615 /* DetailedMovieInfoTest.plist */,
 				1FC86BC2147BC96400183511 /* testGetMovieInfoListWithRealParamsResult.plist */,
 				1FEBFF871488E6F100F874F8 /* YouTubeTest.plist */,
+				1FBB0C1814977B4700FB29ED /* MovieInfoTemplateFillingTest.plist */,
 			);
 			name = TestResults;
 			sourceTree = "<group>";
@@ -964,6 +967,7 @@
 				1F361BDA14766FF400596615 /* DetailedMovieInfoTest.plist in Resources */,
 				1FC86BC3147BC96400183511 /* testGetMovieInfoListWithRealParamsResult.plist in Resources */,
 				1FEBFF881488E6F100F874F8 /* YouTubeTest.plist in Resources */,
+				1FBB0C1914977B4700FB29ED /* MovieInfoTemplateFillingTest.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

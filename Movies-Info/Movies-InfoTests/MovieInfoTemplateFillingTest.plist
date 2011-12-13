@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>TemplateStringInput</key>
+	<string>[posterUrl][rating][release][cast][description][backdrops][poster][person</string>
+	<key>RemoveUnnecessaryFromDictionaryInput</key>
+	<dict/>
+	<key>WrongFieldsDictionaryInput</key>
+	<dict/>
+	<key>RightFieldsDictionaryInput</key>
+	<dict/>
+	<key>ReplaceKeysRightFieldsDictionaryInput</key>
+	<dict/>
+	<key>ReplaceKeysRightTemplateInput</key>
+	<string></string>
+	<key>TemplateStringResult</key>
+	<dict>
+		<key>posterUrl</key>
+		<string></string>
+		<key>rating</key>
+		<string></string>
+		<key>release</key>
+		<string></string>
+		<key>cast</key>
+		<string></string>
+		<key>description</key>
+		<string></string>
+		<key>backdrops</key>
+		<string></string>
+		<key>poster</key>
+		<string></string>
+		<key>person</key>
+		<string></string>
+	</dict>
+	<key>RemoveUnnecessaryFromDictionaryResult</key>
+	<dict/>
+	<key>WrongFieldsDictionaryResult</key>
+	<dict/>
+	<key>RightFieldsDictionaryResult</key>
+	<dict/>
+	<key>ReplaceKeysRightTemplateResult</key>
+	<string></string>
+</dict>
+</plist>
