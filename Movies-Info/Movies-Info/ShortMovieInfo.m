@@ -112,18 +112,17 @@
 @synthesize fanRating = _fanRating;
 @synthesize movieId = _movieId;
 @synthesize posters = _posters;
-@synthesize poster;
 
 - (NSString*) getPoster
 {
     NSString* result = nil;
-    
+
     for (int i = 0; i < _posters.count; i++)
     {
         Poster* p = [_posters objectAtIndex:i];
         if (p != nil && [[p.image.size lowercaseString] isEqualToString:@"cover"])
         {
-            result = p.image.url;
+            result = [NSString stringWithString:p.image.url];
             break;
         }
     }

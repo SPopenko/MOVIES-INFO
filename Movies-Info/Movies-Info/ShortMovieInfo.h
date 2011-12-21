@@ -33,7 +33,7 @@
 @property (nonatomic, retain) NSNumber *fanRating;
 @property (nonatomic, retain) NSString *movieId;
 @property (nonatomic, retain) NSArray  *posters;
-@property (nonatomic, retain, getter = getPoster) NSString *poster;
+@property (nonatomic, readonly, getter = getPoster) NSString *poster;
 
 
 @end

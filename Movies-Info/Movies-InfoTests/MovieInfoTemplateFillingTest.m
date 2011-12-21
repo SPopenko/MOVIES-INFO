@@ -7,6 +7,11 @@
 //
 
 #import "MovieInfoTemplateFillingTest.h"
+//test image link
+#define testImageLink @"http://img.yandex.net/i/www/logo.png"
+
+@implementation MovieInfoTemplateFillingTest
+
 
 // input keys
 #define kTemplateStringInput                   @"TemplateStringInput"                   //NSString
@@ -22,27 +27,28 @@
 #define kRightFieldsDictionaryResult           @"RightFieldsDictionaryResult"           //NSDictionary
 #define kReplaceKeysRightTemplateResult        @"ReplaceKeysRightTemplateResult"        //NSString
 
-@implementation MovieInfoTemplateFillingTest
 
 // tests for getting key fields from template string to dictionary
-- (void) test0KeyFromTemplateString_Nil
+- (void) testKeyFromTemplateString_Nil
 {
     GHAssertNil([NSString keyFieldsFromTemplateString:nil], @"Check conditions");
 }
 
-- (void) test0KeyFromTemplateString_Template
+- (void) testKeyFromTemplateString_Template
 {
-    NSString*     template = [self loadStringForKey:kTemplateStringInput];
-    NSDictionary* result   = [[self loadDictionaryForKey:kTemplateStringResult] retain];
+    NSString*     template = [[self loadStringForKey:kTemplateStringInput] retain];
+    NSMutableDictionary* result   = [[NSMutableDictionary alloc] initWithDictionary:[[self loadDictionaryForKey:kTemplateStringResult] retain]];
+    NSMutableDictionary* fields = nil;
     
-    [NSString keyFieldsFromTemplateString:template];
     
-    GHAssertTrue([result isEqualToDictionary:[NSString keyFieldsFromTemplateString:template]], @"Check conditions");
+    
+    fields = [NSString keyFieldsFromTemplateString:template];
+    GHAssertTrue([result isEqualToDictionary:fields], @"Check conditions");
 }
 
 
 // test for removing unnecessary fileds from fields dictionary
-- (void) test0RemoveUnnecessaryFromDictionary_Nil
+- (void) testRemoveUnnecessaryFromDictionary_Nil
 {
     NSMutableDictionary* fieldsDictionary  = nil;
     
@@ -52,7 +58,7 @@
     
 }
 
-- (void) test0RemoveUnnecessaryFromDictionary_TemplateFields
+- (void) testRemoveUnnecessaryFromDictionary_TemplateFields
 {
     NSMutableDictionary* fieldsDictionary  = [[NSMutableDictionary alloc] initWithDictionary:[[self loadDictionaryForKey:kRemoveUnnecessaryFromDictionaryInput] retain]];
     NSMutableDictionary* resultsDictionary = [[NSMutableDictionary alloc] initWithDictionary:[[self loadDictionaryForKey:kRemoveUnnecessaryFromDictionaryResult]retain]];
@@ -66,49 +72,136 @@
 }
 
 //tests for filling fields data with DetailedMovieInfo instance date
-- (void) test0FillTemplateDictionary_Nil_WithMovieInfo_Nil
+- (void) testFillTemplateDictionary_Nil_WithMovieInfo_Nil
 {
     NSMutableDictionary* fieldsDictionary  = nil;
-    [NSString fillTemplateDictionary:nil withDetailedMovieInfo:nil];
-    GHAssertNil(fieldsDictionary, @"Returned result is not nil");
+    NSMutableDictionary* resultsDictionary = nil;
+    DetailedMovieInfo* dmi=[[DetailedMovieInfo alloc] init];
+    
+    [NSString fillTemplateDictionary:fieldsDictionary withDetailedMovieInfo:dmi];
+    
+    GHAssertNil(fieldsDictionary, @"Check conditions");
+    
+    [fieldsDictionary release];
+    [resultsDictionary release];
 }
 
-- (void) test0FillTemplateDictionary_WTemplate_WithMovieInfo_RInfo
+- (void) testFillTemplateDictionary_WTemplate_WithMovieInfo_RInfo
 {
     NSMutableDictionary* fieldsDictionary  = [[NSMutableDictionary alloc] initWithDictionary:[[self loadDictionaryForKey:kWrongFieldsDictionaryInput] retain]];
     NSMutableDictionary* resultsDictionary = [[NSMutableDictionary alloc] initWithDictionary:[[self loadDictionaryForKey:kWrongFieldsDictionaryResult] retain]];
+    DetailedMovieInfo* dmi=[[DetailedMovieInfo alloc] init];
     
-    [NSString removeUnnecessaryFieldsFromDictionary:fieldsDictionary withClass:[DetailedMovieInfo class]];
-    
-    GHAssertTrue([resultsDictionary isEqualToDictionary:fieldsDictionary], @"Check conditions");
+            
+    GHAssertThrows([NSString fillTemplateDictionary:fieldsDictionary withDetailedMovieInfo:dmi], @"Check conditions");
     
     [fieldsDictionary release];
     [resultsDictionary release];
-    
+    [dmi release];
 }
 
-- (void) test0FillTemplateDictionary_RTemplate_WithMovieInfo_RInfo
+- (void) testFillTemplateDictionary_RTemplate_WithMovieInfo_RInfo
 {
     NSMutableDictionary* fieldsDictionary  = [[NSMutableDictionary alloc] initWithDictionary:[[self loadDictionaryForKey:kRightFieldsDictionaryInput] retain]];
     NSMutableDictionary* resultsDictionary = [[NSMutableDictionary alloc] initWithDictionary:[[self loadDictionaryForKey:kRightFieldsDictionaryResult] retain]];
+    DetailedMovieInfo* dmi=[[DetailedMovieInfo alloc] init];
+    NSMutableArray* temp = [[NSMutableArray alloc] init];
+    //Filling DetailedMovieInfo
+    dmi.movieId     = [NSString stringWithString:@"1"];
+    dmi.duration    = [NSNumber numberWithInt:128];
+    dmi.imagePath   = [NSString stringWithString:@"imagePath"];
+    dmi.description = [NSString stringWithString:@"description"];
+    dmi.movieName   = [NSString stringWithString:@"movieName"];
+    dmi.fanRating   = [NSNumber numberWithFloat:8.8f];
+    dmi.releaseDate = [NSDate dateWithTimeIntervalSince1970:0.0f];
+    //Creating Cast
+    for (int i =1;i < 5; i++)
+    {
+        [temp addObject:[NSString stringWithFormat:@"%d", i]];
+    }
+    dmi.cast = [temp subarrayWithRange:NSMakeRange(0, temp.count)];
+    [temp removeAllObjects];
     
-    [NSString removeUnnecessaryFieldsFromDictionary:fieldsDictionary withClass:[DetailedMovieInfo class]];
+    //Creating posters
+    for (int i = 0; i < 13; i++) 
+    {
+        Poster* poster = [[Poster alloc] init];
+        Image*  image  = [[Image alloc] init];
+        if (i%2) 
+        {
+            image.size = [NSString stringWithString:@"thumb"];
+        }
+        else
+        {
+            image.size = [NSString stringWithString:@"cover"];
+        }
+        
+        if (i < 7)
+        {
+            image.type = [NSString stringWithString:@"poster"];
+        }
+        else
+        {
+            image.type = [NSString stringWithString:@"backdrop"];
+        }
+        image.url = [NSString stringWithString:testImageLink];
+        poster.image = image;
+        [temp addObject:poster];
+        [poster release];
+        [image release];
+    }
+    dmi.posters = [temp subarrayWithRange:NSMakeRange(0, temp.count)];
+    [temp removeAllObjects];
     
+    //Creating backdrops
+    for (int i = 0; i < 13; i++) 
+    {
+        Poster* poster = [[Poster alloc] init];
+        Image*  image  = [[Image alloc] init];
+        if (i%2) 
+        {
+            image.size = [NSString stringWithString:@"thumb"];
+        }
+        else
+        {
+            image.size = [NSString stringWithString:@"cover"];
+        }
+        
+        if (i < 7)
+        {
+            image.type = [NSString stringWithString:@"poster"];
+        }
+        else
+        {
+            image.type = [NSString stringWithString:@"backdrop"];
+        }
+        image.url = [NSString stringWithString:testImageLink];
+        poster.image = image;
+        [temp addObject:poster];
+        [poster release];
+        [image release];
+    }
+    dmi.backdrops = [temp subarrayWithRange:NSMakeRange(0, temp.count)];
+    [temp removeAllObjects];
+
+    [NSString fillTemplateDictionary:fieldsDictionary withDetailedMovieInfo:dmi];
+    NSLog(@"%@",resultsDictionary);
+    NSLog(@"%@", fieldsDictionary);
     GHAssertTrue([resultsDictionary isEqualToDictionary:fieldsDictionary], @"Check conditions");
-    
+
+    [temp release];
     [fieldsDictionary release];
     [resultsDictionary release];
 }
 
-
-- (void) test0ReplaceKeysInTemplate_Nil_WithDictionary_Nil
+- (void) testReplaceKeysInTemplate_Nil_WithDictionary_Nil
 {
     NSString*     result = [NSString replaceKeysInTemplateString:nil withFieldsDictionary:nil];
     
     GHAssertNil(result, @"Result s not nil");
 }
 
-- (void) test0ReplaceKeysInTemplate_Nil_WithDictionary_RFields
+- (void) testReplaceKeysInTemplate_Nil_WithDictionary_RFields
 {
     NSMutableDictionary* fieldsDictionary = [[NSMutableDictionary alloc] initWithDictionary:[[self loadDictionaryForKey:kReplaceKeysRightFieldsDictionaryInput] retain]];
     NSString*     result = [NSString replaceKeysInTemplateString:nil withFieldsDictionary:fieldsDictionary];
@@ -118,7 +211,7 @@
     [fieldsDictionary release];
 }
 
-- (void) test0ReplaceKeysInTemplate_RTemplate_WithDictionary_Nil
+- (void) testReplaceKeysInTemplate_RTemplate_WithDictionary_Nil
 {
     NSMutableDictionary* fieldsDictionary = [[NSMutableDictionary alloc] initWithDictionary:[[self loadDictionaryForKey:kReplaceKeysRightFieldsDictionaryInput] retain]];
     NSString*   template = [self loadStringForKey:kReplaceKeysRightTemplateInput];
@@ -130,7 +223,7 @@
 
 }
 
-- (void) test0ReplaceKeysInTemplate_RTemplate_WithDictionary_RFields
+- (void) testReplaceKeysInTemplate_RTemplate_WithDictionary_RFields
 {
     NSMutableDictionary* fieldsDictionary = [[NSMutableDictionary alloc] initWithDictionary:[[self loadDictionaryForKey:kReplaceKeysRightFieldsDictionaryInput] retain]];
     NSString*       template = [self loadStringForKey:kReplaceKeysRightTemplateInput];
