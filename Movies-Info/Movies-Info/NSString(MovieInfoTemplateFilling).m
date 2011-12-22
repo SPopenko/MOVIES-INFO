@@ -9,7 +9,7 @@
 #import "NSString(MovieInfoTemplateFilling).h"
 #import "NSDataAdditions.m"
 
-@implementation NSString(MovieInfoTemplateFiling)
+@implementation NSString(MovieInfoTemplateFilling)
 
 #define OpenKeyFieldBracket @"["
 #define CloseKeyFieldBracket @"]"
@@ -78,6 +78,10 @@
                 result = [[NSString alloc] initWithFormat:@"%@", [self base64StringFromImageUrlString:((Poster*)object).image.url withStyleClass:objectName]];
             }
         }
+        else if([object isKindOfClass:[Person class]])
+        {
+            result = [[NSString alloc] initWithString:((Person*)object).name];
+        }
         else
         {
             result = [[NSString alloc] initWithString:[object description]];
@@ -92,9 +96,18 @@
 
 + (NSString*) stringWithTemplateString:(NSString*)templateString filledDetailedMovieInfo:(DetailedMovieInfo*) movieInfo
 {
-    NSString* result = nil;
-
-    return [result autorelease];
+    NSString*            result              = nil;
+    NSMutableDictionary* keyFieldsDictionary = nil;
+    
+    keyFieldsDictionary = [self keyFieldsFromTemplateString:templateString];
+    
+    [self removeUnnecessaryFieldsFromDictionary:keyFieldsDictionary withClass:[DetailedMovieInfo class]];
+    
+    [self fillTemplateDictionary:keyFieldsDictionary withDetailedMovieInfo:movieInfo];
+    
+    result = [self replaceKeysInTemplateString:templateString withFieldsDictionary:keyFieldsDictionary];
+    
+    return result;
 }
 
 + (NSMutableDictionary*) keyFieldsFromTemplateString:(NSString*)templateString

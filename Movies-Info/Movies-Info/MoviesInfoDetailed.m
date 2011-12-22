@@ -45,12 +45,11 @@
     [_movieInfo getDetailedMovieInfoByMovieID:shortMovieInfo.movieId doAfterLoadFinished:^(id obj)
     {
         movieInfo = [obj retain];
-        NSString *htmlFile = [[NSBundle mainBundle] pathForResource:@"infoFilm" ofType:@"html"];
-        NSMutableString *htmlData = [NSMutableString stringWithContentsOfFile:htmlFile encoding:NSUTF8StringEncoding error:nil];
-        
-        htmlData = [movieInfo fillHtmlPage:htmlData];
-        
-        [webView loadHTMLString:htmlData baseURL:nil];
+        NSString *htmlPath     = [[NSBundle mainBundle] pathForResource:@"infoFilm" ofType:@"html"];
+        NSString *htmlTemplate = [NSString stringWithContentsOfFile:htmlPath encoding:NSUTF8StringEncoding error:nil];
+        NSString *htmlFilled   = [NSString stringWithTemplateString:htmlTemplate filledDetailedMovieInfo:movieInfo];
+
+        [webView loadHTMLString:htmlFilled baseURL:nil];
         
         if (movieInfo.trailer) {
             _playTrailerButton.enabled = YES;

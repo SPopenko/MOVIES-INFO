@@ -15,6 +15,7 @@
 #import "ViewActionIndicator.h"
 #import "MovieInfo.h"
 #import "YouTubeVideo.h"
+#import "NSString(MovieInfoTemplateFilling).m"
 
 @interface MoviesInfoDetailed : UIViewController
 {

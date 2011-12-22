@@ -117,7 +117,10 @@
     //Creating Cast
     for (int i =1;i < 5; i++)
     {
-        [temp addObject:[NSString stringWithFormat:@"%d", i]];
+        Person* pers = [[Person alloc] init];
+        pers.name = [NSString stringWithFormat:@"%d", i];
+        [temp addObject:pers];
+        [pers release];
     }
     dmi.cast = [temp subarrayWithRange:NSMakeRange(0, temp.count)];
     [temp removeAllObjects];
@@ -185,8 +188,7 @@
     [temp removeAllObjects];
 
     [NSString fillTemplateDictionary:fieldsDictionary withDetailedMovieInfo:dmi];
-    NSLog(@"%@",resultsDictionary);
-    NSLog(@"%@", fieldsDictionary);
+
     GHAssertTrue([resultsDictionary isEqualToDictionary:fieldsDictionary], @"Check conditions");
 
     [temp release];

@@ -26,12 +26,6 @@
 - (NSString*) getTrailer;
 - (void) setTrailer:(NSString *)trailerLink;
 
-- (NSMutableString*) fillHtmlPage:(NSMutableString*)htmlPage;
-- (void) replaceString:(NSString*) replace withString:(NSString*) withString inString:(NSMutableString*) inString;
-
-- (NSMutableString*) backdropsToHtmlString;
-- (NSMutableString*) castToHtmlString;
-- (NSString*) htmlStringFromImageAtKey:(NSString*) imagekey;
 
 - (ShortMovieInfo*) getShortMovieInfo;
 

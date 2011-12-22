@@ -26,8 +26,8 @@
 //Nil is right result
 - (void) testGetTrailerFromEmptyMovieInfo
 {
-    testObject = [[ShortMovieInfo alloc] init];
-    GHAssertNil([testObject getPoster], @"Result is not nil");    
+    testObject = [[DetailedMovieInfo alloc] init];
+    GHAssertNil([testObject getTrailer], @"Result is not nil");    
     [testObject release];
     testObject = nil;
 }
@@ -59,7 +59,7 @@
     [_movieInfo getDetailedMovieInfoByMovieID:@"38356" doAfterLoadFinished:^(id obj)
      {
          DetailedMovieInfo* dmi = [obj retain];
-         testObject = [dmi getTrailer];
+         testObject = dmi.trailer;
          _testFinished = YES;
          //[dmi release];
      }];
@@ -73,64 +73,6 @@
     
     [testObject release];
     testObject = nil;
-}
-
-
-- (void) testFillHtmlPageFromEmptyMovieInfo
-{
-    DetailedMovieInfo* dmi = [[DetailedMovieInfo alloc]init];
-    NSMutableString* html = [NSMutableString stringWithString:htmlPageToFill];
-    testObject = [dmi fillHtmlPage:html];
-    GHAssertEqualStrings(testObject, [self loadStringForKey:kresultHtmlPageFromEmptyMovieInfo], nil);    
-    [dmi release];
-    [testObject release];
-    testObject = nil;
-}
-
-//Nil result is right
-- (void) testFillHtmlPageFromRealMovieInfoWithEmptyBackdrops
-{
-    testObject = nil;
-    _testFinished = NO;
-    [_movieInfo getDetailedMovieInfoByMovieID:@"2374" doAfterLoadFinished:^(id obj)
-     {
-         DetailedMovieInfo* dmi = [obj retain];
-         NSMutableString* html = [NSMutableString stringWithString:htmlPageToFill];
-         testObject = [dmi fillHtmlPage:html];
-         [dmi release];
-         _testFinished = YES;
-     }];
-    //TODO Write more right code
-    //Waiting for query execution
-    while (!_testFinished) {
-        usleep(100000);
-    }
-    GHAssertEqualStrings(testObject, [self loadStringForKey:kresultHtmlPageFromRealMovieInfoWithEmptyBackdrops], nil);
-    _testFinished = NO;
-    [testObject release];
-}
-
-
-- (void) testFillHtmlPageFromRealMovieInfoWithBackdrops
-{
-    testObject = nil;
-    _testFinished = NO;
-    [_movieInfo getDetailedMovieInfoByMovieID:@"54293" doAfterLoadFinished:^(id obj)
-     {
-         DetailedMovieInfo* dmi = [obj retain];
-         NSMutableString* html = [NSMutableString stringWithString:htmlPageToFill];
-         testObject = [dmi fillHtmlPage:html];
-         _testFinished = YES;
-         [dmi release];
-     }];
-    //TODO Write more right code
-    //Waiting for query execution
-    while (!_testFinished) {
-        usleep(100000);
-    }
-    GHAssertEqualStrings(testObject, [self loadStringForKey:kresultHtmlPageFromRealMovieInfoWithBackdrops], nil);
-    _testFinished = NO;
-    [testObject release];
 }
 
 - (void) dealloc

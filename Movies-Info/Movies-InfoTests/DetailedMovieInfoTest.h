@@ -25,9 +25,4 @@
 - (void) testGetTrailerWithEmptyTrailers;
 - (void) testGetTrailerMovieInfo;
 
-//fillHtmlPage Tests
-- (void) testFillHtmlPageFromEmptyMovieInfo;
-- (void) testFillHtmlPageFromRealMovieInfoWithEmptyBackdrops;
-- (void) testFillHtmlPageFromRealMovieInfoWithBackdrops;
-
 @end

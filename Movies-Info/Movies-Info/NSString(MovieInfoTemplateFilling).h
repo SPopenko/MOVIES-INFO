@@ -14,7 +14,7 @@
 #import "DetailedMovieInfo.h"
 #import "MovieInfo.h"
 
-@interface NSString(MovieInfoTemplateFiling)
+@interface NSString(MovieInfoTemplateFilling)
 
 + (NSString*) stringWithTemplateString:(NSString*)templateString filledDetailedMovieInfo:(DetailedMovieInfo*) movieInfo;
 
