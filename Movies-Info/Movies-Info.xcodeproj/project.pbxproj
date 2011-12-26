@@ -66,6 +66,7 @@
 		1FC86BBE147A466A00183511 /* MovieCacheTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC86BBD147A466A00183511 /* MovieCacheTest.m */; };
 		1FC86BC1147AB4EA00183511 /* MovieInfoTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC86BC0147AB4EA00183511 /* MovieInfoTest.m */; };
 		1FC86BC3147BC96400183511 /* testGetMovieInfoListWithRealParamsResult.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1FC86BC2147BC96400183511 /* testGetMovieInfoListWithRealParamsResult.plist */; };
+		1FCA6F2814A371B40045588E /* GHTestCase(MovieInfoFilling).m in Sources */ = {isa = PBXBuildFile; fileRef = 1FCA6F2614A3719D0045588E /* GHTestCase(MovieInfoFilling).m */; };
 		1FCBCC48145833D300EB3FD1 /* libobjc.A.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FCBCC47145833D300EB3FD1 /* libobjc.A.dylib */; };
 		1FCBCD0F145AFA8300EB3FD1 /* FanRating.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FCBCD0E145AFA8300EB3FD1 /* FanRating.m */; };
 		1FCBCD11145B03BA00EB3FD1 /* star_empty.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FCBCD10145B03BA00EB3FD1 /* star_empty.png */; };
@@ -276,6 +277,8 @@
 		1FC86BBF147AB4EA00183511 /* MovieInfoTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieInfoTest.h; sourceTree = "<group>"; };
 		1FC86BC0147AB4EA00183511 /* MovieInfoTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieInfoTest.m; sourceTree = "<group>"; };
 		1FC86BC2147BC96400183511 /* testGetMovieInfoListWithRealParamsResult.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = testGetMovieInfoListWithRealParamsResult.plist; sourceTree = "<group>"; };
+		1FCA6F2514A3719D0045588E /* GHTestCase(MovieInfoFilling).h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GHTestCase(MovieInfoFilling).h"; sourceTree = "<group>"; };
+		1FCA6F2614A3719D0045588E /* GHTestCase(MovieInfoFilling).m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GHTestCase(MovieInfoFilling).m"; sourceTree = "<group>"; };
 		1FCBCC47145833D300EB3FD1 /* libobjc.A.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libobjc.A.dylib; path = usr/lib/libobjc.A.dylib; sourceTree = SDKROOT; };
 		1FCBCC491458769000EB3FD1 /* DetailedMovieInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailedMovieInfo.h; sourceTree = "<group>"; };
 		1FCBCC4A1458769000EB3FD1 /* DetailedMovieInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailedMovieInfo.m; sourceTree = "<group>"; };
@@ -527,6 +530,8 @@
 				1F32E6EC1492449A00852AE8 /* MovieInfoTemplateFillingTest.m */,
 				1FEBFF831488D11400F874F8 /* GHTestCase(ResultsFromFile).h */,
 				1FEBFF841488D11400F874F8 /* GHTestCase(ResultsFromFile).m */,
+				1FCA6F2514A3719D0045588E /* GHTestCase(MovieInfoFilling).h */,
+				1FCA6F2614A3719D0045588E /* GHTestCase(MovieInfoFilling).m */,
 			);
 			path = "Movies-InfoTests";
 			sourceTree = "<group>";
@@ -1018,6 +1023,7 @@
 				1FC86BC1147AB4EA00183511 /* MovieInfoTest.m in Sources */,
 				1FEBFF851488D11400F874F8 /* GHTestCase(ResultsFromFile).m in Sources */,
 				1F32E6ED1492449A00852AE8 /* MovieInfoTemplateFillingTest.m in Sources */,
+				1FCA6F2814A371B40045588E /* GHTestCase(MovieInfoFilling).m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

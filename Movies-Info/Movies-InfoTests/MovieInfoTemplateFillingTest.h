@@ -9,6 +9,7 @@
 #import <GHUnitIOS/GHUnit.h>
 
 #import "GHTestCase(ResultsFromFile).h"
+#import "GHTestCase(MovieInfoFilling).h"
 #import "NSString(MovieInfoTemplateFilling).h"
 #import "DetailedMovieInfo.h"
 
