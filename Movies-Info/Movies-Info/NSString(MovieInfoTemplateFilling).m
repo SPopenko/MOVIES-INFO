@@ -94,22 +94,6 @@
     return [result autorelease];
 }
 
-+ (NSString*) stringWithTemplateString:(NSString*)templateString filledDetailedMovieInfo:(DetailedMovieInfo*) movieInfo
-{
-    NSString*            result              = nil;
-    NSMutableDictionary* keyFieldsDictionary = nil;
-    
-    keyFieldsDictionary = [self keyFieldsFromTemplateString:templateString];
-    
-    [self removeUnnecessaryFieldsFromDictionary:keyFieldsDictionary withClass:[DetailedMovieInfo class]];
-    
-    [self fillTemplateDictionary:keyFieldsDictionary withDetailedMovieInfo:movieInfo];
-    
-    result = [self replaceKeysInTemplateString:templateString withFieldsDictionary:keyFieldsDictionary];
-    
-    return result;
-}
-
 + (NSMutableDictionary*) keyFieldsFromTemplateString:(NSString*)templateString
 {
     NSMutableDictionary* result = nil;
@@ -120,7 +104,7 @@
         // open search
         [scanner scanUpToString:OpenKeyFieldBracket intoString:nil];
         while (![scanner isAtEnd]) {
-           [scanner scanString:OpenKeyFieldBracket intoString:nil];
+            [scanner scanString:OpenKeyFieldBracket intoString:nil];
             // close search
             NSString *tag = nil;
             [scanner scanUpToString:CloseKeyFieldBracket intoString:&tag];
@@ -130,7 +114,7 @@
                 {
                     result = [[NSMutableDictionary alloc] init];
                 }
-               [result setObject:@"" forKey:tag];
+                [result setObject:@"" forKey:tag];
             }
             else
             {
@@ -142,12 +126,12 @@
     }
     
     [templateString release];
-
+    
     return [result autorelease];
 }
 
 + (void) removeUnnecessaryFieldsFromDictionary:(NSMutableDictionary*)fieldsDictionary
-                                    withClass:(Class) templateClass
+                                     withClass:(Class) templateClass
 {
     [fieldsDictionary retain];
     NSMutableDictionary* classProperties = [[NSMutableDictionary alloc] init];
@@ -157,7 +141,7 @@
     {
         unsigned int propertyCount;
         objc_property_t *properties = class_copyPropertyList(templateClass, &propertyCount);
-
+        
         for (unsigned int i = 0; i < propertyCount; i++)
         {
             NSString *property = [[NSString alloc] initWithCString:property_getName(properties[i]) encoding:NSUTF8StringEncoding];
@@ -168,7 +152,7 @@
         free(properties);
         templateClass = [templateClass superclass];
     }while (templateClass != [NSObject class]);
-
+    
     for (NSString* key in fieldsDictionary)
     {
         id obj = [classProperties objectForKey:key];
@@ -182,7 +166,7 @@
     {
         [fieldsDictionary removeObjectForKey:obj];
     }
-
+    
     [keysForDelete release];
     [fieldsDictionary release];
     [classProperties release];
@@ -194,7 +178,7 @@
     NSArray* keys = [fieldsDictionary allKeys];
     for (NSString* key in keys)
     {
-
+        
         id object = [movieInfo valueForKey:key];
         [object retain];
         if ([object isKindOfClass:[NSArray class]])
@@ -242,7 +226,7 @@
     if (templateString == nil) return nil;
     
     NSMutableString* result = [[NSMutableString alloc] initWithString:templateString];
- 
+    
     for (NSString* key in fieldsDictionary)
     {
         NSString* obj = [fieldsDictionary objectForKey:key];
@@ -255,6 +239,20 @@
     return [[[result substringFromIndex:0] copy] autorelease];
 }
 
-
++ (NSString*) stringWithTemplateString:(NSString*)templateString filledDetailedMovieInfo:(DetailedMovieInfo*) movieInfo
+{
+    NSString*            result              = nil;
+    NSMutableDictionary* keyFieldsDictionary = nil;
+    
+    keyFieldsDictionary = [self keyFieldsFromTemplateString:templateString];
+    
+    [self removeUnnecessaryFieldsFromDictionary:keyFieldsDictionary withClass:[DetailedMovieInfo class]];
+    
+    [self fillTemplateDictionary:keyFieldsDictionary withDetailedMovieInfo:movieInfo];
+    
+    result = [self replaceKeysInTemplateString:templateString withFieldsDictionary:keyFieldsDictionary];
+    
+    return result;
+}
 
 @end

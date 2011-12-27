@@ -13,6 +13,19 @@
 #import "NSString(MovieInfoTemplateFilling).h"
 #import "DetailedMovieInfo.h"
 
+@interface NSString(testMovieInfoFillingPrivate)
+
++ (NSMutableDictionary*) keyFieldsFromTemplateString:(NSString*)templateString;
++ (void) removeUnnecessaryFieldsFromDictionary:(NSMutableDictionary*)fieldsDictionary
+                                     withClass:(Class) templateClass;
++ (void) fillTemplateDictionary:(NSMutableDictionary*)fieldsDictionary 
+          withDetailedMovieInfo:(DetailedMovieInfo*) movieInfo;
++ (NSString*) replaceKeysInTemplateString:(NSString*)templateString
+                     withFieldsDictionary:(NSMutableDictionary*) fieldsDictionary;
+
+@end
+
+
 @interface MovieInfoTemplateFillingTest : GHTestCase
 
 - (void) testKeyFromTemplateString_Nil;

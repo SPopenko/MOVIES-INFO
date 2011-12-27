@@ -8,8 +8,19 @@
 
 #import "MovieInfoTemplateFillingTest.h"
 
-@implementation MovieInfoTemplateFillingTest
+@implementation NSString(testMovieInfoFillingPrivate)
 
++ (NSMutableDictionary*) keyFieldsFromTemplateString:(NSString*)templateString{ return nil;}
++ (void) removeUnnecessaryFieldsFromDictionary:(NSMutableDictionary*)fieldsDictionary
+                                     withClass:(Class) templateClass{}
++ (void) fillTemplateDictionary:(NSMutableDictionary*)fieldsDictionary 
+          withDetailedMovieInfo:(DetailedMovieInfo*) movieInfo{}
++ (NSString*) replaceKeysInTemplateString:(NSString*)templateString
+                     withFieldsDictionary:(NSMutableDictionary*) fieldsDictionary{return nil;}
+
+@end
+
+@implementation MovieInfoTemplateFillingTest
 
 // input keys
 #define kTemplateStringInput                   @"TemplateStringInput"                   //NSString
@@ -24,6 +35,9 @@
 #define kWrongFieldsDictionaryResult           @"WrongFieldsDictionaryResult"           //NSDictionary
 #define kRightFieldsDictionaryResult           @"RightFieldsDictionaryResult"           //NSDictionary
 #define kReplaceKeysRightTemplateResult        @"ReplaceKeysRightTemplateResult"        //NSString
+
+//private method testing
+
 
 
 // tests for getting key fields from template string to dictionary

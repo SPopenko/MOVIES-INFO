@@ -18,12 +18,4 @@
 
 + (NSString*) stringWithTemplateString:(NSString*)templateString filledDetailedMovieInfo:(DetailedMovieInfo*) movieInfo;
 
-+ (NSMutableDictionary*) keyFieldsFromTemplateString:(NSString*)templateString;
-+ (void) removeUnnecessaryFieldsFromDictionary:(NSMutableDictionary*)fieldsDictionary
-                                    withClass:(Class) templateClass;
-+ (void) fillTemplateDictionary:(NSMutableDictionary*)fieldsDictionary 
-          withDetailedMovieInfo:(DetailedMovieInfo*) movieInfo;
-+ (NSString*) replaceKeysInTemplateString:(NSString*)templateString
-                     withFieldsDictionary:(NSMutableDictionary*) fieldsDictionary;
-
 @end
