@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict/>
+<dict>
+	<key>GetTrailer_WithTrailerInput</key>
+	<string>http://www.youtube.com/watch?v=3H8bnKdf654</string>
+	<key>GetTrailer_WithTrailerResult</key>
+	<string>http://o-o.preferred.uarnet-kbp1.v18.lscache7.c.youtube.com/videoplayback?sparams=id%2Cexpire%2Cip%2Cipbits%2Citag%2Csource%2Cratebypass%2Ccp&amp;fexp=914053%2C910102%2C913601&amp;itag=18&amp;ip=195.0.0.0&amp;signature=9880840C09EB76019106E83D2FDA376DDA863F70.D0F6A2AFF82C4EE2876A46F75437766F7E38A338&amp;sver=3&amp;ratebypass=yes&amp;source=youtube&amp;expire=1325112024&amp;key=yt1&amp;ipbits=8&amp;cp=U0hRSlFMUF9HTkNOMV9JRlRBOkhMcTJJZjdtNGww&amp;id=dc7f1b9ca75feb9e&amp;</string>
+</dict>
 </plist>

@@ -76,6 +76,7 @@
 		1FCC160F1450086100D091E4 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FCC160E1450086100D091E4 /* CFNetwork.framework */; };
 		1FEBFF851488D11400F874F8 /* GHTestCase(ResultsFromFile).m in Sources */ = {isa = PBXBuildFile; fileRef = 1FEBFF841488D11400F874F8 /* GHTestCase(ResultsFromFile).m */; };
 		1FEBFF881488E6F100F874F8 /* YouTubeTest.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1FEBFF871488E6F100F874F8 /* YouTubeTest.plist */; };
+		1FF09C7614AB71D7004AEE11 /* ShortMovieInfoTest.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1FF09C7514AB71D6004AEE11 /* ShortMovieInfoTest.plist */; };
 		1FF0B7B114717B2D007A83D5 /* IASKAppSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF0B78B14717B2D007A83D5 /* IASKAppSettingsViewController.m */; };
 		1FF0B7B214717B2D007A83D5 /* IASKAppSettingsWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF0B78D14717B2D007A83D5 /* IASKAppSettingsWebViewController.m */; };
 		1FF0B7B314717B2D007A83D5 /* IASKSpecifierValuesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF0B78F14717B2D007A83D5 /* IASKSpecifierValuesViewController.m */; };
@@ -293,6 +294,7 @@
 		1FEBFF831488D11400F874F8 /* GHTestCase(ResultsFromFile).h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GHTestCase(ResultsFromFile).h"; sourceTree = "<group>"; };
 		1FEBFF841488D11400F874F8 /* GHTestCase(ResultsFromFile).m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GHTestCase(ResultsFromFile).m"; sourceTree = "<group>"; };
 		1FEBFF871488E6F100F874F8 /* YouTubeTest.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = YouTubeTest.plist; sourceTree = "<group>"; };
+		1FF09C7514AB71D6004AEE11 /* ShortMovieInfoTest.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ShortMovieInfoTest.plist; sourceTree = "<group>"; };
 		1FF0B78A14717B2D007A83D5 /* IASKAppSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IASKAppSettingsViewController.h; sourceTree = "<group>"; };
 		1FF0B78B14717B2D007A83D5 /* IASKAppSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IASKAppSettingsViewController.m; sourceTree = "<group>"; };
 		1FF0B78C14717B2D007A83D5 /* IASKAppSettingsWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IASKAppSettingsWebViewController.h; sourceTree = "<group>"; };
@@ -633,6 +635,7 @@
 				1FEBFF871488E6F100F874F8 /* YouTubeTest.plist */,
 				1FBB0C1814977B4700FB29ED /* MovieInfoTemplateFillingTest.plist */,
 				1FF5E52B14AB0F0A00117647 /* MovieInfoTest.plist */,
+				1FF09C7514AB71D6004AEE11 /* ShortMovieInfoTest.plist */,
 			);
 			name = TestResults;
 			sourceTree = "<group>";
@@ -985,6 +988,7 @@
 				1FEBFF881488E6F100F874F8 /* YouTubeTest.plist in Resources */,
 				1FBB0C1914977B4700FB29ED /* MovieInfoTemplateFillingTest.plist in Resources */,
 				1FF5E52C14AB0F0A00117647 /* MovieInfoTest.plist in Resources */,
+				1FF09C7614AB71D7004AEE11 /* ShortMovieInfoTest.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

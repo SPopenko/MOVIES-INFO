@@ -10,80 +10,84 @@
 
 @implementation ShortMovieInfoTest
 
-#define rightURL @"http://www.youtube.com/watch?v=Hhgfz0zPmH4"
+//result keys
+#define kgetPoster_EmptyPosterResult @"GetPoster_EmptyPosterResult"
+#define kgetPoster_WithPosterResult  @"GetPoster_WithPosterResult"
 
-- (void) setUp
+- (void) testGetPoster_EmptyMovieInfo
 {
-    _movieInfo = [[MovieInfo  alloc] init];
-    testObject = [[ShortMovieInfo alloc] init];
+    ShortMovieInfo* smi = [self emptyShortMovieInfo];
+    
+    GHAssertNil(smi.poster, @"Resul is not nil");
+
 }
 
-- (void) tearDown
-{
-    [testObject release];
+- (void) testGetPoster_EmptyPoster
+{    
+    ShortMovieInfo* smi = [self filledShortMovieInfo];
+    smi.posters = [[NSArray alloc] init];
+    
+    GHAssertNil(smi.poster, @"Result is not nil");
 }
 
-//getPoster Tests
-//Nil is right result
-- (void) testGetPosterFromEmptyMovieInfo
+- (void) testGetPoster_WithPoster
 {
-    testObject = [[ShortMovieInfo alloc] init];
-    GHAssertNil([testObject getPoster], @"Result is not nil");    
-    [testObject release];
-    testObject = nil;
+    ShortMovieInfo* smi    = [self filledShortMovieInfo];
+    NSString*       result = [self loadStringForKey:kgetPoster_WithPosterResult];
+    
+    GHAssertEqualStrings(smi.poster, result, @"Check test conditions");
 }
 
-//Nil result is right
-- (void) testGetPosterWithEmptyPosters
-{
-    NSArray* posters   = [[NSArray alloc] init];
-    testObject.posters = posters;
-    GHAssertNil(testObject.poster, @"Result is not nil");
-    [posters release];
-}
-
-
-- (void) testGetPosterMovieInfoWithPosters
-{
-    NSMutableArray* posters = [[NSMutableArray alloc] init];
-    
-    for (int i = 0; i < 5; i++) {
-        Image*  i = [[Image alloc] init];
-        Poster* p = [[Poster  alloc] init];
-        i.url = [[NSString alloc] initWithFormat:@"url%d", 0];
-        i.type = @"poster";
-        i.size = @"cover";
-        p.image = i;
-        [posters addObject:p];
-    }
-    
-    [posters writeToFile:@"/Users/apolub/Documents/file.plist" atomically:YES];
-    
-    testObject.posters = posters;
-    GHAssertEqualStrings(@"url0", testObject.poster, @"Result is not nil");
-    [posters release];
-}
-
-- (void) testGetPosterMovieInfoWithPostersWithoutCover
-{
-    NSMutableArray* posters = [[NSMutableArray alloc] init];
-    
-    for (int i = 0; i < 5; i++) {
-        Image*  i = [[Image alloc] init];
-        Poster* p = [[Poster  alloc] init];
-        i.url = [[NSString alloc] initWithFormat:@"url%d", 0];
-        i.type = @"posters";
-        i.size = @"thumb";
-        p.image = i;
-        [posters addObject:p];
-    }
-    
-    [posters writeToFile:@"/Users/apolub/Documents/file.plist" atomically:YES];
-    
-    testObject.posters = posters;
-    GHAssertNil(testObject.poster, @"Result is not nil");
-    [posters release];
-}
+//- (void) testGetPosterWithEmptyPosters
+//{
+//    NSArray* posters   = [[NSArray alloc] init];
+//    testObject.posters = posters;
+//    GHAssertNil(testObject.poster, @"Result is not nil");
+//    [posters release];
+//}
+//
+//
+//- (void) testGetPosterMovieInfoWithPosters
+//{
+//    NSMutableArray* posters = [[NSMutableArray alloc] init];
+//    
+//    for (int i = 0; i < 5; i++) {
+//        Image*  i = [[Image alloc] init];
+//        Poster* p = [[Poster  alloc] init];
+//        i.url = [[NSString alloc] initWithFormat:@"url%d", 0];
+//        i.type = @"poster";
+//        i.size = @"cover";
+//        p.image = i;
+//        [posters addObject:p];
+//    }
+//    
+//    [posters writeToFile:@"/Users/apolub/Documents/file.plist" atomically:YES];
+//    
+//    testObject.posters = posters;
+//    GHAssertEqualStrings(@"url0", testObject.poster, @"Result is not nil");
+//    [posters release];
+//}
+//
+//- (void) testGetPosterMovieInfoWithPostersWithoutCover
+//{
+//    NSMutableArray* posters = [[NSMutableArray alloc] init];
+//    
+//    for (int i = 0; i < 5; i++) {
+//        Image*  i = [[Image alloc] init];
+//        Poster* p = [[Poster  alloc] init];
+//        i.url = [[NSString alloc] initWithFormat:@"url%d", 0];
+//        i.type = @"posters";
+//        i.size = @"thumb";
+//        p.image = i;
+//        [posters addObject:p];
+//    }
+//    
+//    [posters writeToFile:@"/Users/apolub/Documents/file.plist" atomically:YES];
+//    
+//    testObject.posters = posters;
+//    GHAssertNil(testObject.poster, @"Result is not nil");
+//    [posters release];
+//}
 
 - (void) dealloc
 {

@@ -7,6 +7,8 @@
 //
 
 #import <GHUnitIOS/GHUnit.h>
+#import "GHTestCase(ResultsFromFile).h"
+#import "GHTestCase(MovieInfoFilling).h"
 #import "ShortMovieInfo.h"
 #import "MovieInfo.h"
 
@@ -17,11 +19,8 @@
 }
 
 //getPoster Tests
-//ShortMovieInfo is nil
-- (void) testGetPosterFromEmptyMovieInfo;
-//ShortMovieInfo loaded from api.themoviedb.org
-- (void) testGetPosterWithEmptyPosters;
-//ShortMovieInfo loaded from api.themoviedb.org
-- (void) testGetPosterMovieInfoWithPosters;
+- (void) testGetPoster_EmptyMovieInfo;
+- (void) testGetPoster_EmptyPoster;
+- (void) testGetPoster_WithPoster;
 
 @end

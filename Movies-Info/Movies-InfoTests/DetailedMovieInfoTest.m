@@ -9,75 +9,35 @@
 #import "DetailedMovieInfoTest.h"
 
 @implementation DetailedMovieInfoTest
-
-#define htmlPageToFill @"[posterUrl][rating][release][cast][description][backdrops]"
-#define kresultHtmlPageFromEmptyMovieInfo @"resultHtmlPageFromEmptyMovieInfo"
-#define kresultHtmlPageFromRealMovieInfoWithBackdrops @"resultHtmlPageFromRealMovieInfoWithBackdrops"
-#define kresultHtmlPageFromRealMovieInfoWithEmptyBackdrops @"resultHtmlPageFromRealMovieInfoWithEmptyBackdrops"
-
-- (void) setUp
-{
-    _movieInfo = [[MovieInfo  alloc] init];
-    testObject = nil;
-    _testFinished = NO;
-}
-
+#define kgetTrailer_WithTrailerInput  @"GetTrailer_WithTrailerInput"
+#define kgetTrailer_WithTrailerResult @"GetTrailer_WithTrailerResult"
 //getTrailer Tests
 //Nil is right result
-- (void) testGetTrailerFromEmptyMovieInfo
+- (void) testGetTrailer_EmptyMovieInfo
 {
-    testObject = [[DetailedMovieInfo alloc] init];
-    GHAssertNil([testObject getTrailer], @"Result is not nil");    
-    [testObject release];
-    testObject = nil;
+    DetailedMovieInfo* dmi = [self emptyDetailedMovieInfo];
+    GHAssertNil(dmi.trailer, @"Result is not nil");    
 }
 
 //Nil result is right
-- (void) testGetTrailerWithEmptyTrailers
+- (void) testGetTrailer_EmptyTrailer
 {
-    _testFinished = NO;
-    [_movieInfo getDetailedMovieInfoByMovieID:@"2374" doAfterLoadFinished:^(id obj)
-     {
-         testObject = [((DetailedMovieInfo*)obj) getTrailer];
-         _testFinished = YES;
-     }];
-    //TODO Write more right code
-    //Waiting for query execution
-    while (!_testFinished) {
-        usleep(100000);
-    }
-    GHAssertNil(testObject, @"Result is not nil");
-    [testObject release];
-    testObject = nil;
+    DetailedMovieInfo* dmi = [self filledDetailedMovieInfo];
+    
+    GHAssertNil(dmi.trailer, @"Result is not nil");   
 }
 
 //Nil result is not right
-- (void) testGetTrailerMovieInfo
+- (void) testGetTrailer_WithTrailer
 {
-    testObject = nil;
-    _testFinished = NO;
-    [_movieInfo getDetailedMovieInfoByMovieID:@"38356" doAfterLoadFinished:^(id obj)
-     {
-         DetailedMovieInfo* dmi = [obj retain];
-         testObject = dmi.trailer;
-         _testFinished = YES;
-         //[dmi release];
-     }];
-    //TODO Write more right code
-    //Waiting for query execution
-
-    while (!_testFinished) {
-        usleep(100000);
-    }
-    GHAssertNotNil(testObject, @"Result is nil");
-    
-    [testObject release];
-    testObject = nil;
+    DetailedMovieInfo* dmi    = [self filledDetailedMovieInfo];
+    dmi.trailer = [self loadStringForKey:kgetTrailer_WithTrailerInput];
+    NSString* result = [self loadStringForKey:kgetTrailer_WithTrailerResult];
+    GHAssertEqualStrings(dmi.trailer, result, @"Result is not nil");   
 }
 
 - (void) dealloc
 {
-    [_movieInfo release];
     [super dealloc];
 }
 

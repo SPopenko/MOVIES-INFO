@@ -9,20 +9,15 @@
 #import <GHUnitIOS/GHUnit.h>
 
 #import "GHTestCase(ResultsFromFile).h"
-
+#import "GHTestCase(MovieInfoFilling).h"
 #import "MovieInfo.h"
 #import "DetailedMovieInfo.h"
 
 @interface DetailedMovieInfoTest : GHTestCase
-{
-    MovieInfo* _movieInfo;
-    BOOL       _testFinished;
-    id         testObject;
-}
 
 //getTrailer Tests
-- (void) testGetTrailerFromEmptyMovieInfo;
-- (void) testGetTrailerWithEmptyTrailers;
-- (void) testGetTrailerMovieInfo;
+- (void) testGetTrailer_EmptyMovieInfo;
+- (void) testGetTrailer_EmptyTrailer;
+- (void) testGetTrailer_WithTrailer;
 
 @end
