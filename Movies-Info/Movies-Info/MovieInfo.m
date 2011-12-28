@@ -73,8 +73,17 @@
 #pragma mark - preparing Search Parameters for short movie information
 -(NSMutableDictionary*) prepareParametersFromDictionary:(NSDictionary *)parameters
 {
-    NSMutableDictionary* result = [[NSMutableDictionary alloc]initWithDictionary:parameters copyItems:YES];
-
+    [parameters retain];
+    
+    NSMutableDictionary* result;
+    if (parameters != nil)
+    {
+        result = [[NSMutableDictionary alloc] initWithDictionary:parameters copyItems:YES];
+    }
+    else
+    {
+        result = [[NSMutableDictionary alloc] init];
+    }
     NSMutableDictionary* defaultValues = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
                                           [NSString stringWithString:@"rating"], @"orderBy",
                                           [NSString stringWithString:@"desc"],   @"order",
@@ -82,7 +91,7 @@
                                           [NSString stringWithString:@"1"],      @"page",
                                           [NSString stringWithString:@"10"],     @"minVotes",
                                           nil];
-    for (id key in [result allKeys])
+    for (id key in [defaultValues allKeys])
     {
         id obj = [result objectForKey: key];
         id defaultValue = [defaultValues objectForKey: key];
@@ -91,12 +100,15 @@
             [result setValue:defaultValue forKey:key];
         }
     }
+    
+    [parameters release];
     [defaultValues release];
     return [result autorelease];
 }
 
 - (NSString*) requestStringFromMutableDictionary:(NSMutableDictionary *)parameters
 {
+    
     searchFields  = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
                                             [NSString stringWithString:@"order_by"],  @"orderBy",
                                             [NSString stringWithString:@"order"],     @"order",
@@ -105,10 +117,15 @@
                                             [NSString stringWithString:@"min_votes"], @"minVotes",
                                              nil];
     NSMutableString* resultString = [[NSMutableString alloc] initWithString:@""];
-    for (id key in [parameters allKeys])
+    for (id key in [searchFields allKeys])
     {
-        if (![resultString isEqualToString:@""]) [resultString appendString:@"&"];
-        [resultString appendFormat:@"%@=%@", [searchFields objectForKey:key], [parameters objectForKey:key]];
+        id param = [parameters objectForKey:key];
+        NSLog(@"%@:%@", key, param);
+        if (param != nil)
+        {
+            if (![resultString isEqualToString:@""]) [resultString appendString:@"&"];
+            [resultString appendFormat:@"%@=%@", [searchFields objectForKey:key], param];
+        }
     }
     
     [searchFields release];

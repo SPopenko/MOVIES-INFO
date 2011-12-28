@@ -7,16 +7,26 @@
 //
 
 #import <GHUnitIOS/GHUnit.h>
+
+#import "GHTestCase(ResultsFromFile).h"
 #import "MovieInfo.h"
 
 @interface MovieInfoTest : GHTestCase
 {
-    NSArray* _movieList;
     MovieInfo* _movieInfo;
-    BOOL _testFinished;
 }
 
-- (void) testGetMovieInfoListWithNilParam;
-- (void) testGetMovieInfoListWithRealParams;
+- (void) testPrepareParametersFromDictionary_Nil;
+- (void) testPrepareParametersFromDictionary_NotFullDictionary;
+- (void) testPrepareParametersFromDictionary_FullDictionary;
+
+- (void) testRequestStringFromMutableDictionary_Nil;
+- (void) testRequestStringFromMutableDictionary_NotFullDictionary;
+- (void) testRequestStringFromMutableDictionary_FullDictionary;
+- (void) testRequestStringFromMutableDictionary_OverFullDictionary;
+
+
+//- (void) testGetMovieInfoListWithNilParam;
+//- (void) testGetMovieInfoListWithRealParams;
 
 @end

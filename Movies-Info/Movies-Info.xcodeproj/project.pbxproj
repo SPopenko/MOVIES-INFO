@@ -98,6 +98,7 @@
 		1FF0B7C414717B2D007A83D5 /* IASKPSToggleSwitchSpecifierViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FF0B7AF14717B2D007A83D5 /* IASKPSToggleSwitchSpecifierViewCell.xib */; };
 		1FF0B7C514717B2D007A83D5 /* IASKSpecifierValuesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FF0B7B014717B2D007A83D5 /* IASKSpecifierValuesView.xib */; };
 		1FF0B7CB14717E74007A83D5 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FF0B7CA14717E74007A83D5 /* MessageUI.framework */; };
+		1FF5E52C14AB0F0A00117647 /* MovieInfoTest.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1FF5E52B14AB0F0A00117647 /* MovieInfoTest.plist */; };
 		63626F551419414900F3A4E2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63626F541419414900F3A4E2 /* UIKit.framework */; };
 		63626F571419414900F3A4E2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63626F561419414900F3A4E2 /* Foundation.framework */; };
 		63626F591419414900F3A4E2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63626F581419414900F3A4E2 /* CoreGraphics.framework */; };
@@ -329,6 +330,7 @@
 		1FF0B7AF14717B2D007A83D5 /* IASKPSToggleSwitchSpecifierViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IASKPSToggleSwitchSpecifierViewCell.xib; sourceTree = "<group>"; };
 		1FF0B7B014717B2D007A83D5 /* IASKSpecifierValuesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IASKSpecifierValuesView.xib; sourceTree = "<group>"; };
 		1FF0B7CA14717E74007A83D5 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		1FF5E52B14AB0F0A00117647 /* MovieInfoTest.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MovieInfoTest.plist; sourceTree = "<group>"; };
 		63626F501419414900F3A4E2 /* Movies-Info.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Movies-Info.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		63626F541419414900F3A4E2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		63626F561419414900F3A4E2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -630,6 +632,7 @@
 				1FC86BC2147BC96400183511 /* testGetMovieInfoListWithRealParamsResult.plist */,
 				1FEBFF871488E6F100F874F8 /* YouTubeTest.plist */,
 				1FBB0C1814977B4700FB29ED /* MovieInfoTemplateFillingTest.plist */,
+				1FF5E52B14AB0F0A00117647 /* MovieInfoTest.plist */,
 			);
 			name = TestResults;
 			sourceTree = "<group>";
@@ -981,6 +984,7 @@
 				1FC86BC3147BC96400183511 /* testGetMovieInfoListWithRealParamsResult.plist in Resources */,
 				1FEBFF881488E6F100F874F8 /* YouTubeTest.plist in Resources */,
 				1FBB0C1914977B4700FB29ED /* MovieInfoTemplateFillingTest.plist in Resources */,
+				1FF5E52C14AB0F0A00117647 /* MovieInfoTest.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
