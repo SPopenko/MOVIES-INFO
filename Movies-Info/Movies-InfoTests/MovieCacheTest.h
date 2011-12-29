@@ -12,11 +12,7 @@
 
 @interface MovieCacheTest : GHTestCase
 
-//getImage must return movie.png if argument nil
-- (void) testGetEmptyImageFromCache;
-//GetImage must return right image if argument valid http link
-- (void) testGetRealImageFromCache;
-//Loading time for cached image must lower than loading for uncached image
-- (void) testGetRealImageFromCacheTime;
+- (void) testGetImageFromCache_Empty;
+- (void) testGetImageFromCache_Real;
 
 @end

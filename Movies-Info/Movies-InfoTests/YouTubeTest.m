@@ -59,31 +59,6 @@
     [[[mock stub] andReturn:nil] getPageContentsOfURL:kwrongURL];
     GHAssertNil([youTubeVideo getMoviePathFromLink:kwrongURL] , @"Movie path is not nil" );
 }
-/*
-#pragma mark - getPageContentsOfURL tests
-//Stubbed NSString
-- (void) testGetPageContentsOfURL_Nil
-{
-    id pageLoadMock = [OCMockObject mockForClass:[NSString class]];
-    
-    [[[pageLoadMock stub] andReturn:nil] initWithContentsOfURL:nil usedEncoding:nil error:nil];
-    
-    NSString* result = [youTubeVideo getPageContentsOfURL:nil];
-    
-    GHAssertNil(result, @"Loaded page is not nil");
-}
-
-- (void) testGetPageContentsOfURL_pageUrl
-{
-    id pageLoadMock = [OCMockObject mockForClass:[NSString class]];
-    [[[pageLoadMock stub] andReturn:[self loadStringForKey:@"testGetPageContentsOfURL_page"]] initWithContentsOfURL:[OCMArg any] usedEncoding:[OCMArg anyPointer] error:[OCMArg anyPointer]];
-
-    
-    NSString* result = [youTubeVideo getPageContentsOfURL:krightURL];
-    
-    GHAssertEqualStrings(result, [self loadStringForKey:@"testGetPageContentsOfURL_page"], @"Loaded page is not nil");
-}
-*/
 
 #pragma mark - testGetBlockWithMoviePathes
 - (void) testGetBlockWithMoviePathes_Nil

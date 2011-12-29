@@ -8,16 +8,28 @@
 
 #import "MovieCacheTest.h"
 
+@implementation MovieCache(testCategory)
+#define internetImageName @"logo.png"
+
++ (UIImage*) addImageToCacheFromUrl:(NSString *)imageUrl
+{
+    UIImage* result = [UIImage imageNamed:internetImageName];
+    return result;
+}
+
+@end
+
 @implementation MovieCacheTest
 
-#define imageLink        @"http://cf2.imgobject.com/t/p/w185/bgSHbGEA1OM6qDs3Qba4VlSZsNG.jpg"
-#define defaultImageName @"movie.png"
+#define imageLink         @"http://cf2.imgobject.com/t/p/w185/bgSHbGEA1OM6qDs3Qba4VlSZsNG.jpg"
+#define defaultImageName  @"movie.png"
+
 - (void) setUp
 {
     [MovieCache clearCache];
 }
 
-- (void) testGetEmptyImageFromCache
+- (void) testGetImageFromCache_Empty
 {
     UIImage* test   = [UIImage imageNamed:defaultImageName];
     UIImage* cached = [MovieCache getImageFromCache:nil];
@@ -25,29 +37,13 @@
     GHAssertTrue([UIImagePNGRepresentation(test) isEqualToData:UIImagePNGRepresentation(cached)], @"Wrong image result");
 }
 
-- (void) testGetRealImageFromCache
+- (void) testGetImageFromCache_Real
 {
-    UIImage* test   = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageLink]]];
+    UIImage* test   = [UIImage imageNamed:internetImageName];
     UIImage* cached = [MovieCache getImageFromCache:imageLink];
-    
     GHAssertTrue([UIImagePNGRepresentation(test) isEqualToData:UIImagePNGRepresentation(cached)], @"Wrong image result");
 }
 
-- (void)testGetRealImageFromCacheTime
-{
-    NSTimeInterval cached, uncached;
-    NSDate* startTime = [NSDate date];
-    
-    UIImage* uncachedImage = [MovieCache getImageFromCache:imageLink];
-    uncached = -[startTime timeIntervalSinceNow];
-    
-    UIImage* cachedImage = [MovieCache getImageFromCache:imageLink];
-    startTime = [NSDate date];
-    cached =  -[startTime timeIntervalSinceNow];
-    
-    GHAssertTrue([UIImagePNGRepresentation(cachedImage) isEqualToData:UIImagePNGRepresentation(uncachedImage)], @"Wrong image result");
-    GHAssertTrue((cached < uncached), @"Image from cache loading faster then from Internet");
-}
 
 
 @end
