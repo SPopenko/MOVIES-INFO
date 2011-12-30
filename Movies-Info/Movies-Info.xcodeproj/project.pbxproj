@@ -30,6 +30,8 @@
 		1F7E31951473BA7B00E4D7C8 /* YouTubeVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB6037C1467CE3500B3AB59 /* YouTubeVideo.m */; };
 		1F80CEAD146C1D4300C193F2 /* preferences.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F80CEAC146C1D4300C193F2 /* preferences.png */; };
 		1F91620F146D3C5A003EE551 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1F91620E146D3C5A003EE551 /* Settings.bundle */; };
+		1F96E0AA14ADBAD100C61CDF /* libprofile_rt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F96E0A914ADBAD100C61CDF /* libprofile_rt.dylib */; };
+		1F96E0AB14ADBC9A00C61CDF /* libprofile_rt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F96E0A914ADBAD100C61CDF /* libprofile_rt.dylib */; };
 		1F9A403F1473DE9D008B53E7 /* MovieInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8791D814628EC200C7E17C /* MovieInfo.m */; };
 		1F9A40401473DE9D008B53E7 /* ShortMovieInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CE26E1F9142F559700AE8FE0 /* ShortMovieInfo.m */; };
 		1F9A40411473DE9D008B53E7 /* DetailedMovieInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FCBCC4A1458769000EB3FD1 /* DetailedMovieInfo.m */; };
@@ -113,6 +115,17 @@
 		CE7E27061422DDA7008BF00A /* MovieShortInfoCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE7E27051422DDA7008BF00A /* MovieShortInfoCellView.xib */; };
 		CE82A8D614327B3900F4A931 /* movie.png in Resources */ = {isa = PBXBuildFile; fileRef = CE82A8D514327B3900F4A931 /* movie.png */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXBuildRule section */
+		1F96E0AD14ADC22500C61CDF /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			fileType = pattern.proxy;
+			isEditable = 1;
+			outputFiles = (
+			);
+		};
+/* End PBXBuildRule section */
 
 /* Begin PBXContainerItemProxy section */
 		1F55083714515BAE001C38E3 /* PBXContainerItemProxy */ = {
@@ -257,6 +270,7 @@
 		1F8A9755145EA0D10034F7F8 /* MovieCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieCache.h; sourceTree = "<group>"; };
 		1F8A9756145EA0D10034F7F8 /* MovieCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieCache.m; sourceTree = "<group>"; };
 		1F91620E146D3C5A003EE551 /* Settings.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.application; path = Settings.bundle; sourceTree = "<group>"; };
+		1F96E0A914ADBAD100C61CDF /* libprofile_rt.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libprofile_rt.dylib; path = usr/lib/libprofile_rt.dylib; sourceTree = DEVELOPER_DIR; };
 		1F9A40651473FBC6008B53E7 /* ShortMovieInfoTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShortMovieInfoTest.h; sourceTree = "<group>"; };
 		1F9A40661473FBC6008B53E7 /* ShortMovieInfoTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShortMovieInfoTest.m; sourceTree = "<group>"; };
 		1F9A406814743AE5008B53E7 /* DetailedMovieInfoTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailedMovieInfoTest.h; sourceTree = "<group>"; };
@@ -360,6 +374,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F96E0AA14ADBAD100C61CDF /* libprofile_rt.dylib in Frameworks */,
 				1F7DC35F14838B9800D0E859 /* libOCMock.a in Frameworks */,
 				1FBB0C1C149A11C300FB29ED /* libobjc.dylib in Frameworks */,
 				1F7DC357148384F900D0E859 /* libMovies-InfoModel.a in Frameworks */,
@@ -380,6 +395,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F96E0AB14ADBC9A00C61CDF /* libprofile_rt.dylib in Frameworks */,
 				1FBB0C1B149A11BD00FB29ED /* libobjc.dylib in Frameworks */,
 				1F9A40601473E7D7008B53E7 /* libobjc.A.dylib in Frameworks */,
 				1F9A40441473DEE3008B53E7 /* libRestKitJSONParserJSONKit.a in Frameworks */,
@@ -739,6 +755,7 @@
 		63626F531419414900F3A4E2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1F96E0A914ADBAD100C61CDF /* libprofile_rt.dylib */,
 				1FBB0C1A149A11BC00FB29ED /* libobjc.dylib */,
 				1F7DC35E14838B9800D0E859 /* libOCMock.a */,
 				1F7DC3531483844A00D0E859 /* OCMock.framework */,
@@ -806,6 +823,7 @@
 				1F7351AE146BCC0000D52947 /* Resources */,
 			);
 			buildRules = (
+				1F96E0AD14ADC22500C61CDF /* PBXBuildRule */,
 			);
 			dependencies = (
 				1F7E31971473BD3100E4D7C8 /* PBXTargetDependency */,
@@ -1134,6 +1152,11 @@
 					"\"$(SRCROOT)/GHUnitIOS.framework/Versions/A\"",
 					"\"$(SRCROOT)/OCMock.framework/Versions/A\"",
 					"\"$(SRCROOT)/OCMock.framework\"",
+					"\"$(DEVELOPER_DIR)/usr/lib\"",
+				);
+				OTHER_CFLAGS = (
+					"-fprofile-arcs",
+					"-ftest-coverage",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1162,6 +1185,12 @@
 					"\"$(SRCROOT)/GHUnitIOS.framework/Versions/A\"",
 					"\"$(SRCROOT)/OCMock.framework/Versions/A\"",
 					"\"$(SRCROOT)/OCMock.framework\"",
+					"\"$(DEVELOPER_DIR)/usr/lib\"",
+				);
+				OTHER_CFLAGS = (
+					"-fprofile-arcs",
+					"-ftest-coverage",
+					"-DNS_BLOCK_ASSERTIONS=1",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1180,6 +1209,14 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Movies-InfoModel/Movies-InfoModel-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$(SOURCE_ROOT)/RestKit/Build/";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(DEVELOPER_DIR)/usr/lib\"",
+				);
+				OTHER_CFLAGS = (
+					"-fprofile-arcs",
+					"-ftest-coverage",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -1194,6 +1231,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Movies-InfoModel/Movies-InfoModel-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$(SOURCE_ROOT)/RestKit/Build/";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(DEVELOPER_DIR)/usr/lib\"",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
