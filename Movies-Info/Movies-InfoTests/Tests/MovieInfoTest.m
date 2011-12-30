@@ -8,6 +8,14 @@
 
 #import "MovieInfoTest.h"
 
+@implementation MovieInfo(testCategory)
+
+- (NSString*) requestStringFromMutableDictionary:(NSMutableDictionary *)parameters {return nil;}
+- (NSMutableDictionary*) prepareParametersFromDictionary:(NSDictionary *)parameters {return nil;}
+
+@end
+
+
 @implementation MovieInfoTest
 //input keys
 #define kprepareParametersFromDictionary_NilInput               @"PrepareParametersFromDictionary_NilInput"               //NSDictionary no dict in test.plist

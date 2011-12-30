@@ -30,11 +30,4 @@ typedef void(^finishAction)(id obj);
 - (void) getShortMovieInfoWithParameters:(NSDictionary*) parameters doAfterLoadFinished:(finishAction) doBlock;
 - (void) getDetailedMovieInfoByMovieID:(NSString*)movieID doAfterLoadFinished:(finishAction) doBlock;
 
-//
-- (NSString*)            requestStringFromMutableDictionary:(NSMutableDictionary*) parameters;
-- (NSMutableDictionary*) prepareParametersFromDictionary:(NSDictionary*) parameters;
-
-- (RKObjectMapping*) shortMovieInfoMapping;
-- (RKObjectMapping*) detailedMovieInfoMapping;
-- (void) initRestKit;
 @end

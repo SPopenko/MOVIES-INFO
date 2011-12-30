@@ -8,70 +8,16 @@
 
 #import "MovieInfo.h"
 
-@implementation MovieInfo
+@implementation MovieInfo(PrivateMethods)
+
+#pragma mark - preparing Search Parameters for short movie information
 
 #define TMDbApiKey          @"ed2f89aa774281fcada8f17b73c8fa05"
 #define TopTenMovieBaseUrl  @"http://api.themoviedb.org/2.1/"
 #define MovieInfoRequest    @"Movie.getInfo/en-US/json/"
 #define SearchMoviesRequest @"Movie.browse/en-US/json/"
 
-
-
-- (void) getShortMovieInfoWithParameters:(NSDictionary *)parameters doAfterLoadFinished:(finishAction)doBlock
-{
-    if (parameters == nil)
-    {
-        doBlock(nil);
-        return;
-    }
-    
-    NSMutableDictionary* requestParameters = [self prepareParametersFromDictionary:parameters];
-    
-    [self initRestKit];
-    _type = @"movieList";
-    _finishAction = [doBlock copy];
-   
-    //Creating request string
-    NSString* requestString = [self requestStringFromMutableDictionary:requestParameters];
-    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:requestString objectMapping:[self shortMovieInfoMapping] delegate:self];
-    
-}
-
-- (void) getDetailedMovieInfoByMovieID:(NSString *)movieID doAfterLoadFinished:(finishAction)doBlock
-{
-    [self initRestKit];
-    _type = @"movieInfo";
-    _finishAction = [doBlock copy];
-    NSString* requestString = [[NSString alloc] initWithFormat:@"%@/%@/%@", MovieInfoRequest,TMDbApiKey,movieID];
-    
-    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:requestString objectMapping:[self detailedMovieInfoMapping] delegate:self];
-    [requestString release];
-}
-
-#pragma mark - RKObjectLoaderDelegate implementation
-- (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
-    id obj = nil;
-    if ([_type isEqualToString:@"movieList"])
-    {
-        _movieList = [objects retain];
-        obj = _movieList;
-    }
-    else if([_type isEqualToString:@"movieInfo"])
-    {
-        obj = [objects objectAtIndex:0];
-    }
-    else return;
-    
-    _finishAction(obj);
-    
-}    
-- (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error {
-    
-    NSLog(@"%@", [error localizedDescription] );
-}
-
-#pragma mark - preparing Search Parameters for short movie information
--(NSMutableDictionary*) prepareParametersFromDictionary:(NSDictionary *)parameters
+- (NSMutableDictionary*) prepareParametersFromDictionary:(NSDictionary *)parameters
 {
     [parameters retain];
     
@@ -110,12 +56,12 @@
 {
     
     searchFields  = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
-                                            [NSString stringWithString:@"order_by"],  @"orderBy",
-                                            [NSString stringWithString:@"order"],     @"order",
-                                            [NSString stringWithString:@"per_page"],  @"perPage",
-                                            [NSString stringWithString:@"page"],      @"page",
-                                            [NSString stringWithString:@"min_votes"], @"minVotes",
-                                             nil];
+                     [NSString stringWithString:@"order_by"],  @"orderBy",
+                     [NSString stringWithString:@"order"],     @"order",
+                     [NSString stringWithString:@"per_page"],  @"perPage",
+                     [NSString stringWithString:@"page"],      @"page",
+                     [NSString stringWithString:@"min_votes"], @"minVotes",
+                     nil];
     NSMutableString* resultString = [[NSMutableString alloc] initWithString:@""];
     for (id key in [searchFields allKeys])
     {
@@ -130,6 +76,25 @@
     [searchFields release];
     [resultString autorelease];
     return [NSString stringWithFormat:@"%@%@?%@", SearchMoviesRequest,TMDbApiKey, resultString];
+}
+
+@end
+
+@implementation MovieInfo
+
+- (void) initRestKit
+{
+    static BOOL isInitialized = NO;
+    if (!isInitialized)
+    {
+        //Registering base mapping Url
+        [RKObjectManager objectManagerWithBaseURL:[NSString stringWithFormat:@"%@", TopTenMovieBaseUrl]];
+        
+        //Registering parser for respons MIMEType
+        [[RKParserRegistry sharedRegistry] setParserClass:[RKJSONParserJSONKit class] forMIMEType:@"text/json"];    
+        
+        isInitialized = YES;
+    }
 }
 
 #pragma mark - Mapping Functions
@@ -203,25 +168,64 @@
     [detailedMovieInfoMapping mapKeyPath:@"posters" toRelationship:@"posters" withMapping:posterMaping];
     [detailedMovieInfoMapping mapKeyPath:@"backdrops"toRelationship:@"backdrops" withMapping:posterMaping];    
     //end of delete
-        
+    
     [tmdbDateFormatter autorelease];
     
     return [detailedMovieInfoMapping autorelease];
 }
 
-- (void) initRestKit
+#pragma mark - Public Methods
+- (void) getShortMovieInfoWithParameters:(NSDictionary *)parameters doAfterLoadFinished:(finishAction)doBlock
 {
-    static BOOL isInitialized = NO;
-    if (!isInitialized)
+    if (parameters == nil)
     {
-        //Registering base mapping Url
-        [RKObjectManager objectManagerWithBaseURL:[NSString stringWithFormat:@"%@", TopTenMovieBaseUrl]];
-    
-        //Registering parser for respons MIMEType
-        [[RKParserRegistry sharedRegistry] setParserClass:[RKJSONParserJSONKit class] forMIMEType:@"text/json"];    
-        
-        isInitialized = YES;
+        doBlock(nil);
+        return;
     }
+    
+    NSMutableDictionary* requestParameters = [self prepareParametersFromDictionary:parameters];
+    
+    [self initRestKit];
+    _type = @"movieList";
+    _finishAction = [doBlock copy];
+   
+    //Creating request string
+    NSString* requestString = [self requestStringFromMutableDictionary:requestParameters];
+    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:requestString objectMapping:[self shortMovieInfoMapping] delegate:self];
+    
+}
+
+- (void) getDetailedMovieInfoByMovieID:(NSString *)movieID doAfterLoadFinished:(finishAction)doBlock
+{
+    [self initRestKit];
+    _type = @"movieInfo";
+    _finishAction = [doBlock copy];
+    NSString* requestString = [[NSString alloc] initWithFormat:@"%@/%@/%@", MovieInfoRequest,TMDbApiKey,movieID];
+    
+    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:requestString objectMapping:[self detailedMovieInfoMapping] delegate:self];
+    [requestString release];
+}
+
+#pragma mark - RKObjectLoaderDelegate implementation
+- (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
+    id obj = nil;
+    if ([_type isEqualToString:@"movieList"])
+    {
+        _movieList = [objects retain];
+        obj = _movieList;
+    }
+    else if([_type isEqualToString:@"movieInfo"])
+    {
+        obj = [objects objectAtIndex:0];
+    }
+    else return;
+    
+    _finishAction(obj);
+    
+}    
+- (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error {
+    
+    NSLog(@"%@", [error localizedDescription] );
 }
 
 -(void)dealloc
