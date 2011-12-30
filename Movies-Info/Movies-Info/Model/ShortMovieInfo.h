@@ -11,20 +11,22 @@
 #import <Foundation/NSObjCRuntime.h>
 
 //Delete after creating normal mapping
-@interface Image :NSObject <NSCoding>   
+@interface Image :NSObject
+
 @property (nonatomic, retain) NSString* url;
 @property (nonatomic, retain) NSString* type;
 @property (nonatomic, retain) NSString* size;
+
 @end
 
 //Delete after creating normal mapping
-@interface Poster : NSObject <NSCoding> {
-}
+@interface Poster : NSObject
+
 @property (nonatomic, retain) Image* image;
+
 @end
 
-@interface ShortMovieInfo : NSObject <NSCoding> {
-}
+@interface ShortMovieInfo : NSObject
 
 @property (nonatomic, retain) NSDate   *releaseDate;
 @property (nonatomic, retain) NSNumber *duration;

@@ -9,6 +9,7 @@
 #import "ShortMovieInfo.h"
 
 @implementation Image
+
 @synthesize url  = _url;
 @synthesize type = _type;
 @synthesize size = _size;
@@ -44,22 +45,6 @@
     return result;
 }
 
-#pragma mark NSCoder 
-- (id) initWithCoder:(NSCoder *)aDecoder
-{
-    self.url  = [aDecoder decodeObjectForKey:@"url"];
-    self.type = [aDecoder decodeObjectForKey:@"type"];
-    self.size = [aDecoder decodeObjectForKey:@"size"];
-    return self;
-}
-
--(void) encodeWithCoder:(NSCoder *)aCoder
-{
-    [aCoder encodeObject:self.url  forKey:@"url"];
-    [aCoder encodeObject:self.type forKey:@"type"];
-    [aCoder encodeObject:self.size forKey:@"size"];
-}
-
 @end
 
 @implementation Poster
@@ -87,21 +72,7 @@
     return result;
 }
 
-#pragma mark NSCoder 
-- (id) initWithCoder:(NSCoder *)aDecoder
-{
-    self.image = [aDecoder decodeObjectForKey:@"image"];
-    return self;
-}
-
--(void) encodeWithCoder:(NSCoder *)aCoder
-{
-    [aCoder encodeObject:self.image forKey:@"image"];
-}
-
 @end
-
-
 
 @implementation ShortMovieInfo
 
@@ -176,30 +147,6 @@
     return result;
 }
 
-#pragma mark NSCoder 
-- (id) initWithCoder:(NSCoder *)aDecoder
-{
-    self.posters     = [aDecoder decodeObjectForKey:@"posters"];
-    self.movieId     = [aDecoder decodeObjectForKey:@"movieID"];
-    self.fanRating   = [aDecoder decodeObjectForKey:@"fanRating"];
-    self.movieName   = [aDecoder decodeObjectForKey:@"movieName"];
-    self.duration    = [aDecoder decodeObjectForKey:@"duration"]; 
-    self.releaseDate = [aDecoder decodeObjectForKey:@"releaseDate"];
-    
-    return self;
-}
-
--(void) encodeWithCoder:(NSCoder *)aCoder
-{
-    [aCoder encodeObject:self.posters     forKey:@"posters"];
-    [aCoder encodeObject:self.movieId     forKey:@"movieID"];
-    [aCoder encodeObject:self.fanRating   forKey:@"fanRating"];
-    [aCoder encodeObject:self.movieName   forKey:@"movieName"];
-    [aCoder encodeObject:self.duration    forKey:@"duration"]; 
-    [aCoder encodeObject:self.releaseDate forKey:@"releaseDate"];
-    
-}
-
 - (void) dealloc
 {
     	
@@ -209,6 +156,7 @@
     [_releaseDate release];
     [_fanRating   release];
     [_movieId     release];
+    [super        dealloc];
 }
 
 @end
