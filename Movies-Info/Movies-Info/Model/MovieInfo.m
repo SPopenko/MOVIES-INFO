@@ -120,7 +120,6 @@
     for (id key in [searchFields allKeys])
     {
         id param = [parameters objectForKey:key];
-        NSLog(@"%@:%@", key, param);
         if (param != nil)
         {
             if (![resultString isEqualToString:@""]) [resultString appendString:@"&"];
