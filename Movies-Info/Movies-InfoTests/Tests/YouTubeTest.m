@@ -19,8 +19,6 @@
 @end
 
 @implementation YouTubeTest
-#define kwrongURL @"http://www.ya.ru"
-#define krightURL @"http://www.youtube.com/watch?v=QYLLFpNn4lM"
 
 //test results keys
 #define kgetMovieLinkPathFromURL_right @""
@@ -58,14 +56,12 @@
 
 - (void) testGetMovieLinkPath_RightURL
 {
-    [[[mock stub] andReturn:[self loadStringForKey:kgetMovieLinkPathFromURL_right]] getPageContentsOfURL:krightURL];
     NSString* result = [youTubeVideo getMoviePathFromLink:krightURL];
     GHAssertNotNil(result, @"Movie path is nil");
 }
 
 - (void) testGetMovieLinkPath_WrongURL
 {
-    [[[mock stub] andReturn:nil] getPageContentsOfURL:kwrongURL];
     GHAssertNil([youTubeVideo getMoviePathFromLink:kwrongURL] , @"Movie path is not nil" );
 }
 

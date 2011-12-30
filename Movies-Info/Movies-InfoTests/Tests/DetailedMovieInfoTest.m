@@ -31,7 +31,7 @@
 - (void) testGetTrailer_WithTrailer
 {
     DetailedMovieInfo* dmi    = [self filledDetailedMovieInfo];
-    dmi.trailer = [self loadStringForKey:kgetTrailer_WithTrailerInput];
+    dmi.trailer = [NSString stringWithString:krightURL];
     NSString* result = [self loadStringForKey:kgetTrailer_WithTrailerResult];
     GHAssertEqualStrings(dmi.trailer, result, @"Result is not nil");   
 }

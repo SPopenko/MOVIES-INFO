@@ -12,7 +12,7 @@
 #import "GHTestCase(MovieInfoFilling).h"
 #import "MovieInfo.h"
 #import "DetailedMovieInfo.h"
-
+#import "YouTubeVideo+GetMovieLinkStub.h"
 @interface DetailedMovieInfoTest : GHTestCase
 
 //getTrailer Tests
