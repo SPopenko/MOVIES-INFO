@@ -9,6 +9,15 @@
 
 #import "YouTubeTest.h"
 
+@implementation YouTubeVideo(testCategory)
+
+- (NSString*) getPageContentsOfURL:(NSString*) pageURL{return nil;}
+- (NSString*) getBlockWithMoviePathesFromPage:(NSString*) htmlPage {return nil;}
+- (NSString*) replaceEscapedSymbols:(NSString*) replaceString {return  nil; }
+- (NSString*) getMoviePathFromPageBlock:(NSString *)pageBlock {return nil;}
+
+@end
+
 @implementation YouTubeTest
 #define kwrongURL @"http://www.ya.ru"
 #define krightURL @"http://www.youtube.com/watch?v=QYLLFpNn4lM"

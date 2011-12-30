@@ -10,13 +10,7 @@
 
 @interface YouTubeVideo : NSObject
 
-//main class function
 - (NSString*) getMoviePathFromLink:(NSString*)youTubeLink;
-
-- (NSString*) getPageContentsOfURL:(NSString*) pageURL;
-- (NSString*) getBlockWithMoviePathesFromPage:(NSString*) htmlPage;
-- (NSString*) replaceEscapedSymbols:(NSString*) pageURL;
-- (NSString*) getMoviePathFromPageBlock:(NSString *)youTubeLink;
 
 @end
 
