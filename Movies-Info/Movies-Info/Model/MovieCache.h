@@ -12,9 +12,6 @@
 @interface MovieCache : NSObject
 
 + (void) clearCache;
-+ (void) initImageList;
-+ (void) preloadImagesFromShortMovieInfoList:(NSArray*) movieList;
-+ (UIImage*) addImageToCacheFromUrl:(NSString*) imageUrl;
 + (UIImage*) getImageFromCache:(NSString*) imageUrl;
 
 @end

@@ -34,6 +34,15 @@ static NSMutableDictionary* _imageList;
     [_imageList removeAllObjects];
 }
 
++ (UIImage*) addImageToCacheFromUrl:(NSString *)imageUrl
+{
+    NSData* imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: imageUrl]];
+    UIImage* result = [UIImage imageWithData: imageData];
+    [_imageList  setObject:result forKey:imageUrl];
+    [imageData release];
+    return result;
+}
+
 +(UIImage*) getImageFromCache:(NSString*)imageUrl
 {
     UIImage* result;
@@ -50,23 +59,6 @@ static NSMutableDictionary* _imageList;
     return  result;
 }
 
-+ (UIImage*) addImageToCacheFromUrl:(NSString *)imageUrl
-{
-    NSData* imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: imageUrl]];
-    UIImage* result = [UIImage imageWithData: imageData];
-    [_imageList  setObject:result forKey:imageUrl];
-    [imageData release];
-    return result;
-}
-+ (void) preloadImagesFromShortMovieInfoList:(NSArray *)movieList
-{
-    for (NSUInteger i = 0; i < movieList.count; i++) 
-    {
-        ShortMovieInfo* movieInfo = [movieList objectAtIndex:i];
-        //load poster to cache
-        [self addImageToCacheFromUrl:movieInfo.poster];
-    }
-}
 
 - (void) dealloc
 {
