@@ -109,40 +109,42 @@
     {
         result = NO;
     }
-    
-    test = [(ShortMovieInfo*) object retain];
-    
-    if (![self.posters isEqualToArray:test.posters])
+    else
     {
-        result = NO;
-    }
-    
-    if (![self.movieId isEqual:test.movieId] && result)
-    {
-        result = NO;
-    }
+        test = [(ShortMovieInfo*) object retain];
+        
+        if (![self.posters isEqualToArray:test.posters] && result)
+        {
+            result = NO;
+        }
+        
+        if (![self.movieId isEqual:test.movieId] && result)
+        {
+            result = NO;
+        }
 
-    if (![self.fanRating isEqual:test.fanRating] && result)
-    {
-        result = NO;
-    }
+        if (![self.fanRating isEqual:test.fanRating] && result)
+        {
+            result = NO;
+        }
 
-    if (![self.movieName isEqual:test.movieName] && result)
-    {
-        result = NO;
-    }
-    
-    if (![self.duration isEqual:test.duration] && result)
-    {
-        result = NO;
-    }
-    
-    if (![self.releaseDate isEqual:test.releaseDate] && result)
-    {
-        result = NO;
-    }
+        if (![self.movieName isEqual:test.movieName] && result)
+        {
+            result = NO;
+        }
+        
+        if (![self.duration isEqual:test.duration] && result)
+        {
+            result = NO;
+        }
+        
+        if (![self.releaseDate isEqual:test.releaseDate] && result)
+        {
+            result = NO;
+        }
 
-    [test release];
+        [test release];
+    }
     
     return result;
 }

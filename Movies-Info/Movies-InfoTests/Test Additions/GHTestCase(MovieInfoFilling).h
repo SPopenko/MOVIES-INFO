@@ -7,13 +7,13 @@
 //
 
 #import <GHUnitIOS/GHUnit.h>
-
 #import "DetailedMovieInfo.h"
 
 @interface GHTestCase(MovieInfoFilling)
 
 
 - (DetailedMovieInfo*) filledDetailedMovieInfo;
+- (DetailedMovieInfo*) filledDetailedMovieInfoWithTrailer;
 - (DetailedMovieInfo*) emptyDetailedMovieInfo;
 
 - (ShortMovieInfo*) filledShortMovieInfo;

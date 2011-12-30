@@ -21,6 +21,7 @@
 		1F3AF8F814AE138C00D332D0 /* star_full.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F3AF8EC14AE138C00D332D0 /* star_full.png */; };
 		1F3AF8FB14AE2C1C00D332D0 /* ShortMovieInfo+NSCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3AF8FA14AE2C1B00D332D0 /* ShortMovieInfo+NSCoder.m */; };
 		1F3AF8FE14AE2FDD00D332D0 /* DetailedMovieInfo+NSCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3AF8FD14AE2FDC00D332D0 /* DetailedMovieInfo+NSCoder.m */; };
+		1F3AF90114AE322C00D332D0 /* IsEqualTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3AF90014AE322C00D332D0 /* IsEqualTest.m */; };
 		1F5D09FC1456D58F005B77D5 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F5D09FB1456D58E005B77D5 /* MBProgressHUD.m */; };
 		1F5D0A891458006F005B77D5 /* infoFilm.html in Resources */ = {isa = PBXBuildFile; fileRef = 1F5D0A881458006F005B77D5 /* infoFilm.html */; };
 		1F7351B2146BCC0000D52947 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63626F541419414900F3A4E2 /* UIKit.framework */; };
@@ -258,6 +259,8 @@
 		1F3AF8FA14AE2C1B00D332D0 /* ShortMovieInfo+NSCoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ShortMovieInfo+NSCoder.m"; path = "Model/ShortMovieInfo+NSCoder.m"; sourceTree = "<group>"; };
 		1F3AF8FC14AE2FDB00D332D0 /* DetailedMovieInfo+NSCoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "DetailedMovieInfo+NSCoder.h"; path = "Model/DetailedMovieInfo+NSCoder.h"; sourceTree = "<group>"; };
 		1F3AF8FD14AE2FDC00D332D0 /* DetailedMovieInfo+NSCoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "DetailedMovieInfo+NSCoder.m"; path = "Model/DetailedMovieInfo+NSCoder.m"; sourceTree = "<group>"; };
+		1F3AF8FF14AE322C00D332D0 /* IsEqualTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IsEqualTest.h; path = Tests/IsEqualTest.h; sourceTree = "<group>"; };
+		1F3AF90014AE322C00D332D0 /* IsEqualTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IsEqualTest.m; path = Tests/IsEqualTest.m; sourceTree = "<group>"; };
 		1F5507E714515536001C38E3 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		1F55082314515BAD001C38E3 /* RestKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RestKit.xcodeproj; path = RestKit/RestKit.xcodeproj; sourceTree = "<group>"; };
 		1F5D09FA1456D58E005B77D5 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = ../../MBProgressHUD/MBProgressHUD.h; sourceTree = "<group>"; };
@@ -629,6 +632,8 @@
 				1FA15D8D14AE0D2D00BE3721 /* ShortMovieInfoTest.m */,
 				1FA15D8E14AE0D2D00BE3721 /* YouTubeTest.h */,
 				1FA15D8F14AE0D2D00BE3721 /* YouTubeTest.m */,
+				1F3AF8FF14AE322C00D332D0 /* IsEqualTest.h */,
+				1F3AF90014AE322C00D332D0 /* IsEqualTest.m */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -1082,6 +1087,7 @@
 				1FA15D9314AE0D2D00BE3721 /* MovieInfoTest.m in Sources */,
 				1FA15D9414AE0D2D00BE3721 /* ShortMovieInfoTest.m in Sources */,
 				1FA15D9514AE0D2D00BE3721 /* YouTubeTest.m in Sources */,
+				1F3AF90114AE322C00D332D0 /* IsEqualTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

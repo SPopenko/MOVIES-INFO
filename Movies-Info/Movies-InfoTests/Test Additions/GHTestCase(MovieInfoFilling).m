@@ -28,12 +28,26 @@ static const NSUInteger postersCapacity = 13;
     result.movieName   = [NSString stringWithString:@"movieName"];
     result.fanRating   = [NSNumber numberWithFloat:8.8f];
     result.releaseDate = [NSDate dateWithTimeIntervalSince1970:0.0f];
-
+        
     result.cast = [self arrayWithCast];
     
     result.posters   = [self arrayWithPosters];
     result.backdrops = [self arrayWithPosters];
-        
+    
+    [result release];
+    
+    return result;
+}
+
+- (DetailedMovieInfo*) filledDetailedMovieInfoWithTrailer
+{
+    DetailedMovieInfo* result = [self filledDetailedMovieInfo];
+    
+    [result retain];
+
+    result.trailer     = [NSString stringWithString:@"http://www.youtube.com/watch?v=QYLLFpNn4lM"];
+//    [t deswizzle];
+    
     [result release];
     
     return result;

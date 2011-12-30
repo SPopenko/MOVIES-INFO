@@ -10,6 +10,28 @@
 
 @implementation Person
 @synthesize name = _name;
+
+- (BOOL) isEqual:(id)object
+{
+    Person* test = nil;
+    BOOL  result = YES;
+    
+    if (![object isMemberOfClass:[Person class]] && result)
+    {
+        result = NO;
+    }
+    
+    test = [(Person*) object retain];
+    
+    if (![self.name isEqualToString:test.name] && result)
+    {
+        result = NO;
+    }
+    
+    [test release];
+    return result;
+}
+
 @end
 
 @implementation DetailedMovieInfo
@@ -50,36 +72,38 @@
     {
         result = NO;
     }
-    
-    test = [(DetailedMovieInfo*) object retain];
-    
-    if (![super isEqual:(ShortMovieInfo*)object] && result)
+    else
     {
-        result = NO;
+        test = [(DetailedMovieInfo*) object retain];
+        
+        if (![super isEqual:(ShortMovieInfo*)object] && result)
+        {
+            result = NO;
+        }
+        
+        
+        if (![_backdrops isEqualToArray:test.backdrops] && result)
+        {
+            result = NO;
+        }
+        
+        if (![_cast isEqualToArray:test.cast] && result)
+        {
+            result = NO;
+        }
+        
+        if (![_description isEqualToString:test.description] && result)
+        {
+            result = NO;
+        }
+        
+        if (![[_trailer copy] isEqualToString:[test.trailer copy]] && result)
+        {
+            result = NO;
+        }
+        
+        [test release];
     }
-    
-    
-    if (![_backdrops isEqualToArray:test.backdrops] && result)
-    {
-        result = NO;
-    }
-    
-    if (![_cast isEqualToArray:test.cast] && result)
-    {
-        result = NO;
-    }
-    
-    if (![_description isEqual:test.description] && result)
-    {
-        result = NO;
-    }
-    
-    if (![_trailer isEqual:test.trailer] && result)
-    {
-        result = NO;
-    }
-    
-    [test release];
     
     return result;
 }
