@@ -13,7 +13,7 @@
 
 - (BOOL) isEqual:(id)object
 {
-    Person* test = nil;
+    Person* compareObject = nil;
     BOOL  result = YES;
     
     if (![object isMemberOfClass:[Person class]] && result)
@@ -21,14 +21,14 @@
         result = NO;
     }
     
-    test = [(Person*) object retain];
+    compareObject = [(Person*) object retain];
     
-    if (![self.name isEqualToString:test.name] && result)
+    if (![self.name isEqualToString:compareObject.name] && result)
     {
         result = NO;
     }
     
-    [test release];
+    [compareObject release];
     return result;
 }
 
@@ -66,7 +66,7 @@
 - (BOOL) isEqual:(id)object
 {
     BOOL result = YES;
-    DetailedMovieInfo* test = nil;
+    DetailedMovieInfo* compareObject = nil;
     
     if (![object isMemberOfClass:[DetailedMovieInfo class]] && result)
     {
@@ -74,7 +74,7 @@
     }
     else
     {
-        test = [(DetailedMovieInfo*) object retain];
+        compareObject = [(DetailedMovieInfo*) object retain];
         
         if (![super isEqual:(ShortMovieInfo*)object] && result)
         {
@@ -82,27 +82,27 @@
         }
         
         
-        if (![_backdrops isEqualToArray:test.backdrops] && result)
+        if (![_backdrops isEqualToArray:compareObject.backdrops] && result)
         {
             result = NO;
         }
         
-        if (![_cast isEqualToArray:test.cast] && result)
+        if (![_cast isEqualToArray:compareObject.cast] && result)
         {
             result = NO;
         }
         
-        if (![_description isEqualToString:test.description] && result)
+        if (![_description isEqualToString:compareObject.description] && result)
         {
             result = NO;
         }
         
-        if (![[_trailer copy] isEqualToString:[test.trailer copy]] && result)
+        if (![[_trailer copy] isEqualToString:[compareObject.trailer copy]] && result)
         {
             result = NO;
         }
         
-        [test release];
+        [compareObject release];
     }
     
     return result;

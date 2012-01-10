@@ -17,30 +17,30 @@
 - (BOOL) isEqual:(id)object
 {
     BOOL result = YES;
-    Image* test = nil;
+    Image* compareObject = nil;
     if (![object isKindOfClass:[Image class]] && result)
     {
         result = NO;
     }
     
-    test = [(Image*) object retain];
+    compareObject = [(Image*) object retain];
     
-    if (![self.url isEqual:test.url] && result) 
+    if (![self.url isEqual:compareObject.url] && result) 
     {
         result = NO;
     }
     
-    if (![self.type isEqual:test.type] && result)
+    if (![self.type isEqual:compareObject.type] && result)
     {
         result = NO;
     }
     
-    if (![self.size isEqual:test.size] && result)
+    if (![self.size isEqual:compareObject.size] && result)
     {
         result = NO;
     }
     
-    [test release];
+    [compareObject release];
     
     return result;
 }
@@ -54,20 +54,20 @@
 - (BOOL) isEqual:(id)object
 {
     BOOL result = YES;
-    Poster* test = nil;
+    Poster* compareObject = nil;
     if (![object isKindOfClass:[Poster class]] && result)
     {
         result = NO;
     }
     
-    test = [(Poster*) object retain];
+    compareObject = [(Poster*) object retain];
     
-    if (![self.image isEqual:test.image] && result)
+    if (![self.image isEqual:compareObject.image] && result)
     {
         result = NO;
     }
     
-    [test release];
+    [compareObject release];
     
     return result;
 }
@@ -103,7 +103,7 @@
 - (BOOL) isEqual:(id)object
 {
     BOOL result = YES;
-    ShortMovieInfo* test = nil;
+    ShortMovieInfo* compareObject = nil;
 
     if (![object isKindOfClass:[ShortMovieInfo class]] && result)
     {
@@ -111,39 +111,39 @@
     }
     else
     {
-        test = [(ShortMovieInfo*) object retain];
+        compareObject = [(ShortMovieInfo*) object retain];
         
-        if (![self.posters isEqualToArray:test.posters] && result)
+        if (![self.posters isEqualToArray:compareObject.posters] && result)
         {
             result = NO;
         }
         
-        if (![self.movieId isEqual:test.movieId] && result)
+        if (![self.movieId isEqual:compareObject.movieId] && result)
         {
             result = NO;
         }
 
-        if (![self.fanRating isEqual:test.fanRating] && result)
+        if (![self.fanRating isEqual:compareObject.fanRating] && result)
         {
             result = NO;
         }
 
-        if (![self.movieName isEqual:test.movieName] && result)
+        if (![self.movieName isEqual:compareObject.movieName] && result)
         {
             result = NO;
         }
         
-        if (![self.duration isEqual:test.duration] && result)
+        if (![self.duration isEqual:compareObject.duration] && result)
         {
             result = NO;
         }
         
-        if (![self.releaseDate isEqual:test.releaseDate] && result)
+        if (![self.releaseDate isEqual:compareObject.releaseDate] && result)
         {
             result = NO;
         }
 
-        [test release];
+        [compareObject release];
     }
     
     return result;
