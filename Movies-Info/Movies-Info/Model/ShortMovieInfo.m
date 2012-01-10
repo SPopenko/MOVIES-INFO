@@ -16,33 +16,19 @@
 
 - (BOOL) isEqual:(id)object
 {
-    BOOL result = YES;
     Image* compareObject = nil;
-    if (![object isKindOfClass:[Image class]] && result)
-    {
-        result = NO;
-    }
+    
+    if (![object isKindOfClass:[Image class]]) return NO;
     
     compareObject = [(Image*) object retain];
     
-    if (![self.url isEqual:compareObject.url] && result) 
-    {
-        result = NO;
-    }
+    if (![self.url isEqual:compareObject.url]) return NO;
     
-    if (![self.type isEqual:compareObject.type] && result)
-    {
-        result = NO;
-    }
-    
-    if (![self.size isEqual:compareObject.size] && result)
-    {
-        result = NO;
-    }
-    
+    if (![self.type isEqual:compareObject.type]) return NO;    
+    if (![self.size isEqual:compareObject.size]) return NO;    
     [compareObject release];
     
-    return result;
+    return YES;
 }
 
 @end
@@ -53,23 +39,14 @@
 
 - (BOOL) isEqual:(id)object
 {
-    BOOL result = YES;
     Poster* compareObject = nil;
-    if (![object isKindOfClass:[Poster class]] && result)
-    {
-        result = NO;
-    }
+    if (![object isKindOfClass:[Poster class]]) return NO;   
     
-    compareObject = [(Poster*) object retain];
+    compareObject = [[(Poster*) object retain] autorelease];
     
-    if (![self.image isEqual:compareObject.image] && result)
-    {
-        result = NO;
-    }
+    if (![self.image isEqual:compareObject.image]) return NO;    
     
-    [compareObject release];
-    
-    return result;
+    return YES;
 }
 
 @end
@@ -102,51 +79,20 @@
 
 - (BOOL) isEqual:(id)object
 {
-    BOOL result = YES;
     ShortMovieInfo* compareObject = nil;
 
-    if (![object isKindOfClass:[ShortMovieInfo class]] && result)
-    {
-        result = NO;
-    }
-    else
-    {
-        compareObject = [(ShortMovieInfo*) object retain];
-        
-        if (![self.posters isEqualToArray:compareObject.posters] && result)
-        {
-            result = NO;
-        }
-        
-        if (![self.movieId isEqual:compareObject.movieId] && result)
-        {
-            result = NO;
-        }
-
-        if (![self.fanRating isEqual:compareObject.fanRating] && result)
-        {
-            result = NO;
-        }
-
-        if (![self.movieName isEqual:compareObject.movieName] && result)
-        {
-            result = NO;
-        }
-        
-        if (![self.duration isEqual:compareObject.duration] && result)
-        {
-            result = NO;
-        }
-        
-        if (![self.releaseDate isEqual:compareObject.releaseDate] && result)
-        {
-            result = NO;
-        }
-
-        [compareObject release];
-    }
+    if (![object isKindOfClass:[ShortMovieInfo class]]) return NO;    
     
-    return result;
+    compareObject = [(ShortMovieInfo*) object retain];
+    
+    if (![self.posters isEqualToArray:compareObject.posters]) return NO;    
+    if (![self.movieId isEqual:compareObject.movieId]) return NO;
+    if (![self.fanRating isEqual:compareObject.fanRating]) return NO;
+    if (![self.movieName isEqual:compareObject.movieName]) return NO;    
+    if (![self.duration isEqual:compareObject.duration]) return NO;    
+    if (![self.releaseDate isEqual:compareObject.releaseDate]) return NO;    
+    
+    return YES;
 }
 
 - (void) dealloc
