@@ -22,13 +22,16 @@
 #import "IASKSettingsReader.h"
 
 
-@interface MovieInfoTableView : UITableViewController<IASKSettingsDelegate>{
+@interface MovieInfoTableView : UITableViewController<UISearchBarDelegate, IASKSettingsDelegate>{
     NSArray* movieList;
     MovieInfo* _movieInfo;
     IASKAppSettingsViewController* _appSettingsViewController;
     //var for storing movies per page
     NSNumber* _moviesPerPage;
 }
+
+@property (nonatomic, retain) IBOutlet UISearchBar* searchBar;
+@property (nonatomic, assign) BOOL bSearchIsOn;
 
 - (IBAction)showSettings:(UIBarButtonItem*)sender;
 - (void) loadMovieList;
