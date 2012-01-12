@@ -56,6 +56,14 @@
         }
         [self showLoadFinishIndicator];
     }];
+    
+    [self addSearchBar];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self displaySearchBarIfActive];
 }
 
 - (void)viewDidUnload

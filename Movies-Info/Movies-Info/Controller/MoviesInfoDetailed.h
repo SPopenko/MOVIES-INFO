@@ -16,6 +16,7 @@
 #import "MovieInfo.h"
 #import "YouTubeVideo.h"
 #import "NSString(MovieInfoTemplateFilling).h"
+#import "UIViewController+SearchBarAdditions.h"
 
 @interface MoviesInfoDetailed : UIViewController
 {

@@ -90,6 +90,7 @@
 		1FBB0C1B149A11BD00FB29ED /* libobjc.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FBB0C1A149A11BC00FB29ED /* libobjc.dylib */; };
 		1FBB0C1C149A11C300FB29ED /* libobjc.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FBB0C1A149A11BC00FB29ED /* libobjc.dylib */; };
 		1FBB0C1D149A11C800FB29ED /* libobjc.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FBB0C1A149A11BC00FB29ED /* libobjc.dylib */; };
+		1FC3D5BF14BDCE50007CC4AA /* UIViewController+SearchBarAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC3D5BE14BDCE50007CC4AA /* UIViewController+SearchBarAdditions.m */; };
 		1FCBCC48145833D300EB3FD1 /* libobjc.A.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FCBCC47145833D300EB3FD1 /* libobjc.A.dylib */; };
 		1FCC160C1450076D00D091E4 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FCC160A1450076D00D091E4 /* MobileCoreServices.framework */; };
 		1FCC160D1450076D00D091E4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FCC160B1450076D00D091E4 /* SystemConfiguration.framework */; };
@@ -332,6 +333,8 @@
 		1FA15D8F14AE0D2D00BE3721 /* YouTubeTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YouTubeTest.m; path = Tests/YouTubeTest.m; sourceTree = "<group>"; };
 		1FB603821467DA1C00B3AB59 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		1FBB0C1A149A11BC00FB29ED /* libobjc.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libobjc.dylib; path = usr/lib/libobjc.dylib; sourceTree = SDKROOT; };
+		1FC3D5BD14BDCE50007CC4AA /* UIViewController+SearchBarAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+SearchBarAdditions.h"; path = "Controller/UIViewController+SearchBarAdditions.h"; sourceTree = "<group>"; };
+		1FC3D5BE14BDCE50007CC4AA /* UIViewController+SearchBarAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+SearchBarAdditions.m"; path = "Controller/UIViewController+SearchBarAdditions.m"; sourceTree = "<group>"; };
 		1FCBCC47145833D300EB3FD1 /* libobjc.A.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libobjc.A.dylib; path = usr/lib/libobjc.A.dylib; sourceTree = SDKROOT; };
 		1FCC160A1450076D00D091E4 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		1FCC160B1450076D00D091E4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -487,6 +490,8 @@
 				1FA15D6A14AE092100BE3721 /* MoviesInfoDetailed.h */,
 				1FA15D6B14AE092100BE3721 /* MoviesInfoDetailed.m */,
 				1FA15D6C14AE092100BE3721 /* MoviesInfoDetailed.xib */,
+				1FC3D5BD14BDCE50007CC4AA /* UIViewController+SearchBarAdditions.h */,
+				1FC3D5BE14BDCE50007CC4AA /* UIViewController+SearchBarAdditions.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -1136,6 +1141,7 @@
 				1FA15D6D14AE092100BE3721 /* MovieInfoTableView.m in Sources */,
 				1FA15D6F14AE092100BE3721 /* Movies_InfoAppDelegate.m in Sources */,
 				1FA15D7014AE092100BE3721 /* MoviesInfoDetailed.m in Sources */,
+				1FC3D5BF14BDCE50007CC4AA /* UIViewController+SearchBarAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

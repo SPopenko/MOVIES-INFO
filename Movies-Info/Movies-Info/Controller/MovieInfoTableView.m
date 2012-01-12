@@ -9,9 +9,9 @@
 #import "MovieInfoTableView.h"
 
 @implementation MovieInfoTableView
-
-@synthesize searchBar   = _searchBar;
-@synthesize bSearchIsOn;
+//
+//@synthesize searchBar   = _searchBar;
+//@synthesize bSearchIsOn;
 //ShortMovieInfo cell height
 #define TableCellHeight 100
 
@@ -54,47 +54,8 @@
     
     //Preparing cache
     _movieInfo = [[MovieInfo alloc] init];
-
     
-    //Preparing Search bar
-    _searchBar = [[UISearchBar alloc] init];
-    _searchBar.placeholder = @"Type a search term";
-    _searchBar.tintColor = [UIColor blackColor];
-    
-    _searchBar.delegate = self;
-    
-    [_searchBar sizeToFit];
-    self.bSearchIsOn = NO;
-    
-    [_searchBar setAutocapitalizationType:UITextAutocapitalizationTypeNone];
-    [_searchBar sizeToFit];
-    
-    UIBarButtonItem* bi = [[UIBarButtonItem alloc]
-                           initWithBarButtonSystemItem: UIBarButtonSystemItemSearch target:self action:@selector(searchBar:)];
-    bi.style = UIBarButtonItemStyleBordered;
-    
-    self.navigationItem.rightBarButtonItem = bi;
-    
-    [bi release];
-}
-
-
-#pragma mark - search bar display action
-- (void) searchBar: (id) object
-{
-    bSearchIsOn = ! bSearchIsOn;
-    
-    if (bSearchIsOn)
-    {
-        self.tableView.tableHeaderView = _searchBar; // show the search bar on top of table
-    }
-    else
-    {
-        self.tableView.tableHeaderView = nil;
-        [_searchBar resignFirstResponder ]; 
-    }
-    
-    [self.tableView scrollRectToVisible:[[self.tableView tableHeaderView] bounds] animated:NO]; // scroll to top so we see the search bar
+    [self addSearchBar];
 }
 
 - (void)viewDidUnload
@@ -111,7 +72,7 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-
+    [self displaySearchBarIfActive];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -197,18 +158,6 @@
     //in this section we can do some settings appliyng code
 }
 
-#pragma mark - search bar code
-- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
-{
-    // only show the status bar's cancel button while in edit mode
-    _searchBar.showsCancelButton = YES;    
-}
-
-- (void) searchBarTextDidEndEditing:(UISearchBar *)searchBar
-{
-    _searchBar.showsCancelButton = NO;
-}
-
 #pragma mark - movie list loading
 - (void) loadMovieList
 {
@@ -248,7 +197,6 @@
 
 - (void) dealloc
 {
-    [_searchBar release];
     [movieList  release];
     [_movieInfo release];
     [_moviesPerPage release];
