@@ -21,6 +21,7 @@
 #import "IASKSpecifier.h"
 #import "IASKSettingsReader.h"
 
+#import "UIViewController+SearchBarAdditions.h"
 
 @interface MovieInfoTableView : UITableViewController<IASKSettingsDelegate>{
     NSArray* movieList;

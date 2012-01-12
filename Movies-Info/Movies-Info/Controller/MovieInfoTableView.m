@@ -9,7 +9,9 @@
 #import "MovieInfoTableView.h"
 
 @implementation MovieInfoTableView
-
+//
+//@synthesize searchBar   = _searchBar;
+//@synthesize bSearchIsOn;
 //ShortMovieInfo cell height
 #define TableCellHeight 100
 
@@ -52,7 +54,8 @@
     
     //Preparing cache
     _movieInfo = [[MovieInfo alloc] init];
-
+    
+    [self addSearchBar];
 }
 
 - (void)viewDidUnload
@@ -69,7 +72,7 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-
+    [self displaySearchBarIfActive];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
