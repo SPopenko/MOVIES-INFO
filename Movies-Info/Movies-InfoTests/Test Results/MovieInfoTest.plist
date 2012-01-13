@@ -61,6 +61,10 @@
 		<key>ad</key>
 		<string>ad</string>
 	</dict>
+	<key>RequestStringFromSearchString_OnlyLettersInput</key>
+	<string>qwertyuiop asdfghjkl zxcvbnm</string>
+	<key>RequestStringFromSearchString_SpecialSymbolInput</key>
+	<string>qwertyuiop ! # $ &amp; &apos; ( ) * + , / : ; = ? @ [ ] &quot; % - . &lt; &gt; \ ^ _ ` { | } ~</string>
 	<key>PrepareParametersFromDictionary_NilResult</key>
 	<dict>
 		<key>orderBy</key>
@@ -108,5 +112,11 @@
 	<string>Movie.browse/en-US/json/ed2f89aa774281fcada8f17b73c8fa05?order_by=r&amp;per_page=16&amp;order=d&amp;page=16&amp;min_votes=16</string>
 	<key>RequestStringFromMutableDictionary_OverFullDictionaryResult</key>
 	<string>Movie.browse/en-US/json/ed2f89aa774281fcada8f17b73c8fa05?order_by=r&amp;per_page=16&amp;order=d&amp;page=16&amp;min_votes=16</string>
+	<key>RequestStringFromSearchString_NilResult</key>
+	<string>Movie.search/en-US/json/ed2f89aa774281fcada8f17b73c8fa05/%28null%29</string>
+	<key>RequestStringFromSearchString_OnlyLettersResult</key>
+	<string>Movie.search/en-US/json/ed2f89aa774281fcada8f17b73c8fa05/qwertyuiop+asdfghjkl+zxcvbnm</string>
+	<key>RequestStringFromSearchString_SpecialSymbolResult</key>
+	<string>Movie.search/en-US/json/ed2f89aa774281fcada8f17b73c8fa05/qwertyuiop+%21+%23+%24+%26+%27+%28+%29+%2A+%2B+%2C+%2F+%3A+%3B+%3D+%3F+%40+%5B+%5D+%22+%25+-+.+%3C+%3E+%5C+%5E+_+%60+%7B+%7C+%7D+~</string>
 </dict>
 </plist>

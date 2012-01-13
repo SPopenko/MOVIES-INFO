@@ -12,11 +12,11 @@
 
 #pragma mark - preparing Search Parameters for short movie information
 
-#define TMDbApiKey          @"ed2f89aa774281fcada8f17b73c8fa05"
-#define TopTenMovieBaseUrl  @"http://api.themoviedb.org/2.1/"
-#define MovieInfoRequest    @"Movie.getInfo/en-US/json/"
-#define SearchMoviesRequest @"Movie.browse/en-US/json/"
-
+#define TMDbApiKey               @"ed2f89aa774281fcada8f17b73c8fa05"
+#define TopTenMovieBaseUrl       @"http://api.themoviedb.org/2.1/"
+#define MovieInfoRequest         @"Movie.getInfo/en-US/json/"
+#define SearchMoviesRequest      @"Movie.browse/en-US/json/"
+#define SearchMovieByNameRequest @"Movie.search/en-US/json/"
 - (NSMutableDictionary*) prepareParametersFromDictionary:(NSDictionary *)parameters
 {
     [parameters retain];
@@ -80,9 +80,25 @@
 
 - (NSString*) requestStringFromSearchString:(NSString*) searchString
 {
-    NSString* result = [[searchString copy] autorelease];
+    NSMutableString* result = [NSMutableString stringWithString: [searchString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+
+    NSDictionary* reservedChars = [NSDictionary dictionaryWithKeysAndObjects:@"!", @"%21", @"#", @"%23", @"$", @"%24",
+                                                                             @"&", @"%26", @"'", @"%27", @"(", @"%28",
+                                                                             @")", @"%29", @"*", @"%2A", @"+", @"%2B",
+                                                                             @",", @"%2C", @"/", @"%2F", @":", @"%3A",
+                                                                             @";", @"%3B", @"=", @"%3D", @"?", @"%3F",
+                                                                             @"@", @"%40", @"[", @"%5B", @"]", @"%5D",
+                                   
+                                                                             nil];
     
-    return result;
+    for (NSString* key in reservedChars.allKeys)
+    {
+        [result replaceOccurrencesOfString:key withString:[reservedChars objectForKey:key] options:NSCaseInsensitiveSearch range:[result rangeOfString:result]];
+    }
+            
+    [result replaceOccurrencesOfString:@"%20" withString:@"+" options:NSCaseInsensitiveSearch range:[result rangeOfString:result]];
+
+    return [NSString stringWithFormat:@"%@%@/%@", SearchMovieByNameRequest, TMDbApiKey, result];
 }
 
 @end
