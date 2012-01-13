@@ -63,8 +63,6 @@ static UIColor* backgroundColor = nil;
     UIView* viewWithSearchBar = self.navigationController.visibleViewController.view;
     bSearchIsOn = YES;
 
-    NSLog(@"%@", [self.view description]);
-    
     viewWithSearchBar.frame = CGRectMake(viewWithSearchBar.frame.origin.x, 
                                  viewWithSearchBar.frame.origin.y  + _searchBar.frame.size.height,
                                  viewWithSearchBar.frame.size.width, 

@@ -78,6 +78,13 @@
     return [NSString stringWithFormat:@"%@%@?%@", SearchMoviesRequest,TMDbApiKey, resultString];
 }
 
+- (NSString*) requestStringFromSearchString:(NSString*) searchString
+{
+    NSString* result = [[searchString copy] autorelease];
+    
+    return result;
+}
+
 @end
 
 @implementation MovieInfo
@@ -204,6 +211,18 @@
     
     [[RKObjectManager sharedManager] loadObjectsAtResourcePath:requestString objectMapping:[self detailedMovieInfoMapping] delegate:self];
     [requestString release];
+}
+
+- (void) searchShortMovieInfoByName:(NSString *)movieName doAfterLoadFinished:(finishAction)doBlock
+{
+    [self initRestKit];
+    _type = @"movieList";
+    _finishAction = [doBlock copy];
+    
+    //TODO: Insert code for request string
+    
+    //TODO: Insert code for sending request to server
+    
 }
 
 #pragma mark - RKObjectLoaderDelegate implementation

@@ -12,6 +12,7 @@
 
 - (NSString*) requestStringFromMutableDictionary:(NSMutableDictionary *)parameters {return nil;}
 - (NSMutableDictionary*) prepareParametersFromDictionary:(NSDictionary *)parameters {return nil;}
+- (NSString*) requestStringFromSearchString:(NSString*) searchString {return nil;}
 
 @end
 
@@ -27,6 +28,11 @@
 #define krequestStringFromMutableDictionary_FullDictionaryInput     @"RequestStringFromMutableDictionary_FullDictionaryInput"     //NSDictionary
 #define krequestStringFromMutableDictionary_OverFullDictionaryInput @"RequestStringFromMutableDictionary_OverFullDictionaryInput" //NSDictionary
 
+
+#define krequestStringFromSearchString_NilInput           @"RequestStringFromSearchString_NilInput"
+#define krequestStringFromSearchString_OnlyLettersInput   @"RequestStringFromSearchString_OnlyLettersInput"
+#define krequestStringFromSearchString_SpecialSymbolInput @"RequestStringFromSearchString_SpecialSymbolInput"
+
 //result keys  
 #define kprepareParametersFromDictionary_NilResult               @"PrepareParametersFromDictionary_NilResult"               //NSDictionary 
 #define kprepareParametersFromDictionary_NotFullDictionaryResult @"PrepareParametersFromDictionary_NotFullDictionaryResult" //NSDictionary
@@ -36,6 +42,11 @@
 #define krequestStringFromMutableDictionary_NotFullDictionaryResult  @"RequestStringFromMutableDictionary_NotFullDictionaryResult"  //NSDictionary
 #define krequestStringFromMutableDictionary_FullDictionaryResult     @"RequestStringFromMutableDictionary_FullDictionaryResult"     //NSDictionary
 #define krequestStringFromMutableDictionary_OverFullDictionaryResult @"RequestStringFromMutableDictionary_OverFullDictionaryResult" //NSDictionary
+
+#define krequestStringFromSearchString_NilResult           @"RequestStringFromSearchString_NilResult"
+#define krequestStringFromSearchString_OnlyLettersResult   @"RequestStringFromSearchString_OnlyLettersResult"
+#define krequestStringFromSearchString_SpecialSymbolResult @"RequestStringFromSearchString_SpecialSymbolResult"
+
 
 - (void) setUp
 {
@@ -69,6 +80,15 @@
     
     GHAssertEqualStrings(requestString, resultString, @"Check test conditions");
     
+}
+
+- (void) testRequestStringFromSearchStringWithInput:(NSString*)input andResult:(NSString*)result
+{
+    NSString* inputString   = [[self loadStringForKey:input] retain];
+    NSString* resultString  = [[self loadStringForKey:result] retain];
+    NSString* requestString = [[_movieInfo requestStringFromSearchString:inputString] retain];
+    
+    GHAssertEqualStrings(requestString, resultString, @"Check test conditions");
 }
 
 - (void) testPrepareParametersFromDictionary_Nil
@@ -110,6 +130,27 @@
 {
     [self testRequestStringFromMutableDictionaryWithInput:krequestStringFromMutableDictionary_OverFullDictionaryInput
                                                 andResult:krequestStringFromMutableDictionary_OverFullDictionaryResult];
+}
+
+
+
+
+- (void) testRequestStringFromSearchString_Nil
+{
+    [self testRequestStringFromSearchStringWithInput:krequestStringFromSearchString_NilInput
+                                           andResult:krequestStringFromSearchString_NilResult];
+}
+
+- (void) testRequestStringFromSearchString_OnlyLetters
+{
+    [self testRequestStringFromSearchStringWithInput:krequestStringFromSearchString_OnlyLettersInput
+                                           andResult:krequestStringFromSearchString_OnlyLettersResult];
+}
+
+- (void) testRequestStringFromSearchString_SpecialSymbol
+{
+    [self testRequestStringFromSearchStringWithInput:krequestStringFromSearchString_SpecialSymbolInput
+                                           andResult:krequestStringFromSearchString_SpecialSymbolResult];
 }
      
 - (void) dealloc
