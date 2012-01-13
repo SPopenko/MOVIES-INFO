@@ -29,5 +29,6 @@ typedef void(^finishAction)(id obj);
 
 - (void) getShortMovieInfoWithParameters:(NSDictionary*) parameters doAfterLoadFinished:(finishAction) doBlock;
 - (void) getDetailedMovieInfoByMovieID:(NSString*)movieID doAfterLoadFinished:(finishAction) doBlock;
+- (void) searchShortMovieInfoByName:(NSString*)movieName doAfterLoadFinished:(finishAction) doBlock;
 
 @end
