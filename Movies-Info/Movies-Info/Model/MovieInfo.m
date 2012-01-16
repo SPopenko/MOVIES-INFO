@@ -236,9 +236,9 @@
     _finishAction = [doBlock copy];
     
     //TODO: Insert code for request string
-    
+    NSString* requestString = [self requestStringFromSearchString:movieName];
     //TODO: Insert code for sending request to server
-    
+    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:requestString objectMapping:[self shortMovieInfoMapping] delegate:self];
 }
 
 #pragma mark - RKObjectLoaderDelegate implementation

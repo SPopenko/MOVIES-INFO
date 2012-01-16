@@ -7,6 +7,7 @@
 //
 
 #import "UIViewController+SearchBarAdditions.h"
+#import "MovieInfo.h"
 
 @implementation UIViewController (SearchBarAdditions)
 
@@ -90,8 +91,6 @@ static UIColor* backgroundColor = nil;
 
     bSearchIsOn = NO;
     
-    NSLog(@"%@", [self.view description]);
-    
     viewWithSearchBar.frame = CGRectMake(viewWithSearchBar.frame.origin.x, 
                                  viewWithSearchBar.frame.origin.y - _searchBar.frame.size.height,
                                  viewWithSearchBar.frame.size.width, 
@@ -110,7 +109,13 @@ static UIColor* backgroundColor = nil;
 
 - (void) searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-    //TODO - Add search method
+    MovieInfo* movieInfo = [[MovieInfo alloc] init];
+
+    [movieInfo searchShortMovieInfoByName:searchBar.text doAfterLoadFinished:^(id obj)
+     {
+         //TODO: Add display code
+     }];
+    
     [self hideSearchBar];
 }
 
