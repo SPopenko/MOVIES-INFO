@@ -104,8 +104,12 @@ static UIColor* backgroundColor = nil;
 #pragma mark - Working with search result
 - (void) searchBarCancelButtonClicked:(UISearchBar *)searchBar
 {
-    //TODO - Add cancel method
     [self hideSearchBar];
+    if ([searchBar.text isEqualToString:[NSString stringWithString:@""]] &&
+        [self respondsToSelector:@selector(searchBarDelegateHideSearchResults)])
+    {
+        [self searchBarDelegateHideSearchResults];
+    }
 }
 
 - (void) searchBarSearchButtonClicked:(UISearchBar *)searchBar

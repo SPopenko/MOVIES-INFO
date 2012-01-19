@@ -167,7 +167,7 @@
         perPage = [[NSUserDefaults standardUserDefaults] valueForKey:kMoviesPerPage];
     }
     
-    if (![_moviesPerPage isEqualToNumber:perPage])
+    if (![_moviesPerPage isEqualToNumber:perPage] || _searchResultDisplay)
     {    
         _moviesPerPage = perPage;
         //starting loading data from server;
@@ -188,6 +188,7 @@
     
         [_movieInfo getShortMovieInfoWithParameters:searchParameters doAfterLoadFinished:^(id obj)
         {
+            [movieList release];
             movieList = obj;
             [self.tableView reloadData];
             [self showLoadFinishIndicator];
@@ -195,12 +196,24 @@
     }
 }
 
+
+#pragma mark - searchBarDelegate methods
 - (void) searchBarDelegateEndSearch:(NSArray *)resultsArray
 {
     [movieList release];
     movieList = [resultsArray retain];
     [self.tableView reloadData];
+    _searchResultDisplay = YES;
     [self showLoadFinishIndicator];
+}
+
+- (void) searchBarDelegateHideSearchResults
+{
+    if (_searchResultDisplay)
+    {
+        [self loadMovieList];
+        _searchResultDisplay = NO;
+    }
 }
 
 - (void) dealloc
