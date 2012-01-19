@@ -14,5 +14,6 @@
 - (void) searchBarDelegateBeginSearch;
 - (void) searchBarDelegateEndSearch:(NSArray*) resultsArray;
 - (void) searchBarDelegateSearchError:(NSError*)error;
+- (void) searchbarDelegateHideSearchResults;
 
 @end

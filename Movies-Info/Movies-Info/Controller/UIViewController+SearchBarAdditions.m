@@ -114,8 +114,6 @@ static UIColor* backgroundColor = nil;
     
     [self hideSearchBar];    
     
-
-    
     [self searchBarDelegateBeginSearch];
     
     [movieInfo searchShortMovieInfoByName:searchBar.text doAfterLoadFinished:^(id obj)
@@ -139,7 +137,6 @@ static UIColor* backgroundColor = nil;
 
 - (void) searchBarDelegateBeginSearch
 {
-    NSLog(@"test");
     [self showLoadIndicatorWithText:[NSString stringWithString:@"Loading search results"]];
 }
 
