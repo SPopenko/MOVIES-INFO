@@ -23,7 +23,7 @@
 
 #import "UIViewController+SearchBarAdditions.h"
 
-@interface MovieInfoTableView : UITableViewController<IASKSettingsDelegate>{
+@interface MovieInfoTableView : UITableViewController<IASKSettingsDelegate, SearchBarAdditionsDelegate>{
     NSArray* movieList;
     MovieInfo* _movieInfo;
     IASKAppSettingsViewController* _appSettingsViewController;

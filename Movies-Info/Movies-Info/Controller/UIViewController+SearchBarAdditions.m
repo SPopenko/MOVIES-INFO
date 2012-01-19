@@ -8,6 +8,7 @@
 
 #import "UIViewController+SearchBarAdditions.h"
 #import "MovieInfo.h"
+#import "ViewActionIndicator.h"
 
 @implementation UIViewController (SearchBarAdditions)
 
@@ -110,13 +111,20 @@ static UIColor* backgroundColor = nil;
 - (void) searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     MovieInfo* movieInfo = [[MovieInfo alloc] init];
+    
+    [self hideSearchBar];    
+    
 
+    
+    [self searchBarDelegateBeginSearch];
+    
     [movieInfo searchShortMovieInfoByName:searchBar.text doAfterLoadFinished:^(id obj)
      {
-         //TODO: Add display code
+         if ([self respondsToSelector:@selector(searchBarDelegateEndSearch:)])
+         {
+             [self searchBarDelegateEndSearch:((NSArray*) obj)];
+         }
      }];
-    
-    [self hideSearchBar];
 }
 
 - (void) searchBarTextDidBeginEditing:(UISearchBar *)searchBar
@@ -127,6 +135,12 @@ static UIColor* backgroundColor = nil;
 - (void) searchBarTextDidEndEditing:(UISearchBar *)searchBar
 {
     _searchBar.showsCancelButton = NO;
+}
+
+- (void) searchBarDelegateBeginSearch
+{
+    NSLog(@"test");
+    [self showLoadIndicatorWithText:[NSString stringWithString:@"Loading search results"]];
 }
 
 @end

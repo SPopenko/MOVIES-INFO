@@ -195,6 +195,14 @@
     }
 }
 
+- (void) searchBarDelegateEndSearch:(NSArray *)resultsArray
+{
+    [movieList release];
+    movieList = [resultsArray retain];
+    [self.tableView reloadData];
+    [self showLoadFinishIndicator];
+}
+
 - (void) dealloc
 {
     [movieList  release];
