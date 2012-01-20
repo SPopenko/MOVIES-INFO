@@ -105,28 +105,32 @@ static UIColor* backgroundColor = nil;
 - (void) searchBarCancelButtonClicked:(UISearchBar *)searchBar
 {
     [self hideSearchBar];
+    UIViewController* activeViewController = [self.navigationController.visibleViewController retain];
     if ([searchBar.text isEqualToString:[NSString stringWithString:@""]] &&
-        [self respondsToSelector:@selector(searchBarDelegateHideSearchResults)])
+        [activeViewController respondsToSelector:@selector(searchBarDelegateHideSearchResults)])
     {
-        [self searchBarDelegateHideSearchResults];
+        [activeViewController searchBarDelegateHideSearchResults];
     }
+    [activeViewController release];
 }
 
 - (void) searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     MovieInfo* movieInfo = [[MovieInfo alloc] init];
+    UIViewController* activeViewController = [self.navigationController.visibleViewController retain];
     
     [self hideSearchBar];    
     
-    [self searchBarDelegateBeginSearch];
+    [activeViewController searchBarDelegateBeginSearch];
     
     [movieInfo searchShortMovieInfoByName:searchBar.text doAfterLoadFinished:^(id obj)
      {
-         if ([self respondsToSelector:@selector(searchBarDelegateEndSearch:)])
+         if ([activeViewController respondsToSelector:@selector(searchBarDelegateEndSearch:)])
          {
-             [self searchBarDelegateEndSearch:((NSArray*) obj)];
+             [activeViewController searchBarDelegateEndSearch:((NSArray*) obj)];
          }
      }];
+    [activeViewController release];
 }
 
 - (void) searchBarTextDidBeginEditing:(UISearchBar *)searchBar
@@ -141,7 +145,7 @@ static UIColor* backgroundColor = nil;
 
 - (void) searchBarDelegateBeginSearch
 {
-    [self showLoadIndicatorWithText:[NSString stringWithString:@"Loading search results"]];
+    [self.navigationController.visibleViewController showLoadIndicatorWithText:[NSString stringWithString:@"Loading search results"]];
 }
 
 @end
