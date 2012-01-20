@@ -167,7 +167,7 @@
         perPage = [[NSUserDefaults standardUserDefaults] valueForKey:kMoviesPerPage];
     }
     
-    if (![_moviesPerPage isEqualToNumber:perPage] || _searchResultDisplay)
+    if (![_moviesPerPage isEqualToNumber:perPage] || !_searchResultDisplay)
     {    
         _moviesPerPage = perPage;
         //starting loading data from server;
@@ -211,8 +211,8 @@
 {
     if (_searchResultDisplay)
     {
-        [self loadMovieList];
         _searchResultDisplay = NO;
+        [self loadMovieList];
     }
 }
 
