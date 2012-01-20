@@ -117,6 +117,11 @@
     }
 }
 
+- (void) searchBarDelegateHideSearchResults
+{
+    [self loadMovieToWebViewById:self.shortMovieInfo.movieId withLoadString:@"Loading detailed movie info"];
+}
+
 - (void) dealloc
 {
     [webView    release];
