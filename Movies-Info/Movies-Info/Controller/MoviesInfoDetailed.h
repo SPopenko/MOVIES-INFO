@@ -25,6 +25,8 @@
     ShortMovieInfo* shortMovieInfo;
     DetailedMovieInfo* movieInfo;
     MovieInfo* _movieInfo;
+    
+    BOOL _searchResultDisplay;
 }
 
 @property (retain, nonatomic) UIWebView*      webView;

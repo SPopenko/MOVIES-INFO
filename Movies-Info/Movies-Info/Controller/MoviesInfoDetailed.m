@@ -57,7 +57,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
+    _searchResultDisplay = NO;
+    
     _movieInfo = [[MovieInfo alloc] init];
     
     _playTrailerButton.enabled = NO;
@@ -100,6 +102,18 @@
         }
         [movieURL release];
         [playerController release];
+    }
+}
+
+- (void) searchBarDelegateEndSearch:(NSArray *)resultsArray
+{
+    _searchResultDisplay = YES;
+    
+    if (resultsArray.count > 0)
+    {
+        ShortMovieInfo* smi = [(ShortMovieInfo*)[resultsArray objectAtIndex:0] retain];
+        [self loadMovieToWebViewById:smi.movieId withLoadString:@"Search result loading"];
+        [smi release];
     }
 }
 
