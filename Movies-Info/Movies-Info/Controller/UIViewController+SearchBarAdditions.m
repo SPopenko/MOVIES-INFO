@@ -8,6 +8,7 @@
 
 #import "UIViewController+SearchBarAdditions.h"
 #import "MovieInfo.h"
+#import "ViewActionIndicator.h"
 
 @implementation UIViewController (SearchBarAdditions)
 
@@ -103,20 +104,33 @@ static UIColor* backgroundColor = nil;
 #pragma mark - Working with search result
 - (void) searchBarCancelButtonClicked:(UISearchBar *)searchBar
 {
-    //TODO - Add cancel method
     [self hideSearchBar];
+    UIViewController* activeViewController = [self.navigationController.visibleViewController retain];
+    if ([searchBar.text isEqualToString:[NSString stringWithString:@""]] &&
+        [activeViewController respondsToSelector:@selector(searchBarDelegateHideSearchResults)])
+    {
+        [activeViewController searchBarDelegateHideSearchResults];
+    }
+    [activeViewController release];
 }
 
 - (void) searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     MovieInfo* movieInfo = [[MovieInfo alloc] init];
-
+    UIViewController* activeViewController = [self.navigationController.visibleViewController retain];
+    
+    [self hideSearchBar];    
+    
+    [activeViewController searchBarDelegateBeginSearch];
+    
     [movieInfo searchShortMovieInfoByName:searchBar.text doAfterLoadFinished:^(id obj)
      {
-         //TODO: Add display code
+         if ([activeViewController respondsToSelector:@selector(searchBarDelegateEndSearch:)])
+         {
+             [activeViewController searchBarDelegateEndSearch:((NSArray*) obj)];
+         }
      }];
-    
-    [self hideSearchBar];
+    [activeViewController release];
 }
 
 - (void) searchBarTextDidBeginEditing:(UISearchBar *)searchBar
@@ -127,6 +141,11 @@ static UIColor* backgroundColor = nil;
 - (void) searchBarTextDidEndEditing:(UISearchBar *)searchBar
 {
     _searchBar.showsCancelButton = NO;
+}
+
+- (void) searchBarDelegateBeginSearch
+{
+    [self.navigationController.visibleViewController showLoadIndicatorWithText:[NSString stringWithString:@"Loading search results"]];
 }
 
 @end

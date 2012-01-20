@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SearchBarAdditionsDelegate.h"
 
-@interface UIViewController (SearchBarAdditions) <UISearchBarDelegate>
+@interface UIViewController (SearchBarAdditions) <UISearchBarDelegate, SearchBarAdditionsDelegate>
 
 - (void) addSearchBar;
 - (void) displaySearchBar;

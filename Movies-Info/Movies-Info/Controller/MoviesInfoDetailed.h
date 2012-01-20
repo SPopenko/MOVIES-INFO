@@ -17,13 +17,16 @@
 #import "YouTubeVideo.h"
 #import "NSString(MovieInfoTemplateFilling).h"
 #import "UIViewController+SearchBarAdditions.h"
+#import "SearchBarAdditionsDelegate.h"
 
-@interface MoviesInfoDetailed : UIViewController
+@interface MoviesInfoDetailed : UIViewController<SearchBarAdditionsDelegate>
 {
     IBOutlet UIWebView *webView;
     ShortMovieInfo* shortMovieInfo;
     DetailedMovieInfo* movieInfo;
     MovieInfo* _movieInfo;
+    
+    BOOL _searchResultDisplay;
 }
 
 @property (retain, nonatomic) UIWebView*      webView;
