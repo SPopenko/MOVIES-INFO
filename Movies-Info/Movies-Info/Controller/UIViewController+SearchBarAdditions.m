@@ -10,6 +10,24 @@
 #import "MovieInfo.h"
 #import "ViewActionIndicator.h"
 
+@implementation UIViewController(SuggestionAdditions)
+
+UITableView* _suggestionsTableView = nil;
+
+- (void) displaySuggestionAtView:(UIView*)displayView
+{
+    _suggestionsTableView = [[[UITableView alloc]initWithFrame:displayView.frame] autorelease]; 
+    [displayView.superview addSubview:_suggestionsTableView];
+}
+
+- (void) hideSuggestion
+{
+    [_suggestionsTableView removeFromSuperview];
+    _suggestionsTableView = nil;
+}
+
+@end
+
 @implementation UIViewController (SearchBarAdditions)
 
 static UIBarButtonItem* _searchBarButton = nil;
@@ -64,7 +82,7 @@ static UIColor* backgroundColor = nil;
 {
     UIView* viewWithSearchBar = self.navigationController.visibleViewController.view;
     bSearchIsOn = YES;
-
+    
     viewWithSearchBar.frame = CGRectMake(viewWithSearchBar.frame.origin.x, 
                                  viewWithSearchBar.frame.origin.y  + _searchBar.frame.size.height,
                                  viewWithSearchBar.frame.size.width, 
@@ -89,7 +107,9 @@ static UIColor* backgroundColor = nil;
 - (void) hideSearchBar
 {
     UIView* viewWithSearchBar = self.navigationController.visibleViewController.view;
-
+    
+    [self hideSuggestion];
+    
     bSearchIsOn = NO;
     
     viewWithSearchBar.frame = CGRectMake(viewWithSearchBar.frame.origin.x, 
@@ -135,6 +155,8 @@ static UIColor* backgroundColor = nil;
 
 - (void) searchBarTextDidBeginEditing:(UISearchBar *)searchBar
 {
+    //display table view for 
+    [self displaySuggestionAtView:self.navigationController.visibleViewController.view];
     _searchBar.showsCancelButton = YES;
 }
 
