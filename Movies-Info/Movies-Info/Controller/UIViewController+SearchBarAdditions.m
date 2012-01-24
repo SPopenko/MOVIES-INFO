@@ -43,7 +43,6 @@ NSString* _searchString = nil;
         [movieInfo searchShortMovieInfoByName:searchString doAfterLoadFinished:^(id obj)
          {
              _suggestionsTableViewController.searchSuggestions = (NSArray*) obj;
-             NSLog(@"%@", [_suggestionsTableViewController.searchSuggestions description]);
              [_suggestionsTableViewController.tableView reloadData];
          }];
     }
@@ -152,6 +151,25 @@ static UIColor* backgroundColor = nil;
     _searchBarButton.tintColor = backgroundColor;
 }
 
+- (void) searchString:(NSString *)searchString
+{
+    MovieInfo* movieInfo = [[MovieInfo alloc] init];
+    UIViewController* activeViewController = [self.navigationController.visibleViewController retain];
+    
+    [self hideSearchBar];    
+    
+    [activeViewController searchBarDelegateBeginSearch];
+    
+    [movieInfo searchShortMovieInfoByName:searchString doAfterLoadFinished:^(id obj)
+     {
+         if ([activeViewController respondsToSelector:@selector(searchBarDelegateEndSearch:)])
+         {
+             [activeViewController searchBarDelegateEndSearch:((NSArray*) obj)];
+         }
+     }];
+    [activeViewController release];
+}
+
 #pragma mark - Working with search result
 - (void) searchBarCancelButtonClicked:(UISearchBar *)searchBar
 {
@@ -167,21 +185,7 @@ static UIColor* backgroundColor = nil;
 
 - (void) searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-    MovieInfo* movieInfo = [[MovieInfo alloc] init];
-    UIViewController* activeViewController = [self.navigationController.visibleViewController retain];
-    
-    [self hideSearchBar];    
-    
-    [activeViewController searchBarDelegateBeginSearch];
-    
-    [movieInfo searchShortMovieInfoByName:searchBar.text doAfterLoadFinished:^(id obj)
-     {
-         if ([activeViewController respondsToSelector:@selector(searchBarDelegateEndSearch:)])
-         {
-             [activeViewController searchBarDelegateEndSearch:((NSArray*) obj)];
-         }
-     }];
-    [activeViewController release];
+    [self searchString:searchBar.text];
 }
 
 - (void) searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText

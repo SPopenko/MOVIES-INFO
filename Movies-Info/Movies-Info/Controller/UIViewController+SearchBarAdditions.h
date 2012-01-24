@@ -16,4 +16,6 @@
 - (void) displaySearchBarIfActive;
 - (void) hideSearchBar;
 
+- (void) searchString:(NSString*)searchString;
+
 @end
