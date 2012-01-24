@@ -20,8 +20,8 @@ NSString* _searchString = nil;
 {
     if (_suggestionsTableViewController == nil)
     {
+        //TODO: improve this code for better memory mamnagement
         _suggestionsTableViewController = [[SearchSuggestionTableViewController alloc] init];
-//        _suggestionsTableViewController = [[[SearchSuggestionTableViewController alloc] init]autorelease];
         _suggestionsTableViewController.tableView.frame = displayView.frame;
     }
     _suggestionsTableViewController.tableView.hidden = YES;
@@ -37,12 +37,22 @@ NSString* _searchString = nil;
     else
     {
         _suggestionsTableViewController.tableView.hidden = NO;
+        
+        MovieInfo* movieInfo = [[MovieInfo alloc] init];
+        
+        [movieInfo searchShortMovieInfoByName:searchString doAfterLoadFinished:^(id obj)
+         {
+             _suggestionsTableViewController.searchSuggestions = (NSArray*) obj;
+             NSLog(@"%@", [_suggestionsTableViewController.searchSuggestions description]);
+             [_suggestionsTableViewController.tableView reloadData];
+         }];
     }
 }
 
 - (void) hideSuggestion
 {
     [_suggestionsTableViewController.tableView removeFromSuperview];
+    [_suggestionsTableViewController release];
     _suggestionsTableViewController = nil;
 }
 
