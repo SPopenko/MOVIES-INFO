@@ -9,38 +9,41 @@
 #import "UIViewController+SearchBarAdditions.h"
 #import "MovieInfo.h"
 #import "ViewActionIndicator.h"
+#import "SearchSuggestionTableViewController.h"
 
 @implementation UIViewController(SuggestionAdditions)
 
-UITableView* _suggestionsTableView = nil;
+SearchSuggestionTableViewController* _suggestionsTableViewController = nil;
 NSString* _searchString = nil;
 
 - (void) prepareSuggestionAtView:(UIView*)displayView
 {
-    if (_suggestionsTableView == nil)
+    if (_suggestionsTableViewController == nil)
     {
-        _suggestionsTableView = [[[UITableView alloc]initWithFrame:displayView.frame] autorelease]; 
+        _suggestionsTableViewController = [[SearchSuggestionTableViewController alloc] init];
+//        _suggestionsTableViewController = [[[SearchSuggestionTableViewController alloc] init]autorelease];
+        _suggestionsTableViewController.tableView.frame = displayView.frame;
     }
-    _suggestionsTableView.hidden = YES;
-    [displayView.superview addSubview:_suggestionsTableView];
+    _suggestionsTableViewController.tableView.hidden = YES;
+    [displayView.superview addSubview:_suggestionsTableViewController.tableView];
 }
 
 - (void) showSuggestionForSearchString:(NSString*) searchString
 {
     if (searchString == nil || [searchString isEqualToString:[NSString stringWithString:@""]])
     {
-        _suggestionsTableView.hidden = YES;
+        _suggestionsTableViewController.tableView.hidden = YES;
     }
     else
     {
-        _suggestionsTableView.hidden = NO;
+        _suggestionsTableViewController.tableView.hidden = NO;
     }
 }
 
 - (void) hideSuggestion
 {
-    [_suggestionsTableView removeFromSuperview];
-    _suggestionsTableView = nil;
+    [_suggestionsTableViewController.tableView removeFromSuperview];
+    _suggestionsTableViewController = nil;
 }
 
 
