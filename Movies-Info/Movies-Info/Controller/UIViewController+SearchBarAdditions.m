@@ -13,11 +13,28 @@
 @implementation UIViewController(SuggestionAdditions)
 
 UITableView* _suggestionsTableView = nil;
+NSString* _searchString = nil;
 
-- (void) displaySuggestionAtView:(UIView*)displayView
+- (void) prepareSuggestionAtView:(UIView*)displayView
 {
-    _suggestionsTableView = [[[UITableView alloc]initWithFrame:displayView.frame] autorelease]; 
+    if (_suggestionsTableView == nil)
+    {
+        _suggestionsTableView = [[[UITableView alloc]initWithFrame:displayView.frame] autorelease]; 
+    }
+    _suggestionsTableView.hidden = YES;
     [displayView.superview addSubview:_suggestionsTableView];
+}
+
+- (void) showSuggestionForSearchString:(NSString*) searchString
+{
+    if (searchString == nil || [searchString isEqualToString:[NSString stringWithString:@""]])
+    {
+        _suggestionsTableView.hidden = YES;
+    }
+    else
+    {
+        _suggestionsTableView.hidden = NO;
+    }
 }
 
 - (void) hideSuggestion
@@ -25,6 +42,7 @@ UITableView* _suggestionsTableView = nil;
     [_suggestionsTableView removeFromSuperview];
     _suggestionsTableView = nil;
 }
+
 
 @end
 
@@ -153,11 +171,18 @@ static UIColor* backgroundColor = nil;
     [activeViewController release];
 }
 
+- (void) searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+{
+        [self showSuggestionForSearchString:searchBar.text];
+}
+
 - (void) searchBarTextDidBeginEditing:(UISearchBar *)searchBar
 {
     //display table view for 
-    [self displaySuggestionAtView:self.navigationController.visibleViewController.view];
     _searchBar.showsCancelButton = YES;
+    [self prepareSuggestionAtView:self.navigationController.visibleViewController.view];
+    [self showSuggestionForSearchString:searchBar.text];
+
 }
 
 - (void) searchBarTextDidEndEditing:(UISearchBar *)searchBar
