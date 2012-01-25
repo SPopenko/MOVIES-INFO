@@ -14,18 +14,22 @@
 @implementation UIViewController(SuggestionAdditions)
 
 SearchSuggestionTableViewController* _suggestionsTableViewController = nil;
+UIViewController* _superviewController = nil;
 NSString* _searchString = nil;
 
-- (void) prepareSuggestionAtView:(UIView*)displayView
+- (void) prepareSuggestionAtSearchViewController:(UIViewController*)displayViewController
 {
+    _superviewController = [displayViewController retain];
     if (_suggestionsTableViewController == nil)
     {
+        _suggestionsTableViewController.tableView.delegate = self;
         //TODO: improve this code for better memory mamnagement
         _suggestionsTableViewController = [[SearchSuggestionTableViewController alloc] init];
-        _suggestionsTableViewController.tableView.frame = displayView.frame;
+        
     }
+    _suggestionsTableViewController.tableView.frame = displayViewController.view.bounds;
     _suggestionsTableViewController.tableView.hidden = YES;
-    [displayView.superview addSubview:_suggestionsTableViewController.tableView];
+    [displayViewController.view addSubview:_suggestionsTableViewController.tableView];
 }
 
 - (void) showSuggestionForSearchString:(NSString*) searchString
@@ -51,11 +55,16 @@ NSString* _searchString = nil;
 - (void) hideSuggestion
 {
     [_suggestionsTableViewController.tableView removeFromSuperview];
-    [_suggestionsTableViewController release];
+//    [_suggestionsTableViewController release];
     _suggestionsTableViewController = nil;
 }
 
-
+#pragma mark - UITableView delegate
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
+    [_superviewController searchString:cell.textLabel.text];
+}
 @end
 
 @implementation UIViewController (SearchBarAdditions)
@@ -197,7 +206,7 @@ static UIColor* backgroundColor = nil;
 {
     //display table view for 
     _searchBar.showsCancelButton = YES;
-    [self prepareSuggestionAtView:self.navigationController.visibleViewController.view];
+    [self prepareSuggestionAtSearchViewController:self.navigationController.visibleViewController];
     [self showSuggestionForSearchString:searchBar.text];
 
 }
