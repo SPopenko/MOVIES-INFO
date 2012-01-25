@@ -23,6 +23,7 @@
 		1F3AF8FE14AE2FDD00D332D0 /* DetailedMovieInfo+NSCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3AF8FD14AE2FDC00D332D0 /* DetailedMovieInfo+NSCoder.m */; };
 		1F3AF90114AE322C00D332D0 /* IsEqualTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3AF90014AE322C00D332D0 /* IsEqualTest.m */; };
 		1F3AF90D14AE42C200D332D0 /* YouTubeVideo+GetMovieLinkStub.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3AF90C14AE42C200D332D0 /* YouTubeVideo+GetMovieLinkStub.m */; };
+		1F43F9E114CF08C0000981B2 /* SearchSuggestionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F43F9E014CF08C0000981B2 /* SearchSuggestionTableViewController.m */; };
 		1F5D09FC1456D58F005B77D5 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F5D09FB1456D58E005B77D5 /* MBProgressHUD.m */; };
 		1F5D0A891458006F005B77D5 /* infoFilm.html in Resources */ = {isa = PBXBuildFile; fileRef = 1F5D0A881458006F005B77D5 /* infoFilm.html */; };
 		1F7351B2146BCC0000D52947 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63626F541419414900F3A4E2 /* UIKit.framework */; };
@@ -264,6 +265,8 @@
 		1F3AF90014AE322C00D332D0 /* IsEqualTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IsEqualTest.m; path = Tests/IsEqualTest.m; sourceTree = "<group>"; };
 		1F3AF90B14AE42C200D332D0 /* YouTubeVideo+GetMovieLinkStub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "YouTubeVideo+GetMovieLinkStub.h"; path = "Test Additions/YouTubeVideo+GetMovieLinkStub.h"; sourceTree = "<group>"; };
 		1F3AF90C14AE42C200D332D0 /* YouTubeVideo+GetMovieLinkStub.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "YouTubeVideo+GetMovieLinkStub.m"; path = "Test Additions/YouTubeVideo+GetMovieLinkStub.m"; sourceTree = "<group>"; };
+		1F43F9DF14CF08C0000981B2 /* SearchSuggestionTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchSuggestionTableViewController.h; path = Controller/SearchSuggestionTableViewController.h; sourceTree = "<group>"; };
+		1F43F9E014CF08C0000981B2 /* SearchSuggestionTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchSuggestionTableViewController.m; path = Controller/SearchSuggestionTableViewController.m; sourceTree = "<group>"; };
 		1F5507E714515536001C38E3 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		1F55082314515BAD001C38E3 /* RestKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RestKit.xcodeproj; path = RestKit/RestKit.xcodeproj; sourceTree = "<group>"; };
 		1F5D09FA1456D58E005B77D5 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = ../../MBProgressHUD/MBProgressHUD.h; sourceTree = "<group>"; };
@@ -494,6 +497,8 @@
 				1FC3D5BD14BDCE50007CC4AA /* UIViewController+SearchBarAdditions.h */,
 				1FC3D5BE14BDCE50007CC4AA /* UIViewController+SearchBarAdditions.m */,
 				1FFE7E8614C7515800C841D8 /* SearchBarAdditionsDelegate.h */,
+				1F43F9DF14CF08C0000981B2 /* SearchSuggestionTableViewController.h */,
+				1F43F9E014CF08C0000981B2 /* SearchSuggestionTableViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -1144,6 +1149,7 @@
 				1FA15D6F14AE092100BE3721 /* Movies_InfoAppDelegate.m in Sources */,
 				1FA15D7014AE092100BE3721 /* MoviesInfoDetailed.m in Sources */,
 				1FC3D5BF14BDCE50007CC4AA /* UIViewController+SearchBarAdditions.m in Sources */,
+				1F43F9E114CF08C0000981B2 /* SearchSuggestionTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

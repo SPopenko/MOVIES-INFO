@@ -9,6 +9,63 @@
 #import "UIViewController+SearchBarAdditions.h"
 #import "MovieInfo.h"
 #import "ViewActionIndicator.h"
+#import "SearchSuggestionTableViewController.h"
+
+@implementation UIViewController(SuggestionAdditions)
+
+SearchSuggestionTableViewController* _suggestionsTableViewController = nil;
+UIViewController* _superviewController = nil;
+NSString* _searchString = nil;
+
+- (void) prepareSuggestionAtSearchViewController:(UIViewController*)displayViewController
+{
+    _superviewController = [displayViewController retain];
+    if (_suggestionsTableViewController == nil)
+    {
+        _suggestionsTableViewController.tableView.delegate = self;
+        //TODO: improve this code for better memory mamnagement
+        _suggestionsTableViewController = [[SearchSuggestionTableViewController alloc] init];
+        
+    }
+    _suggestionsTableViewController.tableView.frame = displayViewController.view.bounds;
+    _suggestionsTableViewController.tableView.hidden = YES;
+    [displayViewController.view addSubview:_suggestionsTableViewController.tableView];
+}
+
+- (void) showSuggestionForSearchString:(NSString*) searchString
+{
+    if (searchString == nil || [searchString isEqualToString:[NSString stringWithString:@""]])
+    {
+        _suggestionsTableViewController.tableView.hidden = YES;
+    }
+    else
+    {
+        _suggestionsTableViewController.tableView.hidden = NO;
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+        MovieInfo* movieInfo = [[MovieInfo alloc] init];
+        
+        [movieInfo searchShortMovieInfoByName:searchString doAfterLoadFinished:^(id obj)
+         {
+             _suggestionsTableViewController.searchSuggestions = (NSArray*) obj;
+             [_suggestionsTableViewController.tableView reloadData];
+             [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+         }];
+    }
+}
+
+- (void) hideSuggestion
+{
+    [_suggestionsTableViewController.tableView removeFromSuperview];
+    _suggestionsTableViewController = nil;
+}
+
+#pragma mark - UITableView delegate
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
+    [_superviewController searchString:cell.textLabel.text];
+}
+@end
 
 @implementation UIViewController (SearchBarAdditions)
 
@@ -64,7 +121,7 @@ static UIColor* backgroundColor = nil;
 {
     UIView* viewWithSearchBar = self.navigationController.visibleViewController.view;
     bSearchIsOn = YES;
-
+    
     viewWithSearchBar.frame = CGRectMake(viewWithSearchBar.frame.origin.x, 
                                  viewWithSearchBar.frame.origin.y  + _searchBar.frame.size.height,
                                  viewWithSearchBar.frame.size.width, 
@@ -89,7 +146,9 @@ static UIColor* backgroundColor = nil;
 - (void) hideSearchBar
 {
     UIView* viewWithSearchBar = self.navigationController.visibleViewController.view;
-
+    
+    [self hideSuggestion];
+    
     bSearchIsOn = NO;
     
     viewWithSearchBar.frame = CGRectMake(viewWithSearchBar.frame.origin.x, 
@@ -99,6 +158,25 @@ static UIColor* backgroundColor = nil;
     
     [_searchBar removeFromSuperview];
     _searchBarButton.tintColor = backgroundColor;
+}
+
+- (void) searchString:(NSString *)searchString
+{
+    MovieInfo* movieInfo = [[MovieInfo alloc] init];
+    UIViewController* activeViewController = [self.navigationController.visibleViewController retain];
+    
+    [self hideSearchBar];    
+    
+    [activeViewController searchBarDelegateBeginSearch];
+    
+    [movieInfo searchShortMovieInfoByName:searchString doAfterLoadFinished:^(id obj)
+     {
+         if ([activeViewController respondsToSelector:@selector(searchBarDelegateEndSearch:)])
+         {
+             [activeViewController searchBarDelegateEndSearch:((NSArray*) obj)];
+         }
+     }];
+    [activeViewController release];
 }
 
 #pragma mark - Working with search result
@@ -116,26 +194,21 @@ static UIColor* backgroundColor = nil;
 
 - (void) searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-    MovieInfo* movieInfo = [[MovieInfo alloc] init];
-    UIViewController* activeViewController = [self.navigationController.visibleViewController retain];
-    
-    [self hideSearchBar];    
-    
-    [activeViewController searchBarDelegateBeginSearch];
-    
-    [movieInfo searchShortMovieInfoByName:searchBar.text doAfterLoadFinished:^(id obj)
-     {
-         if ([activeViewController respondsToSelector:@selector(searchBarDelegateEndSearch:)])
-         {
-             [activeViewController searchBarDelegateEndSearch:((NSArray*) obj)];
-         }
-     }];
-    [activeViewController release];
+    [self searchString:searchBar.text];
+}
+
+- (void) searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+{
+        [self showSuggestionForSearchString:searchBar.text];
 }
 
 - (void) searchBarTextDidBeginEditing:(UISearchBar *)searchBar
 {
+    //display table view for 
     _searchBar.showsCancelButton = YES;
+    [self prepareSuggestionAtSearchViewController:self.navigationController.visibleViewController];
+    [self showSuggestionForSearchString:searchBar.text];
+
 }
 
 - (void) searchBarTextDidEndEditing:(UISearchBar *)searchBar

@@ -9,11 +9,17 @@
 #import <UIKit/UIKit.h>
 #import "SearchBarAdditionsDelegate.h"
 
+@interface UIViewController(SuggestionAdditions) <UITableViewDelegate>
+
+@end
+
 @interface UIViewController (SearchBarAdditions) <UISearchBarDelegate, SearchBarAdditionsDelegate>
 
 - (void) addSearchBar;
 - (void) displaySearchBar;
 - (void) displaySearchBarIfActive;
 - (void) hideSearchBar;
+
+- (void) searchString:(NSString*)searchString;
 
 @end
