@@ -41,13 +41,14 @@ NSString* _searchString = nil;
     else
     {
         _suggestionsTableViewController.tableView.hidden = NO;
-        
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
         MovieInfo* movieInfo = [[MovieInfo alloc] init];
         
         [movieInfo searchShortMovieInfoByName:searchString doAfterLoadFinished:^(id obj)
          {
              _suggestionsTableViewController.searchSuggestions = (NSArray*) obj;
              [_suggestionsTableViewController.tableView reloadData];
+             [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
          }];
     }
 }
@@ -55,7 +56,6 @@ NSString* _searchString = nil;
 - (void) hideSuggestion
 {
     [_suggestionsTableViewController.tableView removeFromSuperview];
-//    [_suggestionsTableViewController release];
     _suggestionsTableViewController = nil;
 }
 
