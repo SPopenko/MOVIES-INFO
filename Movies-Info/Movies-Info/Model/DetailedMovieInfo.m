@@ -13,15 +13,23 @@
 
 - (BOOL) isEqual:(id)object
 {
-    Person* compareObject = nil;
+    Person* test = nil;
+    BOOL  result = YES;
     
-    if (![object isMemberOfClass:[Person class]]) return NO;
+    if (![object isMemberOfClass:[Person class]] && result)
+    {
+        result = NO;
+    }
     
-    compareObject = [(Person*) object retain];
+    test = [(Person*) object retain];
     
-    if (![self.name isEqualToString:compareObject.name]) return NO;    
-
-    return YES;
+    if (![self.name isEqualToString:test.name] && result)
+    {
+        result = NO;
+    }
+    
+    [test release];
+    return result;
 }
 
 @end
@@ -57,24 +65,47 @@
 
 - (BOOL) isEqual:(id)object
 {
-    DetailedMovieInfo* compareObject = nil;
+    BOOL result = YES;
+    DetailedMovieInfo* test = nil;
     
-    if (![object isMemberOfClass:[DetailedMovieInfo class]]) return NO;
-
-    compareObject = [[(DetailedMovieInfo*) object retain] autorelease];
+    if (![object isMemberOfClass:[DetailedMovieInfo class]] && result)
+    {
+        result = NO;
+    }
+    else
+    {
+        test = [(DetailedMovieInfo*) object retain];
+        
+        if (![super isEqual:(ShortMovieInfo*)object] && result)
+        {
+            result = NO;
+        }
+        
+        
+        if (![_backdrops isEqualToArray:test.backdrops] && result)
+        {
+            result = NO;
+        }
+        
+        if (![_cast isEqualToArray:test.cast] && result)
+        {
+            result = NO;
+        }
+        
+        if (![_description isEqualToString:test.description] && result)
+        {
+            result = NO;
+        }
+        
+        if (![[_trailer copy] isEqualToString:[test.trailer copy]] && result)
+        {
+            result = NO;
+        }
+        
+        [test release];
+    }
     
-    if (![super isEqual:(ShortMovieInfo*)object]) return NO;
-    
-    
-    if (![_backdrops isEqualToArray:compareObject.backdrops]) return NO;
-    
-    if (![_cast isEqualToArray:compareObject.cast]) return NO;
-    
-    if (![_description isEqualToString:compareObject.description]) return NO;
-    
-    if (![[[_trailer copy] autorelease] isEqualToString:[[compareObject.trailer copy] autorelease]]) return NO;
-    
-    return YES;
+    return result;
 }
 
 - (void) dealloc

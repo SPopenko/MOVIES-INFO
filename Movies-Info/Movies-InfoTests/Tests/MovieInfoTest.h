@@ -15,7 +15,6 @@
 
 - (NSString*) requestStringFromMutableDictionary:(NSMutableDictionary *)parameters;
 - (NSMutableDictionary*) prepareParametersFromDictionary:(NSDictionary *)parameters;
-- (NSString*) requestStringFromSearchString:(NSString*) searchString;
 
 @end
 
@@ -33,9 +32,5 @@
 - (void) testRequestStringFromMutableDictionary_NotFullDictionary;
 - (void) testRequestStringFromMutableDictionary_FullDictionary;
 - (void) testRequestStringFromMutableDictionary_OverFullDictionary;
-
-- (void) testRequestStringFromSearchString_Nil;
-- (void) testRequestStringFromSearchString_OnlyLetters;
-- (void) testRequestStringFromSearchString_SpecialSymbol;
 
 @end
