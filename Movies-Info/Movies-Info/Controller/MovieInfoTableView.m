@@ -9,7 +9,9 @@
 #import "MovieInfoTableView.h"
 
 @implementation MovieInfoTableView
-
+//
+//@synthesize searchBar   = _searchBar;
+//@synthesize bSearchIsOn;
 //ShortMovieInfo cell height
 #define TableCellHeight 100
 
@@ -52,7 +54,8 @@
     
     //Preparing cache
     _movieInfo = [[MovieInfo alloc] init];
-
+    
+    [self addSearchBar];
 }
 
 - (void)viewDidUnload
@@ -69,7 +72,7 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-
+    [self displaySearchBarIfActive];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -164,7 +167,7 @@
         perPage = [[NSUserDefaults standardUserDefaults] valueForKey:kMoviesPerPage];
     }
     
-    if (![_moviesPerPage isEqualToNumber:perPage])
+    if (![_moviesPerPage isEqualToNumber:perPage] || !_searchResultDisplay)
     {    
         _moviesPerPage = perPage;
         //starting loading data from server;
@@ -185,10 +188,31 @@
     
         [_movieInfo getShortMovieInfoWithParameters:searchParameters doAfterLoadFinished:^(id obj)
         {
+            [movieList release];
             movieList = obj;
             [self.tableView reloadData];
             [self showLoadFinishIndicator];
         }];
+    }
+}
+
+
+#pragma mark - searchBarDelegate methods
+- (void) searchBarDelegateEndSearch:(NSArray *)resultsArray
+{
+    [movieList release];
+    movieList = [resultsArray retain];
+    [self.tableView reloadData];
+    _searchResultDisplay = YES;
+    [self showLoadFinishIndicator];
+}
+
+- (void) searchBarDelegateHideSearchResults
+{
+    if (_searchResultDisplay)
+    {
+        _searchResultDisplay = NO;
+        [self loadMovieList];
     }
 }
 

@@ -15,6 +15,27 @@
 @synthesize movieInfo;
 @synthesize playTrailerButton  = _playTrailerButton;
 
+#pragma mark - method for loading movie info and displaying it in webview
+- (void) loadMovieToWebViewById:(NSString*) movieId withLoadString:(NSString*) loadString
+{
+    [self showLoadIndicatorWithText:loadString];
+    [_movieInfo getDetailedMovieInfoByMovieID:movieId doAfterLoadFinished:^(id obj)
+     {
+         self.movieInfo = obj;
+         NSString *htmlPath     = [[NSBundle mainBundle] pathForResource:@"infoFilm" ofType:@"html"];
+         NSString *htmlTemplate = [NSString stringWithContentsOfFile:htmlPath encoding:NSUTF8StringEncoding error:nil];
+         NSString *htmlFilled   = [NSString stringWithTemplateString:htmlTemplate filledDetailedMovieInfo:self.movieInfo];
+         
+         [webView loadHTMLString:htmlFilled baseURL:nil];
+         
+         if (movieInfo.trailer) {
+             _playTrailerButton.enabled = YES;
+         }
+         [self showLoadFinishIndicator];
+     }];    
+    
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -37,25 +58,21 @@
 {
     [super viewDidLoad];
     
-    [self showLoadIndicatorWithText:@"Loading detailed movie info"];
+    _searchResultDisplay = NO;
+    
     _movieInfo = [[MovieInfo alloc] init];
     
     _playTrailerButton.enabled = NO;
+    
+    [self loadMovieToWebViewById:self.shortMovieInfo.movieId withLoadString:@"Loading detailed movie info"];
+    
+    [self addSearchBar];
+}
 
-    [_movieInfo getDetailedMovieInfoByMovieID:shortMovieInfo.movieId doAfterLoadFinished:^(id obj)
-    {
-        movieInfo = [obj retain];
-        NSString *htmlPath     = [[NSBundle mainBundle] pathForResource:@"infoFilm" ofType:@"html"];
-        NSString *htmlTemplate = [NSString stringWithContentsOfFile:htmlPath encoding:NSUTF8StringEncoding error:nil];
-        NSString *htmlFilled   = [NSString stringWithTemplateString:htmlTemplate filledDetailedMovieInfo:movieInfo];
-
-        [webView loadHTMLString:htmlFilled baseURL:nil];
-        
-        if (movieInfo.trailer) {
-            _playTrailerButton.enabled = YES;
-        }
-        [self showLoadFinishIndicator];
-    }];
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self displaySearchBarIfActive];
 }
 
 - (void)viewDidUnload
@@ -77,15 +94,30 @@
     if (movieInfo.trailer)
     {
         NSURL* movieURL = [NSURL URLWithString:movieInfo.trailer];
-        MPMoviePlayerViewController* playerController = [[[MPMoviePlayerViewController alloc] initWithContentURL:movieURL] retain]
-        ; 
+        MPMoviePlayerViewController* playerController = [[[MPMoviePlayerViewController alloc] initWithContentURL:movieURL] autorelease];
+        
         if (playerController) 
         {
             [self presentMoviePlayerViewControllerAnimated:playerController];
         }
-        [movieURL release];
-        [playerController release];
     }
+}
+
+- (void) searchBarDelegateEndSearch:(NSArray *)resultsArray
+{
+    _searchResultDisplay = YES;
+    
+    if (resultsArray.count > 0)
+    {
+        ShortMovieInfo* smi = [(ShortMovieInfo*)[resultsArray objectAtIndex:0] retain];
+        [self loadMovieToWebViewById:smi.movieId withLoadString:@"Search result loading"];
+        [smi release];
+    }
+}
+
+- (void) searchBarDelegateHideSearchResults
+{
+    [self loadMovieToWebViewById:self.shortMovieInfo.movieId withLoadString:@"Loading detailed movie info"];
 }
 
 - (void) dealloc
