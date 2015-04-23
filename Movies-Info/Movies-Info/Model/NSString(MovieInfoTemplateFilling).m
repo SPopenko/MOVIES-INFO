@@ -225,7 +225,7 @@
 {
     if (templateString == nil) return nil;
     
-    NSMutableString* result = [[[NSMutableString alloc] initWithString:templateString] autorelease];
+    NSMutableString* result = [[NSMutableString alloc] initWithString:templateString];
     
     for (NSString* key in fieldsDictionary)
     {
